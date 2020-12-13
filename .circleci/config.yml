@@ -1,3 +1,5 @@
+# CI configuration that runs the benchmark on the small data set included in the repository
+# Currently includes Neo4j and RedisGraph
 version: 2.1
 orbs:
   slack: circleci/slack@3.4.2
