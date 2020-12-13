@@ -11,7 +11,8 @@ Inspired by [LDBC SNB](https://arxiv.org/pdf/2001.02299.pdf) and [JOB](https://d
 ### Install dependencies
 
 ```bash
-scripts/install-dependencies.sh
+scripts/install-dependencies-ubuntu.sh
+scripts/install-dependencies-fedora.sh
 ```
 
 ### Generate and preprocess data

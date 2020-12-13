@@ -1,8 +1,11 @@
 #!/bin/bash
 
 # install dependencies
-sudo apt-get install -y git cmake make gcc g++ libssl-dev
-sudo yum install -y git cmake make gcc gcc-c++ openssl-devel
+if [[ ! -z $YUM_CMD ]]; then
+    sudo yum install -y git cmake make gcc gcc-c++ openssl-devel
+elif [[ ! -z $APT_GET_CMD ]]; then
+    sudo apt install -y git cmake make gcc g++ libssl-dev
+fi
 
 git clone --branch v1.0.0 https://github.com/memgraph/mgclient/
 
