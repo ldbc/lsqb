@@ -8,6 +8,12 @@ Inspired by [LDBC SNB](https://arxiv.org/pdf/2001.02299.pdf) and [JOB](https://d
 
 ## Getting started
 
+### Install dependencies
+
+```bash
+scripts/install-dependencies.sh
+```
+
 ### Generate and preprocess data
 
 Use the [LDBC Datagen](https://github.com/ldbc/ldbc_snb_datagen/) (`dev` branch) and the `CsvBasic` serializer.
@@ -48,6 +54,6 @@ python3 clients/mem.py
 python3 clients/red.py
 ```
 
-## Philoshopy
+## Philosophy
 
 This is designed to be a simple benchmark. We do not provide auditing guidelines - it's the user's responsibility to ensure that the benchmark setup is meaningful.
