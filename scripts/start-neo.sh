@@ -20,10 +20,11 @@ docker run --rm \
     --volume=${NEO4J_HOME}/import:/var/lib/neo4j/import \
     --volume=${NEO4J_HOME}/plugins:/plugins \
     --env NEO4J_AUTH=none \
-    neo4j:${NEO4J_VERSION}
+    --name neo \
+    neo4j:${NEO4J_VERSION} \
 
 echo "Waiting for the database to start"
-while ! nc -z localhost 17687; do
+until docker exec -it neo cypher-shell 'MATCH (n) RETURN n LIMIT 1'; do
     echo -n .
     sleep 1
 done

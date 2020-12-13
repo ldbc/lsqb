@@ -1,5 +1,7 @@
 # Typed Subgraph Matching Benchmark
 
+[![Build Status](https://circleci.com/gh/ldbc/tsmb.svg?style=svg)](https://circleci.com/gh/ldbc/tsmb)
+
 A benchmark for subgraph matching but with types information (edge types, mostly).
 
 Inspired by [LDBC SNB](https://arxiv.org/pdf/2001.02299.pdf) and [JOB](https://db.in.tum.de/~leis/papers/lookingglass.pdf).
