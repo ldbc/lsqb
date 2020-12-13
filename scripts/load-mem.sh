@@ -42,3 +42,7 @@ docker run \
   --relationships=LIKES=/import-data/person_likes_message.csv \
   --relationships=MESSAGE_HAS_TAG=/import-data/message_hasTag_tag.csv \
   --delimiter '|'
+
+scripts/start-mem.sh
+sleep 2
+python3 clients/mem.py
