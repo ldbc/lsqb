@@ -31,7 +31,7 @@ tail -n +2 ${RAW_DATA_DIR}/static/tag_0_0.csv | cut -d '|' -f 1 > ${OUTPUT_DATA_
 ## these start with a creation date which should be omitted
 
 ## nodes (the id is in column 2)
-echo nodes
+echo "nodes"
 for entity in \
     comment \
     forum \
@@ -43,7 +43,7 @@ do
 done
 
 ## edges (the source and target ids are in columns 2 and 3)
-echo edges
+echo "edges"
 for entity in \
     comment_hasTag_tag \
     forum_hasMember_person \
@@ -59,7 +59,7 @@ do
 done
 
 ## merge posts and comments to message
-echo merging messages
+echo "merging messages"
 pv ${OUTPUT_DATA_DIR}/{comment,post}.csv > ${OUTPUT_DATA_DIR}/message.csv
 pv ${OUTPUT_DATA_DIR}/person_likes_{comment,post}.csv > ${OUTPUT_DATA_DIR}/person_likes_message.csv
 pv ${OUTPUT_DATA_DIR}/{comment,post}_hasTag_tag.csv > ${OUTPUT_DATA_DIR}/message_hasTag_tag.csv
@@ -70,7 +70,7 @@ rm ${OUTPUT_DATA_DIR}/person_likes_{comment,post}.csv
 rm ${OUTPUT_DATA_DIR}/{comment,post}_hasTag_tag.csv
 
 # add headers
-echo add headers
+echo "add headers"
 while read line; do
   IFS=' ' read -r -a array <<< $line
   FILENAME=${array[0]}
