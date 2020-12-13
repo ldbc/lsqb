@@ -40,6 +40,7 @@ jobs:
           name: Start database
           command: |
             scripts/start-neo.sh
+            sleep 12
       - run:
           name: Run queries
           command: |
