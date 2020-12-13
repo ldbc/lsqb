@@ -8,11 +8,20 @@ Inspired by LDBC SNB and JOB.
 
 ## Getting started
 
-We currently load the data in a Dockerized Neo4j instance.
+### Preprocess
+
+Run the following script which places the preprocessed CSVs under `data/social_network_preprocessed`:
 
 ```bash
 scripts/preprocess.sh
+```
+
+### Load the data
+
+```bash
 scripts/load-neo4j.sh
+scripts/load-memgraph.sh
+scripts/load-redisgraph.sh
 ```
 
 ## Philoshopy
