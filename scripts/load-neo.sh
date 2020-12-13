@@ -4,7 +4,9 @@ cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd ..
 
 . scripts/neo-vars.sh
+. scripts/import-vars.sh
 
+# make sure directories exist
 mkdir -p ${NEO4J_HOME}/{logs,import,plugins}
 
 # start with a fresh data dir (required by the CSV importer)

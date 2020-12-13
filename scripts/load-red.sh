@@ -3,12 +3,10 @@
 cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd ..
 
+. scripts/red-vars.sh
 
-docker run \
-    --rm \
-    --detach \
-    --publish=6379:6379 \
-    redislabs/redisgraph
+scripts/start-red.sh
+python clients/red-del.py
 
 redisgraph-bulk-loader \
     SocialGraph \

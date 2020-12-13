@@ -5,12 +5,16 @@ cd ..
 
 . scripts/neo-vars.sh
 
+if [ ! -d ${NEO4J_DATA_DIR} ]; then
+    echo "Neo4j data is not loaded"
+    exit 1
+fi
+
 docker run --rm \
     --user="$(id -u):$(id -g)" \
     --publish=17474:7474 \
     --publish=17687:7687 \
     ${NEO4J_CONTAINER_DETACH} \
-    --volume=${NEO4J_DATA_DIR}:/data \
     --volume=${NEO4J_DATA_DIR}:/data \
     --volume=${NEO4J_HOME}/logs:/logs \
     --volume=${NEO4J_HOME}/import:/var/lib/neo4j/import \

@@ -29,6 +29,12 @@ scripts/load-mem.sh
 scripts/load-red.sh
 ```
 
+```bash
+scripts/start-neo.sh
+scripts/start-mem.sh
+scripts/start-red.sh
+```
+
 #### Run the queries
 
 ```bash

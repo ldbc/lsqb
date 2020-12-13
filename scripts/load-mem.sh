@@ -3,9 +3,8 @@
 cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd ..
 
-MEMGRAPH_VERSION=1.2.0
-MEMGRAPH_DIR=`pwd`/memgraph-scratch/
-IMPORT_DIR=`pwd`/data/social_network_preprocessed
+. scripts/mem-vars.sh
+. scripts/import-vars.sh
 
 # initialize and cleanup Memgraph dirs
 mkdir -p ${MEMGRAPH_DIR}/{lib,etc,log}
@@ -43,11 +42,3 @@ docker run \
   --relationships=LIKES=/import-data/person_likes_message.csv \
   --relationships=MESSAGE_HAS_TAG=/import-data/message_hasTag_tag.csv \
   --delimiter '|'
-
-# port changed from 7687 to 27687
-docker run \
-  --publish 27687:7687 \
-  --volume=${MEMGRAPH_DIR}/lib:/var/lib/memgraph \
-  --volume=${MEMGRAPH_DIR}/log:/var/log/memgraph \
-  --volume=${MEMGRAPH_DIR}/etc:/etc/memgraph \
-  memgraph
