@@ -1,5 +1,5 @@
 #!/bin/bash
 
-pip install neo4j
-pip install pymgclient
-pip install redisgraph redisgraph-bulk-loader
+pip3 install neo4j
+pip3 install pymgclient
+pip3 install redisgraph redisgraph-bulk-loader

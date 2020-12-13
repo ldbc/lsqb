@@ -43,9 +43,9 @@ scripts/start-red.sh
 #### Run the queries
 
 ```bash
-py clients/mem.py
-py clients/red.py
-py clients/neo.py
+python3 clients/neo.py
+python3 clients/mem.py
+python3 clients/red.py
 ```
 
 ## Philoshopy

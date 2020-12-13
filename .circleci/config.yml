@@ -35,3 +35,8 @@ jobs:
           command: |
             scripts/load-neo.sh
             scripts/load-red.sh
+      - run:
+          name: Run queries
+          command: |
+            python3 clients/neo.py
+            python3 clients/red.py
