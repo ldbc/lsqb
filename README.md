@@ -12,12 +12,17 @@ Inspired by [LDBC SNB](https://arxiv.org/pdf/2001.02299.pdf) and [JOB](https://d
 
 Use the [LDBC Datagen](https://github.com/ldbc/ldbc_snb_datagen/) (`dev` branch) and the `CsvBasic` serializer.
 
-Run the following script which places the preprocessed CSVs under `data/social_network_preprocessed`:
+Run the following script which preprocesses the example data set files and places the CSVs under `data/social_network_preprocessed`:
 
 ```bash
 scripts/preprocess.sh
 ```
 
+To process another data set, e.g. one stored under `data/sf10`, run:
+
+```bash
+scripts/preprocess.sh data/sf10
+```
 ### Running databases
 
 To avoid clashing on port `7474`, the Neo4j instance runs with the ports shifted by `+10000`, while the Memgraph instance runs with `+20000`.
