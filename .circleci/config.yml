@@ -22,7 +22,13 @@ jobs:
           DEBIAN_FRONTEND=noninteractive
           sudo apt update
           #sudo apt install -y openjdk-8-jdk
-      - run: |
+      - name: Install dependencies
+        run: |
+          scripts/install-clients.sh
+      - name: Preprocess data
+        run: |
+          scripts/preprocess.sh
+      - name: Load data
+        run: |
           scripts/load-neo.sh
-          scripts/load-mem.sh
           scripts/load-red.sh
