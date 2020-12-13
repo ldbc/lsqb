@@ -23,8 +23,9 @@ jobs:
           sudo apt update
           #sudo apt install -y openjdk-8-jdk
       - run:
-          name: Install dependencies
+          name: Install dependencies and clients
           command: |
+            scripts/install-dependencies.sh
             scripts/install-clients.sh
       - run:
           name: Preprocess data
