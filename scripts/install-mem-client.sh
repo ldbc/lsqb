@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # install dependencies
-if [[ ! -z $YUM_CMD ]]; then
-    sudo yum install -y git cmake make gcc gcc-c++ openssl-devel
-elif [[ ! -z $APT_GET_CMD ]]; then
+if [[ ! -z $(which dnf) ]]; then
+    sudo dnf install -y git cmake make gcc gcc-c++ openssl-devel
+elif [[ ! -z $(which apt) ]]; then
     sudo apt install -y git cmake make gcc g++ libssl-dev
 fi
 

@@ -1,8 +1,7 @@
 #!/bin/bash
 
-if [[ ! -z $YUM_CMD ]]; then
+if [[ ! -z $(which dnf) ]]; then
     sudo dnf install -y pv
-elif [[ ! -z $APT_GET_CMD ]]; then
+elif [[ ! -z $(which apt) ]]; then
     sudo apt install -y pv
 fi
-
