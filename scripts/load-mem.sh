@@ -19,7 +19,7 @@ fi
 # copy CSVs to Docker volume
 # remove leftover helpers
 docker rm mg_import_helper
-docker container create --name mg_import_helper -v mg_import:/import-data busybox
+docker container create --name mg_import_helper --volume mg_import:/import-data busybox
 for f in ${IMPORT_DIR}/*.csv; do
   docker cp $f mg_import_helper:/import-data
 done
@@ -42,7 +42,3 @@ docker run \
   --relationships=LIKES=/import-data/person_likes_message.csv \
   --relationships=MESSAGE_HAS_TAG=/import-data/message_hasTag_tag.csv \
   --delimiter '|'
-
-scripts/start-mem.sh
-sleep 2
-python3 clients/mem.py
