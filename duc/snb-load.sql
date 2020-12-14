@@ -1,0 +1,11 @@
+COPY forum FROM 'PATHVAR/forum.csv' (DELIMITER '|', HEADER);
+COPY message FROM 'PATHVAR/message.csv' (DELIMITER '|', HEADER);
+COPY person FROM 'PATHVAR/person.csv' (DELIMITER '|', HEADER);
+COPY tag FROM 'PATHVAR/tag.csv' (DELIMITER '|', HEADER);
+COPY forum_hasMember_person FROM 'PATHVAR/forum_hasMember_person.csv' (DELIMITER '|', HEADER);
+COPY forum_hasTag_tag FROM 'PATHVAR/forum_hasTag_tag.csv' (DELIMITER '|', HEADER);
+COPY message_hasTag_tag FROM 'PATHVAR/message_hasTag_tag.csv' (DELIMITER '|', HEADER);
+COPY person_likes_message FROM 'PATHVAR/person_likes_message.csv' (DELIMITER '|', HEADER);
+COPY person_hasInterest_tag FROM 'PATHVAR/person_hasInterest_tag.csv' (DELIMITER '|', HEADER);
+COPY person_knows_person (Person1_id, Person2_id) FROM 'PATHVAR/person_knows_person.csv' (DELIMITER '|', HEADER);
+COPY person_knows_person (Person2_id, Person1_id) FROM 'PATHVAR/person_knows_person.csv' (DELIMITER '|', HEADER);

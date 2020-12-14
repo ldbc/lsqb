@@ -1,0 +1,10 @@
+create table forum (id bigint not null);
+create table message (id bigint not null);
+create table person (id bigint not null);
+create table tag (id bigint not null);
+create table forum_hasMember_person (Forum_id bigint not null, Person_id bigint not null);
+create table forum_hasTag_tag (Forum_id bigint not null, Tag_id bigint not null);
+create table message_hasTag_tag (Message_id bigint not null, Tag_id bigint not null);
+create table person_knows_person (Person1_id bigint not null, Person2_id bigint not null);
+create table person_likes_message (Person_id bigint not null, Message_id bigint not null);
+create table person_hasInterest_tag (Person_id bigint not null, Tag_id bigint not null);
