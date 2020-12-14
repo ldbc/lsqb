@@ -17,3 +17,5 @@ make
 
 sudo make install
 sudo ldconfig
+
+pip3 install pymgclient

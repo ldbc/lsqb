@@ -15,3 +15,8 @@ cd duc-scratch
 wget https://github.com/cwida/duckdb/releases/download/${DUCKDB_VERSION}/duckdb_cli-linux-amd64.zip
 unzip duckdb_cli-linux-amd64.zip
 rm duckdb_cli-linux-amd64.zip
+
+pip3 install duckdb==${DUCKDB_VERSION}
+
+pip3 install neo4j
+pip3 install redisgraph redisgraph-bulk-loader
