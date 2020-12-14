@@ -19,6 +19,7 @@ docker run --rm \
     --publish=17687:7687 \
     --volume=${NEO4J_DATA_DIR}:/data \
     --volume=${IMPORT_DIR}:/import \
+    ${NEO4J_ENV_VARS} \
     neo4j:${NEO4J_VERSION} \
     neo4j-admin import \
     --nodes=Forum=/import/forum.csv \

@@ -14,7 +14,8 @@ docker run --rm \
     --user="$(id -u):$(id -g)" \
     --publish=17474:7474 \
     --publish=17687:7687 \
-    ${NEO4J_CONTAINER_DETACH} \
+    --detach \
+    ${NEO4J_ENV_VARS} \
     --volume=${NEO4J_DATA_DIR}:/data \
     --volume=${NEO4J_HOME}/logs:/logs \
     --volume=${NEO4J_HOME}/import:/var/lib/neo4j/import \
