@@ -24,7 +24,7 @@ docker run --rm \
     neo4j:${NEO4J_VERSION} \
 
 echo "Waiting for the database to start"
-until docker exec -it neo cypher-shell 'MATCH (n) RETURN n LIMIT 1'; do
+until docker exec -it neo cypher-shell 'RETURN 42'; do
     echo -n .
     sleep 1
 done
