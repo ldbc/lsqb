@@ -2,11 +2,10 @@
 
 [![Build Status](https://circleci.com/gh/ldbc/tsmb.svg?style=svg)](https://circleci.com/gh/ldbc/tsmb)
 
-A benchmark for subgraph matching but with types information (edge types, mostly).
+A benchmark for subgraph matching but with types information (edge types, mostly). The primary goal of this benchmark is to test the query optimizer (join ordering, chooksing between binary and n-ary joins) and the execution engine (join performance, support for worst-case optimal joins) of graph databases. Features found in more mature database systems and query languages such as date/string operations, query composition, complex aggregates/filters are out of scope for this benchmark.
 
-Inspired by [LDBC SNB](https://arxiv.org/pdf/2001.02299.pdf) and [JOB](https://db.in.tum.de/~leis/papers/lookingglass.pdf).
-
-[Google Doc](https://docs.google.com/document/d/1w1cMNyrOoarG69fmNDr5UV7w_T0O0j-yZ0aYu29iWw8/edit)
+* This benchmark has been inspired by [LDBC SNB](https://arxiv.org/pdf/2001.02299.pdf) and [JOB](https://db.in.tum.de/~leis/papers/lookingglass.pdf).
+* [Design Doc](https://docs.google.com/document/d/1w1cMNyrOoarG69fmNDr5UV7w_T0O0j-yZ0aYu29iWw8/edit)
 
 ## Getting started
 
