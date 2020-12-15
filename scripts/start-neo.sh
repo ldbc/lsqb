@@ -21,11 +21,11 @@ docker run --rm \
     --volume=${NEO4J_HOME}/import:/var/lib/neo4j/import \
     --volume=${NEO4J_HOME}/plugins:/plugins \
     --env NEO4J_AUTH=none \
-    --name neo \
+    --name ${NEO4J_CONTAINER_NAME} \
     neo4j:${NEO4J_VERSION} \
 
 echo "Waiting for the database to start"
-until docker exec -it neo cypher-shell 'RETURN 42 AS x'; do
+until docker exec --interactive --tty ${NEO4J_CONTAINER_NAME} cypher-shell 'RETURN 42 AS x'; do
     echo -n .
     sleep 1
 done
