@@ -1,5 +1,5 @@
 # CI configuration that runs the benchmark on the small data set included in the repository
-# Currently includes Neo4j, RedisGraph, and DuckDB
+# Currently includes Neo4j (neo), RedisGraph (red), and DuckDB (ddb)
 version: 2.1
 orbs:
   slack: circleci/slack@3.4.2
@@ -36,7 +36,7 @@ jobs:
           command: |
             scripts/load-neo.sh
             scripts/load-red.sh
-            scripts/load-duc.sh
+            scripts/load-ddb.sh
       - run:
           name: Start database
           command: |
@@ -46,4 +46,4 @@ jobs:
           command: |
             python3 clients/neo.py
             python3 clients/red.py
-            python3 clients/duc.py
+            python3 clients/ddb.py

@@ -1,6 +1,6 @@
 import duckdb
 
-con = duckdb.connect(database='duc-scratch/ldbc.duckdb', read_only=True)
+con = duckdb.connect(database='ddb-scratch/ldbc.duckdb', read_only=True)
 con.execute("""
 SELECT count(*)
 FROM person_knows_person k1, person_knows_person k2, person_knows_person k3

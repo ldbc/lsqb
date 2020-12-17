@@ -39,6 +39,7 @@ To avoid clashing on port `7474`, the Neo4j instance runs with the ports shifted
 scripts/load-neo.sh
 scripts/load-mem.sh
 scripts/load-red.sh
+scripts/load-ddb.sh
 ```
 
 ```bash
@@ -53,6 +54,7 @@ scripts/start-red.sh
 python3 clients/neo.py
 python3 clients/mem.py
 python3 clients/red.py
+python3 clients/ddb.py
 ```
 
 ## Philosophy

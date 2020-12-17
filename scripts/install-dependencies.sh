@@ -11,7 +11,7 @@ fi
 
 DUCKDB_VERSION=v0.2.3
 
-cd duc-scratch
+cd ddb-scratch
 wget https://github.com/cwida/duckdb/releases/download/${DUCKDB_VERSION}/duckdb_cli-linux-amd64.zip
 unzip duckdb_cli-linux-amd64.zip
 rm duckdb_cli-linux-amd64.zip
