@@ -12,8 +12,7 @@ A benchmark for subgraph matching but with types information (edge types, mostly
 ### Install dependencies
 
 ```bash
-scripts/install-dependencies-ubuntu.sh
-scripts/install-dependencies-fedora.sh
+scripts/install-dependencies.sh
 ```
 
 ### Generate and preprocess data
