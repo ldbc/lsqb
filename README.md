@@ -1,6 +1,6 @@
 # Typed Subgraph Matching Benchmark
 
-[![Build Status](https://circleci.com/gh/ldbc/tsmb.svg?style=svg)](https://circleci.com/gh/ldbc/tsmb)
+[![Build Status](https://circleci.com/gh/ldbc/tsmb.svg?style=svg)](https://circleci.com/gh/ldbc/tsmb) [![Build Status](https://circleci.com/gh/ldbc/tsmb.png)](https://circleci.com/gh/ldbc/tsmb)
 
 A benchmark for subgraph matching but with types information (edge types, mostly). The primary goal of this benchmark is to test the query optimizer (join ordering, chooksing between binary and n-ary joins) and the execution engine (join performance, support for worst-case optimal joins) of graph databases. Features found in more mature database systems and query languages such as date/string operations, query composition, complex aggregates/filters are out of scope for this benchmark.
 
