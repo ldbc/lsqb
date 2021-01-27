@@ -33,17 +33,17 @@ with driver.session() as session:
         RETURN count(*) AS count
         """)
     run_query(session, 4, """
+        MATCH
+          (pA:Person)-[:KNOWS]-(pB:Person),
+          (pA)<-[:HAS_CREATOR]-(c:Comment)-[:REPLY_OF]->(post:Post)-[:HAS_CREATOR]->(pB)
+        RETURN count(*) AS count
+        """)
+    run_query(session, 5, """
         MATCH (country:Country)
         MATCH (pA:Person)-[:IS_LOCATED_IN]->(:City)-[:IS_PART_OF]->(country)
         MATCH (pB:Person)-[:IS_LOCATED_IN]->(:City)-[:IS_PART_OF]->(country)
         MATCH (pC:Person)-[:IS_LOCATED_IN]->(:City)-[:IS_PART_OF]->(country)
         MATCH (pA)-[k1:KNOWS]-(pB)-[k2:KNOWS]-(pC)-[k3:KNOWS]-(pa)
-        RETURN count(*) AS count
-        """)
-    run_query(session, 5, """
-        MATCH
-          (pA:Person)-[:KNOWS]-(pB:Person),
-          (pA)<-[:HAS_CREATOR]-(c:Comment)-[:REPLY_OF]->(post:Post)-[:HAS_CREATOR]->(pB)
         RETURN count(*) AS count
         """)
     run_query(session, 6, """
