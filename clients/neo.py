@@ -1,6 +1,7 @@
-from neo4j import GraphDatabase
+from neo4j import GraphDatabase, unit_of_work
 import time
 
+@unit_of_work(timeout=300)
 def query_fun(tx, query):
     result = tx.run(query)
     return result.single()
