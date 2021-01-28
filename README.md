@@ -15,21 +15,48 @@ A benchmark for subgraph matching but with types information (edge types, mostly
 scripts/install-dependencies.sh
 ```
 
-### Generate and preprocess data
+### Creating the input data
 
-Use the [LDBC Datagen](https://github.com/ldbc/ldbc_snb_datagen/) (`dev` branch) and the `CsvSingularProjectedFK` (formerly: `CsvBasic`) serializer.
+#### Generate the data
+
+Use the [LDBC Datagen](https://github.com/ldbc/ldbc_snb_datagen/) (`dev` branch). Currently, it needs manual configuration. I suppose that you are *not* using Docker for running Datagen.
+
+Edit `src/main/scala/ldbc/snb/datagen/spark/LdbcDatagen.scala`:
+
+```diff
+-      mode = Mode.BI
++      mode = Mode.Raw
+```
+
+You need to recompile it. Recent Maven releases only work with Java 11, while Spark 2.x only works with Java 8. To work around this, I use [SDKMan](https://sdkman.io/), install OpenJDK variants and set up aliases as shortcuts to change between them.
+
+```bash
+alias j8='sdk u java 8.0.252.hs-adpt'
+alias j11='sdk u java 11.0.9.hs-adpt'
+```
+
+Then, set your target directory
+
+```bash
+export DATAGEN_DATA_DIR=/tmp/datagen-data
+```
+
+and generate the data as follows.
+
+```bash
+j11 && tools/build.sh && j8 && \
+  rm -rf ${DATAGEN_DATA_DIR} && \
+  time SPARK_CONF_DIR=`pwd`/conf ./tools/run.py ./target/ldbc_snb_datagen-0.4.0-SNAPSHOT-jar-with-dependencies.jar ./params-csv-basic-rawdata.ini --parallelism 4 --memory 8G --sn-dir ${DATAGEN_DATA_DIR}
+```
+
+### Preprocess the data
 
 Run the following script which preprocesses the example data set files and places the CSVs under `data/social_network_preprocessed`:
 
 ```bash
-scripts/preprocess.sh
+scripts/preprocess.sh ${DATAGEN_DATA_DIR}/serialized/csv/non_composite/
 ```
 
-To process another data set, e.g. one stored under `data/sf10`, run:
-
-```bash
-scripts/preprocess.sh data/sf10
-```
 ### Running the benchmark
 
 To avoid clashing on port `7474`, the Neo4j instance runs with the ports shifted by `+10000`, while the Memgraph instance runs with `+20000`.
