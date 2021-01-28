@@ -18,7 +18,7 @@ driver = GraphDatabase.driver("bolt://localhost:17687")
 
 with driver.session() as session:
     run_query(session, 1, """
-        MATCH (:Country)<-[:IS_PART_OF]-(:City)<-[:IS_LOCATED_IN]-(:Person)<-[:HAS_MODERATOR]-(:Forum)-[:CONTAINER_OF]->(:Post)<-[:REPLY_OF*0..]-(:Message)-[:HAS_TAG]->(:Tag)-[:HAS_TYPE]->(:TagClass)
+        MATCH (:Country)<-[:IS_PART_OF]-(:City)<-[:IS_LOCATED_IN]-(:Person)<-[:HAS_MODERATOR]-(:Forum)-[:CONTAINER_OF]->(:Post)<-[:REPLY_OF]-(:Message)-[:HAS_TAG]->(:Tag)-[:HAS_TYPE]->(:TagClass)
         RETURN count(*) AS count
         """)
     run_query(session, 2, """
