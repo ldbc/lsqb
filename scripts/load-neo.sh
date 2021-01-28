@@ -7,7 +7,7 @@ cd ..
 . scripts/import-vars.sh
 
 # make sure Neo4j is stopped
-scripts/stop-neo4j.sh
+scripts/stop-neo.sh
 
 # make sure directories exist
 mkdir -p ${NEO4J_HOME}/{logs,import,plugins}
