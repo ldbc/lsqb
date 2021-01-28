@@ -54,7 +54,7 @@ j11 && tools/build.sh && j8 && \
 Run the following script which preprocesses the example data set files and places the CSVs under `data/social_network_preprocessed`:
 
 ```bash
-scripts/preprocess.sh ${DATAGEN_DATA_DIR}/serialized/csv/non_composite/
+scripts/preprocess.sh ${DATAGEN_DATA_DIR}
 ```
 
 ### Running the benchmark
