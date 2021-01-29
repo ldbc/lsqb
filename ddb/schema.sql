@@ -32,3 +32,13 @@ create table post_hasCreator_person        (PostId bigint not null,          Per
 create table post_hasTag_tag               (PostId bigint not null,          TagId bigint not null          );
 create table post_isLocatedIn_place        (PostId bigint not null,          PlaceId bigint not null        );
 create table person_knows_person           (Person1Id bigint not null,       Person2Id bigint not null      );
+
+create view message as
+  select * from comment
+  union all
+  select * from post;
+
+create view comment_replyOf_message as
+  select CommentId, ParentCommentId as ParentMessageId from comment_replyOf_comment
+  union all
+  select CommentId, ParentPostId as ParentMessageId from comment_replyOf_post;
