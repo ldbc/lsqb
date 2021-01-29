@@ -93,6 +93,9 @@ while read line; do
   FILENAME=${array[0]}
   HEADER=${array[1]}
 
-  # replace header (no point using sed to save space as it creates a temporary file as well)
+  # replace header
+  # Note that there's no point using sed to save space as it creates a temporary file as well.
+  # The headers are Neo4j-compatible but they also work with relational database
+  # (as most relational databases load the values based on their position and do not use the header).
   echo ${HEADER} | pv - ${OUTPUT_DATA_DIR}/${FILENAME} > tmpfile.csv && mv tmpfile.csv ${OUTPUT_DATA_DIR}/${FILENAME}
 done < scripts/headers.txt
