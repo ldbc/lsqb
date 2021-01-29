@@ -46,5 +46,5 @@ jobs:
           name: Run queries
           command: |
             python3 clients/neo.py
+            python3 clients/ddb.py
             # python3 clients/red.py
-            # python3 clients/ddb.py
