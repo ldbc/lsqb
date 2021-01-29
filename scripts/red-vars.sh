@@ -1,1 +1,2 @@
 REDISGRAPH_DIR=`pwd`/red-scratch
+REDISGRAPH_CONTAINER_NAME=tsmb-red

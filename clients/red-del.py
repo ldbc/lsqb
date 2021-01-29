@@ -1,9 +1,9 @@
 import redis
 from redisgraph import Node, Edge, Graph, Path
 
-redis = redis.Redis(host='localhost', port=6379)
-graph = Graph('SocialGraph', redis)
+r = redis.Redis(host='localhost', port=6379)
+graph = Graph('SocialGraph', r)
 try:
     graph.delete()
-except redis.exceptions.ResponseError:
+except redis.exceptions.ResponseError as e:
     print("RedisGraph instance is fresh.")

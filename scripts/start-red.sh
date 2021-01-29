@@ -12,4 +12,5 @@ docker run \
     --detach \
     --publish=6379:6379 \
     --volume=${REDISGRAPH_DATA_DIR}:/data \
+    --name ${REDISGRAPH_CONTAINER_NAME} \
     redislabs/redisgraph
