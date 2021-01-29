@@ -36,8 +36,8 @@ jobs:
           name: Load data
           command: |
             scripts/load-neo.sh
+            scripts/load-ddb.sh
             # scripts/load-red.sh
-            # scripts/load-ddb.sh
       - run:
           name: Start database
           command: |
