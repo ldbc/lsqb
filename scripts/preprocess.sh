@@ -7,6 +7,8 @@ RAW_DATA_DIR=${1:-'data/social_network'}/serialized/csv/non_composite/
 cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd ..
 
+set -e
+
 OUTPUT_DATA_DIR=`pwd`/data/social_network_preprocessed
 
 # make sure the output directory exists
