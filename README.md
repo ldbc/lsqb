@@ -7,6 +7,13 @@ A benchmark for subgraph matching but with types information (edge types, mostly
 * This benchmark has been inspired by [LDBC SNB](https://arxiv.org/pdf/2001.02299.pdf) and [JOB](https://db.in.tum.de/~leis/papers/lookingglass.pdf).
 * [Design Doc](https://docs.google.com/document/d/1w1cMNyrOoarG69fmNDr5UV7w_T0O0j-yZ0aYu29iWw8/edit)
 
+## Implementations
+
+* [Neo4j](https://neo4j.com/)
+* [Memgraph](https://memgraph.com/)
+* [RedisGraph](https://oss.redislabs.com/redisgraph/)
+* [DuckDB](https://www.duckdb.org/)
+
 ## Getting started
 
 ### Install dependencies
@@ -92,4 +99,5 @@ python3 clients/ddb.py
 
 ## Philosophy
 
-This is designed to be a simple benchmark. We do not provide auditing guidelines - it's the user's responsibility to ensure that the benchmark setup is meaningful.
+This benchmark is designed to be *simple* similarly to the [TPC-x "Express" benchmarks](http://www.vldb.org/pvldb/vol6/p1186-nambiar.pdf).
+In the spirit of this, we do not provide auditing guidelines – it's the user's responsibility to ensure that the benchmark setup is meaningful.
