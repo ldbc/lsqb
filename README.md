@@ -26,7 +26,7 @@ scripts/install-dependencies.sh
 
 #### Generate the data
 
-Use the [LDBC Datagen](https://github.com/ldbc/ldbc_snb_datagen/) (`dev` branch). Currently, it needs manual configuration. I suppose that you are *not* using Docker for running Datagen.
+Use the [LDBC Datagen](https://github.com/ldbc/ldbc_snb_datagen/) (`dev` branch). Currently, it needs manual configuration. This tutorial assumes that you are *not* using Docker for running Datagen.
 
 Edit `src/main/scala/ldbc/snb/datagen/spark/LdbcDatagen.scala`:
 
