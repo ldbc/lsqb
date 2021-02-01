@@ -14,7 +14,7 @@ def run_query(session, query_id, query_spec):
     print("Q{}: {:.4f} seconds, {} tuples".format(query_id, duration, result[0]))
     return (duration, result)
 
-driver = GraphDatabase.driver("bolt://localhost:17687")
+driver = GraphDatabase.driver("bolt://localhost:7687")
 
 with driver.session() as session:
     run_query(session, 1, """

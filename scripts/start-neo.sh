@@ -14,8 +14,8 @@ fi
 
 docker run --rm \
     --user="$(id -u):$(id -g)" \
-    --publish=17474:7474 \
-    --publish=17687:7687 \
+    --publish=7474:7474 \
+    --publish=7687:7687 \
     --detach \
     ${NEO4J_ENV_VARS} \
     --volume=${NEO4J_DATA_DIR}:/data \

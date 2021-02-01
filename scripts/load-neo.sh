@@ -20,8 +20,8 @@ rm -rf ${NEO4J_DATA_DIR}/*
 
 docker run --rm \
     --user="$(id -u):$(id -g)" \
-    --publish=17474:7474 \
-    --publish=17687:7687 \
+    --publish=7474:7474 \
+    --publish=7687:7687 \
     --volume=${NEO4J_DATA_DIR}:/data \
     --volume=${IMPORT_DIR}:/import \
     ${NEO4J_ENV_VARS} \

@@ -66,7 +66,9 @@ scripts/preprocess.sh ${DATAGEN_DATA_DIR}
 
 ### Running the benchmark
 
-To avoid clashing on port `7474`, the Neo4j instance runs with the ports shifted by `+10000`, while the Memgraph instance runs with `+20000`.
+Both Neo4j and Memgraph use the Bolt protocol for communicating with the client.
+To avoid clashing on port `7687`, the Memgraph instance uses port `27687` for its Bolt communication.
+Note that the two systems use different versions so different client libraries are necessary.
 #### Load the data
 
 The following scripts load the data from `data/social_network_preprocessed`:
