@@ -9,7 +9,9 @@ workflows:
   version: 2
   build:
     jobs:
-      - test
+      - test:
+          context:
+            - Slack
 # filters:
 #   branches:
 
@@ -18,9 +20,6 @@ jobs:
     # resource_class: xlarge
     machine:
       image: ubuntu-2004:202008-01
-
-    context:
-      - Slack
 
     steps:
       - checkout
