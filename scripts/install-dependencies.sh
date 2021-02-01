@@ -13,4 +13,4 @@ pip3 install duckdb==${DUCKDB_VERSION}
 pip3 install neo4j
 pip3 install redisgraph redisgraph-bulk-loader
 
-./download-ddb.sh
+scripts/download-ddb.sh
