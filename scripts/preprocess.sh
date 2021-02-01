@@ -4,10 +4,11 @@
 
 RAW_DATA_DIR=${1:-'data/example-graph'}
 
+set -e
+set -o pipefail
+
 cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd ..
-
-set -e
 
 OUTPUT_DATA_DIR=`pwd`/data/social-network-preprocessed
 

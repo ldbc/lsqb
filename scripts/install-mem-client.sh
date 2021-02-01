@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -e
+set -o pipefail
+
 # install dependencies
 if [[ ! -z $(which dnf) ]]; then
     sudo dnf install -y git cmake make gcc gcc-c++ openssl-devel
