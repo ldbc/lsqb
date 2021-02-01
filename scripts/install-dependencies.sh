@@ -9,6 +9,8 @@ elif [[ ! -z $(which apt) ]]; then
     sudo apt install -y pv
 fi
 
+. scripts/ddb-vars.sh
+
 pip3 install duckdb==${DUCKDB_VERSION}
 pip3 install neo4j
 pip3 install redisgraph redisgraph-bulk-loader
