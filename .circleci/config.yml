@@ -51,10 +51,10 @@ jobs:
             python3 clients/ddb.py
             # python3 clients/red.py
       - slack/notify:
-          channel: 'notifs-tsmb'
+          channel: 'G01LGEMKXGT'
           event: fail
           template: basic_fail_1
       - slack/notify:
-          channel: 'notifs-tsmb'
+          channel: 'G01LGEMKXGT'
           event: pass
           template: success_tagged_deploy_1
