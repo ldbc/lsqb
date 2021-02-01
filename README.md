@@ -23,39 +23,6 @@ scripts/install-dependencies.sh
 ```
 
 ### Creating the input data
-
-#### Generate the data
-
-Use the [LDBC Datagen](https://github.com/ldbc/ldbc_snb_datagen/) (`dev` branch). Currently, it needs manual configuration. This tutorial assumes that you are *not* using Docker for running Datagen.
-
-Edit `src/main/scala/ldbc/snb/datagen/spark/LdbcDatagen.scala`:
-
-```diff
--      mode = Mode.BI
-+      mode = Mode.Raw
-```
-
-You need to recompile it. Recent Maven releases only work with Java 11, while Spark 2.x only works with Java 8. To work around this, I use [SDKMan](https://sdkman.io/), install OpenJDK variants and set up aliases as shortcuts to change between them.
-
-```bash
-alias j8='sdk u java 8.0.252.hs-adpt'
-alias j11='sdk u java 11.0.9.hs-adpt'
-```
-
-Then, set your target directory
-
-```bash
-export DATAGEN_DATA_DIR=/tmp/datagen-data
-```
-
-and generate the data as follows.
-
-```bash
-j11 && tools/build.sh && j8 && \
-  rm -rf ${DATAGEN_DATA_DIR} && \
-  time SPARK_CONF_DIR=`pwd`/conf ./tools/run.py ./target/ldbc_snb_datagen-0.4.0-SNAPSHOT-jar-with-dependencies.jar ./params-csv-basic-rawdata.ini --parallelism 4 --memory 8G --sn-dir ${DATAGEN_DATA_DIR}
-```
-
 ### Preprocess the data
 
 Run the following script which preprocesses the example data set files and places the CSVs under `data/social-network-preprocessed`:
@@ -64,7 +31,7 @@ Run the following script which preprocesses the example data set files and place
 scripts/preprocess.sh ${DATAGEN_DATA_DIR}
 ```
 
-It is possible to run this script without arguments. In this case, it preprocesses the CSV files representing the [[LDBC SNB example graph](https://ldbc.github.io/ldbc_snb_docs/example-graph-without-refreshes.pdf)], stored in this repository in `data/example-graph`.
+It is possible to run this script without arguments. In this case, it preprocesses the CSV files representing the [LDBC SNB example graph](https://ldbc.github.io/ldbc_snb_docs/example-graph-without-refreshes.pdf), stored in this repository in `data/example-graph`.
 
 ```bash
 scripts/preprocess.sh
@@ -109,3 +76,32 @@ python3 clients/ddb.py
 
 This benchmark is designed to be *simple* similarly to the [TPC-x "Express" benchmarks](http://www.vldb.org/pvldb/vol6/p1186-nambiar.pdf).
 In the spirit of this, we do not provide auditing guidelines – it's the user's responsibility to ensure that the benchmark setup is meaningful.
+
+## :warning: Danger zone
+
+Untested features, draft documentation follows here.
+
+#### Generate the data
+
+To generate the data, use the [LDBC Datagen](https://github.com/ldbc/ldbc_snb_datagen/) (`dev` branch). Currently, it needs manual configuration. This tutorial assumes that you are *not* using Docker for running Datagen.
+
+Datagen can be compiled with Maven. Recent Maven releases only work with Java 11, while Spark 2.x only works with Java 8. To work around this, I use [SDKMan](https://sdkman.io/), install OpenJDK variants and set up aliases as shortcuts to change between them.
+
+```bash
+alias j8='sdk u java 8.0.252.hs-adpt'
+alias j11='sdk u java 11.0.9.hs-adpt'
+```
+
+Then, set your target directory
+
+```bash
+export DATAGEN_DATA_DIR=/tmp/datagen-data
+```
+
+and generate the data as follows.
+
+```bash
+j11 && tools/build.sh && j8 && \
+  rm -rf ${DATAGEN_DATA_DIR} && \
+  time SPARK_CONF_DIR=`pwd`/conf ./tools/run.py ./target/ldbc_snb_datagen-0.4.0-SNAPSHOT-jar-with-dependencies.jar ./params-csv-basic-rawdata.ini --parallelism 4 --memory 8G --sn-dir ${DATAGEN_DATA_DIR}
+```
