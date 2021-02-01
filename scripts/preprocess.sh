@@ -2,14 +2,14 @@
 
 # script to preprocess CSV files produced by the LDBC SNB Datagen (CsvSingularProjectedFK or CsvSingularMergedFK serializers).
 
-RAW_DATA_DIR=${1:-'data/social_network'}/serialized/csv/non_composite/
+RAW_DATA_DIR=${1:-'data/social-network'}
 
 cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd ..
 
 set -e
 
-OUTPUT_DATA_DIR=`pwd`/data/social_network_preprocessed
+OUTPUT_DATA_DIR=`pwd`/data/social-network-preprocessed
 
 # make sure the output directory exists
 mkdir -p ${OUTPUT_DATA_DIR}
@@ -18,10 +18,10 @@ mkdir -p ${OUTPUT_DATA_DIR}
 
 ## nodes (the id is in column 1)
 echo "-------------------- static nodes --------------------"
-tail -qn +2 ${RAW_DATA_DIR}/static/tag/part-*.csv          | cut -d '|' -f 1   > ${OUTPUT_DATA_DIR}/tag.csv
-tail -qn +2 ${RAW_DATA_DIR}/static/tagclass/part-*.csv     | cut -d '|' -f 1   > ${OUTPUT_DATA_DIR}/tagclass.csv
-tail -qn +2 ${RAW_DATA_DIR}/static/place/part-*.csv        | cut -d '|' -f 1,4 > ${OUTPUT_DATA_DIR}/place.csv
-tail -qn +2 ${RAW_DATA_DIR}/static/organisation/part-*.csv | cut -d '|' -f 1,2 > ${OUTPUT_DATA_DIR}/organisation.csv
+tail -qn +2 ${RAW_DATA_DIR}/static/tag.csv          | cut -d '|' -f 1   > ${OUTPUT_DATA_DIR}/tag.csv
+tail -qn +2 ${RAW_DATA_DIR}/static/tagclass.csv     | cut -d '|' -f 1   > ${OUTPUT_DATA_DIR}/tagclass.csv
+tail -qn +2 ${RAW_DATA_DIR}/static/place.csv        | cut -d '|' -f 1,4 > ${OUTPUT_DATA_DIR}/place.csv
+tail -qn +2 ${RAW_DATA_DIR}/static/organisation.csv | cut -d '|' -f 1,2 > ${OUTPUT_DATA_DIR}/organisation.csv
 
 ## edges (the source and target ids are in columns 1 and 2)
 echo "-------------------- static edges --------------------"
@@ -32,7 +32,7 @@ for entity in \
     tagclass_isSubclassOf_tagclass \
     ; \
 do
-    tail -qn +2 ${RAW_DATA_DIR}/static/${entity}/part-*.csv | cut -d '|' -f 1,2 > ${OUTPUT_DATA_DIR}/${entity}.csv
+    tail -qn +2 ${RAW_DATA_DIR}/static/${entity}.csv | cut -d '|' -f 1,2 > ${OUTPUT_DATA_DIR}/${entity}.csv
 done
 
 # dynamic entities
@@ -47,7 +47,7 @@ for entity in \
     post \
     ; \
 do
-    tail -qn +2 ${RAW_DATA_DIR}/dynamic/${entity}/part-*.csv | cut -d '|' -f 3 > ${OUTPUT_DATA_DIR}/${entity}.csv
+    tail -qn +2 ${RAW_DATA_DIR}/dynamic/${entity}.csv | cut -d '|' -f 2 > ${OUTPUT_DATA_DIR}/${entity}.csv
 done
 
 ## edges (the source and target ids are in columns 2 and 3)
@@ -74,7 +74,7 @@ for entity in \
     post_isLocatedIn_place \
     ; \
 do
-    tail -qn +2 ${RAW_DATA_DIR}/dynamic/${entity}/part-*.csv | cut -d '|' -f 3,4 > ${OUTPUT_DATA_DIR}/${entity}.csv
+    tail -qn +2 ${RAW_DATA_DIR}/dynamic/${entity}.csv | cut -d '|' -f 2,3 > ${OUTPUT_DATA_DIR}/${entity}.csv
 done
 
 # ## merge posts and comments to message

@@ -1,1 +1,1 @@
-IMPORT_DIR=`pwd`/data/social_network_preprocessed
+IMPORT_DIR=`pwd`/data/social-network-preprocessed

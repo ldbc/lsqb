@@ -58,7 +58,7 @@ j11 && tools/build.sh && j8 && \
 
 ### Preprocess the data
 
-Run the following script which preprocesses the example data set files and places the CSVs under `data/social_network_preprocessed`:
+Run the following script which preprocesses the example data set files and places the CSVs under `data/social-network-preprocessed`:
 
 ```bash
 scripts/preprocess.sh ${DATAGEN_DATA_DIR}
@@ -71,7 +71,7 @@ To avoid clashing on port `7687`, the Memgraph instance uses port `27687` for it
 Note that the two systems use different versions so different client libraries are necessary.
 #### Load the data
 
-The following scripts load the data from `data/social_network_preprocessed`:
+The following scripts load the data from `data/social-network-preprocessed:
 
 ```bash
 scripts/load-neo.sh

@@ -5,7 +5,7 @@ cd ..
 
 set -e
 
-IMPORT_DATA_DIR=`pwd`/data/social_network_preprocessed
+IMPORT_DATA_DIR=`pwd`/data/social-network-preprocessed
 DUCKDB_DIR=`pwd`/ddb-scratch
 DUCKDB_BINARY=`pwd`/ddb-scratch/duckdb
 
