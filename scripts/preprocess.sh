@@ -2,7 +2,7 @@
 
 # script to preprocess CSV files produced by the LDBC SNB Datagen (CsvSingularProjectedFK or CsvSingularMergedFK serializers).
 
-RAW_DATA_DIR=${1:-'data/social-network'}
+RAW_DATA_DIR=${1:-'data/example-graph'}
 
 cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd ..
