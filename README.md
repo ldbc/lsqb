@@ -92,7 +92,7 @@ alias j8='sdk u java 8.0.252.hs-adpt'
 alias j11='sdk u java 11.0.9.hs-adpt'
 ```
 
-Then, set your target directory
+Set `mode = Mode.Interactive` in `LdbcDatagen.scala` and the desired scale factor in `params.ini`. Then, set your target directory:
 
 ```bash
 export DATAGEN_DATA_DIR=/tmp/datagen-data
@@ -103,5 +103,5 @@ and generate the data as follows.
 ```bash
 j11 && tools/build.sh && j8 && \
   rm -rf ${DATAGEN_DATA_DIR} && \
-  time SPARK_CONF_DIR=`pwd`/conf ./tools/run.py ./target/ldbc_snb_datagen-0.4.0-SNAPSHOT-jar-with-dependencies.jar ./params-csv-basic-rawdata.ini --parallelism 4 --memory 8G --sn-dir ${DATAGEN_DATA_DIR}
+  time SPARK_CONF_DIR=`pwd`/conf ./tools/run.py ./target/ldbc_snb_datagen-0.4.0-SNAPSHOT-jar-with-dependencies.jar ./params.ini --parallelism 4 --memory 8G --sn-dir ${DATAGEN_DATA_DIR}
 ```
