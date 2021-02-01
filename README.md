@@ -37,6 +37,15 @@ It is possible to run this script without arguments. In this case, it preprocess
 scripts/preprocess.sh
 ```
 
+### Using larger data set
+
+We provide a larger (but still quite small) data set for testing. This data set is preprocessed. To use it, run:
+
+```bash
+rm -rf data/social-network-preprocessed
+cp -r data/social-network-sf0.003-preprocessed/ data/social-network-preprocessed
+```
+
 ### Running the benchmark
 
 Both Neo4j and Memgraph use the Bolt protocol for communicating with the client.
@@ -76,32 +85,3 @@ python3 clients/ddb.py
 
 This benchmark is designed to be *simple* similarly to the [TPC-x "Express" benchmarks](http://www.vldb.org/pvldb/vol6/p1186-nambiar.pdf).
 In the spirit of this, we do not provide auditing guidelines – it's the user's responsibility to ensure that the benchmark setup is meaningful.
-
-## :warning: Danger zone
-
-Untested features, draft documentation follows here.
-
-#### Generate the data
-
-To generate the data, use the [LDBC Datagen](https://github.com/ldbc/ldbc_snb_datagen/) (`dev` branch). Currently, it needs manual configuration. This tutorial assumes that you are *not* using Docker for running Datagen.
-
-Datagen can be compiled with Maven. Recent Maven releases only work with Java 11, while Spark 2.x only works with Java 8. To work around this, I use [SDKMan](https://sdkman.io/), install OpenJDK variants and set up aliases as shortcuts to change between them.
-
-```bash
-alias j8='sdk u java 8.0.252.hs-adpt'
-alias j11='sdk u java 11.0.9.hs-adpt'
-```
-
-Set `mode = Mode.Interactive` in `LdbcDatagen.scala` and the desired scale factor in `params.ini`. Then, set your target directory:
-
-```bash
-export DATAGEN_DATA_DIR=/tmp/datagen-data
-```
-
-and generate the data as follows.
-
-```bash
-j11 && tools/build.sh && j8 && \
-  rm -rf ${DATAGEN_DATA_DIR} && \
-  time SPARK_CONF_DIR=`pwd`/conf ./tools/run.py ./target/ldbc_snb_datagen-0.4.0-SNAPSHOT-jar-with-dependencies.jar ./params.ini --parallelism 4 --memory 8G --sn-dir ${DATAGEN_DATA_DIR}
-```
