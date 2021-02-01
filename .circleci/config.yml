@@ -52,3 +52,9 @@ jobs:
             # python3 clients/red.py
       - slack/notify:
           channel: 'notifs-tsmb'
+          event: fail
+          template: basic_fail_1
+      - slack/notify:
+          channel: 'notifs-tsmb'
+          event: pass
+          template: success_tagged_deploy_1
