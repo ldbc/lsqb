@@ -4,7 +4,7 @@
 
 A benchmark for subgraph matching but with types information (edge types, mostly). The primary goal of this benchmark is to test the query optimizer (join ordering, choosing between binary and n-ary joins) and the execution engine (join performance, support for worst-case optimal joins) of graph databases. Features found in more mature database systems and query languages such as date/string operations, query composition, complex aggregates/filters are out of scope for this benchmark.
 
-* This benchmark has been inspired by [LDBC SNB](https://arxiv.org/pdf/2001.02299.pdf) and [JOB](https://db.in.tum.de/~leis/papers/lookingglass.pdf).
+* This benchmark has been inspired by the [LDBC SNB](https://arxiv.org/pdf/2001.02299.pdf) and the [JOB](https://db.in.tum.de/~leis/papers/lookingglass.pdf) benchmark.
 * [Design Doc](https://docs.google.com/document/d/1w1cMNyrOoarG69fmNDr5UV7w_T0O0j-yZ0aYu29iWw8/edit)
 
 ## Implementations
@@ -62,6 +62,12 @@ Run the following script which preprocesses the example data set files and place
 
 ```bash
 scripts/preprocess.sh ${DATAGEN_DATA_DIR}
+```
+
+It is possible to run this script without arguments. In this case, it preprocesses the CSV files representing the [[LDBC SNB example graph](https://ldbc.github.io/ldbc_snb_docs/example-graph-without-refreshes.pdf)], stored in this repository in `data/example-graph`.
+
+```bash
+scripts/preprocess.sh
 ```
 
 ### Running the benchmark
