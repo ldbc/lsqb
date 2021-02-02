@@ -80,9 +80,9 @@ done
 
 # ## merge posts and comments to message
 # echo "merging messages"
-# pv ${OUTPUT_DATA_DIR}/{comment,post}.csv > ${OUTPUT_DATA_DIR}/message.csv
-# pv ${OUTPUT_DATA_DIR}/person_likes_{comment,post}.csv > ${OUTPUT_DATA_DIR}/person_likes_message.csv
-# pv ${OUTPUT_DATA_DIR}/{comment,post}_hasTag_tag.csv > ${OUTPUT_DATA_DIR}/message_hasTag_tag.csv
+# cat ${OUTPUT_DATA_DIR}/{comment,post}.csv > ${OUTPUT_DATA_DIR}/message.csv
+# cat ${OUTPUT_DATA_DIR}/person_likes_{comment,post}.csv > ${OUTPUT_DATA_DIR}/person_likes_message.csv
+# cat ${OUTPUT_DATA_DIR}/{comment,post}_hasTag_tag.csv > ${OUTPUT_DATA_DIR}/message_hasTag_tag.csv
 
 # ## cleanup
 # rm ${OUTPUT_DATA_DIR}/{comment,post}.csv
@@ -100,5 +100,5 @@ while read line; do
   # Note that there's no point using sed to save space as it creates a temporary file as well.
   # The headers are Neo4j-compatible but they also work with relational database
   # (as most relational databases load the values based on their position and do not use the header).
-  echo ${HEADER} | pv - ${OUTPUT_DATA_DIR}/${FILENAME} > tmpfile.csv && mv tmpfile.csv ${OUTPUT_DATA_DIR}/${FILENAME}
+  echo ${HEADER} | cat - ${OUTPUT_DATA_DIR}/${FILENAME} > tmpfile.csv && mv tmpfile.csv ${OUTPUT_DATA_DIR}/${FILENAME}
 done < scripts/headers.txt
