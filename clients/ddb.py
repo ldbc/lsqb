@@ -77,34 +77,8 @@ run_query(con, "4", """
     AND post_hasCreator_person.PersonId = person_knows_person.Person2Id;
   """)
 
-# run_query(con, "5", """
-#   SELECT count(*)
-#   FROM person_isLocatedIn_place as pilip1, person_isLocatedIn_place as pilip2, person_isLocatedIn_place as pilip3, place_isPartOf_place as pipop1,
-#     person_knows_person as pkp1, person_knows_person pkp2, person_knows_person pkp3, place_isPartOf_place as pipop2, place_isPartOf_place as pipop3, place p1,
-#     place p4, place p5, place p6
-#   WHERE pilip1.PlaceId = pipop1.Place1Id
-#     AND pilip2.PlaceId = pipop2.Place1Id
-#     AND pilip3.PlaceId = pipop3.Place1Id
-#     AND pipop1.Place2Id = p1.id
-#     AND pipop2.Place2Id = p1.id
-#     AND pipop3.Place2Id = p1.id
-#     AND p1.label = 'Country'
-#     AND pilip1.PlaceId = p4.id
-#     AND pilip2.PlaceId = p5.id
-#     AND pilip3.PlaceId = p6.id
-#     AND p4.label = 'City' 
-#     AND p5.label = 'City'
-#     AND p6.label = 'City'
-#     AND pilip1.PersonId = pkp1.Person1Id
-#     AND pilip2.PersonId = pkp1.Person2Id
-#     AND pilip2.PersonId = pkp2.Person1Id
-#     AND pilip3.PersonId = pkp2.Person2Id
-#     AND pilip3.PersonId = pkp3.Person1Id
-#     AND pilip1.PersonId = pkp3.Person2Id;
-# """)
-
 run_query(con, "5", """
-  select count(*)
+  SELECT count(*)
   FROM person_isLocatedIn_place pilip1, person_isLocatedIn_place pilip2, person_isLocatedIn_place pilip3,
     place p1, place p2, place p3, place p4, place_isPartOf_place as pipop1, place_isPartOf_place as pipop2,
     place_isPartOf_place as pipop3, person_knows_person as pkp1, person_knows_person pkp2, person_knows_person pkp3
@@ -129,3 +103,13 @@ run_query(con, "5", """
     AND pilip1.PersonId = pkp3.Person2Id;
   """)
 
+run_query(con, "6", """
+  SELECT count(*)
+  FROM person_knows_person pkp1, person_knows_person pkp2, person_hasInterest_tag
+  WHERE pkp1.Person2Id = pkp2.Person1Id
+    AND pkp2.Person2Id = person_hasInterest_tag.PersonId
+    AND pkp1.Person1Id != pkp2.Person2Id
+    AND NOT EXISTS (SELECT 1 from person_knows_person pkp3
+      WHERE pkp3.Person2Id = pkp2.Person2Id 
+        AND pkp3.Person1Id = pkp1.Person1Id);
+  """)
