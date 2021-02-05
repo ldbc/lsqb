@@ -37,14 +37,30 @@ It is possible to run this script without arguments. In this case, it preprocess
 scripts/preprocess.sh
 ```
 
-### Using larger data set
+### Using SF0.003 data set
 
-We provide a larger (but still quite small) data set for testing. This data set is preprocessed. To use it, run:
+We provide the SF0.003 data set for testing. This data set is preprocessed. To use it, run:
 
 ```bash
 rm -rf data/social-network-preprocessed
 cp -r data/social-network-sf0.003-preprocessed/ data/social-network-preprocessed
 ```
+
+### Generating larger data sets
+
+1. Run the latest Datagen.
+
+1. Use the scripts in the converter repository:
+
+   ```bash
+   ./spark-concat.sh ${DATAGEN_DATA_DIR} && ./proc.sh ${DATAGEN_DATA_DIR} --no-header && ./rename.sh
+   ```
+
+1. In this repository, preprocess and load to Neo4j to validate:
+
+   ```bash
+   scripts/preprocess.sh ${CONVERTER_REPOSITORY}/data/csv-composite-projected-fk-legacy-filenames && scripts/load-neo.sh
+   ```
 
 ### Running the benchmark
 
