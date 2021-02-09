@@ -14,4 +14,5 @@ cp ddb/schema.sql umb-scratch/schema.sql
 sed "s|PATHVAR|${IMPORT_DATA_DIR}|" ddb/snb-load.sql > umb-scratch/snb-load.sql
 
 cd umb-scratch
+rm ldbc.db*
 ./bin/sql --createdb ldbc.db schema.sql snb-load.sql

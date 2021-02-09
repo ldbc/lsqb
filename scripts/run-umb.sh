@@ -10,5 +10,6 @@ cd ..
 
 cd umb-scratch
 for i in $(seq 1 6); do
+  echo ============ Q${i} ============
   ./bin/sql ldbc.db ../sql/q${i}.sql
 done
