@@ -14,4 +14,4 @@ con = duckdb.connect(database='ddb-scratch/ldbc.duckdb', read_only=True)
 
 for i in range(1, 7):
   with open(f"sql/q{i}.sql", "r") as f:
-    run_query(con, i, f.read())
+    run_query(con, i, "PRAGMA threads=4;" + f.read())
