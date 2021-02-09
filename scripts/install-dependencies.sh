@@ -8,8 +8,8 @@ cd ..
 
 . scripts/ddb-vars.sh
 
-pip3 install -U duckdb==${DUCKDB_VERSION}
-pip3 install -U neo4j
-pip3 install -U redisgraph redisgraph-bulk-loader
+pip3 install --user duckdb==${DUCKDB_VERSION}
+pip3 install --user neo4j
+pip3 install --user redisgraph redisgraph-bulk-loader
 
 scripts/download-ddb.sh
