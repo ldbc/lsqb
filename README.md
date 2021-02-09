@@ -42,8 +42,8 @@ scripts/preprocess.sh
 We provide the SF0.003 data set for testing. This data set is preprocessed. To use it, run:
 
 ```bash
-rm -rf data/social-network-preprocessed
-cp -r data/social-network-sf0.003-preprocessed/ data/social-network-preprocessed
+rm -rf data/social-network-preprocessed/*
+cp -r data/social-network-sf0.003-preprocessed/* data/social-network-preprocessed
 ```
 
 ### Generating larger data sets
