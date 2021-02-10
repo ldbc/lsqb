@@ -1,6 +1,6 @@
 # CI configuration that runs the benchmark on the small data set included in the repository
-# Currently includes Neo4j (neo) only
-# TODO: RedisGraph (red), and DuckDB (ddb)
+# Currently includes Neo4, DuckDB and Postgres
+# TODO: RedisGraph (red)
 version: 2.1
 orbs:
   slack: circleci/slack@4.2.0
@@ -35,21 +35,25 @@ jobs:
           command: |
             scripts/preprocess.sh
       - run:
-          name: Load data
+          name: Initialize Neo4j
           command: |
             scripts/load-neo.sh
-            scripts/load-ddb.sh
-            # scripts/load-red.sh
-      - run:
-          name: Start database
-          command: |
             scripts/start-neo.sh
+      - run:
+          name: Initialize  DuckDB
+          command: |
+            scripts/load-ddb.sh
+      - run:
+          name: Initialize Postgres
+          command: |
+            scripts/start-pos.sh
+            scripts/load-pos.sh
       - run:
           name: Run queries
           command: |
             python3 clients/neo.py
             python3 clients/ddb.py
-            # python3 clients/red.py
+            scripts/run-pos.sh
       - slack/notify:
           channel: 'G01LGEMKXGT'
           event: fail
