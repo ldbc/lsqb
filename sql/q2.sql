@@ -1,4 +1,4 @@
-SELECT count(*), count(person_likes_message.PersonId), count(comment_replyOf_message.CommentId)
+SELECT count(*)
 FROM message_hasTag_tag
 JOIN message_hasCreator_person
   ON message_hasTag_tag.MessageId = message_hasCreator_person.MessageId
