@@ -6,10 +6,7 @@ set -o pipefail
 cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd ..
 
-. scripts/red-vars.sh
-
-scripts/start-red.sh || true
-python clients/red-del.py
+. red/vars.sh
 
 # TODO: Add labels to Comment/Post (issue #1)
 redisgraph-bulk-loader \

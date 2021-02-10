@@ -23,7 +23,8 @@ scripts/install-dependencies.sh
 ```
 
 ### Creating the input data
-### Preprocess the data
+
+#### Preprocess the data
 
 Run the following script which preprocesses the example data set files and places the CSVs under `data/social-network-preprocessed`:
 
@@ -37,7 +38,7 @@ It is possible to run this script without arguments. In this case, it preprocess
 scripts/preprocess.sh
 ```
 
-### Using SF0.003 data set
+#### Using SF0.003 data set
 
 We provide the SF0.003 data set for testing. This data set is preprocessed. To use it, run:
 
@@ -46,7 +47,7 @@ rm -rf data/social-network-preprocessed/*
 cp -r data/social-network-sf0.003-preprocessed/* data/social-network-preprocessed
 ```
 
-### Generating larger data sets
+#### Generating larger data sets
 
 1. Run the latest Datagen.
 
@@ -64,19 +65,52 @@ cp -r data/social-network-sf0.003-preprocessed/* data/social-network-preprocesse
 
 ### Running the benchmark
 
-Both Neo4j and Memgraph use the Bolt protocol for communicating with the client.
-To avoid clashing on port `7687`, the Memgraph instance uses port `27687` for its Bolt communication.
-Note that the two systems use different versions so different client libraries are necessary.
-#### Load the data
+The following implementations are provided:
 
-The following scripts load the data from `data/social-network-preprocessed:
+Stable implementations:
+
+* `neo`: Neo4j Community Edition
+* `ddb`: DuckDB
+* `pos`: PostgreSQL
+* `umb`: Umbra
+
+WIP implementations:
+
+* `mem`: Memgraph
+* `red`: RedisGraph
+* `dgr`: Dgraph
+
+Planned implementations:
+
+* `kat`: KatanaGraph (Cypher)
+* `grf`: Graphflow (Cypher)
+* `dlv`: Delve (Delve language)
+* `pgx`: Oracle PGX (PGQL)
+* `tgr`: TigerGraph (GSQL)
+
+:warning: Both Neo4j and Memgraph use the Bolt protocol for communicating with the client.
+To avoid clashing on port `7687`, the Memgraph instance uses port `27687` for its Bolt communication.
+Note that the two systems use different Bolt versions so different client libraries are necessary.
+
+#### Populating the database with data
+
+Some systems need to be online before loading, while others need to be offline. To handle these differences in a unified way, we use 4 commands:
+
+* `pre-load.sh`: 
+* `load.sh`: loads the data
+* `post-load.sh`: 
+* `run.sh`: runs the benchmark 
+
+Example usage:
 
 ```bash
-scripts/load-neo.sh
-scripts/load-mem.sh
-scripts/load-red.sh
-scripts/load-ddb.sh
+neo/pre-load.sh
+neo/load.sh
+neo/post-load.sh
+neo/run.sh
 ```
+
+The vanilla `load.sh` scripts load the data `data/social-network-preprocessed`. To load the data from another directory, use `load.sh <PATH_TO_DIR>`.
 
 #### Start the database
 

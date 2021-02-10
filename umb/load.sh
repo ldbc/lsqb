@@ -8,7 +8,7 @@ cd ..
 
 IMPORT_DATA_DIR=`pwd`/data/social-network-preprocessed
 
-. scripts/umb-vars.sh
+. umb/vars.sh
 
 cp sql/schema.sql umb-scratch/schema.sql
 sed "s|PATHVAR|${IMPORT_DATA_DIR}|" sql/snb-load.sql > umb-scratch/snb-load.sql

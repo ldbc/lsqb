@@ -6,9 +6,7 @@ set -o pipefail
 cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd ..
 
-. scripts/pos-vars.sh
-
-scripts/stop-pos.sh
+. pos/vars.sh
 
 docker run --rm \
     --publish=5432:5432 \

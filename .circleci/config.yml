@@ -35,19 +35,23 @@ jobs:
           command: |
             scripts/preprocess.sh
       - run:
-          name: Initialize Neo4j
+          name: Test Neo4j
           command: |
-            scripts/load-neo.sh
-            scripts/start-neo.sh
+            cd neo
+            ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh
+            cd ..
       - run:
           name: Initialize  DuckDB
           command: |
-            scripts/load-ddb.sh
+            cd ddb
+            ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh
+            cd ..
       - run:
           name: Initialize Postgres
           command: |
-            scripts/start-pos.sh
-            scripts/load-pos.sh
+            cd pos
+            ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh
+            cd ..
       - run:
           name: Run queries
           command: |

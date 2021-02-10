@@ -6,11 +6,11 @@ set -o pipefail
 cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd ..
 
-. scripts/neo-vars.sh
+. neo/vars.sh
 . scripts/import-vars.sh
 
 # make sure Neo4j is stopped
-scripts/stop-neo.sh
+neo/stop.sh
 
 # make sure directories exist
 mkdir -p ${NEO4J_HOME}/{logs,import,plugins}

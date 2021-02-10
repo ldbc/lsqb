@@ -6,9 +6,7 @@ set -o pipefail
 cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd ..
 
-IMPORT_DATA_DIR=`pwd`/data/social-network-preprocessed
-DUCKDB_DIR=`pwd`/ddb-scratch
-DUCKDB_BINARY=`pwd`/ddb-scratch/duckdb
+. ddb/vars.sh
 
 rm -f ${DUCKDB_DIR}/ldbc.duckdb*
 cat sql/schema.sql | ${DUCKDB_BINARY} ${DUCKDB_DIR}/ldbc.duckdb
