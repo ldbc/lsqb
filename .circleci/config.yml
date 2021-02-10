@@ -52,12 +52,6 @@ jobs:
             cd pos
             ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh
             cd ..
-      - run:
-          name: Run queries
-          command: |
-            python3 clients/neo.py
-            python3 clients/ddb.py
-            scripts/run-pos.sh
       - slack/notify:
           channel: 'G01LGEMKXGT'
           event: fail
