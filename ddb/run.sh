@@ -8,4 +8,4 @@ cd ..
 
 . ddb/vars.sh
 
-python ddb/client.py
+python3 ddb/client.py

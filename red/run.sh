@@ -8,4 +8,4 @@ cd ..
 
 . red/vars.sh
 
-python red/del-db.py
+python3 red/del-db.py

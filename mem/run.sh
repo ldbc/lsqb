@@ -8,4 +8,4 @@ cd ..
 
 . mem/vars.sh
 
-python mem/client.py
+python3 mem/client.py

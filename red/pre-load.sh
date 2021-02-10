@@ -10,4 +10,4 @@ cd ..
 
 red/stop.sh
 red/start.sh
-python red/del-db.py
+python3 red/del-db.py
