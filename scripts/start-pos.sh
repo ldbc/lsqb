@@ -16,8 +16,9 @@ docker run --rm \
     --env POSTGRES_PASSWORD=${POSTGRES_PASSWORD} \
     --volume=${POSTGRES_DATA_DIR}:/data \
     --detach \
+    --shm-size=${POSTGRES_SHARED_MEMORY} \
     postgres:${POSTGRES_VERSION}
 
 echo "Waiting for the database to start..."
-sleep 5
+sleep 10
 echo "Database started"
