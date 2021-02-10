@@ -10,5 +10,5 @@ cd ..
 
 for i in $(seq 1 6); do
   echo ============ Q${i} ============
-  cat sql/q${i}.sql | docker exec -i ${POSTGRES_CONTAINER_NAME} psql -U postgres
+  time bash -c "cat sql/q${i}.sql | docker exec -i ${POSTGRES_CONTAINER_NAME} psql -U postgres"
 done
