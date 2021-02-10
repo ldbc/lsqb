@@ -11,5 +11,7 @@ DUCKDB_DIR=`pwd`/ddb-scratch
 DUCKDB_BINARY=`pwd`/ddb-scratch/duckdb
 
 rm -f ${DUCKDB_DIR}/ldbc.duckdb*
-cat ddb/schema.sql | ${DUCKDB_BINARY} ${DUCKDB_DIR}/ldbc.duckdb
-sed "s|PATHVAR|${IMPORT_DATA_DIR}|" ddb/snb-load.sql | ${DUCKDB_BINARY} ${DUCKDB_DIR}/ldbc.duckdb
+cat sql/schema.sql | ${DUCKDB_BINARY} ${DUCKDB_DIR}/ldbc.duckdb
+echo Loading data to DuckDB...
+sed "s|PATHVAR|${IMPORT_DATA_DIR}|" sql/snb-load.sql | ${DUCKDB_BINARY} ${DUCKDB_DIR}/ldbc.duckdb
+echo Done
