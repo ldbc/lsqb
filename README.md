@@ -4,16 +4,9 @@
 
 A benchmark for subgraph matching but with types information (edge types, mostly). The primary goal of this benchmark is to test the query optimizer (join ordering, choosing between binary and n-ary joins) and the execution engine (join performance, support for worst-case optimal joins) of graph databases. Features found in more mature database systems and query languages such as date/string operations, query composition, complex aggregates/filters are out of scope for this benchmark.
 
-* This benchmark has been inspired by the [LDBC SNB](https://arxiv.org/pdf/2001.02299.pdf) and the [JOB](https://db.in.tum.de/~leis/papers/lookingglass.pdf) benchmark.
+* [Presentation](https://docs.google.com/presentation/d/1pxyX_CWhFVYEttjTG2BrzuaMkEuLRxfhf5iX6n0leZI/edit)
 * [Design Doc](https://docs.google.com/document/d/1w1cMNyrOoarG69fmNDr5UV7w_T0O0j-yZ0aYu29iWw8/edit)
-
-## Implementations
-
-* [Neo4j](https://neo4j.com/)
-* [Memgraph](https://memgraph.com/)
-* [RedisGraph](https://oss.redislabs.com/redisgraph/)
-* [DuckDB](https://www.duckdb.org/)
-
+* [VLDB'19 keynote by Tamer Özsu](https://vldb2019.github.io/files/VLDB19-keynote-1-slides.pdf)
 ## Getting started
 
 ### Install dependencies
@@ -69,22 +62,22 @@ The following implementations are provided:
 
 Stable implementations:
 
-* `neo`: Neo4j Community Edition
-* `ddb`: DuckDB
-* `pos`: PostgreSQL
-* `umb`: Umbra
+* `neo`: [Neo4j Community Edition](https://neo4j.com/)
+* `ddb`: [DuckDB](https://www.duckdb.org/)
+* `pos`: [PostgreSQL](https://www.postgresql.org/)
+* `umb`: [Umbra](https://umbra-db.com/)
 
 WIP implementations:
 
-* `mem`: Memgraph
-* `red`: RedisGraph
-* `dgr`: Dgraph
+* `mem`: [Memgraph](https://memgraph.com/)
+* `red`: [RedisGraph](https://oss.redislabs.com/redisgraph/)
+* `dgr`: [Dgraph](https://dgraph.io/)
 
 Planned implementations:
 
-* `kat`: KatanaGraph (Cypher)
+* `kat`: Katana Graph (Cypher)
 * `grf`: Graphflow (Cypher)
-* `dlv`: Delve (Delve language)
+* `rai`: RelationalAI (Rel)
 * `pgx`: Oracle PGX (PGQL)
 * `tgr`: TigerGraph (GSQL)
 
@@ -96,42 +89,22 @@ Note that the two systems use different Bolt versions so different client librar
 
 Some systems need to be online before loading, while others need to be offline. To handle these differences in a unified way, we use 4 commands:
 
-* `pre-load.sh`: 
+* `pre-load.sh`: steps before loading the data (e.g. starting the DB for systems with online loaders)
 * `load.sh`: loads the data
-* `post-load.sh`: 
+* `post-load.sh`: steps after loading the data (e.g. starting the DB for systems with offline loaders)
 * `run.sh`: runs the benchmark 
 
 Example usage:
 
 ```bash
-neo/pre-load.sh
-neo/load.sh
-neo/post-load.sh
-neo/run.sh
+cd neo
+./pre-load.sh & ./load.sh & ./post-load.sh & ./run.sh
 ```
 
 The vanilla `load.sh` scripts load the data `data/social-network-preprocessed`. To load the data from another directory, use `load.sh <PATH_TO_DIR>`.
 
-#### Start the database
-
-Start the databases. Note that DuckDB does not need to be started as a separate process (as it's an embedded database).
-
-```bash
-scripts/start-neo.sh
-scripts/start-mem.sh
-scripts/start-red.sh
-```
-
-#### Run the queries
-
-```bash
-python3 clients/neo.py
-python3 clients/mem.py
-python3 clients/red.py
-python3 clients/ddb.py
-```
-
 ## Philosophy
 
-This benchmark is designed to be *simple* similarly to the [TPC-x "Express" benchmarks](http://www.vldb.org/pvldb/vol6/p1186-nambiar.pdf).
+* This benchmark has been inspired by the [LDBC SNB](https://arxiv.org/pdf/2001.02299.pdf) and the [JOB](https://db.in.tum.de/~leis/papers/lookingglass.pdf) benchmarks.
+* This benchmark is designed to be *simple* similarly to the [TPC-x "Express" benchmarks](http://www.vldb.org/pvldb/vol6/p1186-nambiar.pdf).
 In the spirit of this, we do not provide auditing guidelines – it's the user's responsibility to ensure that the benchmark setup is meaningful.
