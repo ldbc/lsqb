@@ -32,34 +32,3 @@ create table post_hasCreator_person        (PostId bigint not null,          Per
 create table post_hasTag_tag               (PostId bigint not null,          TagId bigint not null          );
 create table post_isLocatedIn_place        (PostId bigint not null,          PlaceId bigint not null        );
 create table person_knows_person           (Person1Id bigint not null,       Person2Id bigint not null      );
-
--- create a common table for the message nodes and edges starting from/ending in message nodes.
-create view message as
-  select id from comment
-  union all
-  select id from post;
-
-create view comment_replyOf_message as
-  select CommentId, ParentCommentId as ParentMessageId from comment_replyOf_comment
-  union all
-  select CommentId, ParentPostId as ParentMessageId from comment_replyOf_post;
-
-create view message_hasCreator_person as
-  select CommentId as MessageId, PersonId from comment_hasCreator_person
-  union all
-  select PostId as MessageId, PersonId from post_hasCreator_person;
-
-create view message_hasTag_tag as
-  select CommentId as MessageId, TagId from comment_hasTag_tag
-  union all
-  select PostId as MessageId, TagId from post_hasTag_tag;
-
-create view message_isLocatedIn_place as
-  select CommentId as MessageId, PlaceId from comment_isLocatedIn_place
-  union all
-  select PostId as MessageId, PlaceId from post_isLocatedIn_place;
-
-create view person_likes_message as
-  select PersonId, CommentId as MessageId from person_likes_comment
-  union all
-  select PersonId, PostId as MessageId from person_likes_post;

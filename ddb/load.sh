@@ -9,7 +9,12 @@ cd ..
 . ddb/vars.sh
 
 rm -f ${DUCKDB_DIR}/ldbc.duckdb*
-cat sql/schema.sql | ${DUCKDB_BINARY} ${DUCKDB_DIR}/ldbc.duckdb
+
 echo Loading data to DuckDB...
+cat sql/schema.sql | ${DUCKDB_BINARY} ${DUCKDB_DIR}/ldbc.duckdb
 sed "s|PATHVAR|${IMPORT_DATA_DIR}|" sql/snb-load.sql | ${DUCKDB_BINARY} ${DUCKDB_DIR}/ldbc.duckdb
+echo Done
+
+echo Initializing views and indexes...
+cat sql/schema-constraints.sql | ${DUCKDB_BINARY} ${DUCKDB_DIR}/ldbc.duckdb
 echo Done

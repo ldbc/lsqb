@@ -29,6 +29,5 @@ COPY person_workAt_organisation     FROM 'PATHVAR/person_workAt_organisation.csv
 COPY post_hasCreator_person         FROM 'PATHVAR/post_hasCreator_person.csv'         (DELIMITER '|', HEADER, FORMAT csv);
 COPY post_hasTag_tag                FROM 'PATHVAR/post_hasTag_tag.csv'                (DELIMITER '|', HEADER, FORMAT csv);
 COPY post_isLocatedIn_place         FROM 'PATHVAR/post_isLocatedIn_place.csv'         (DELIMITER '|', HEADER, FORMAT csv);
-
 COPY person_knows_person (Person1id, Person2id) FROM 'PATHVAR/person_knows_person.csv' (DELIMITER '|', HEADER, FORMAT csv);
 COPY person_knows_person (Person2id, Person1id) FROM 'PATHVAR/person_knows_person.csv' (DELIMITER '|', HEADER, FORMAT csv);
