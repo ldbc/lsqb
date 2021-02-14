@@ -44,16 +44,19 @@ cp -r data/social-network-sf0.003-preprocessed/* data/social-network-preprocesse
 
 1. Run the latest Datagen.
 
-1. Use the scripts in the converter repository:
+1. Use the scripts in the [converter](https://github.com/ldbc/ldbc_snb_data_converter) repository:
+
+   Drop the `bulkLoadTime` filters from the SQL script, then:
 
    ```bash
    ./spark-concat.sh ${DATAGEN_DATA_DIR} && ./proc.sh ${DATAGEN_DATA_DIR} --no-header && ./rename.sh
+   export CONVERTER_REPOSITORY=`pwd`
    ```
 
 1. In this repository, preprocess and load to Neo4j to validate:
 
    ```bash
-   scripts/preprocess.sh ${CONVERTER_REPOSITORY}/data/csv-composite-projected-fk-legacy-filenames && scripts/load-neo.sh
+   scripts/preprocess.sh ${CONVERTER_REPOSITORY}/data/csv-composite-projected-fk-legacy-filenames && neo/load.sh
    ```
 
 ### Running the benchmark
