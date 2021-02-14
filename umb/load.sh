@@ -13,5 +13,5 @@ IMPORT_DATA_DIR=`pwd`/data/social-network-preprocessed
 sed "s|PATHVAR|${IMPORT_DATA_DIR}|" sql/snb-load.sql > umb-scratch/snb-load.sql
 
 cd umb-scratch
-rm ldbc.db*
+rm -rf ldbc.db*
 ./bin/sql --createdb ldbc.db ../sql/schema.sql  ../sql/schema-constraints.sql snb-load.sql
