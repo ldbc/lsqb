@@ -6,4 +6,4 @@ graph = Graph('SocialGraph', r)
 try:
     graph.delete()
 except redis.exceptions.ResponseError as e:
-    print("RedisGraph instance is fresh.")
+    pass
