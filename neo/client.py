@@ -11,7 +11,7 @@ def run_query(session, query_id, query_spec):
     result = session.read_transaction(query_fun, query_spec)
     end = time.time()
     duration = end - start
-    print("Q{}: {:.4f} seconds, {} tuples".format(query_id, duration, result[0]))
+    print(f"Neo4j\t\t{query_id}\t{duration:.4f}\t{result[0]}")
     return (duration, result)
 
 driver = GraphDatabase.driver("bolt://localhost:7687")

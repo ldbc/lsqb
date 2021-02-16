@@ -8,7 +8,7 @@ def run_query(con, query_id, query_spec):
     result = cur.fetchall()
     end = time.time()
     duration = end - start
-    print("Q{}: {:.4f} seconds, {} tuples".format(query_id, duration, result[0][0]))
+    print(f"PostgreSQL\t\t{query_id}\t{duration:.4f}\t{result[0][0]}")
     return (duration, result)
 
 con = psycopg2.connect(host="localhost", user="postgres", password="mysecretpassword", port="5432")
