@@ -10,5 +10,5 @@ cd ..
 
 for i in $(seq 1 6); do
   echo ============ Q${i} ============
-  umb-scratch/bin/sql umb-scratch/ldbc.db sql/q${i}.sql
+  umb/scratch/bin/sql umb/scratch/ldbc.db sql/q${i}.sql
 done

@@ -8,7 +8,7 @@ cd ..
 
 . ddb/vars.sh
 
-cd ddb-scratch
+cd ddb/scratch
 wget https://github.com/cwida/duckdb/releases/download/${DUCKDB_VERSION}/duckdb_cli-linux-amd64.zip
 unzip duckdb_cli-linux-amd64.zip
 rm duckdb_cli-linux-amd64.zip

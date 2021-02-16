@@ -10,7 +10,7 @@ def run_query(con, query_id, query_spec):
     print("Q{}: {:.4f} seconds, {} tuples".format(query_id, duration, result[0][0]))
     return (duration, result)
 
-con = duckdb.connect(database='ddb-scratch/ldbc.duckdb', read_only=True)
+con = duckdb.connect(database='ddb/scratch/ldbc.duckdb', read_only=True)
 
 for i in range(1, 7):
   with open(f"sql/q{i}.sql", "r") as f:
