@@ -11,5 +11,6 @@ cd ..
 pip3 install --user duckdb==${DUCKDB_VERSION}
 pip3 install --user neo4j
 pip3 install --user redisgraph redisgraph-bulk-loader
+pip3 install --user psycopg2-binary
 
 ddb/get.sh
