@@ -61,20 +61,20 @@ cp -r data/social-network-sf0.003-preprocessed/* data/social-network-preprocesse
 
 ### Running the benchmark
 
-The following implementations are provided:
+The following implementations are provided.
 
 Stable implementations:
 
-* `neo`: [Neo4j Community Edition](https://neo4j.com/)
-* `ddb`: [DuckDB](https://www.duckdb.org/)
-* `pos`: [PostgreSQL](https://www.postgresql.org/)
-* `umb`: [Umbra](https://umbra-db.com/)
+* `neo`: [Neo4j Community Edition](https://neo4j.com/) (containerized)
+* `ddb`: [DuckDB](https://www.duckdb.org/) (bare metal)
+* `pos`: [PostgreSQL](https://www.postgresql.org/) (containerized)
+* `umb`: [Umbra](https://umbra-db.com/) (can run bare-metal but needs a very recent distribution, e.g. Fedora 33+)
 
 WIP implementations:
 
-* `mem`: [Memgraph](https://memgraph.com/)
-* `red`: [RedisGraph](https://oss.redislabs.com/redisgraph/)
-* `dgr`: [Dgraph](https://dgraph.io/)
+* `mem`: [Memgraph](https://memgraph.com/) (containerized)
+* `red`: [RedisGraph](https://oss.redislabs.com/redisgraph/) (?)
+* `dgr`: [Dgraph](https://dgraph.io/) (containerized)
 
 Planned implementations:
 
