@@ -1,8 +1,18 @@
 # Umbra
 
-The binaries of Umbra are available upon request from the TUM database group. Uncompress the Umbra directories (`bin`, `lib`) under `umb/scratch`:
+The binaries of Umbra are available upon request from the TUM database group.
+
+Copy the file archive under `umb/umbra-binaries/`, then run the following to uncompress the Umbra directories (`bin`, `lib`):
 
 ```bash
-cd umb/scratch
+cd `git rev-parse --show-toplevel`
+cd umb/umbra-binaries
 tar xf umbra.tar.xz && mv umbra/* .
+```
+
+## Running on Docker
+
+```bash
+./docker-build.sh
+./docker-pre-load.sh & ./docker-load.sh & ./docker-post-load.sh & ./docker-run.sh
 ```
