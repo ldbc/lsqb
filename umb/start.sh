@@ -9,6 +9,6 @@ cd ..
 cd umb/scratch
 
 # start DB server
-LD_LIBRARY_PATH=./lib ./bin/server ldbc.db >& /dev/null &
-echo $! > umbra_server_pid
+cp bin/server bin/umbra-server
+LD_LIBRARY_PATH=./lib ./bin/umbra-server ldbc.db >/dev/null &
 sleep 1

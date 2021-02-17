@@ -8,10 +8,4 @@ cd ..
 
 cd umb/scratch
 
-if [ -f "umbra_server_pid" ]; then
-    PID=$(cat umbra_server_pid )
-    # Replace script with kill command. This will prevent going
-    # further in the script. 
-    rm -f umbra_server_pid
-    exec kill $PID || "No process with PID ${PID} found"
-fi
+pkill -f umbra-server || echo "No process named 'umbra-server' found"

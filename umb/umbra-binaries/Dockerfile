@@ -3,4 +3,6 @@ FROM fedora:33
 COPY bin /umbra/bin
 COPY lib /umbra/lib
 
-ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/umbra/lib
+ENV LD_LIBRARY_PATH=/umbra/lib
+
+EXPOSE 5432
