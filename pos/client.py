@@ -11,7 +11,7 @@ def run_query(con, query_id, query_spec):
     print(f"PostgreSQL\t\t{query_id}\t{duration:.4f}\t{result[0][0]}")
     return (duration, result)
 
-con = psycopg2.connect(host="localhost", user="postgres", port="5432")
+con = psycopg2.connect(host="localhost", user="postgres", port=5432)
 
 for i in range(1, 7):
   with open(f"sql/q{i}.sql", "r") as f:
