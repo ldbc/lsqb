@@ -14,4 +14,4 @@ sed "s|PATHVAR|${IMPORT_DATA_DIR}|" sql/snb-load.sql > umb/scratch/snb-load.sql
 
 cd umb/scratch
 rm -rf ldbc.db*
-./bin/sql --createdb ldbc.db ../../sql/schema.sql ../../sql/schema-constraints.sql snb-load.sql
+LD_LIBRARY_PATH=./lib ./bin/sql --createdb ldbc.db ../../sql/schema.sql ../../sql/schema-constraints.sql snb-load.sql

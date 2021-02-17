@@ -1,1 +1,1 @@
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`pwd`/umb/scratch/lib
+# currently, no vars are used
