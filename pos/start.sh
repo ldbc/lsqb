@@ -11,7 +11,7 @@ cd ..
 docker run --rm \
     --publish=5432:5432 \
     --name ${POSTGRES_CONTAINER_NAME} \
-    --env POSTGRES_PASSWORD=${POSTGRES_PASSWORD} \
+    --env ${POSTGRES_PASSWORD_POLICY} \
     --volume=${POSTGRES_DATA_DIR}:/data \
     --detach \
     --shm-size=${POSTGRES_SHARED_MEMORY} \
