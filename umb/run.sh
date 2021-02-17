@@ -8,9 +8,4 @@ cd ..
 
 . umb/vars.sh
 
-cd umb/scratch
-
-for i in $(seq 1 6); do
-  echo ============ Q${i} ============
-  LD_LIBRARY_PATH=./lib ./bin/sql ./ldbc.db ../../sql/q${i}.sql
-done
+python3 pos/client.py Umbra
