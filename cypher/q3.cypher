@@ -1,4 +1,4 @@
-MATCH (t1:Tag)<-[:HAS_TAG]-(:Message)<-[:REPLY_OF]-(c:Comment)-[:HAS_TAG]->(t2:Tag)
-WHERE NOT (c)-[:HAS_TAG]->(t1)
-  AND t1 <> t2
+MATCH (tag1:Tag)<-[:HAS_TAG]-(message:Message)<-[:REPLY_OF]-(comment:Comment)-[:HAS_TAG]->(tag2:Tag)
+WHERE NOT (comment)-[:HAS_TAG]->(tag1)
+  AND tag1 <> tag2
 RETURN count(*) AS count
