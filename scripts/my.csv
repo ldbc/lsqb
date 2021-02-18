@@ -4,3 +4,9 @@ DuckDB	4	3	0.0009	2
 DuckDB	4	4	0.0011	6
 DuckDB	4	5	0.0077	48
 DuckDB	4	6	0.0012	16
+PostgreSQL		1	0.0077	3
+PostgreSQL		2	0.3431	11
+PostgreSQL		3	0.1189	2
+PostgreSQL		4	0.0010	6
+PostgreSQL		5	0.0833	48
+PostgreSQL		6	0.0028	16
