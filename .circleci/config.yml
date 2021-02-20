@@ -38,19 +38,19 @@ jobs:
           name: Test Neo4j
           command: |
             cd neo
-            ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh
+            ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
             cd ..
       - run:
           name: Initialize  DuckDB
           command: |
             cd ddb
-            ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh
+            ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
             cd ..
       - run:
-          name: Initialize Postgres
+          name: Initialize PostgreSQL
           command: |
             cd pos
-            ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh
+            ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
             cd ..
       - slack/notify:
           channel: 'G01LGEMKXGT'

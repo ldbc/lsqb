@@ -15,9 +15,10 @@ if len(sys.argv) < 2:
   print("Usage: client.py sfX")
   print("where X is the scale factor")
   exit(1)
+else:
+  sf = sys.argv[1]
 
 con = duckdb.connect(database='ddb/scratch/ldbc.duckdb', read_only=True)
-sf = sys.argv[1]
 
 for i in range(1, 7):
   with open(f"sql/q{i}.sql", "r") as f:

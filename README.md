@@ -81,12 +81,13 @@ Some systems need to be online before loading, while others need to be offline. 
 * `load.sh`: loads the data
 * `post-load.sh`: steps after loading the data (e.g. starting the DB for systems with offline loaders)
 * `run.sh`: runs the benchmark 
+* `stop.sh`: stops the database
 
 Example usage:
 
 ```bash
 cd neo
-./pre-load.sh & ./load.sh & ./post-load.sh & ./run.sh
+./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
 ```
 
 The vanilla `load.sh` scripts load the data `data/social-network-preprocessed`. To load the data from another directory, use `load.sh <PATH_TO_DIR>`.
