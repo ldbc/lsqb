@@ -19,25 +19,10 @@ scripts/install-dependencies.sh
 
 #### Preprocess the data
 
-Run the following script which preprocesses the example data set files and places the CSVs under `data/social-network-${SF}-preprocessed`, where `${SF}` can take the value of e.g. `sf10`.
-
-```bash
-scripts/preprocess.sh ${DATAGEN_DATA_DIR}
-```
-
-It is possible to run this script without arguments. In this case, it preprocesses the CSV files representing the [LDBC SNB example graph](https://ldbc.github.io/ldbc_snb_docs/example-graph-without-refreshes.pdf), stored in this repository in `data/example-graph`.
+Run the following script which preprocesses the data set files from `data/social-network-${SF}-raw` and places the resulting CSVs under `data/social-network-${SF}-preprocessed`, where `${SF}` can take the value of e.g. `example` (for the small example data set or `sf1`, `sf3`, etc. (for the LDBC SNB data sets).
 
 ```bash
 scripts/preprocess.sh
-```
-
-#### Using SF0.003 data set
-
-We provide the SF0.003 data set for testing. This data set is preprocessed. To use it, run:
-
-```bash
-rm -rf data/social-network-preprocessed/*
-cp -r data/social-network-sf0.003-preprocessed/* data/social-network-preprocessed
 ```
 
 #### Generating larger data sets

@@ -2,7 +2,6 @@
 
 # script to preprocess CSV files produced by the LDBC SNB Datagen (CsvSingularProjectedFK or CsvSingularMergedFK serializers).
 
-RAW_DATA_DIR=${1:-'data/example-graph'}
 
 set -e
 set -o pipefail
@@ -10,7 +9,11 @@ set -o pipefail
 cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd ..
 
-OUTPUT_DATA_DIR=`pwd`/data/social-network-preprocessed
+
+. scripts/import-vars.sh
+
+RAW_DATA_DIR=`pwd`/data/social-network-${SF}-raw
+OUTPUT_DATA_DIR=`pwd`/data/social-network-${SF}-preprocessed
 
 # make sure the output directory exists
 mkdir -p ${OUTPUT_DATA_DIR}
