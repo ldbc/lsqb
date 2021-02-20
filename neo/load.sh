@@ -21,7 +21,7 @@ docker run --rm \
     --publish=7474:7474 \
     --publish=7687:7687 \
     --volume=${NEO4J_DATA_DIR}:/data \
-    --volume=${IMPORT_DIR}:/import \
+    --volume=${IMPORT_DATA_DIR}:/import \
     ${NEO4J_ENV_VARS} \
     neo4j:${NEO4J_VERSION} \
     neo4j-admin import \

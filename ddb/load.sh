@@ -7,6 +7,7 @@ cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd ..
 
 . ddb/vars.sh
+. scripts/import-vars.sh
 
 rm -f ${DUCKDB_DIR}/ldbc.duckdb*
 

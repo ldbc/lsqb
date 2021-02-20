@@ -19,7 +19,7 @@ scripts/install-dependencies.sh
 
 #### Preprocess the data
 
-Run the following script which preprocesses the example data set files and places the CSVs under `data/social-network-preprocessed`:
+Run the following script which preprocesses the example data set files and places the CSVs under `data/social-network-${SF}-preprocessed`, where `${SF}` can take the value of e.g. `sf10`.
 
 ```bash
 scripts/preprocess.sh ${DATAGEN_DATA_DIR}
