@@ -7,12 +7,12 @@ Copy the file archive under `umb/umbra-binaries/`, then run the following to unc
 ```bash
 cd `git rev-parse --show-toplevel`
 cd umb/umbra-binaries
-tar xf umbra.tar.xz && mv umbra/* .
+tar xf umbra.tar.xz && mv umbra/* . && rm -rf umbra/ && rm umbra.tar.xz
 ```
 
 ## Running on Docker
 
 ```bash
-./docker-build.sh
-./docker-pre-load.sh & ./docker-load.sh & ./docker-post-load.sh & ./docker-run.sh
+./build.sh
+./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh
 ```
