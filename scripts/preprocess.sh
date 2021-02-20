@@ -78,17 +78,6 @@ do
     tail -qn +2 ${RAW_DATA_DIR}/dynamic/${entity}.csv | cut -d '|' -f 2,3 > ${OUTPUT_DATA_DIR}/${entity}.csv
 done
 
-# ## merge posts and comments to message
-# echo "merging messages"
-# cat ${OUTPUT_DATA_DIR}/{comment,post}.csv > ${OUTPUT_DATA_DIR}/message.csv
-# cat ${OUTPUT_DATA_DIR}/person_likes_{comment,post}.csv > ${OUTPUT_DATA_DIR}/person_likes_message.csv
-# cat ${OUTPUT_DATA_DIR}/{comment,post}_hasTag_tag.csv > ${OUTPUT_DATA_DIR}/message_hasTag_tag.csv
-
-# ## cleanup
-# rm ${OUTPUT_DATA_DIR}/{comment,post}.csv
-# rm ${OUTPUT_DATA_DIR}/person_likes_{comment,post}.csv
-# rm ${OUTPUT_DATA_DIR}/{comment,post}_hasTag_tag.csv
-
 # add headers
 echo "--------------------- add headers --------------------"
 while read line; do
