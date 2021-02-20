@@ -18,4 +18,4 @@ pip3 install --user psycopg2-binary
 ddb/get.sh
 
 # misc
-pip3 install --user matplotlib pandas
+pip3 install --user matplotlib pandas seaborn
