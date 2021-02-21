@@ -1,30 +1,32 @@
 -- create a common table for the message nodes and edges starting from/ending in message nodes.
-create view message as
-  select id from comment
+create view Message as
+  select id from Comment
   union all
-  select id from post;
+  select id from Post;
 
-create view Comment_replyOf_message as
-  select CommentId, ParentCommentId as ParentMessageId from Comment_replyOf_Comment
+create view Comment_replyOf_Message as
+  select id AS CommentId, replyOf_Post AS ParentMessageId from Comment
+  where replyOf_Post IS NOT NULL
   union all
-  select CommentId, ParentPostId as ParentMessageId from Comment_replyOf_Post;
+  select id AS CommentId, replyOf_Comment AS ParentMessageId from Comment
+  where replyOf_Comment IS NOT NULL;
 
-create view message_hasCreator_Person as
-  select CommentId as MessageId, PersonId from Comment_hasCreator_Person
+create view Message_hasCreator_Person as
+  select id as MessageId, hasCreator_Person from Comment
   union all
-  select PostId as MessageId, PersonId from Post_hasCreator_Person;
+  select id as MessageId, hasCreator_Person from Post;
 
-create view message_hasTag_Tag as
-  select CommentId as MessageId, TagId from Comment_hasTag_Tag
+create view Message_hasTag_Tag as
+  select id as MessageId, hasTag_Tag from Comment_hasTag_Tag
   union all
-  select PostId as MessageId, TagId from Post_hasTag_Tag;
+  select id as MessageId, hasTag_Tag from Post_hasTag_Tag;
 
-create view message_isLocatedIn_Place as
-  select CommentId as MessageId, PlaceId from Comment_isLocatedIn_Place
+create view Message_isLocatedIn_Place as
+  select id as MessageId, isLocatedIn_Place from Comment
   union all
-  select PostId as MessageId, PlaceId from Post_isLocatedIn_Place;
+  select id as MessageId, isLocatedIn_Place from Post;
 
-create view Person_likes_message as
-  select PersonId, CommentId as MessageId from Person_likes_Comment
+create view Person_likes_Message as
+  select id as PersonId, likes_Comment as MessageId from Person_likes_Comment
   union all
-  select PersonId, PostId as MessageId from Person_likes_Post;
+  select id as PersonId, likes_Post as MessageId from Person_likes_Post;

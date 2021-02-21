@@ -12,7 +12,7 @@ cd ..
 . scripts/import-vars.sh
 
 # initialize output file
-echo > ${IMPORT_DATA_DIR}/ldbc.nt
+echo > ${IMPORT_DATA_DIR_PROJECTED_FK}/ldbc.nt
 
 ## nodes
 for entity in \
@@ -29,7 +29,7 @@ for entity in \
     Post \
     ;
 do
-    tail -qn +2 ${IMPORT_DATA_DIR}/${entity}.csv | sed "s#\(.*\)#<http://ldbcouncil.org/nodes/$entity/\1> <rdf:type> <http://ldbcouncil.org/types/${entity}> .#" >> ${IMPORT_DATA_DIR}/ldbc.nt
+    tail -qn +2 ${IMPORT_DATA_DIR_PROJECTED_FK}/${entity}.csv | sed "s#\(.*\)#<http://ldbcouncil.org/nodes/$entity/\1> <rdf:type> <http://ldbcouncil.org/types/${entity}> .#" >> ${IMPORT_DATA_DIR_PROJECTED_FK}/ldbc.nt
 done
 
 ## edges
@@ -64,5 +64,5 @@ do
     types=(${entity//_/ })
     source=${types[0]}
     target=${types[2]}
-    tail -qn +2 ${IMPORT_DATA_DIR}/${entity}.csv | sed "s#\([^|]*\)|\([^|]*\)#<http://ldbcouncil.org/nodes/${source}/\1> <http://ldbcouncil.org/${entity}> <http://ldbcouncil.org/nodes/${target}/\2> .#" >> ${IMPORT_DATA_DIR}/ldbc.nt
+    tail -qn +2 ${IMPORT_DATA_DIR_PROJECTED_FK}/${entity}.csv | sed "s#\([^|]*\)|\([^|]*\)#<http://ldbcouncil.org/nodes/${source}/\1> <http://ldbcouncil.org/${entity}> <http://ldbcouncil.org/nodes/${target}/\2> .#" >> ${IMPORT_DATA_DIR_PROJECTED_FK}/ldbc.nt
 done

@@ -19,6 +19,8 @@ scripts/install-dependencies.sh
 
 #### Preprocess the data
 
+:warning: This is out of sync. To be updated soon.
+
 Run the following script which preprocesses the data set files from `data/social-network-${SF}-raw` and places the resulting CSVs under `data/social-network-${SF}-preprocessed`, where `${SF}` can take the value of e.g. `example` (for the small example data set or `sf1`, `sf3`, etc. (for the LDBC SNB data sets).
 
 ```bash
