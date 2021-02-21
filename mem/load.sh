@@ -34,14 +34,14 @@ docker run \
   --volume mg_import:/import-data \
   --entrypoint=mg_import_csv \
   memgraph \
-  --nodes=Forum=/import-data/forum.csv \
+  --nodes=Forum=/import-data/Forum.csv \
   --nodes=Message=/import-data/message.csv \
-  --nodes=Person=/import-data/person.csv \
-  --nodes=Tag=/import-data/tag.csv \
-  --relationships=FORUM_HAS_TAG=/import-data/forum_hasTag_tag.csv \
-  --relationships=HAS_INTEREST=/import-data/person_hasInterest_tag.csv \
-  --relationships=HAS_MEMBER=/import-data/forum_hasMember_person.csv \
-  --relationships=KNOWS=/import-data/person_knows_person.csv \
-  --relationships=LIKES=/import-data/person_likes_message.csv \
-  --relationships=MESSAGE_HAS_TAG=/import-data/message_hasTag_tag.csv \
+  --nodes=Person=/import-data/Person.csv \
+  --nodes=Tag=/import-data/Tag.csv \
+  --relationships=FORUM_HAS_TAG=/import-data/Forum_hasTag_Tag.csv \
+  --relationships=HAS_INTEREST=/import-data/Person_hasInterest_Tag.csv \
+  --relationships=HAS_MEMBER=/import-data/Forum_hasMember_Person.csv \
+  --relationships=KNOWS=/import-data/Person_knows_Person.csv \
+  --relationships=LIKES=/import-data/Person_likes_message.csv \
+  --relationships=MESSAGE_HAS_TAG=/import-data/message_hasTag_Tag.csv \
   --delimiter '|'

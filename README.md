@@ -87,7 +87,7 @@ Example usage:
 
 ```bash
 cd neo
-./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
+./pre-load.sh && ./load.sh && ./Post-load.sh && ./run.sh && ./stop.sh
 ```
 
 The vanilla `load.sh` scripts load the data `data/social-network-preprocessed`. To load the data from another directory, use `load.sh <PATH_TO_DIR>`.

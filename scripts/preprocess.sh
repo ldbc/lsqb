@@ -21,18 +21,28 @@ mkdir -p ${OUTPUT_DATA_DIR}
 
 ## nodes (the id is in column 1)
 echo "-------------------- static nodes --------------------"
-tail -qn +2 ${RAW_DATA_DIR}/static/tag.csv          | cut -d '|' -f 1   > ${OUTPUT_DATA_DIR}/tag.csv
-tail -qn +2 ${RAW_DATA_DIR}/static/tagclass.csv     | cut -d '|' -f 1   > ${OUTPUT_DATA_DIR}/tagclass.csv
-tail -qn +2 ${RAW_DATA_DIR}/static/place.csv        | cut -d '|' -f 1,4 > ${OUTPUT_DATA_DIR}/place.csv
-tail -qn +2 ${RAW_DATA_DIR}/static/organisation.csv | cut -d '|' -f 1,2 > ${OUTPUT_DATA_DIR}/organisation.csv
+for entity in \
+    Tag \
+    TagClass \
+    University \
+    Company \
+    City \
+    Country \
+    Continent \
+    ; \
+do
+    tail -qn +2 ${RAW_DATA_DIR}/static/${entity}.csv | cut -d '|' -f 1 > ${OUTPUT_DATA_DIR}/${entity}.csv
+done
 
 ## edges (the source and target ids are in columns 1 and 2)
 echo "-------------------- static edges --------------------"
 for entity in \
-    organisation_isLocatedIn_place \
-    place_isPartOf_place \
-    tag_hasType_tagclass \
-    tagclass_isSubclassOf_tagclass \
+    Company_isLocatedIn_Country \
+    University_isLocatedIn_City \
+    City_isPartOf_Country \
+    Country_isPartOf_Continent \
+    Tag_hasType_TagClass \
+    TagClass_isSubclassOf_TagClass \
     ; \
 do
     tail -qn +2 ${RAW_DATA_DIR}/static/${entity}.csv | cut -d '|' -f 1,2 > ${OUTPUT_DATA_DIR}/${entity}.csv
@@ -44,10 +54,10 @@ done
 ## nodes (the id is in column 2)
 echo "-------------------- dynamic nodes -------------------"
 for entity in \
-    comment \
-    forum \
-    person \
-    post \
+    Comment \
+    Forum \
+    Person \
+    Post \
     ; \
 do
     tail -qn +2 ${RAW_DATA_DIR}/dynamic/${entity}.csv | cut -d '|' -f 2 > ${OUTPUT_DATA_DIR}/${entity}.csv
@@ -56,25 +66,25 @@ done
 ## edges (the source and target ids are in columns 2 and 3)
 echo "-------------------- dynamic edges -------------------"
 for entity in \
-    comment_hasCreator_person \
-    comment_hasTag_tag \
-    comment_isLocatedIn_place \
-    comment_replyOf_comment \
-    comment_replyOf_post \
-    forum_containerOf_post \
-    forum_hasMember_person \
-    forum_hasModerator_person \
-    forum_hasTag_tag \
-    person_hasInterest_tag \
-    person_isLocatedIn_place \
-    person_knows_person \
-    person_likes_comment \
-    person_likes_post \
-    person_studyAt_organisation \
-    person_workAt_organisation \
-    post_hasCreator_person \
-    post_hasTag_tag \
-    post_isLocatedIn_place \
+    Comment_hasCreator_Person \
+    Comment_hasTag_Tag \
+    Comment_isLocatedIn_Place \
+    Comment_replyOf_Comment \
+    Comment_replyOf_Post \
+    Forum_containerOf_Post \
+    Forum_hasMember_Person \
+    Forum_hasModerator_Person \
+    Forum_hasTag_Tag \
+    Person_hasInterest_Tag \
+    Person_isLocatedIn_Place \
+    Person_knows_Person \
+    Person_likes_Comment \
+    Person_likes_Post \
+    Person_studyAt_University \
+    Person_workAt_Company \
+    Post_hasCreator_Person \
+    Post_hasTag_Tag \
+    Post_isLocatedIn_Place \
     ; \
 do
     tail -qn +2 ${RAW_DATA_DIR}/dynamic/${entity}.csv | cut -d '|' -f 2,3 > ${OUTPUT_DATA_DIR}/${entity}.csv

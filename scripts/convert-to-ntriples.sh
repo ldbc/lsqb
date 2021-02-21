@@ -28,29 +28,29 @@ done
 
 ## edges
 for entity in \
-    organisation_isLocatedIn_place \
-    place_isPartOf_place \
-    tag_hasType_tagclass \
-    tagclass_isSubclassOf_tagclass \
-    comment_hasCreator_person \
-    comment_hasTag_tag \
-    comment_isLocatedIn_place \
-    comment_replyOf_comment \
-    comment_replyOf_post \
-    forum_containerOf_post \
-    forum_hasMember_person \
-    forum_hasModerator_person \
-    forum_hasTag_tag \
-    person_hasInterest_tag \
-    person_isLocatedIn_place \
-    person_knows_person \
-    person_likes_comment \
-    person_likes_post \
-    person_studyAt_organisation \
-    person_workAt_organisation \
-    post_hasCreator_person \
-    post_hasTag_tag \
-    post_isLocatedIn_place \
+    Organisation_isLocatedIn_Place \
+    Place_isPartOf_Place \
+    Tag_hasType_TagClass \
+    TagClass_isSubclassOf_TagClass \
+    Comment_hasCreator_Person \
+    Comment_hasTag_Tag \
+    Comment_isLocatedIn_Place \
+    Comment_replyOf_Comment \
+    Comment_replyOf_Post \
+    Forum_containerOf_Post \
+    Forum_hasMember_Person \
+    Forum_hasModerator_Person \
+    Forum_hasTag_Tag \
+    Person_hasInterest_Tag \
+    Person_isLocatedIn_Place \
+    Person_knows_Person \
+    Person_likes_Comment \
+    Person_likes_Post \
+    Person_studyAt_Organisation \
+    Person_workAt_Organisation \
+    Post_hasCreator_Person \
+    Post_hasTag_Tag \
+    Post_isLocatedIn_Place \
     ;
 do
     types=(${entity//_/ })

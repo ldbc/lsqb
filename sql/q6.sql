@@ -1,11 +1,11 @@
 SELECT count(*)
-FROM person_knows_person pkp1
-JOIN person_knows_person pkp2
+FROM Person_knows_Person pkp1
+JOIN Person_knows_Person pkp2
   ON pkp1.Person2Id = pkp2.Person1Id
  AND pkp1.Person1Id != pkp2.Person2Id
-JOIN person_hasInterest_tag
-  ON pkp2.Person2Id = person_hasInterest_tag.PersonId
-LEFT JOIN person_knows_person pkp3
+JOIN Person_hasInterest_Tag
+  ON pkp2.Person2Id = Person_hasInterest_Tag.PersonId
+LEFT JOIN Person_knows_Person pkp3
        ON pkp3.Person1Id = pkp1.Person1Id
       AND pkp3.Person2Id = pkp2.Person2Id
     WHERE pkp3.Person1Id IS NULL;

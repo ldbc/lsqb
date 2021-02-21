@@ -14,5 +14,5 @@ tar xf umbra.tar.xz && mv umbra/* . && rm -rf umbra/ && rm umbra.tar.xz
 
 ```bash
 ./build.sh
-./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh
+./pre-load.sh && ./load.sh && ./Post-load.sh && ./run.sh
 ```

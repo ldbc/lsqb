@@ -1,8 +1,8 @@
 SELECT count(*)
-FROM message_hasTag_tag
-JOIN message_hasCreator_person
-  ON message_hasTag_tag.MessageId = message_hasCreator_person.MessageId
-LEFT JOIN comment_replyOf_message 
-  ON comment_replyOf_message.ParentMessageId = message_hasTag_tag.MessageId
-LEFT JOIN person_likes_message
-  ON person_likes_message.MessageId = message_hasTag_tag.MessageId;
+FROM message_hasTag_Tag
+JOIN message_hasCreator_Person
+  ON message_hasTag_Tag.MessageId = message_hasCreator_Person.MessageId
+LEFT JOIN Comment_replyOf_message 
+  ON Comment_replyOf_message.ParentMessageId = message_hasTag_Tag.MessageId
+LEFT JOIN Person_likes_message
+  ON Person_likes_message.MessageId = message_hasTag_Tag.MessageId;
