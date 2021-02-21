@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# script to convert preprocessed CSV files to N3
-
+# script to convert preprocessed CSV files to N-Triples
 
 set -e
 set -o pipefail
