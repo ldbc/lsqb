@@ -11,25 +11,33 @@ cd ..
 
 . scripts/import-vars.sh
 
+# initialize output file
+echo > ${IMPORT_DATA_DIR}/ldbc.nt
+
 ## nodes
 for entity in \
-    tag \
-    tagclass \
-    place \
-    organisation \
-    comment \
-    forum \
-    person \
-    post \
+    Tag \
+    TagClass \
+    City \
+    Country \
+    Continent \
+    University \
+    Company \
+    Comment \
+    Forum \
+    Person \
+    Post \
     ;
 do
-    tail -qn +2 ${IMPORT_DATA_DIR}/${entity}.csv | sed "s#\(.*\)#<http://ldbcouncil.org/nodes/$entity/\1> <rdf:type> <http://ldbcouncil.org/types/${entity}>#" > ${IMPORT_DATA_DIR}/${entity}.nt
+    tail -qn +2 ${IMPORT_DATA_DIR}/${entity}.csv | sed "s#\(.*\)#<http://ldbcouncil.org/nodes/$entity/\1> <rdf:type> <http://ldbcouncil.org/types/${entity}> .#" >> ${IMPORT_DATA_DIR}/ldbc.nt
 done
 
 ## edges
 for entity in \
-    Organisation_isLocatedIn_Place \
-    Place_isPartOf_Place \
+    University_isLocatedIn_City \
+    Company_isLocatedIn_Country \
+    Country_isPartOf_Continent \
+    City_isPartOf_Country \
     Tag_hasType_TagClass \
     TagClass_isSubclassOf_TagClass \
     Comment_hasCreator_Person \
@@ -46,8 +54,8 @@ for entity in \
     Person_knows_Person \
     Person_likes_Comment \
     Person_likes_Post \
-    Person_studyAt_Organisation \
-    Person_workAt_Organisation \
+    Person_studyAt_University \
+    Person_workAt_Company \
     Post_hasCreator_Person \
     Post_hasTag_Tag \
     Post_isLocatedIn_Place \
@@ -56,5 +64,5 @@ do
     types=(${entity//_/ })
     source=${types[0]}
     target=${types[2]}
-    tail -qn +2 ${IMPORT_DATA_DIR}/${entity}.csv | sed "s#\([^|]*\)|\([^|]*\)#<http://ldbcouncil.org/nodes/${source}/\1> <http://ldbcouncil.org/${entity}> <http://ldbcouncil.org/nodes/${target}/\2>#" > ${IMPORT_DATA_DIR}/${entity}.nt
+    tail -qn +2 ${IMPORT_DATA_DIR}/${entity}.csv | sed "s#\([^|]*\)|\([^|]*\)#<http://ldbcouncil.org/nodes/${source}/\1> <http://ldbcouncil.org/${entity}> <http://ldbcouncil.org/nodes/${target}/\2> .#" >> ${IMPORT_DATA_DIR}/ldbc.nt
 done
