@@ -1,5 +1,5 @@
 # CI configuration that runs the benchmark on the small data set included in the repository
-# Currently includes Neo4, DuckDB and Postgres
+# Currently includes Neo4, DuckDB, Postgres and MySQL
 # TODO: RedisGraph (red)
 version: 2.1
 orbs:
@@ -50,6 +50,12 @@ jobs:
           name: Initialize PostgreSQL
           command: |
             cd pos
+            ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
+            cd ..
+      - run:
+          name: Initialize MySQL
+          command: |
+            cd mys
             ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
             cd ..
       - slack/notify:
