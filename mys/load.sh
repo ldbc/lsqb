@@ -8,7 +8,7 @@ cd ..
 
 . mys/vars.sh
 
-cat sql/drop.sql | docker exec -i ${MYSQL_CONTAINER_NAME} mysql -uroot  ${MYSQL_DATABASE}
+cat sql/drop.sql | docker exec -i ${MYSQL_CONTAINER_NAME} mysql -uroot ${MYSQL_DATABASE}
 
 echo Loading data to MySQL...
 cat sql/schema.sql | docker exec -i ${MYSQL_CONTAINER_NAME} mysql -uroot ${MYSQL_DATABASE}
