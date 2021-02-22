@@ -11,8 +11,8 @@ cd ..
 
 docker run --rm -it \
     --publish=5432:5432 \
-    --volume=${IMPORT_DATA_DIR_MERGED_FK}:/data \
-    --volume=${UMBRA_SCRATCH_DIR}:/scratch \
+    --volume=${IMPORT_DATA_DIR_MERGED_FK}:/data:z \
+    --volume=${UMBRA_SCRATCH_DIR}:/scratch:z \
     --name ${UMBRA_CONTAINER_NAME} \
     --detach \
     ${UMBRA_DOCKER_IMAGE}:latest

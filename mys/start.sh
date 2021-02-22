@@ -14,7 +14,7 @@ docker run --rm \
     --name ${MYSQL_CONTAINER_NAME} \
     --env MYSQL_ALLOW_EMPTY_PASSWORD=1 \
     --env MYSQL_DATABASE=${MYSQL_DATABASE} \
-    --volume=${IMPORT_DATA_DIR_MERGED_FK}:/data \
+    --volume=${IMPORT_DATA_DIR_MERGED_FK}:/data:z \
     --detach \
     --shm-size=${MYSQL_SHARED_MEMORY} \
     mysql:${MYSQL_VERSION}

@@ -22,16 +22,20 @@ fi
 # copy CSVs to Docker volume
 # remove leftover helpers
 docker rm mg_import_helper
-docker container create --name mg_import_helper --volume mg_import:/import-data busybox
+docker container create \
+  --name mg_import_helper \
+  --volume mg_import:/import-data:z \
+  busybox
+
 for f in ${IMPORT_DIR}/*.csv; do
   docker cp $f mg_import_helper:/import-data
 done
 docker rm mg_import_helper
 
 docker run \
-  --volume mg_lib:/var/lib/memgraph \
-  --volume mg_etc:/etc/memgraph \
-  --volume mg_import:/import-data \
+  --volume mg_lib:/var/lib/memgraph:z \
+  --volume mg_etc:/etc/memgraph:z \
+  --volume mg_import:/import-data:z \
   --entrypoint=mg_import_csv \
   memgraph \
   --nodes=Forum=/import-data/Forum.csv \
