@@ -7,12 +7,12 @@ def query_fun(tx, query):
     result = tx.run(query)
     return result.single()
 
-def run_query(session, sf, query_id, query_spec):
+def run_query(session, sf, query_id, query_spec, results_file):
     start = time.time()
     result = session.read_transaction(query_fun, query_spec)
     end = time.time()
     duration = end - start
-    print(f"Neo4j\t\t{sf}\t{query_id}\t{duration:.4f}\t{result[0]}")
+    results_file.write(f"Neo4j\t\t{sf}\t{query_id}\t{duration:.4f}\t{result[0]}\n")
     return (duration, result)
 
 if len(sys.argv) < 2:
@@ -25,9 +25,10 @@ else:
 driver = GraphDatabase.driver("bolt://localhost:7687")
 session = driver.session()
 
-for i in range(1, 7):
-    with open(f"cypher/q{i}.cypher", "r") as f:
-        run_query(session, sf, i, f.read())
+with open(f"results/results.csv", "a+") as results_file:
+  for i in range(1, 7):
+      with open(f"cypher/q{i}.cypher", "r") as query_file:
+          run_query(session, sf, i, query_file.read(), results_file)
 
 session.close()
 driver.close()

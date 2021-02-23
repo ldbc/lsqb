@@ -2,14 +2,14 @@ import mysql.connector
 import time
 import sys
 
-def run_query(con, sf, query_id, query_spec, system):
+def run_query(con, sf, query_id, query_spec, system, results_file):
     start = time.time()
     cur = con.cursor()
     cur.execute(query_spec)
     result = cur.fetchall()
     end = time.time()
     duration = end - start
-    print(f"{system}\t\t{sf}\t{query_id}\t{duration:.4f}\t{result[0][0]}")
+    results_file.write(f"{system}\t\t{sf}\t{query_id}\t{duration:.4f}\t{result[0][0]}\n")
     return (duration, result)
 
 if len(sys.argv) < 2:
@@ -26,6 +26,7 @@ else:
 
 con = mysql.connector.connect(host="localhost", user="root", password="", port=3306, database="tsmb")
 
-for i in range(1, 7):
-  with open(f"sql/q{i}.sql", "r") as f:
-    run_query(con, sf, i, f.read(), system)
+with open(f"results/results.csv", "a+") as results_file:
+  for i in range(1, 7):
+    with open(f"sql/q{i}.sql", "r") as query_file:
+      run_query(con, sf, i, query_file.read(), system, results_file)
