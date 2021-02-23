@@ -1,6 +1,0 @@
-creationdate|id|firstname|lastname|gender|birthday|locationip|browserused|speaks|email
-2010-06-10T11:05:56.000+00:00|1|Amelie|last_name|female|1990-01-01|127.0.0.1|Lynx|en;fr|amelie@mail.com;amelie@messagerie.fr
-2010-06-10T11:05:56.000+00:00|2|Bernardo|last_name|male|1990-01-01|127.0.0.1|Lynx|en;es|bernardo@mail.com
-2010-06-10T11:05:56.000+00:00|3|Cedric|last_name|male|1990-01-01|127.0.0.1|Lynx|en;fr|cedric@mail.com
-2010-06-10T11:05:56.000+00:00|4|Diane|last_name|female|1990-01-01|127.0.0.1|Lynx|en;fr|diane@mail.com
-2010-06-10T11:05:56.000+00:00|5|Eve|last_name|female|1990-01-01|127.0.0.1|Lynx|en;fr|eve@mail.com

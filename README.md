@@ -19,33 +19,44 @@ scripts/install-dependencies.sh
 
 #### Preprocess the data
 
-:warning: This is out of sync. To be updated soon.
+Data sets are provided in two formats:
 
-Run the following script which preprocesses the data set files from `data/social-network-${SF}-raw` and places the resulting CSVs under `data/social-network-${SF}-preprocessed`, where `${SF}` can take the value of e.g. `example` (for the small example data set or `sf1`, `sf3`, etc. (for the LDBC SNB data sets).
+* `data/social-network-${SF}-projected-fk`: projected foreign keys, the preferred format for most graph database management systems.
+* `data/social-network-${SF}-merged-fk`: merged foreign keys, the preferred format for most relational database management systems.
 
-```bash
-scripts/preprocess.sh
-```
+An example data set is provided with the substitution `SF=example`.
 
-#### Generating larger data sets
+#### Generating the data sets
 
-1. Run the latest Datagen.
+1. Run the latest [Datagen](https://github.com/ldbc/ldbc_snb_datagen/) using CSV outputs and mode, e.g. for SF0.3:
+
+   ```bash
+   ./tools/run.py ./target/ldbc_snb_datagen-0.4.0-SNAPSHOT.jar -- --format csv --mode raw --scale-factor 0.3
+   ```
 
 1. Use the scripts in the [converter](https://github.com/ldbc/ldbc_snb_data_converter) repository:
 
-   Drop the `bulkLoadTime` filters from the SQL script, then:
-
    ```bash
-   ./spark-concat.sh ${DATAGEN_DATA_DIR} && ./proc.sh ${DATAGEN_DATA_DIR} --no-header && ./rename.sh
-   export CONVERTER_REPOSITORY=`pwd`
+   cd out/csv/raw/composite_merge_foreign/
+   export DATAGEN_DATA_DIR=`pwd`
    ```
 
-1. In this repository, preprocess and load to Neo4j to validate:
+1. Go to the [data converter repository](https://github.com/ldbc/ldbc_snb_datagen/):
 
    ```bash
-   scripts/preprocess.sh ${CONVERTER_REPOSITORY}/data/csv-composite-projected-fk-legacy-filenames && neo/load.sh
+   ./spark-concat.sh ${DATAGEN_DATA_DIR}
+   ./proc.sh ${DATAGEN_DATA_DIR} --no-header
+   cat snb-export-only-ids-projected-fk.sql | ./duckdb ldbc.duckdb
+   cat snb-export-only-ids-merged-fk.sql    | ./duckdb ldbc.duckdb
    ```
 
+1. Copy the generated files:
+
+   ```bash
+   export SF=sf1
+   cp -r data/csv-only-ids-projected-fk/ ~/git/snb/tsmb/data/social-network-${SF}-projected-fk
+   cp -r data/csv-only-ids-merged-fk/    ~/git/snb/tsmb/data/social-network-${SF}-merged-fk
+   ```
 ### Running the benchmark
 
 The following implementations are provided.
@@ -85,14 +96,13 @@ Some systems need to be online before loading, while others need to be offline. 
 * `run.sh`: runs the benchmark 
 * `stop.sh`: stops the database
 
-Example usage:
+Example usage for scale factor 0.3:
 
 ```bash
 cd neo
+export SF=sf0.3
 ./pre-load.sh && ./load.sh && ./Post-load.sh && ./run.sh && ./stop.sh
 ```
-
-The vanilla `load.sh` scripts load the data `data/social-network-preprocessed`. To load the data from another directory, use `load.sh <PATH_TO_DIR>`.
 
 ## Philosophy
 
