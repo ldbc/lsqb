@@ -9,7 +9,7 @@ cd ..
 . ddb/vars.sh
 . scripts/import-vars.sh
 
-rm -f ${DUCKDB_DIR}/ldbc.duckdb*
+rm -rf ${DUCKDB_DIR}/ldbc.duckdb*
 
 echo Loading data to DuckDB...
 cat sql/schema.sql | ${DUCKDB_BINARY} ${DUCKDB_DIR}/ldbc.duckdb

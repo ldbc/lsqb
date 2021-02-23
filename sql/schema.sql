@@ -3,6 +3,8 @@ CREATE TABLE University (id bigint, isLocatedIn_City bigint);
 CREATE TABLE Continent (id bigint);
 CREATE TABLE Country (id bigint, isPartOf_Continent bigint);
 CREATE TABLE City (id bigint, isPartOf_Country bigint);
+CREATE TABLE Tag (id bigint, hasType_TagClass bigint);
+CREATE TABLE TagClass (id bigint, isSubclassOf_TagClass bigint);
 CREATE TABLE Forum (id bigint, hasModerator_Person bigint);
 CREATE TABLE Comment (id bigint, hasCreator_Person bigint, isLocatedIn_Place bigint, replyOf_Post bigint, replyOf_Comment bigint);
 CREATE TABLE Post (id bigint, hasCreator_Person bigint, Forum_containerOf bigint, isLocatedIn_Place bigint);
