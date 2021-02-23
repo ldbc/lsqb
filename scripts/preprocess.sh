@@ -20,5 +20,5 @@ while read line; do
   # Note that there's no point using sed to save space as it creates a temporary file as well.
   # The headers are Neo4j-compatible but they also work with relational database
   # (as most relational databases load the values based on their position and do not use the header).
-  cat <(echo ${HEADER}) <(tail -n +2 ${IMPORT_DATA_DIR_PROJECTED_FK}/${FILENAME}) > tmpfile.csv && mv tmpfile.csv ${IMPORT_DATA_DIR_PROJECTED_FK}/${FILENAME}
+  echo ${HEADER} | cat - <(tail -n +2 ${IMPORT_DATA_DIR_PROJECTED_FK}/${FILENAME}) > tmpfile.csv && mv tmpfile.csv ${IMPORT_DATA_DIR_PROJECTED_FK}/${FILENAME}
 done < scripts/headers.txt

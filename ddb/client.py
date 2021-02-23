@@ -21,7 +21,7 @@ else:
 if len(sys.argv) > 2:
   numThreads = int(sys.argv[2])
 else:
-  numThreads = 1
+  numThreads = 4
 
 con = duckdb.connect(database='ddb/scratch/ldbc.duckdb', read_only=True)
 

@@ -53,7 +53,7 @@ An example data set is provided with the substitution `SF=example`.
 1. Copy the generated files:
 
    ```bash
-   export SF=sf1
+   export SF=1
    cp -r data/csv-only-ids-projected-fk/ ~/git/snb/tsmb/data/social-network-${SF}-projected-fk
    cp -r data/csv-only-ids-merged-fk/    ~/git/snb/tsmb/data/social-network-${SF}-merged-fk
    ```
@@ -100,7 +100,7 @@ Example usage for scale factor 0.3:
 
 ```bash
 cd neo
-export SF=sf0.3
+export SF=0.3
 ./pre-load.sh && ./load.sh && ./Post-load.sh && ./run.sh && ./stop.sh
 ```
 
