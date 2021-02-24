@@ -1,6 +1,5 @@
 # CI configuration that runs the benchmark on the small data set included in the repository
-# Currently includes Neo4, DuckDB, Postgres and MySQL
-# TODO: RedisGraph (red)
+# Currently includes Neo4j, DuckDB, Postgres, and RedisGraph
 version: 2.1
 orbs:
   slack: circleci/slack@4.2.0
@@ -56,6 +55,12 @@ jobs:
           name: Test MySQL
           command: |
             cd mys
+            ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
+            cd ..
+      - run:
+          name: Test RedisGraph
+          command: |
+            cd red
             ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
             cd ..
       - slack/notify:
