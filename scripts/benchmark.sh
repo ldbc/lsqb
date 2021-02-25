@@ -16,6 +16,7 @@ for SF in ${SFS}; do
     for SYSTEM in ${SYSTEMS}; do
         echo Benchmarking system ${SYSTEM}
         cd ${SYSTEM}
+        export SF
         ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
         cd ..
     done
