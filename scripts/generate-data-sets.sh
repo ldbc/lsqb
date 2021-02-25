@@ -10,14 +10,14 @@ set -o pipefail
 
 DATAGEN_DIR=~/git/snb/ldbc_snb_datagen/
 TSMB_DIR=~/git/snb/tsmb/
-CONVERTER_REPOSITORY_DIR=~/git/snb/ldbc-example-graph/
-SFS="0.1 0.3 1 3"
+CONVERTER_REPOSITORY_DIR=~/git/snb/ldbc_snb_data_converter
+SFS="0.1 0.3 1 3 10"
 
 cd ${DATAGEN_DIR}
 
 for SF in ${SFS}; do
     echo Generating SF ${SF}
-    #time ./tools/run.py ./target/ldbc_snb_datagen-0.4.0-SNAPSHOT.jar --parallelism 4 --memory 16G -- --format csv --mode raw --scale-factor ${SF} --output-dir out/sf${SF}-raw
+    time ./tools/run.py ./target/ldbc_snb_datagen-0.4.0-SNAPSHOT.jar --parallelism 4 --memory 16G -- --format csv --mode raw --scale-factor ${SF} --output-dir out/sf${SF}-raw
 done
 
 cd ${CONVERTER_REPOSITORY_DIR}
@@ -33,8 +33,8 @@ for SF in ${SFS}; do
     cat snb-export-only-ids-merged-fk.sql    | ./duckdb ldbc.duckdb
 
     echo copying data
-    cp -r data/csv-only-ids-projected-fk/ ${TSMB_DATA_DIR}/data/social-network-sf${SF}-projected-fk
-    cp -r data/csv-only-ids-merged-fk/    ${TSMB_DATA_DIR}/data/social-network-sf${SF}-merged-fk
+    cp -r data/csv-only-ids-projected-fk/ ${TSMB_DIR}/data/social-network-sf${SF}-projected-fk
+    cp -r data/csv-only-ids-merged-fk/    ${TSMB_DIR}/data/social-network-sf${SF}-merged-fk
 done
 
 cd ${TSMB_DIR}
