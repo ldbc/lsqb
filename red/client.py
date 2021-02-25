@@ -18,8 +18,8 @@ if len(sys.argv) < 2:
 else:
   sf = sys.argv[1]
 
-redis = redis.Redis(host='localhost', port=6379)
-graph = Graph('SocialGraph', redis)
+r = redis.Redis(host='localhost', port=6379)
+graph = Graph('SocialGraph', r)
 
 with open(f"results/results.csv", "a+") as results_file:
   for i in range(1, 7):
