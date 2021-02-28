@@ -1,10 +1,31 @@
 import duckdb
 import time
 import sys
+import signal
+from contextlib import contextmanager
+
+@contextmanager
+def timeout(t):
+    signal.signal(signal.SIGALRM, raise_timeout)
+    signal.alarm(t)
+
+    try:
+        yield
+    except TimeoutError:
+        raise
+    finally:
+        signal.signal(signal.SIGALRM, signal.SIG_IGN)
+
+def raise_timeout(signum, frame):
+    raise TimeoutError
 
 def run_query(con, sf, query_id, query_spec, numThreads, results_file):
     start = time.time()
-    con.execute(f"PRAGMA threads={numThreads};\n" + query_spec)
+    try:
+        with timeout(300):
+          con.execute(f"PRAGMA threads={numThreads};\n" + query_spec)
+    except TimeoutError:
+        return
     result = con.fetchall()
     end = time.time()
     duration = end - start

@@ -1,10 +1,31 @@
 import mysql.connector
 import time
 import sys
+import signal
+from contextlib import contextmanager
+
+@contextmanager
+def timeout(t):
+    signal.signal(signal.SIGALRM, raise_timeout)
+    signal.alarm(t)
+
+    try:
+        yield
+    except TimeoutError:
+        raise
+    finally:
+        signal.signal(signal.SIGALRM, signal.SIG_IGN)
+
+def raise_timeout(signum, frame):
+    raise TimeoutError
 
 def run_query(con, sf, query_id, query_spec, system, results_file):
     start = time.time()
-    cur = con.cursor()
+    try:
+        with timeout(1):
+            cur = con.cursor()
+    except TimeoutError:
+        return
     cur.execute(query_spec)
     result = cur.fetchall()
     end = time.time()
