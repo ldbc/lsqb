@@ -24,7 +24,7 @@ cd ${CONVERTER_REPOSITORY_DIR}
 
 for SF in ${SFS}; do
     echo Converting SF ${SF}
-    export DATAGEN_DATA_DIR=${DATAGEN_DIR}/out/sf${SF}-raw/csv/raw/composite_merge_foreign
+    export DATAGEN_DATA_DIR=${DATAGEN_DIR}/out/sf${SF}-raw/csv/raw/composite-merged-fk
     ./spark-concat.sh ${DATAGEN_DATA_DIR}
     ./proc.sh ${DATAGEN_DATA_DIR} --no-header
 
