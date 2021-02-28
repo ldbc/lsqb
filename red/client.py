@@ -2,19 +2,19 @@ import time
 import sys
 import redis
 from redisgraph import Node, Edge, Graph, Path
-import signal
 import redis.exceptions
+import signal
 from contextlib import contextmanager
 
 @contextmanager
-def timeout(time):
+def timeout(t):
     signal.signal(signal.SIGALRM, raise_timeout)
-    signal.alarm(time)
+    signal.alarm(t)
 
     try:
         yield
     except TimeoutError:
-        pass
+        raise
     finally:
         signal.signal(signal.SIGALRM, signal.SIG_IGN)
 
