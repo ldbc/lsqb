@@ -23,7 +23,7 @@ def run_query(con, sf, query_id, query_spec, numThreads, results_file):
     start = time.time()
     try:
         with timeout(300):
-          con.execute(f"PRAGMA threads={numThreads};\n" + query_spec)
+            con.execute(f"PRAGMA threads={numThreads};\n" + query_spec)
     except TimeoutError:
         return
     result = con.fetchall()
