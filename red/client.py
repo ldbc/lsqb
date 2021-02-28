@@ -2,10 +2,32 @@ import time
 import sys
 import redis
 from redisgraph import Node, Edge, Graph, Path
+import signal
+import redis.exceptions
+from contextlib import contextmanager
+
+@contextmanager
+def timeout(time):
+    signal.signal(signal.SIGALRM, raise_timeout)
+    signal.alarm(time)
+
+    try:
+        yield
+    except TimeoutError:
+        pass
+    finally:
+        signal.signal(signal.SIGALRM, signal.SIG_IGN)
+
+def raise_timeout(signum, frame):
+    raise TimeoutError
 
 def run_query(session, sf, query_id, query_spec, results_file):
     start = time.time()
-    result = graph.query(query_spec)
+    try:
+        with timeout(300):
+            result = graph.query(query_spec)
+    except redis.exceptions.ConnectionError:
+        return
     end = time.time()
     duration = end - start
     results_file.write(f"RedisGraph\t\t{sf}\t{query_id}\t{duration:.4f}\t{result.result_set[0][0]}\n")
