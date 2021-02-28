@@ -63,24 +63,25 @@ The following implementations are provided.
 
 Stable implementations:
 
-* `neo`: [Neo4j Community Edition](https://neo4j.com/) (containerized)
-* `ddb`: [DuckDB](https://www.duckdb.org/) (bare metal)
-* `pos`: [PostgreSQL](https://www.postgresql.org/) (containerized)
-* `umb`: [Umbra](https://umbra-db.com/) (can run bare-metal but needs a very recent distribution, e.g. Fedora 33+)
+* `neo`: [Neo4j Community Edition](https://neo4j.com/) [Cypher] (containerized)
+* `ddb`: [DuckDB](https://www.duckdb.org/) [SQL] (bare metal)
+* `pos`: [PostgreSQL](https://www.postgresql.org/) [SQL] (containerized)
+* `mys`: [MySQL](https://www.mysql.com/) [SQL] (containerized)
+* `umb`: [Umbra](https://umbra-db.com/) [SQL] (containerized)
+* `red`: [RedisGraph](https://oss.redislabs.com/redisgraph/) [Cypher] (containerized)
 
 WIP implementations:
 
-* `mem`: [Memgraph](https://memgraph.com/) (containerized)
-* `red`: [RedisGraph](https://oss.redislabs.com/redisgraph/) (?)
-* `dgr`: [Dgraph](https://dgraph.io/) (containerized)
+* `mem`: [Memgraph](https://memgraph.com/) [Cypher] (containerized)
+* `dgr`: [Dgraph](https://dgraph.io/) [DQL] (containerized)
+* `pgx`: [Oracle PGX](https://www.oracle.com/middleware/technologies/parallel-graph-analytix.html) [PGQL]
+* `tgr`: [TigerGraph](https://www.tigergraph.com/) [GSQL]
 
 Planned implementations:
 
-* `kat`: Katana Graph (Cypher)
-* `grf`: Graphflow (Cypher)
-* `rai`: RelationalAI (Rel)
-* `pgx`: Oracle PGX (PGQL)
-* `tgr`: TigerGraph (GSQL)
+* `kat`: [Katana Graph](https://katanagraph.com/) [Cypher]
+* `grf`: [Graphflow](http://graphflow.io/) [Cypher]
+* `rai`: [RelationalAI](https://relational.ai/) [Rel]
 
 :warning: Both Neo4j and Memgraph use the Bolt protocol for communicating with the client.
 To avoid clashing on port `7687`, the Memgraph instance uses port `27687` for its Bolt communication.
