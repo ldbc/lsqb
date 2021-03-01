@@ -23,10 +23,10 @@ A benchmark for subgraph matching but with types information (edge types, mostly
 
 1. (Optional) "Warm up" the system using `scripts/benchmark.sh`, e.g. run all systems through the smallest `example` data set. This should fill Docker caches.
 
-1. (Optional) Copy the data sets to the server. To decompress them, run:
+1. (Optional) Copy the data sets to the server. To **decompress and delete** them, run:
 
    ```bash
-   for f in *.tar.zst; do tar -I zstd -xvf ${f}.tar.zst; done
+   for f in social-network-sf*.tar.zst; do echo ${f}; tar -I zstd -xvf ${f}; rm ${f}; done
    ```
 
 ### Creating the input data
