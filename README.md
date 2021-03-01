@@ -29,6 +29,8 @@ A benchmark for subgraph matching but with types information (edge types, mostly
    for f in social-network-sf*.tar.zst; do echo ${f}; tar -I zstd -xvf ${f}; rm ${f}; done
    ```
 
+1. Revise the benchmark settings, e.g. the number of threads for DuckDB.
+
 ### Creating the input data
 
 Data sets should be provided in two formats:
