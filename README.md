@@ -20,6 +20,15 @@ A benchmark for subgraph matching but with types information (edge types, mostly
    ```
 
 1. (Optional) Add the Umbra binaries as described in the `umb/README.md` file.
+
+1. (Optional) "Warm up" the system using `scripts/benchmark.sh`, e.g. run all systems through the smallest `example` data set. This should fill Docker caches.
+
+1. (Optional) Copy the data sets to the server. To decompress them, run:
+
+   ```bash
+   for f in *.tar.zst; do tar -I zstd -xvf ${f}.tar.zst; done
+   ```
+
 ### Creating the input data
 
 Data sets should be provided in two formats:
@@ -108,7 +117,7 @@ Example usage for scale factor 0.3:
 ```bash
 cd neo
 export SF=0.3
-./pre-load.sh && ./load.sh && ./Post-load.sh && ./run.sh && ./stop.sh
+./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
 ```
 
 ## Philosophy
