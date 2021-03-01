@@ -2,17 +2,20 @@
 
 The binaries of Umbra are available upon request from the TUM database group.
 
-Copy the file archive under `umb/umbra-binaries/`, then run the following to uncompress the Umbra directories (`bin`, `lib`):
+## Getting started
 
-```bash
-cd `git rev-parse --show-toplevel`
-cd umb/umbra-binaries
-tar xf umbra.tar.xz && mv umbra/* . && rm -rf umbra/ && rm umbra.tar.xz
-```
+1. Decompress the Umbra `tar.gz` package, and copy the resulting `umbra.tar.xz` file archive under `umb/umbra-binaries/`, then run the following to uncompress the Umbra directories (`bin`, `lib`):
 
-## Running on Docker
+    ```bash
+    cd `git rev-parse --show-toplevel`
+    cd umb/umbra-binaries
+    tar xf umbra.tar.xz && mv umbra/* . && rm -rf umbra/ && rm umbra.tar.xz
+    ```
 
-```bash
-./build.sh
-./pre-load.sh && ./load.sh && ./Post-load.sh && ./run.sh
-```
+2. Build the Docker image
+
+    ```bash
+    cd `git rev-parse --show-toplevel`
+    cd umb
+    ./build.sh
+    ```

@@ -11,20 +11,26 @@ A benchmark for subgraph matching but with types information (edge types, mostly
 
 ### Install dependencies
 
-```bash
-scripts/install-dependencies.sh
-```
+1. Install Docker on your machine.
 
+1. Install the required dependencies:
+
+   ```bash
+   scripts/install-dependencies.sh
+   ```
+
+1. (Optional) Add the Umbra binaries as described in the `umb/README.md` file.
 ### Creating the input data
 
-#### Preprocess the data
+Data sets should be provided in two formats:
 
-Data sets are provided in two formats:
+* `data/social-network-sf${SF}-projected-fk`: projected foreign keys, the preferred format for most graph database management systems.
+* `data/social-network-sf${SF}-merged-fk`: merged foreign keys, the preferred format for most relational database management systems.
 
-* `data/social-network-${SF}-projected-fk`: projected foreign keys, the preferred format for most graph database management systems.
-* `data/social-network-${SF}-merged-fk`: merged foreign keys, the preferred format for most relational database management systems.
+An example data set is provided with the substitution `SF=example`:
 
-An example data set is provided with the substitution `SF=example`.
+* `data/social-network-sfexample-projected-fk`
+* `data/social-network-sfexample-merged-fk`
 
 #### Generating the data sets
 
@@ -54,8 +60,8 @@ An example data set is provided with the substitution `SF=example`.
 
    ```bash
    export SF=1
-   cp -r data/csv-only-ids-projected-fk/ ~/git/snb/tsmb/data/social-network-${SF}-projected-fk
-   cp -r data/csv-only-ids-merged-fk/    ~/git/snb/tsmb/data/social-network-${SF}-merged-fk
+   cp -r data/csv-only-ids-projected-fk/ ~/git/snb/tsmb/data/social-network-sf${SF}-projected-fk
+   cp -r data/csv-only-ids-merged-fk/    ~/git/snb/tsmb/data/social-network-sf${SF}-merged-fk
    ```
 ### Running the benchmark
 
