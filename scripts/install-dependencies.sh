@@ -8,6 +8,12 @@ cd ..
 
 . ddb/vars.sh
 
+if [[ ! -z $(which dnf) ]]; then
+    sudo dnf install -y python3-pip zstd
+elif [[ ! -z $(which apt) ]]; then
+    sudo apt install -y python3-pip zstd
+fi
+
 # clients
 pip3 install --user duckdb==${DUCKDB_VERSION}
 pip3 install --user neo4j
