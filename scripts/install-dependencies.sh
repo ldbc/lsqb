@@ -25,4 +25,4 @@ pip3 install --user mysql-connector-python
 ddb/get.sh
 
 # misc
-pip3 install --user matplotlib pandas seaborn
+pip3 install --user matplotlib pandas seaborn natsort
