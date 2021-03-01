@@ -9,9 +9,9 @@ cd ..
 . ddb/vars.sh
 
 if [[ ! -z $(which dnf) ]]; then
-    sudo dnf install -y python3-pip zstd
+    sudo dnf install -y python3-pip zstd unzip
 elif [[ ! -z $(which apt) ]]; then
-    sudo apt install -y python3-pip zstd
+    sudo apt install -y python3-pip zstd unzip
 fi
 
 # clients
