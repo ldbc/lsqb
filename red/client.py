@@ -31,6 +31,7 @@ def run_query(session, sf, query_id, query_spec, results_file):
     end = time.time()
     duration = end - start
     results_file.write(f"RedisGraph\t\t{sf}\t{query_id}\t{duration:.4f}\t{result.result_set[0][0]}\n")
+    results_file.flush()
     return (duration, result)
 
 if len(sys.argv) < 2:

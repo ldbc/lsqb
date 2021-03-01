@@ -31,6 +31,7 @@ def run_query(con, sf, query_id, query_spec, system, results_file):
     end = time.time()
     duration = end - start
     results_file.write(f"{system}\t\t{sf}\t{query_id}\t{duration:.4f}\t{result[0][0]}\n")
+    results_file.flush()
     return (duration, result)
 
 if len(sys.argv) < 2:
