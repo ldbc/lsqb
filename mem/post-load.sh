@@ -8,4 +8,4 @@ cd ..
 
 . mem/vars.sh
 
-# do nothing
+mem/start.sh
