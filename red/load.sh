@@ -49,4 +49,3 @@ redisgraph-bulk-loader \
     --relations-with-type STUDY_AT "${IMPORT_DATA_DIR_PROJECTED_FK}/Person_studyAt_University.csv" \
     --relations-with-type WORK_AT "${IMPORT_DATA_DIR_PROJECTED_FK}/Person_workAt_Company.csv" \
     --separator '|'
-
