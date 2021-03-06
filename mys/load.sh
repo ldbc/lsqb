@@ -8,13 +8,13 @@ cd ..
 
 . mys/vars.sh
 
-cat sql/drop.sql | docker exec -i ${MYSQL_CONTAINER_NAME} mysql -uroot ${MYSQL_DATABASE}
+cat sql/drop.sql | docker exec -i ${MYSQL_CONTAINER_NAME} mysql -uroot ${MYSQL_DATABASE_NAME}
 
 echo Loading data to MySQL...
-cat sql/schema.sql | docker exec -i ${MYSQL_CONTAINER_NAME} mysql -uroot ${MYSQL_DATABASE}
-sed "s|PATHVAR|/data|" mys/snb-load.sql | docker exec -i ${MYSQL_CONTAINER_NAME} mysql --local-infile=1 -uroot ${MYSQL_DATABASE}
+cat sql/schema.sql | docker exec -i ${MYSQL_CONTAINER_NAME} mysql -uroot ${MYSQL_DATABASE_NAME}
+sed "s|PATHVAR|/data|" mys/snb-load.sql | docker exec -i ${MYSQL_CONTAINER_NAME} mysql --local-infile=1 -uroot ${MYSQL_DATABASE_NAME}
 echo Done
 
 echo Initializing views and indexes...
-cat sql/schema-constraints.sql | docker exec -i ${MYSQL_CONTAINER_NAME} mysql -uroot ${MYSQL_DATABASE}
+cat sql/schema-constraints.sql | docker exec -i ${MYSQL_CONTAINER_NAME} mysql -uroot ${MYSQL_DATABASE_NAME}
 echo Done

@@ -11,5 +11,5 @@ cd ..
 mys/stop.sh
 mys/start.sh
 
-echo "SET GLOBAL local_infile=1" | docker exec -i ${MYSQL_CONTAINER_NAME} mysql -uroot ${MYSQL_DATABASE}
-echo "GRANT FILE ON *.* TO 'root'@'localhost'" | docker exec -i ${MYSQL_CONTAINER_NAME} mysql -uroot ${MYSQL_DATABASE}
+echo "SET GLOBAL local_infile=1" | docker exec -i ${MYSQL_CONTAINER_NAME} mysql -uroot ${MYSQL_DATABASE_NAME}
+echo "GRANT FILE ON *.* TO 'root'@'localhost'" | docker exec -i ${MYSQL_CONTAINER_NAME} mysql -uroot ${MYSQL_DATABASE_NAME}
