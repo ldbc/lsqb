@@ -9,9 +9,9 @@ cd ..
 . ddb/vars.sh
 
 if [[ ! -z $(which dnf) ]]; then
-    sudo dnf install -y python3-pip zstd unzip
+    sudo dnf install -y python3-pip zstd unzip unixODBC-devel
 elif [[ ! -z $(which apt) ]]; then
-    sudo apt install -y python3-pip zstd unzip
+    sudo apt install -y python3-pip zstd unzip unixodbc-dev
 fi
 
 # DuckDB binary
@@ -23,6 +23,7 @@ pip3 install --user neo4j
 pip3 install --user redisgraph redisgraph-bulk-loader
 pip3 install --user psycopg2-binary
 pip3 install --user mysql-connector-python
+pip3 install --user pyodbc virtuoso
 
 # visualization
 pip3 install --user matplotlib pandas seaborn natsort
