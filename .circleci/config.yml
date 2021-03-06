@@ -1,5 +1,4 @@
 # CI configuration that runs the benchmark on the small data set included in the repository
-# Currently includes Neo4j, DuckDB, Postgres, and RedisGraph
 version: 2.1
 orbs:
   slack: circleci/slack@4.2.0
@@ -40,7 +39,7 @@ jobs:
             ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
             cd ..
       - run:
-          name: Test  DuckDB
+          name: Test DuckDB
           command: |
             cd ddb
             ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
