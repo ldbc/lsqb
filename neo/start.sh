@@ -13,7 +13,8 @@ if [ ! -d ${NEO4J_DATA_DIR} ]; then
     exit 1
 fi
 
-docker run --rm \
+docker run \
+    --rm \
     --user="$(id -u):$(id -g)" \
     --publish=7474:7474 \
     --publish=7687:7687 \

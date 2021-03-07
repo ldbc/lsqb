@@ -9,7 +9,8 @@ cd ..
 . pos/vars.sh
 . scripts/import-vars.sh
 
-docker run --rm \
+docker run \
+    --rm \
     --publish=5432:5432 \
     --name ${POSTGRES_CONTAINER_NAME} \
     --env ${POSTGRES_PASSWORD_POLICY} \

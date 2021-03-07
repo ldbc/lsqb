@@ -9,7 +9,8 @@ cd ..
 . mys/vars.sh
 . scripts/import-vars.sh
 
-docker run --rm \
+docker run \
+    --rm \
     --publish 3306:3306 \
     --name ${MYSQL_CONTAINER_NAME} \
     --env MYSQL_ALLOW_EMPTY_PASSWORD=1 \

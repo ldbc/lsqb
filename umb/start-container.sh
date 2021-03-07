@@ -9,7 +9,8 @@ cd ..
 . umb/vars.sh
 . scripts/import-vars.sh
 
-docker run --rm \
+docker run \
+    --rm \
     --publish=5432:5432 \
     --volume=${IMPORT_DATA_DIR_MERGED_FK}:/data:z \
     --volume=${UMBRA_SCRATCH_DIR}:/scratch:z \
