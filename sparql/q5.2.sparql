@@ -1,0 +1,11 @@
+PREFIX lt: <http://ldbcouncil.org/types/>
+PREFIX lp: <http://ldbcouncil.org/>
+
+SELECT (COUNT(*) as ?count)
+WHERE { 
+ 
+ ?personA (lp:Person_knows_Person | ^lp:Person_knows_Person ) ?personB .
+ ?personB (lp:Person_knows_Person | ^lp:Person_knows_Person ) ?personC .
+ ?personC (lp:Person_knows_Person | ^lp:Person_knows_Person ) ?personA .
+}
+

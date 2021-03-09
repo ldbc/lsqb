@@ -1,0 +1,16 @@
+MATCH (tag1:Tag)<-[:HAS_TAG]-(message:Message)<-[:REPLY_OF]-(comment:Comment)-[:HAS_TAG]->(tag2:Tag)
+WHERE NOT (comment)-[:HAS_TAG]->(tag1)
+  AND tag1 <> tag2
+RETURN count(*) AS count
+
+
+PREFIX lt: <http://ldbcouncil.org/types/>
+PREFIX lp: <http://ldbcouncil.org/>
+
+SELECT (COUNT(*) as ?count)
+WHERE { 
+ ?comment lp:Comment_hasTag_Tag ?tag1 .
+ ?reply lp:Comment_replyOf_Comment ?comment .
+ ?reply lp:Comment_hasTag_Tag ?tag2 FILTER( ?tag1 != ?tag2 ) 
+}
+

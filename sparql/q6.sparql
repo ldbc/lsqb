@@ -1,0 +1,18 @@
+MATCH (person1:Person)-[:KNOWS]-(mutualFriend:Person)-[:KNOWS]-(person2:Person)-[:HAS_INTEREST]->(tag:Tag)
+WHERE NOT (person1)-[:KNOWS]-(person2)
+  AND person1 <> person2
+RETURN count(*) AS count
+
+PREFIX lt: <http://ldbcouncil.org/types/>
+PREFIX lp: <http://ldbcouncil.org/>
+
+SELECT (COUNT(*) as ?count)
+WHERE { 
+ 
+ ?person1 (lp:Person_knows_Person | ^lp:Person_knows_Person ) ?mutualFriend .
+ ?person2 (lp:Person_knows_Person | ^lp:Person_knows_Person ) ?mutualFriend .
+ FILTER ( ?person1 != ?person2 )
+ FILTER NOT EXISTS { ?person1 (lp:Person_knows_Person | ^lp:Person_knows_Person ) ?person2 }
+
+}
+

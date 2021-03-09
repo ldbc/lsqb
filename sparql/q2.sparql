@@ -1,0 +1,13 @@
+PREFIX lt: <http://ldbcouncil.org/types/>
+PREFIX lp: <http://ldbcouncil.org/>
+
+SELECT (COUNT(*) as ?count)
+WHERE { 
+ ?comment lp:Comment_hasTag_Tag ?tag .
+ ?comment lp:Comment_hasCreator_Person ?person .
+
+ OPTIONAL { ?liker lp:Person_likes_Comment ?comment }
+ OPTIONAL { ?reply lp:Comment_replyOf_Comment ?comment }
+ 
+}
+

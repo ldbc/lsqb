@@ -1,0 +1,16 @@
+PREFIX lt: <http://ldbcouncil.org/types/>
+PREFIX lp: <http://ldbcouncil.org/>
+
+SELECT (COUNT(*) as ?count)
+WHERE { 
+ ?personA lp:Person_isLocatedIn_Place ?cityA .
+ ?personB lp:Person_isLocatedIn_Place ?cityB .
+ ?personC lp:Person_isLocatedIn_Place ?cityC . 
+ ?cityA lp:City_isPartOf_Country ?country .
+ ?cityB lp:City_isPartOf_Country ?country .
+ ?cityC lp:City_isPartOf_Country ?country .
+
+ FILTER ( ?personA != ?personB  && ?personB != ?personC  && ?personC != ?personA )
+ 
+}
+
