@@ -1,0 +1,4 @@
+delete from DB.DBA.load_list;
+ld_dir ('/tmp/import', 'ldbc.nt', 'http://ldbcouncil.org/');
+rdf_loader_run ();
+checkpoint;
