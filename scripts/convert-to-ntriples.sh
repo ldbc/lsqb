@@ -28,7 +28,7 @@ for entity in \
     Post \
     ;
 do
-    tail -qn +2 ${IMPORT_DATA_DIR_PROJECTED_FK}/${entity}.csv | sed "s#\(.*\)#<http://ldbcouncil.org/nodes/$entity/\1> <rdf:type> <http://ldbcouncil.org/types/${entity}> .#" >> ${IMPORT_DATA_DIR_PROJECTED_FK}/ldbc.nt
+    tail -qn +2 ${IMPORT_DATA_DIR_PROJECTED_FK}/${entity}.csv | sed "s#\(.*\)#<http://ldbcouncil.org/nodes/$entity/\1> a <http://ldbcouncil.org/types/${entity}> .#" >> ${IMPORT_DATA_DIR_PROJECTED_FK}/ldbc.nt
 done
 
 ## edges
