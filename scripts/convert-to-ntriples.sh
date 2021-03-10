@@ -31,6 +31,10 @@ do
     tail -qn +2 ${IMPORT_DATA_DIR_PROJECTED_FK}/${entity}.csv | sed "s#\(.*\)#<http://ldbcouncil.org/nodes/$entity/\1> a <http://ldbcouncil.org/types/${entity}> .#" >> ${IMPORT_DATA_DIR_PROJECTED_FK}/ldbc.nt
 done
 
+cp ${IMPORT_DATA_DIR_PROJECTED_FK}/Person_isLocatedIn_Place.csv  ${IMPORT_DATA_DIR_PROJECTED_FK}/Person_isLocatedIn_City.csv
+cp ${IMPORT_DATA_DIR_PROJECTED_FK}/Comment_isLocatedIn_Place.csv ${IMPORT_DATA_DIR_PROJECTED_FK}/Comment_isLocatedIn_Country.csv
+cp ${IMPORT_DATA_DIR_PROJECTED_FK}/Post_isLocatedIn_Place.csv    ${IMPORT_DATA_DIR_PROJECTED_FK}/Post_isLocatedIn_Country.csv
+
 ## edges
 for entity in \
     University_isLocatedIn_City \
@@ -41,7 +45,7 @@ for entity in \
     TagClass_isSubclassOf_TagClass \
     Comment_hasCreator_Person \
     Comment_hasTag_Tag \
-    Comment_isLocatedIn_Place \
+    Comment_isLocatedIn_Country \
     Comment_replyOf_Comment \
     Comment_replyOf_Post \
     Forum_containerOf_Post \
@@ -49,7 +53,7 @@ for entity in \
     Forum_hasModerator_Person \
     Forum_hasTag_Tag \
     Person_hasInterest_Tag \
-    Person_isLocatedIn_Place \
+    Person_isLocatedIn_City \
     Person_knows_Person \
     Person_likes_Comment \
     Person_likes_Post \
@@ -57,7 +61,7 @@ for entity in \
     Person_workAt_Company \
     Post_hasCreator_Person \
     Post_hasTag_Tag \
-    Post_isLocatedIn_Place \
+    Post_isLocatedIn_Country \
     ;
 do
     types=(${entity//_/ })
@@ -65,3 +69,7 @@ do
     target=${types[2]}
     tail -qn +2 ${IMPORT_DATA_DIR_PROJECTED_FK}/${entity}.csv | sed "s#\([^|]*\)|\([^|]*\)#<http://ldbcouncil.org/nodes/${source}/\1> <http://ldbcouncil.org/${entity}> <http://ldbcouncil.org/nodes/${target}/\2> .#" >> ${IMPORT_DATA_DIR_PROJECTED_FK}/ldbc.nt
 done
+
+rm ${IMPORT_DATA_DIR_PROJECTED_FK}/Person_isLocatedIn_City.csv
+rm ${IMPORT_DATA_DIR_PROJECTED_FK}/Comment_isLocatedIn_Country.csv
+rm ${IMPORT_DATA_DIR_PROJECTED_FK}/Post_isLocatedIn_Country.csv
