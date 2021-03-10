@@ -40,42 +40,42 @@ jobs:
           command: |
             set -e
             cd neo
-            ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
+            ./pre-load.sh; ./load.sh; ./post-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
           name: Test DuckDB
           command: |
             set -e
             cd ddb
-            ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
+            ./pre-load.sh; ./load.sh; ./post-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
           name: Test PostgreSQL
           command: |
             set -e
             cd pos
-            ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
+            ./pre-load.sh; ./load.sh; ./post-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
           name: Test MySQL
           command: |
             set -e
             cd mys
-            ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
+            ./pre-load.sh; ./load.sh; ./post-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
           name: Test RedisGraph
           command: |
             set -e
             cd red
-            ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
+            ./pre-load.sh; ./load.sh; ./post-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
           name: Test Virtuoso
           command: |
             set -e
             cd vos
-            ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
+            ./pre-load.sh; ./load.sh; ./post-load.sh; ./run.sh; ./stop.sh
             cd ..
       - slack/notify:
           channel: 'G01LGEMKXGT'
