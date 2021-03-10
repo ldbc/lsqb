@@ -9,11 +9,12 @@ cd ..
 . vos/vars.sh
 . scripts/import-vars.sh
 
-for qfile in `ls -1 ./sparql/*.sparql`
+for qfile in `ls -1 ./sparql/q*.sparql`
 do
     #docker cp $qfile  ${VIRTUOSO_CONTAINER_NAME}:/tmp
+    echo ======================== $qfile ========================
     qname="$(basename -- $qfile)"
-    docker exec -it  ${VIRTUOSO_CONTAINER_NAME} isql -U ${VIRTUOSO_USER} -P ${VIRTUOSO_PWD} exec="SPARQL $(cat $qfile) ;"
+    docker exec -it  ${VIRTUOSO_CONTAINER_NAME} isql -U ${VIRTUOSO_USER} -P ${VIRTUOSO_PWD} exec="SPARQL $(cat $qfile) ;" | grep -E '^[0-9][^ ]'
 
 done
 
