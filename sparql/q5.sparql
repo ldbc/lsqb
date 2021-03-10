@@ -14,4 +14,3 @@ WHERE {
  ?personB (lp:Person_knows_Person | ^lp:Person_knows_Person ) ?personC .
  ?personC (lp:Person_knows_Person | ^lp:Person_knows_Person ) ?personA .
 }
-

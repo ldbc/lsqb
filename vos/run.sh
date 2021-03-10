@@ -9,7 +9,8 @@ cd ..
 . vos/vars.sh
 . scripts/import-vars.sh
 
-for qfile in `ls -1 ./sparql/q*.sparql`
+#for qfile in `ls -1 ./sparql/q?.sparql`
+for qfile in `ls -1 ./sparql/q?.sparql`
 do
     #docker cp $qfile  ${VIRTUOSO_CONTAINER_NAME}:/tmp
     echo ======================== $qfile ========================
