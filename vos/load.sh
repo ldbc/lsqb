@@ -8,4 +8,4 @@ cd ..
 
 . vos/vars.sh
 
-docker exec -it  ${VIRTUOSO_CONTAINER_NAME} isql -U ${VIRTUOSO_USER} -P ${VIRTUOSO_PWD} exec="LOAD /tmp/load.isql ;"
+docker exec -it ${VIRTUOSO_CONTAINER_NAME} isql -U ${VIRTUOSO_USER} -P ${VIRTUOSO_PWD} exec="LOAD /tmp/load.isql ;"
