@@ -24,7 +24,7 @@ pip3 install --user neo4j
 pip3 install --user redisgraph redisgraph-bulk-loader
 pip3 install --user psycopg2-binary
 pip3 install --user mysql-connector-python
-pip3 install --user pyodbc virtuoso
+#pip3 install --user pyodbc virtuoso
 
 # visualization
 pip3 install --user matplotlib pandas seaborn natsort
