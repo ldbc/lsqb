@@ -28,7 +28,7 @@ jobs:
           name: Install dependencies
           command: |
             set -e
-            python -m pip install --upgrade pip
+            python3 -m pip install --upgrade pip
             scripts/install-dependencies.sh
       - run:
           name: Preprocess data

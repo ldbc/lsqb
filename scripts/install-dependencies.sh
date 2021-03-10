@@ -19,12 +19,13 @@ fi
 ddb/get.sh
 
 # clients
-pip3 install --user duckdb==${DUCKDB_VERSION}
-pip3 install --user neo4j
-pip3 install --user redisgraph redisgraph-bulk-loader
-pip3 install --user psycopg2-binary
-pip3 install --user mysql-connector-python
-#pip3 install --user pyodbc virtuoso
+pip3 install --user --progress-bar off duckdb==${DUCKDB_VERSION}
+pip3 install --user --progress-bar off neo4j
+pip3 install --user --progress-bar off wheel
+pip3 install --user --progress-bar off redisgraph redisgraph-bulk-loader
+pip3 install --user --progress-bar off psycopg2-binary
+pip3 install --user --progress-bar off mysql-connector-python
+#pip3 install --user --progress-bar off pyodbc virtuoso
 
 # visualization
 pip3 install --user matplotlib pandas seaborn natsort
