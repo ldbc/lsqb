@@ -62,6 +62,12 @@ jobs:
             cd red
             ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
             cd ..
+      - run:
+          name: Test Virtuoso
+          command: |
+            cd red
+            ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
+            cd ..
       - slack/notify:
           channel: 'G01LGEMKXGT'
           event: fail
