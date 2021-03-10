@@ -1,4 +1,4 @@
-## Umbra/Docker execute scripts with `bin/sql`
+## Umbra/Docker: execute scripts with `bin/sql`
 
 Queries in the Umbra/Docker setup can be run without the server as follows:
 
