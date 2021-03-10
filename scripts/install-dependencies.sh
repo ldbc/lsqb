@@ -11,6 +11,7 @@ cd ..
 if [[ ! -z $(which dnf) ]]; then
     sudo dnf install -y python3-pip zstd unzip unixODBC-devel
 elif [[ ! -z $(which apt) ]]; then
+    sudo apt update
     sudo apt install -y python3-pip zstd unzip unixodbc-dev
 fi
 
