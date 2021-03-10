@@ -65,7 +65,7 @@ jobs:
       - run:
           name: Test Virtuoso
           command: |
-            cd red
+            cd vos
             ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
             cd ..
       - slack/notify:
