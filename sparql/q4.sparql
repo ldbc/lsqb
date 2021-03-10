@@ -5,7 +5,6 @@ SELECT (COUNT(*) as ?count)
 WHERE { 
  ?personA (lp:Person_knows_Person | ^lp:Person_knows_Person ) ?personB .
  ?comment lp:Comment_hasCreator_Person ?personA .
- ?comment lp:Comment_hasTag_Tag ?tag .
  ?comment lp:Comment_replyOf_Post ?post .
  ?post lp:Post_hasCreator_Person ?personB .
 }
