@@ -80,17 +80,18 @@ The following implementations are provided.
 
 Stable implementations:
 
-* `neo`: [Neo4j Community Edition](https://neo4j.com/) [Cypher] (containerized)
+* `neo`: [Neo4j Community Edition](https://neo4j.com/) [Cypher] :whale:
 * `ddb`: [DuckDB](https://www.duckdb.org/) [SQL] (bare metal)
-* `pos`: [PostgreSQL](https://www.postgresql.org/) [SQL] (containerized)
-* `mys`: [MySQL](https://www.mysql.com/) [SQL] (containerized)
-* `umb`: [Umbra](https://umbra-db.com/) [SQL] (containerized)
-* `red`: [RedisGraph](https://oss.redislabs.com/redisgraph/) [Cypher] (containerized)
+* `pos`: [PostgreSQL](https://www.postgresql.org/) [SQL] :whale:
+* `mys`: [MySQL](https://www.mysql.com/) [SQL] :whale:
+* `umb`: [Umbra](https://umbra-db.com/) [SQL] :whale:
+* `red`: [RedisGraph](https://oss.redislabs.com/redisgraph/) [Cypher] :whale:
+* `vos`: [Virtuoso Open-Source Edition](http://vos.openlinksw.com/owiki/wiki/VOS) [SPARQL] :whale:
+* `mem`: [Memgraph](https://memgraph.com/) [Cypher] :whale:
 
 WIP implementations:
 
-* `mem`: [Memgraph](https://memgraph.com/) [Cypher] (containerized)
-* `dgr`: [Dgraph](https://dgraph.io/) [DQL] (containerized)
+* `dgr`: [Dgraph](https://dgraph.io/) [DQL] :whale:
 * `pgx`: [Oracle PGX](https://www.oracle.com/middleware/technologies/parallel-graph-analytix.html) [PGQL]
 * `tgr`: [TigerGraph](https://www.tigergraph.com/) [GSQL]
 
