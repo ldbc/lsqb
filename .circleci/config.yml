@@ -33,6 +33,7 @@ jobs:
           name: Preprocess data
           command: |
             scripts/preprocess.sh
+            scripts/convert-to-ntriples.sh
       - run:
           name: Test Neo4j
           command: |

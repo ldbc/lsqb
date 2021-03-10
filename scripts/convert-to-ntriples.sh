@@ -10,8 +10,10 @@ cd ..
 
 . scripts/import-vars.sh
 
+mkdir -p ${IMPORT_DATA_DIR_NTRIPLES}
+
 # initialize output file
-echo > ${IMPORT_DATA_DIR_PROJECTED_FK}/ldbc.nt
+echo > ${TSMB_NT_FILE}
 
 ## nodes
 for entity in \
@@ -28,7 +30,7 @@ for entity in \
     Post \
     ;
 do
-    tail -qn +2 ${IMPORT_DATA_DIR_PROJECTED_FK}/${entity}.csv | sed "s#\(.*\)#<http://ldbcouncil.org/nodes/$entity/\1> a <http://ldbcouncil.org/types/${entity}> .#" >> ${IMPORT_DATA_DIR_PROJECTED_FK}/ldbc.nt
+    tail -qn +2 ${IMPORT_DATA_DIR_PROJECTED_FK}/${entity}.csv | sed "s#\(.*\)#<http://ldbcouncil.org/nodes/$entity/\1> a <http://ldbcouncil.org/types/${entity}> .#" >> ${TSMB_NT_FILE}
 done
 
 cp ${IMPORT_DATA_DIR_PROJECTED_FK}/Person_isLocatedIn_Place.csv  ${IMPORT_DATA_DIR_PROJECTED_FK}/Person_isLocatedIn_City.csv
@@ -67,7 +69,7 @@ do
     types=(${entity//_/ })
     source=${types[0]}
     target=${types[2]}
-    tail -qn +2 ${IMPORT_DATA_DIR_PROJECTED_FK}/${entity}.csv | sed "s#\([^|]*\)|\([^|]*\)#<http://ldbcouncil.org/nodes/${source}/\1> <http://ldbcouncil.org/${entity}> <http://ldbcouncil.org/nodes/${target}/\2> .#" >> ${IMPORT_DATA_DIR_PROJECTED_FK}/ldbc.nt
+    tail -qn +2 ${IMPORT_DATA_DIR_PROJECTED_FK}/${entity}.csv | sed "s#\([^|]*\)|\([^|]*\)#<http://ldbcouncil.org/nodes/${source}/\1> <http://ldbcouncil.org/${entity}> <http://ldbcouncil.org/nodes/${target}/\2> .#" >> ${TSMB_NT_FILE}
 done
 
 rm ${IMPORT_DATA_DIR_PROJECTED_FK}/Person_isLocatedIn_City.csv

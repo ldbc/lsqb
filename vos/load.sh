@@ -9,8 +9,8 @@ cd ..
 . vos/vars.sh
 . scripts/import-vars.sh
 
-if [ ! -f ${IMPORT_DATA_DIR_PROJECTED_FK}/ldbc.nt ]; then
-    echo "Input file ${IMPORT_DATA_DIR_PROJECTED_FK}/ldbc.nt does not exist"
+if [ ! -f ${TSMB_NT_FILE} ]; then
+    echo "Input file ${TSMB_NT_FILE} does not exist"
     exit 1
 fi
 

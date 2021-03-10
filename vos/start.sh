@@ -22,7 +22,7 @@ docker run \
     --publish 8890:8890 \
     --volume=${VIRTUOSO_DATABASE_DIR}:/database:z \
     --volume=${VIRTUOSO_SETTINGS_DIR}:/settings \
-    --volume=${IMPORT_DATA_DIR_PROJECTED_FK}:/tmp/import:z \
+    --volume=${IMPORT_DATA_DIR_NTRIPLES}:/tmp/import:z \
     --volume=${VIRTUOSO_QUERY_DIR}:/tmp/queries:z \
     openlink/virtuoso-opensource-7:${VIRTUOSO_VERSION}
 
