@@ -1,45 +1,74 @@
-DROP TABLE IF EXISTS person_vertices;
-DROP TABLE IF EXISTS person_knows_person_edges;
+DROP TABLE IF EXISTS vertex_mapping;
+DROP TABLE IF EXISTS label_mapping;
 
--- mapping vertices
+CREATE TABLE vertex_mapping (sparse_id LONG, label VARCHAR, dense_id LONG, degree VARCHAR);
 
-CREATE TABLE person_vertices (sparse_id long, dense_id long, degree long);
-INSERT INTO person_vertices
-    SELECT sparse_id, rnum - 1 AS dense_id, count(person2id) AS degree
-    FROM (
-        SELECT person.id AS sparse_id, row_number() OVER () AS rnum
-        FROM person
-    ) person_mapping
-    LEFT JOIN person_knows_person
-    ON sparse_id = person_knows_person.person1id
-    GROUP BY sparse_id, rnum
+CREATE TABLE label_mapping (label VARCHAR, numeric_label INTEGER);
+INSERT INTO label_mapping VALUES
+    ('Person', 0),
+    ('City', 1),
+    ('Country', 2)
+    ;
+
+DROP VIEW IF EXISTS vertices;
+CREATE VIEW vertices AS
+    SELECT id, 'Person'  AS label FROM Person
+    UNION ALL
+    SELECT id, 'City'    AS label FROM City
+    UNION ALL
+    SELECT id, 'Country' AS label FROM Country
+;
+
+DROP VIEW IF EXISTS edges;
+CREATE VIEW edges
+           AS SELECT person1id AS sourceId, person2id AS targetId,  'Person' AS sourceLabel, 'Person'  AS targetLabel FROM Person_knows_Person
+               WHERE person1id < person2id
+    UNION ALL SELECT id AS sourceId, isLocatedIn_Place AS targetId, 'Person' AS sourceLabel, 'City'    AS targetLabel FROM Person
+    UNION ALL SELECT id AS sourceId, isPartOf_Country AS targetId,  'City'   AS sourceLabel, 'Country' AS targetLabel FROM City
+;
+
+DROP VIEW IF EXISTS undirected_edges;
+CREATE VIEW undirected_edges AS
+    SELECT sourceId, targetId, sourceLabel, targetLabel FROM edges
+    UNION ALL
+    SELECT targetId, sourceId, targetLabel, sourceLabel FROM edges
+;
+
+INSERT INTO vertex_mapping
+    SELECT sparse_id, label, rnum - 1 AS dense_id, count(targetId) AS degree
+    FROM (SELECT id AS sparse_id, label, row_number() OVER () AS rnum FROM vertices) mapping
+    JOIN undirected_edges
+      ON sparse_id = sourceId AND label = sourceLabel
+    GROUP BY sparse_id, label, rnum
     ORDER BY dense_id
 ;
 
--- mapping edges
-CREATE TABLE person_knows_person_edges (src long, trg long);
-INSERT INTO person_knows_person_edges
-    SELECT person1.dense_id, person2.dense_id
-    FROM person_knows_person
-    JOIN person_vertices person1
-    ON person1.sparse_id = person_knows_person.person1id
-    JOIN person_vertices person2
-    ON person2.sparse_id = person_knows_person.person2id
-    WHERE person1.dense_id < person2.dense_id;
-    
+DROP TABLE IF EXISTS edge_mapping;
+CREATE TABLE edge_mapping(sourceId LONG, targetId LONG);
+INSERT INTO edge_mapping
+    SELECT source_mapping.dense_id AS sourceId, target_mapping.dense_id AS targetId
+    FROM edges
+    JOIN vertex_mapping source_mapping
+      ON source_mapping.sparse_id = edges.sourceId
+     AND source_mapping.label = edges.sourceLabel
+    JOIN vertex_mapping target_mapping
+      ON target_mapping.sparse_id = edges.targetId
+     AND target_mapping.label = edges.targetLabel
+;
 
 -- serialization
+
 COPY (
-  SELECT concat('t', ' ',
-    person_vertices_count.count, ' ',
-    person_knows_person_edges_count.count)
+  SELECT concat('t', ' ', vertex_mapping_count.count, ' ', edge_mapping_count.count) AS tuple
     FROM
-      (SELECT count(*) AS count FROM person_vertices) person_vertices_count,
-      (SELECT count(*) AS count FROM person_knows_person_edges) person_knows_person_edges_count
+      (SELECT count(*) AS count FROM vertex_mapping) vertex_mapping_count,
+      (SELECT count(*) AS count FROM edge_mapping) edge_mapping_count
   UNION ALL
-  SELECT concat('v', ' ', dense_id, ' ', 0, ' ', degree) FROM person_vertices
+  SELECT concat('v', ' ', dense_id, ' ', numeric_label, ' ', degree) FROM vertex_mapping
+    JOIN label_mapping
+     ON vertex_mapping.label = label_mapping.label
   UNION ALL
-  SELECT concat('e', ' ', src, ' ', trg) FROM person_knows_person_edges
+  SELECT concat('e', ' ', sourceId, ' ', targetId) FROM edge_mapping
 )
 TO '/tmp/my.graph'
 WITH (DELIMITER ' ', QUOTE '');
