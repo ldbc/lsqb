@@ -29,9 +29,17 @@ INSERT INTO person_knows_person_edges
     
 
 -- serialization
-COPY (SELECT 'v', dense_id, 0, degree FROM person_vertices)
-  TO '/tmp/v.csv'
-  WITH (DELIMITER ' ');
-COPY (SELECT 'e', src, trg FROM person_knows_person_edges)
-  TO '/tmp/e.csv'
-  WITH (DELIMITER ' ');
+COPY (
+  SELECT concat('t', ' ',
+    person_vertices_count.count, ' ',
+    person_knows_person_edges_count.count)
+    FROM
+      (SELECT count(*) AS count FROM person_vertices) person_vertices_count,
+      (SELECT count(*) AS count FROM person_knows_person_edges) person_knows_person_edges_count
+  UNION ALL
+  SELECT concat('v', ' ', dense_id, ' ', 0, ' ', degree) FROM person_vertices
+  UNION ALL
+  SELECT concat('e', ' ', src, ' ', trg) FROM person_knows_person_edges
+)
+TO '/tmp/my.graph'
+WITH (DELIMITER ' ', QUOTE '');
