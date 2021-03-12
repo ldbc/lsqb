@@ -62,7 +62,8 @@ An example data set is provided with the substitution `SF=example`:
 
    ```bash
    ./spark-concat.sh ${DATAGEN_DATA_DIR}
-   ./proc.sh ${DATAGEN_DATA_DIR} --no-header
+   ./load.sh ${DATAGEN_DATA_DIR} --no-header
+   ./transform.sh
    cat snb-export-only-ids-projected-fk.sql | ./duckdb ldbc.duckdb
    cat snb-export-only-ids-merged-fk.sql    | ./duckdb ldbc.duckdb
    ```
