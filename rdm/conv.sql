@@ -1,22 +1,23 @@
-DROP TABLE person_vertices;
-DROP TABLE person_knows_person_edges;
+DROP TABLE IF EXISTS person_vertices;
+DROP TABLE IF EXISTS person_knows_person_edges;
 
 -- mapping vertices
 
-CREATE TABLE person_vertices (sparse_id integer, dense_id integer, degree integer);
+CREATE TABLE person_vertices (sparse_id long, dense_id long, degree long);
 INSERT INTO person_vertices
-    SELECT sparse_id, rnum - 1, count(person2id)
+    SELECT sparse_id, rnum - 1 AS dense_id, count(person2id) AS degree
     FROM (
         SELECT person.id AS sparse_id, row_number() OVER () AS rnum
         FROM person
     ) person_mapping
-    JOIN person_knows_person
+    LEFT JOIN person_knows_person
     ON sparse_id = person_knows_person.person1id
     GROUP BY sparse_id, rnum
+    ORDER BY dense_id
 ;
 
 -- mapping edges
-CREATE TABLE person_knows_person_edges (src integer, trg integer);
+CREATE TABLE person_knows_person_edges (src long, trg long);
 INSERT INTO person_knows_person_edges
     SELECT person1.dense_id, person2.dense_id
     FROM person_knows_person
