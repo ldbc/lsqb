@@ -29,6 +29,8 @@ CREATE VIEW vertices AS
     SELECT id, 'Forum' AS label FROM Forum
     UNION ALL
     SELECT id, 'Post' AS label FROM Post
+    UNION ALL
+    SELECT id, 'Comment' AS label FROM Comment
 ;
 
 DROP VIEW IF EXISTS edges;
@@ -38,10 +40,14 @@ CREATE VIEW edges
     UNION ALL SELECT id AS sourceId, isLocatedIn_City AS targetId,  'Person' AS sourceLabel, 'City'    AS targetLabel FROM Person
     UNION ALL SELECT id AS sourceId, isPartOf_Country AS targetId,  'City'   AS sourceLabel, 'Country' AS targetLabel FROM City
     UNION ALL SELECT id AS sourceId, isPartOf_Continent AS targetId, 'Country' AS sourceLabel, 'Continent' AS targetLabel FROM Country
-     UNION ALL SELECT id AS sourceId, hasModerator_Person AS targetId, 'Forum' AS sourceLabel, 'Person' AS targetLabel FROM Forum
-     UNION ALL SELECT id AS sourceId, hasCreator_Person AS targetId, 'Post' AS sourceLabel, 'Person' AS targetLabel FROM Post
+    UNION ALL SELECT id AS sourceId, hasModerator_Person AS targetId, 'Forum' AS sourceLabel, 'Person' AS targetLabel FROM Forum
+    UNION ALL SELECT id AS sourceId, hasCreator_Person AS targetId, 'Post' AS sourceLabel, 'Person' AS targetLabel FROM Post
     UNION ALL SELECT id AS sourceId, forum_containerOf AS targetId, 'Post' AS sourceLabel, 'Forum' AS targetLabel FROM Post
     UNION ALL SELECT id AS sourceId, isLocatedIn_Country AS targetId, 'Post' AS sourceLabel, 'Country' AS targetLabel FROM Post
+    UNION ALL SELECT id AS sourceId, hasCreator_Person AS targetId, 'Comment' AS sourceLabel, 'Person' AS targetLabel FROM Comment
+    UNION ALL SELECT id AS sourceId, isLocatedIn_Country AS targetId, 'Comment' AS sourceLabel, 'Country' AS targetLabel FROM Comment
+    UNION ALL SELECT id AS sourceId, replyOf_Post AS targetId, 'Comment' AS sourceLabel, 'Post' AS targetLabel FROM Comment WHERE replyOf_Post IS NOT NULL
+    UNION ALL SELECT id AS sourceId, replyOf_Comment AS targetId, 'Comment' AS sourceLabel, 'Comment' AS targetLabel FROM Comment WHERE replyOf_Comment IS NOT NULL
 ;
 
 DROP VIEW IF EXISTS undirected_edges;
