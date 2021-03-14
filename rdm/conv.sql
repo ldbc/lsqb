@@ -9,7 +9,11 @@ INSERT INTO label_mapping VALUES
     ('City', 1),
     ('Country', 2),
     ('Continent',3),
-    ('Forum',4)
+    ('Forum',4),
+    ('Post',5),
+    ('Comment',6),
+    ('Tag',7),
+    ('TagClass',8),
     ;
 
 DROP VIEW IF EXISTS vertices;
@@ -23,6 +27,8 @@ CREATE VIEW vertices AS
     SELECT id, 'Continent' AS label FROM Continent
     UNION ALL
     SELECT id, 'Forum' AS label FROM Forum
+    UNION ALL
+    SELECT id, 'Post' AS label FROM Post
 ;
 
 DROP VIEW IF EXISTS edges;
@@ -33,6 +39,9 @@ CREATE VIEW edges
     UNION ALL SELECT id AS sourceId, isPartOf_Country AS targetId,  'City'   AS sourceLabel, 'Country' AS targetLabel FROM City
     UNION ALL SELECT id AS sourceId, isPartOf_Continent AS targetId, 'Country' AS sourceLabel, 'Continent' AS targetLabel FROM Country
      UNION ALL SELECT id AS sourceId, hasModerator_Person AS targetId, 'Forum' AS sourceLabel, 'Person' AS targetLabel FROM Forum
+     UNION ALL SELECT id AS sourceId, hasCreator_Person AS targetId, 'Post' AS sourceLabel, 'Person' AS targetLabel FROM Post
+    UNION ALL SELECT id AS sourceId, forum_containerOf AS targetId, 'Post' AS sourceLabel, 'Forum' AS targetLabel FROM Post
+    UNION ALL SELECT id AS sourceId, isLocatedIn_Country AS targetId, 'Post' AS sourceLabel, 'Country' AS targetLabel FROM Post
 ;
 
 DROP VIEW IF EXISTS undirected_edges;
