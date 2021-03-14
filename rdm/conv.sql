@@ -23,7 +23,7 @@ DROP VIEW IF EXISTS edges;
 CREATE VIEW edges
            AS SELECT person1id AS sourceId, person2id AS targetId,  'Person' AS sourceLabel, 'Person'  AS targetLabel FROM Person_knows_Person
                WHERE person1id < person2id
-    UNION ALL SELECT id AS sourceId, isLocatedIn_Place AS targetId, 'Person' AS sourceLabel, 'City'    AS targetLabel FROM Person
+    UNION ALL SELECT id AS sourceId, isLocatedIn_City AS targetId,  'Person' AS sourceLabel, 'City'    AS targetLabel FROM Person
     UNION ALL SELECT id AS sourceId, isPartOf_Country AS targetId,  'City'   AS sourceLabel, 'Country' AS targetLabel FROM City
 ;
 
@@ -70,5 +70,5 @@ COPY (
   UNION ALL
   SELECT concat('e', ' ', sourceId, ' ', targetId) FROM edge_mapping
 )
-TO '/tmp/my.graph'
+TO 'data/rdm/ldbc-SCALE_FACTOR.graph'
 WITH (DELIMITER ' ', QUOTE '');
