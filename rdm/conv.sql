@@ -7,7 +7,8 @@ CREATE TABLE label_mapping (label VARCHAR, numeric_label INTEGER);
 INSERT INTO label_mapping VALUES
     ('Person', 0),
     ('City', 1),
-    ('Country', 2)
+    ('Country', 2),
+    ('Continent',3)
     ;
 
 DROP VIEW IF EXISTS vertices;
@@ -17,6 +18,8 @@ CREATE VIEW vertices AS
     SELECT id, 'City'    AS label FROM City
     UNION ALL
     SELECT id, 'Country' AS label FROM Country
+    UNION ALL
+    SELECT id, 'Continent' AS label FROM Continent
 ;
 
 DROP VIEW IF EXISTS edges;
@@ -25,6 +28,7 @@ CREATE VIEW edges
                WHERE person1id < person2id
     UNION ALL SELECT id AS sourceId, isLocatedIn_City AS targetId,  'Person' AS sourceLabel, 'City'    AS targetLabel FROM Person
     UNION ALL SELECT id AS sourceId, isPartOf_Country AS targetId,  'City'   AS sourceLabel, 'Country' AS targetLabel FROM City
+    UNION ALL SELECT id AS sourceId, isPartOf_Continent AS targetId, 'Country' AS sourceLabel, 'Continent' AS targetLabel FROM Country
 ;
 
 DROP VIEW IF EXISTS undirected_edges;
