@@ -2,7 +2,7 @@ DROP VIEW IF EXISTS Message;
 DROP VIEW IF EXISTS Comment_replyOf_Message;
 DROP VIEW IF EXISTS Message_hasCreator_Person;
 DROP VIEW IF EXISTS Message_hasTag_Tag;
-DROP VIEW IF EXISTS Message_isLocatedIn_Place;
+DROP VIEW IF EXISTS Message_isLocatedIn_Country;
 DROP VIEW IF EXISTS Person_likes_Message;
 
 DROP TABLE IF exists Company;

@@ -11,9 +11,9 @@ FROM
   Person_knows_Person AS pkp3
 WHERE CityB.isPartOf_Country = CityA.isPartOf_Country
   AND CityC.isPartOf_Country = CityA.isPartOf_Country
-  AND personA.isLocatedIn_Place = CityA.id
-  AND personB.isLocatedIn_Place = CityB.id
-  AND personC.isLocatedIn_Place = CityC.id
+  AND personA.isLocatedIn_City = CityA.id
+  AND personB.isLocatedIn_City = CityB.id
+  AND personC.isLocatedIn_City = CityC.id
   AND personA.id = pkp1.Person1Id
   AND personB.id = pkp2.Person1Id
   AND personC.id = pkp3.Person1Id

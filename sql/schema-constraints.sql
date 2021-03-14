@@ -21,10 +21,10 @@ create view Message_hasTag_Tag as
   union all
   select id as MessageId, hasTag_Tag from Post_hasTag_Tag;
 
-create view Message_isLocatedIn_Place as
-  select id as MessageId, isLocatedIn_Place from Comment
+create view Message_isLocatedIn_Country as
+  select id as MessageId, isLocatedIn_Country from Comment
   union all
-  select id as MessageId, isLocatedIn_Place from Post;
+  select id as MessageId, isLocatedIn_Country from Post;
 
 create view Person_likes_Message as
   select id as PersonId, likes_Comment as MessageId from Person_likes_Comment
