@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS vertex_mapping;
 DROP TABLE IF EXISTS label_mapping;
 
-CREATE TABLE vertex_mapping (sparse_id LONG, label VARCHAR, dense_id LONG, degree VARCHAR);
+CREATE TABLE vertex_mapping (sparse_id BIGINT, label VARCHAR, dense_id BIGINT, degree VARCHAR);
 
 CREATE TABLE label_mapping (label VARCHAR, numeric_label INTEGER);
 INSERT INTO label_mapping VALUES
@@ -44,7 +44,7 @@ INSERT INTO vertex_mapping
 ;
 
 DROP TABLE IF EXISTS edge_mapping;
-CREATE TABLE edge_mapping(sourceId LONG, targetId LONG);
+CREATE TABLE edge_mapping(sourceId BIGINT, targetId BIGINT);
 INSERT INTO edge_mapping
     SELECT source_mapping.dense_id AS sourceId, target_mapping.dense_id AS targetId
     FROM edges
