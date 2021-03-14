@@ -13,7 +13,7 @@ INSERT INTO label_mapping VALUES
     ('Post',5),
     ('Comment',6),
     ('Tag',7),
-    ('TagClass',8),
+    ('TagClass',8)
     ;
 
 DROP VIEW IF EXISTS vertices;
