@@ -36,3 +36,16 @@ Then, run:
 ```bash
 cat rdm/conv.sql | sed "s/SCALE_FACTOR/${SF}/g" | ddb/scratch/duckdb ddb/scratch/ldbc.duckdb
 ```
+
+Label mapping :
+```
+Person: 0
+City: 1
+Country: 2
+Continent: 3
+Forum: 4
+Post: 5
+Comment: 6
+Tag: 7 TODO
+TagClass: 8 TODO
+```
