@@ -49,3 +49,14 @@ Comment: 6
 Tag: 7 TODO
 TagClass: 8 TODO
 ```
+
+## Queries
+
+| Query   | Implemented          | Comments |
+| ------- | -------------------- | -------- |
+| 1       | :x:                  |          |
+| 2       | :x:                  |          |
+| 3       | :x:                  |          |
+| 4       | :white_check_mark:   |          |
+| 5       | :white_check_mark:   |          |
+| 6       | :x:                  |          |
