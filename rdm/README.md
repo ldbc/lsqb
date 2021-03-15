@@ -46,17 +46,17 @@ Continent: 3
 Forum: 4
 Post: 5
 Comment: 6
-Tag: 7 TODO
+Tag: 7
 TagClass: 8 TODO
 ```
 
 ## Queries
 
-| Query   | Implemented          | Comments |
-| ------- | -------------------- | -------- |
-| 1       | :x:                  |          |
-| 2       | :x:                  |          |
-| 3       | :x:                  |          |
-| 4       | :white_check_mark:   |          |
-| 5       | :white_check_mark:   |          |
-| 6       | :x:                  |          |
+| Query   | Implemented          | Comments                |
+| ------- | -------------------- | --------                |
+| 1       | :white_check_mark    | Need to add `tag class` |
+| 2       | :x:                  | Error                   |
+| 3       | :white_check_mark:   | Can't capture neg edge  |
+| 4       | :white_check_mark:   |                         |
+| 5       | :white_check_mark:   |                         |
+| 6       | :white_check_mark:   | Can't capture neg edge  |
