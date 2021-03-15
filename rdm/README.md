@@ -54,8 +54,8 @@ TagClass: 8 TODO
 
 | Query   | Implemented          | Comments                  |
 | ------- | -------------------- | ------------------------- |
-| 1       | :white_check_mark    | Need to add `tag class`   |
-| 2       | :x:                  | Can't capture opt edges   |
+| 1       | :white_check_mark:   | Need to add `tag class`   |
+| 2       | :white_check_mark:   | Can't capture opt edges   |
 | 3       | :white_check_mark:   | Can't capture neg edge    |
 | 4       | :white_check_mark:   |                           |
 | 5       | :white_check_mark:   |                           |
@@ -64,6 +64,8 @@ TagClass: 8 TODO
 ## Validation
 
 Only queries 1, 4, and 5 can be implemented as per the benchmark specification.
+- Split query 2 into a query graph for post and for comment, ignoring optional edges.
+- Ignored neg edges into queries 3 and 6. 
 
 | Query       | Expected (Neo4j)     | Isomorphisms |
 | -------     | -------------------- | ------------ |
@@ -74,3 +76,8 @@ Only queries 1, 4, and 5 can be implemented as per the benchmark specification.
 | 4           | 3                    | 3            |
 | 5           | 6                    | 0            |
 | 6           | -                    | 8            |
+
+TODO:
+- [ ] impl a dummy client
+- [ ] gather results 
+- [ ] switch flag for homomorphisms
