@@ -31,6 +31,10 @@ CREATE VIEW vertices AS
     SELECT id, 'Post' AS label FROM Post
     UNION ALL
     SELECT id, 'Comment' AS label FROM Comment
+    UNION ALL
+    SELECT id, 'Tag' AS label FROM Tag
+    UNION ALL
+    SELECT id, 'TagClass' AS label FROM TagClass
 ;
 
 DROP VIEW IF EXISTS edges;
@@ -48,6 +52,8 @@ CREATE VIEW edges
     UNION ALL SELECT id AS sourceId, isLocatedIn_Country AS targetId, 'Comment' AS sourceLabel, 'Country' AS targetLabel FROM Comment
     UNION ALL SELECT id AS sourceId, replyOf_Post AS targetId, 'Comment' AS sourceLabel, 'Post' AS targetLabel FROM Comment WHERE replyOf_Post IS NOT NULL
     UNION ALL SELECT id AS sourceId, replyOf_Comment AS targetId, 'Comment' AS sourceLabel, 'Comment' AS targetLabel FROM Comment WHERE replyOf_Comment IS NOT NULL
+    UNION ALL SELECT id AS sourceId, hasTag_Tag AS targetId, 'Comment' AS sourceLabel, 'Tag' AS targetLabel FROM Comment_HasTag_Tag
+    UNION ALL SELECT id AS sourceId, hasType_TagClass AS targetId, 'Tag' AS sourceLabel, 'TagClass' AS targetLabel FROM Tag
 ;
 
 DROP VIEW IF EXISTS undirected_edges;
