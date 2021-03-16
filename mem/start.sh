@@ -27,6 +27,7 @@ docker run \
     --volume mg_log:/var/log/memgraph:z \
     --volume mg_etc:/etc/memgraph:z \
     --name ${MEMGRAPH_CONTAINER} \
-    memgraph
+    memgraph \
+    --telemetry-enabled=False
 
 sleep 5
