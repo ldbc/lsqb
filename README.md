@@ -7,6 +7,7 @@ A benchmark for subgraph matching but with types information (edge types, mostly
 * [Presentation](https://docs.google.com/presentation/d/1pxyX_CWhFVYEttjTG2BrzuaMkEuLRxfhf5iX6n0leZI/edit)
 * [Design Doc](https://docs.google.com/document/d/1w1cMNyrOoarG69fmNDr5UV7w_T0O0j-yZ0aYu29iWw8/edit)
 * [VLDB'19 keynote by Tamer Özsu](https://vldb2019.github.io/files/VLDB19-keynote-1-slides.pdf)
+
 ## Getting started
 
 ### Install dependencies
@@ -81,26 +82,27 @@ The following implementations are provided.
 
 Stable implementations:
 
-* `neo`: [Neo4j Community Edition](https://neo4j.com/) [Cypher] :whale:
+* `umb`: [Umbra](https://umbra-db.com/) [SQL] :whale:
 * `ddb`: [DuckDB](https://www.duckdb.org/) [SQL] (bare metal)
 * `pos`: [PostgreSQL](https://www.postgresql.org/) [SQL] :whale:
 * `mys`: [MySQL](https://www.mysql.com/) [SQL] :whale:
-* `umb`: [Umbra](https://umbra-db.com/) [SQL] :whale:
+* `neo`: [Neo4j Community Edition](https://neo4j.com/) [Cypher] :whale:
 * `red`: [RedisGraph](https://oss.redislabs.com/redisgraph/) [Cypher] :whale:
-* `vos`: [Virtuoso Open-Source Edition](http://vos.openlinksw.com/owiki/wiki/VOS) [SPARQL] :whale:
 * `mem`: [Memgraph](https://memgraph.com/) [Cypher] :whale:
+* `vos`: [Virtuoso Open-Source Edition](http://vos.openlinksw.com/owiki/wiki/VOS) [SPARQL] :whale:
 
 WIP implementations:
 
 * `dgr`: [Dgraph](https://dgraph.io/) [DQL] :whale:
 * `pgx`: [Oracle PGX](https://www.oracle.com/middleware/technologies/parallel-graph-analytix.html) [PGQL]
 * `tgr`: [TigerGraph](https://www.tigergraph.com/) [GSQL]
+* `rai`: [RelationalAI](https://relational.ai/) [Rel]
 
 Planned implementations:
 
 * `kat`: [Katana Graph](https://katanagraph.com/) [Cypher]
 * `grf`: [Graphflow](http://graphflow.io/) [Cypher]
-* `rai`: [RelationalAI](https://relational.ai/) [Rel]
+* `avg`: [AvantGraph](http://avantgraph.io/) [?]
 
 :warning: Both Neo4j and Memgraph use the Bolt protocol for communicating with the client.
 To avoid clashing on port `7687`, the Memgraph instance uses port `27687` for its Bolt communication.
