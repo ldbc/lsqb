@@ -68,8 +68,18 @@ for entity in \
 do
     types=(${entity//_/ })
     source=${types[0]}
+    edge=${types[1]}
     target=${types[2]}
-    tail -qn +2 ${IMPORT_DATA_DIR_PROJECTED_FK}/${entity}.csv | sed "s#\([^|]*\)|\([^|]*\)#<http://ldbcouncil.org/nodes/${source}/\1> <http://ldbcouncil.org/${entity}> <http://ldbcouncil.org/nodes/${target}/\2> .#" >> ${TSMB_NT_FILE}
+
+    predicate_source=${source}
+    predicate_source=${predicate_source/Comment/Message}
+    predicate_source=${predicate_source/Post/Message}
+
+    predicate_target=${target}
+    predicate_target=${predicate_target/Comment/Message}
+    predicate_target=${predicate_target/Post/Message}
+
+    tail -qn +2 ${IMPORT_DATA_DIR_PROJECTED_FK}/${entity}.csv | sed "s#\([^|]*\)|\([^|]*\)#<http://ldbcouncil.org/nodes/${source}/\1> <http://ldbcouncil.org/${predicate_source}_${edge}_${predicate_target}> <http://ldbcouncil.org/nodes/${target}/\2> .#" >> ${TSMB_NT_FILE}
 done
 
 rm ${IMPORT_DATA_DIR_PROJECTED_FK}/Person_isLocatedIn_City.csv
