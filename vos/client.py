@@ -24,7 +24,7 @@ def run_query(sparql, sf, query_id, query_spec, results_file):
     result = 0
 
     if len(json_results["results"]) > 0 and  'count' in  json_results["results"]["bindings"][0]:
-        result = json_results["results"]["bindings"][0]["count"]["value"]
+        result = int(json_results["results"]["bindings"][0]["count"]["value"])
     results_file.write(f"Virtuoso\t\t{sf}\t{query_id}\t{duration:.4f}\t{result}\n")
     results_file.flush()
     return (duration, result)

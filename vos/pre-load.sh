@@ -12,7 +12,7 @@ cd ..
 vos/stop.sh
 
 # take ownership of the mounted data in the scratch directory and clean it up
-docker run -it \
+docker run -it --rm \
     --volume=${VIRTUOSO_DATABASE_DIR}:/database:z \
     --volume=${VIRTUOSO_SETTINGS_DIR}:/settings \
     --volume=${IMPORT_DATA_DIR_NTRIPLES}:/tmp/import:z \
