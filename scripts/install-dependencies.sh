@@ -18,6 +18,8 @@ fi
 # DuckDB binary
 ddb/get.sh
 
+woj/get.sh
+
 # clients
 pip3 install --user --progress-bar off duckdb==${DUCKDB_VERSION}
 pip3 install --user --progress-bar off neo4j
