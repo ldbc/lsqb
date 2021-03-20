@@ -65,8 +65,8 @@ An example data set is provided with the substitution `SF=example`:
    ./spark-concat.sh ${DATAGEN_DATA_DIR}
    ./load.sh ${DATAGEN_DATA_DIR} --no-header
    ./transform.sh
-   cat snb-export-only-ids-projected-fk.sql | ./duckdb ldbc.duckdb
-   cat snb-export-only-ids-merged-fk.sql    | ./duckdb ldbc.duckdb
+   cat export/snb-export-only-ids-projected-fk.sql | ./duckdb ldbc.duckdb
+   cat export/snb-export-only-ids-merged-fk.sql    | ./duckdb ldbc.duckdb
    ```
 
 1. Copy the generated files:
@@ -76,6 +76,7 @@ An example data set is provided with the substitution `SF=example`:
    cp -r data/csv-only-ids-projected-fk/ ~/git/snb/tsmb/data/social-network-sf${SF}-projected-fk
    cp -r data/csv-only-ids-merged-fk/    ~/git/snb/tsmb/data/social-network-sf${SF}-merged-fk
    ```
+
 ### Running the benchmark
 
 The following implementations are provided.
