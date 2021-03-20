@@ -26,6 +26,7 @@ docker run \
     ${NEO4J_ENV_VARS} \
     neo4j:${NEO4J_VERSION} \
     neo4j-admin import \
+    --id-type=INTEGER \
     --nodes=Continent="/import/Continent.csv" \
     --nodes=Country="/import/Country.csv" \
     --nodes=City="/import/City.csv" \
