@@ -1,4 +1,4 @@
-id|ispartof_continent
+:START_ID(Country)|:END_ID(Continent)
 0|1454
 1|1454
 2|1455
