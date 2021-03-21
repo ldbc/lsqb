@@ -57,12 +57,12 @@ TagClass: 8
 ```bash
 for SF in example 0.1 0.3 1 3 10 30 100; do
   echo SF${SF}
-  for QUERY in 1; do
+  for QUERY in 1 4 5; do
     echo ${QUERY}
     ${RAPIDMATCH_DIR}/build/matching/RapidMatch.out \
       -d `pwd`/../data/rdm/ldbc-${SF}.graph \
       -q `pwd`/query_graph/q${QUERY}.graph \
-      | grep -C2 Embeddings
+      | grep -C2 Embeddings | tee >> rdm.log
   done
 done
 ```
