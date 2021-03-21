@@ -38,7 +38,7 @@ redisgraph-bulk-loader \
     --relations-with-type HAS_MODERATOR "${IMPORT_DATA_DIR_PROJECTED_FK}/Forum_hasModerator_Person.csv" \
     --relations-with-type HAS_TAG "${IMPORT_DATA_DIR_PROJECTED_FK}/Forum_hasTag_Tag.csv" \
     --relations-with-type HAS_INTEREST "${IMPORT_DATA_DIR_PROJECTED_FK}/Person_hasInterest_Tag.csv" \
-    --relations-with-type IS_LOCATED_IN "${IMPORT_DATA_DIR_PROJECTED_FK}/Person_isLocatedIn_City.csv" \
+    --relations-with-type IS_LOCATED_IN "${IMPORT_DATA_DIR_PROJECTED_FK}/Person_isLocatedIn_Place.csv" \
     --relations-with-type KNOWS "${IMPORT_DATA_DIR_PROJECTED_FK}/Person_knows_Person.csv" \
     --relations-with-type LIKES "${IMPORT_DATA_DIR_PROJECTED_FK}/Person_likes_Comment.csv" \
     --relations-with-type LIKES "${IMPORT_DATA_DIR_PROJECTED_FK}/Person_likes_Post.csv" \
