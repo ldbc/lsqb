@@ -30,10 +30,10 @@ for entity in \
     Post \
     ;
 do
+    echo ${entity}
     tail -qn +2 ${IMPORT_DATA_DIR_PROJECTED_FK}/${entity}.csv | sed "s#\(.*\)#<http://ldbcouncil.org/nodes/$entity/\1> a <http://ldbcouncil.org/types/${entity}> .#" >> ${TSMB_NT_FILE}
 done
 
-cp ${IMPORT_DATA_DIR_PROJECTED_FK}/Person_isLocatedIn_Place.csv  ${IMPORT_DATA_DIR_PROJECTED_FK}/Person_isLocatedIn_City.csv
 cp ${IMPORT_DATA_DIR_PROJECTED_FK}/Comment_isLocatedIn_Place.csv ${IMPORT_DATA_DIR_PROJECTED_FK}/Comment_isLocatedIn_Country.csv
 cp ${IMPORT_DATA_DIR_PROJECTED_FK}/Post_isLocatedIn_Place.csv    ${IMPORT_DATA_DIR_PROJECTED_FK}/Post_isLocatedIn_Country.csv
 
@@ -66,6 +66,7 @@ for entity in \
     Post_isLocatedIn_Country \
     ;
 do
+    echo ${entity}
     types=(${entity//_/ })
     source=${types[0]}
     target=${types[2]}

@@ -53,7 +53,7 @@ docker run \
     --relationships=HAS_MODERATOR="/import/Forum_hasModerator_Person.csv" \
     --relationships=HAS_TAG="/import/Forum_hasTag_Tag.csv" \
     --relationships=HAS_INTEREST="/import/Person_hasInterest_Tag.csv" \
-    --relationships=IS_LOCATED_IN="/import/Person_isLocatedIn_Place.csv" \
+    --relationships=IS_LOCATED_IN="/import/Person_isLocatedIn_City.csv" \
     --relationships=KNOWS="/import/Person_knows_Person.csv" \
     --relationships=LIKES="/import/Person_likes_Comment.csv" \
     --relationships=LIKES="/import/Person_likes_Post.csv" \
