@@ -10,5 +10,5 @@ cd ..
 . scripts/import-vars.sh
 
 
-python3 pos/client.py ${SF}
+python3 vos/client.py ${SF}
 
