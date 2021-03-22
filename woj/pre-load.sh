@@ -21,4 +21,3 @@ docker run -it --rm \
 
 rm -rf woj/scratch/*
 mkdir -p woj/scratch/databases
-#docker cp vos/load.isql ${VIRTUOSO_CONTAINER_NAME}:/tmp
