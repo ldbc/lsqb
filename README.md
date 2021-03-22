@@ -65,8 +65,8 @@ An example data set is provided with the substitution `SF=example`:
    ./spark-concat.sh ${DATAGEN_DATA_DIR}
    ./load.sh ${DATAGEN_DATA_DIR} --no-header
    ./transform.sh
-   cat snb-export-only-ids-projected-fk.sql | ./duckdb ldbc.duckdb
-   cat snb-export-only-ids-merged-fk.sql    | ./duckdb ldbc.duckdb
+   cat export/snb-export-only-ids-projected-fk.sql | ./duckdb ldbc.duckdb
+   cat export/snb-export-only-ids-merged-fk.sql    | ./duckdb ldbc.duckdb
    ```
 
 1. Copy the generated files:
@@ -76,6 +76,7 @@ An example data set is provided with the substitution `SF=example`:
    cp -r data/csv-only-ids-projected-fk/ ~/git/snb/tsmb/data/social-network-sf${SF}-projected-fk
    cp -r data/csv-only-ids-merged-fk/    ~/git/snb/tsmb/data/social-network-sf${SF}-merged-fk
    ```
+
 ### Running the benchmark
 
 The following implementations are provided.
@@ -108,22 +109,37 @@ Planned implementations:
 To avoid clashing on port `7687`, the Memgraph instance uses port `27687` for its Bolt communication.
 Note that the two systems use different Bolt versions so different client libraries are necessary.
 
-#### Populating the database with data
+#### Running the benchmark
 
-Some systems need to be online before loading, while others need to be offline. To handle these differences in a unified way, we use 4 commands:
+The benchmark run consists of two key steps: loading the data and running the queries on the database.
+
+Some systems need to be online before loading, while others need to be offline. To handle these differences in a unified way, we use three scripts for loading:
 
 * `pre-load.sh`: steps before loading the data (e.g. starting the DB for systems with online loaders)
 * `load.sh`: loads the data
 * `post-load.sh`: steps after loading the data (e.g. starting the DB for systems with offline loaders)
+
+To run the benchmark and clean up after execution, we use two scripts:
+
 * `run.sh`: runs the benchmark 
 * `stop.sh`: stops the database
 
-Example usage for scale factor 0.3:
+Example usage that loads scale factor 0.3 to Neo4j:
 
 ```bash
 cd neo
 export SF=0.3
 ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
+```
+
+Example usage that runs multiple scale factors on DuckDB:
+
+```bash
+cd ddb
+export SF
+for SF in 0.1 0.3 1; do
+   ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
+done
 ```
 
 ## Philosophy

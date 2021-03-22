@@ -13,12 +13,12 @@ SFS="example"
 # SYSTEMS="ddb umb pos neo red"
 SYSTEMS="ddb red"
 
+export SF
 for SF in ${SFS}; do
     echo Running benchmark on scale factor ${SF}
     for SYSTEM in ${SYSTEMS}; do
         echo Benchmarking system ${SYSTEM}
         cd ${SYSTEM}
-        export SF
         ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
         cd ..
     done

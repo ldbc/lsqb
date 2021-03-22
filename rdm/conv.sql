@@ -5,22 +5,22 @@ CREATE TABLE vertex_mapping (sparse_id BIGINT, label VARCHAR, dense_id BIGINT, d
 
 CREATE TABLE label_mapping (label VARCHAR, numeric_label INTEGER);
 INSERT INTO label_mapping VALUES
-    ('Person', 0),
-    ('City', 1),
-    ('Country', 2),
-    ('Continent',3),
-    ('Forum',4),
-    ('Post',5),
-    ('Comment',6),
-    ('Tag',7),
-    ('TagClass',8)
+    ('Person',    0),
+    ('City',      1),
+    ('Country',   2),
+    ('Continent', 3),
+    ('Forum',     4),
+    ('Post',      5),
+    ('Comment',   6),
+    ('Tag',       7),
+    ('TagClass',  8)
     ;
 
 DROP VIEW IF EXISTS vertices;
 CREATE VIEW vertices AS
-    SELECT id, 'Person'  AS label FROM Person
+    SELECT id, 'Person' AS label FROM Person
     UNION ALL
-    SELECT id, 'City'    AS label FROM City
+    SELECT id, 'City' AS label FROM City
     UNION ALL
     SELECT id, 'Country' AS label FROM Country
     UNION ALL
@@ -33,29 +33,30 @@ CREATE VIEW vertices AS
     SELECT id, 'Comment' AS label FROM Comment
     UNION ALL
     SELECT id, 'Tag' AS label FROM Tag
-    -- UNION ALL
-    -- SELECT id, 'TagClass' AS label FROM TagClass
+    UNION ALL
+    SELECT id, 'TagClass' AS label FROM TagClass
 ;
 
 DROP VIEW IF EXISTS edges;
 CREATE VIEW edges
-           AS SELECT person1id AS sourceId, person2id AS targetId,  'Person' AS sourceLabel, 'Person'  AS targetLabel FROM Person_knows_Person
-               WHERE person1id < person2id
-    UNION ALL SELECT id AS sourceId, isLocatedIn_City AS targetId,  'Person' AS sourceLabel, 'City'    AS targetLabel FROM Person
-    UNION ALL SELECT id AS sourceId, isPartOf_Country AS targetId,  'City'   AS sourceLabel, 'Country' AS targetLabel FROM City
-    UNION ALL SELECT id AS sourceId, isPartOf_Continent AS targetId, 'Country' AS sourceLabel, 'Continent' AS targetLabel FROM Country
-    UNION ALL SELECT id AS sourceId, hasModerator_Person AS targetId, 'Forum' AS sourceLabel, 'Person' AS targetLabel FROM Forum
-    UNION ALL SELECT id AS sourceId, hasCreator_Person AS targetId, 'Post' AS sourceLabel, 'Person' AS targetLabel FROM Post
-    UNION ALL SELECT id AS sourceId, forum_containerOf AS targetId, 'Post' AS sourceLabel, 'Forum' AS targetLabel FROM Post
-    UNION ALL SELECT id AS sourceId, isLocatedIn_Country AS targetId, 'Post' AS sourceLabel, 'Country' AS targetLabel FROM Post
-    UNION ALL SELECT id AS sourceId, hasCreator_Person AS targetId, 'Comment' AS sourceLabel, 'Person' AS targetLabel FROM Comment
-    UNION ALL SELECT id AS sourceId, isLocatedIn_Country AS targetId, 'Comment' AS sourceLabel, 'Country' AS targetLabel FROM Comment
-    UNION ALL SELECT id AS sourceId, replyOf_Post AS targetId, 'Comment' AS sourceLabel, 'Post' AS targetLabel FROM Comment WHERE replyOf_Post IS NOT NULL
-    UNION ALL SELECT id AS sourceId, replyOf_Comment AS targetId, 'Comment' AS sourceLabel, 'Comment' AS targetLabel FROM Comment WHERE replyOf_Comment IS NOT NULL
-    UNION ALL SELECT id AS sourceId, hasTag_Tag AS targetId, 'Comment' AS sourceLabel, 'Tag' AS targetLabel FROM Comment_HasTag_Tag
-     UNION ALL SELECT id AS sourceId, hasTag_Tag AS targetId, 'Post' AS sourceLabel, 'Tag' AS targetLabel FROM Post_HasTag_Tag
-     UNION ALL SELECT id AS sourceId, hasInterest_Tag AS targetId, 'Person' AS sourceLabel, 'Tag' AS targetLabel FROM Person_HasInterest_Tag
-    -- UNION ALL SELECT id AS sourceId, hasType_TagClass AS targetId, 'Tag' AS sourceLabel, 'TagClass' AS targetLabel FROM Tag
+           AS SELECT person1id AS sourceId, person2id AS targetId,                  'Person'   AS sourceLabel, 'Person'   AS targetLabel FROM Person_knows_Person
+              WHERE person1id < person2id
+    UNION ALL SELECT id AS sourceId, isLocatedIn_City      AS targetId, 'Person'   AS sourceLabel, 'City'     AS targetLabel FROM Person
+    UNION ALL SELECT id AS sourceId, isPartOf_Country      AS targetId, 'City'     AS sourceLabel, 'Country'  AS targetLabel FROM City
+    UNION ALL SELECT id AS sourceId, isPartOf_Continent    AS targetId, 'Country'  AS sourceLabel, 'Continent'AS targetLabel FROM Country
+    UNION ALL SELECT id AS sourceId, hasModerator_Person   AS targetId, 'Forum'    AS sourceLabel, 'Person'   AS targetLabel FROM Forum
+    UNION ALL SELECT id AS sourceId, hasCreator_Person     AS targetId, 'Post'     AS sourceLabel, 'Person'   AS targetLabel FROM Post
+    UNION ALL SELECT id AS sourceId, forum_containerOf     AS targetId, 'Post'     AS sourceLabel, 'Forum'    AS targetLabel FROM Post
+    UNION ALL SELECT id AS sourceId, isLocatedIn_Country   AS targetId, 'Post'     AS sourceLabel, 'Country'  AS targetLabel FROM Post
+    UNION ALL SELECT id AS sourceId, hasCreator_Person     AS targetId, 'Comment'  AS sourceLabel, 'Person'   AS targetLabel FROM Comment
+    UNION ALL SELECT id AS sourceId, isLocatedIn_Country   AS targetId, 'Comment'  AS sourceLabel, 'Country'  AS targetLabel FROM Comment
+    UNION ALL SELECT id AS sourceId, replyOf_Post          AS targetId, 'Comment'  AS sourceLabel, 'Post'     AS targetLabel FROM Comment WHERE replyOf_Post IS NOT NULL
+    UNION ALL SELECT id AS sourceId, replyOf_Comment       AS targetId, 'Comment'  AS sourceLabel, 'Comment'  AS targetLabel FROM Comment WHERE replyOf_Comment IS NOT NULL
+    UNION ALL SELECT id AS sourceId, hasTag_Tag            AS targetId, 'Comment'  AS sourceLabel, 'Tag'      AS targetLabel FROM Comment_HasTag_Tag
+    UNION ALL SELECT id AS sourceId, hasTag_Tag            AS targetId, 'Post'     AS sourceLabel, 'Tag'      AS targetLabel FROM Post_HasTag_Tag
+    UNION ALL SELECT id AS sourceId, hasInterest_Tag       AS targetId, 'Person'   AS sourceLabel, 'Tag'      AS targetLabel FROM Person_HasInterest_Tag
+    UNION ALL SELECT id AS sourceId, hasType_TagClass      AS targetId, 'Tag'      AS sourceLabel, 'TagClass' AS targetLabel FROM Tag
+    UNION ALL SELECT id AS sourceId, isSubclassOf_TagClass AS targetId, 'TagClass' AS sourceLabel, 'TagClass' AS targetLabel FROM TagClass
 ;
 
 DROP VIEW IF EXISTS undirected_edges;

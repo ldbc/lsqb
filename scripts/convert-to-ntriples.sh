@@ -16,6 +16,7 @@ mkdir -p ${IMPORT_DATA_DIR_NTRIPLES}
 echo > ${TSMB_NT_FILE}
 
 ## nodes
+echo "Converting nodes"
 for entity in \
     Tag \
     TagClass \
@@ -30,6 +31,7 @@ for entity in \
     Post \
     ;
 do
+    echo "- ${entity}"
     tail -qn +2 ${IMPORT_DATA_DIR_PROJECTED_FK}/${entity}.csv | sed "s#\(.*\)#<http://ldbcouncil.org/nodes/$entity/\1> a <http://ldbcouncil.org/types/${entity}> .#" >> ${TSMB_NT_FILE}
 done
 
@@ -38,6 +40,7 @@ cp ${IMPORT_DATA_DIR_PROJECTED_FK}/Comment_isLocatedIn_Place.csv ${IMPORT_DATA_D
 cp ${IMPORT_DATA_DIR_PROJECTED_FK}/Post_isLocatedIn_Place.csv    ${IMPORT_DATA_DIR_PROJECTED_FK}/Post_isLocatedIn_Country.csv
 
 ## edges
+echo "Converting edges"
 for entity in \
     University_isLocatedIn_City \
     Company_isLocatedIn_Country \
@@ -66,6 +69,7 @@ for entity in \
     Post_isLocatedIn_Country \
     ;
 do
+    echo "- ${entity}"
     types=(${entity//_/ })
     source=${types[0]}
     target=${types[2]}
