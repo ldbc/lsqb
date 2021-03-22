@@ -9,9 +9,8 @@ WHERE {
  ?cityA lp:City_isPartOf_Country ?country .
  ?cityB lp:City_isPartOf_Country ?country .
  ?cityC lp:City_isPartOf_Country ?country .
-
- { ?personA lp:Person_knows_Person ?personB . } UNION { ?personB lp:Person_knows_Person ?personA . }
- { ?personB lp:Person_knows_Person ?personC . } UNION { ?personC lp:Person_knows_Person ?personB . }
- { ?personC lp:Person_knows_Person ?personA . } UNION { ?personA lp:Person_knows_Person ?personC . }
-
+ 
+ ?personA (lp:Person_knows_Person | ^lp:Person_knows_Person ) ?personB .
+ ?personB (lp:Person_knows_Person | ^lp:Person_knows_Person ) ?personC .
+ ?personC (lp:Person_knows_Person | ^lp:Person_knows_Person ) ?personA .
 }
