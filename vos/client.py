@@ -38,7 +38,7 @@ else:
 
 
 with open(f"results/results.csv", "a+") as results_file:
-    for i in range(1, 7):
+    for i in range(0, 7):
         with open(f"sparql/q{i}.sparql", "r") as query_file:
             run_query(sparql, sf, i, query_file.read(), results_file)
 
