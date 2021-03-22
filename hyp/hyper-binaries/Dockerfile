@@ -3,6 +3,7 @@ FROM fedora/postgresql
 USER 0
 
 COPY hyper /hyper
+COPY hyper/mydb /data/mydb
 
 EXPOSE 7484
 

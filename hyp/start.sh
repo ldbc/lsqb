@@ -24,7 +24,7 @@ echo "Container started"
 
 docker exec \
     --detach ${HYPER_CONTAINER_NAME} \
-    /hyper/hyperd --database /hyper/mydb --log-dir /hyper/ --config /hyper/config --skip-license --init-user raasveld --no-ssl --listen-connection tab.tcp://localhost:7484,tab.domain:///tmp/LD/domain/.s.PGSQL.7484 --no-password start
+    /hyper/hyperd --database /data/mydb --log-dir /hyper/ --config /hyper/config --skip-license --init-user raasveld --no-ssl --listen-connection tab.tcp://localhost:7484,tab.domain:///tmp/LD/domain/.s.PGSQL.7484 --no-password start
 
 echo "Waiting for the database to start..."
 sleep 10
