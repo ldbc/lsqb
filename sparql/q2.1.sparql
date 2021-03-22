@@ -1,0 +1,11 @@
+PREFIX lt: <http://ldbcouncil.org/types/>
+PREFIX lp: <http://ldbcouncil.org/>
+
+SELECT (COUNT(*) as ?count)
+WHERE {
+ ?message lp:Message_hasTag_Tag ?tag .
+ ?message lp:Message_hasCreator_Person  ?person .
+
+ ?liker lp:Person_likes_Message  ?message .
+ ?reply lp:Message_replyOf_Message ?message .
+}

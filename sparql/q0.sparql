@@ -1,0 +1,7 @@
+PREFIX lt: <http://ldbcouncil.org/types/>
+PREFIX lp: <http://ldbcouncil.org/>
+
+SELECT (COUNT(*) as ?count)
+WHERE {
+ ?comment lp:Message_replyOf_Message ?post .
+}
