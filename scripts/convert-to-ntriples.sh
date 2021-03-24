@@ -30,7 +30,7 @@ for entity in \
     Post \
     ;
 do
-    tail -qn +2 ${IMPORT_DATA_DIR_PROJECTED_FK}/${entity}.csv | sed "s#\(.*\)#<http://ldbcouncil.org/nodes/$entity/\1> a <http://ldbcouncil.org/types/${entity}> .#" >> ${TSMB_NT_FILE}
+    tail -qn +2 ${IMPORT_DATA_DIR_PROJECTED_FK}/${entity}.csv | sed "s@\(.*\)@<http://ldbcouncil.org/nodes/$entity/\1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://ldbcouncil.org/types/${entity}> .@" >> ${TSMB_NT_FILE}
 done
 
 cp ${IMPORT_DATA_DIR_PROJECTED_FK}/Person_isLocatedIn_Place.csv  ${IMPORT_DATA_DIR_PROJECTED_FK}/Person_isLocatedIn_City.csv
