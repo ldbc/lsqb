@@ -27,7 +27,7 @@ driver = GraphDatabase.driver("bolt://localhost:7687")
 session = driver.session()
 
 with open(f"results/results.csv", "a+") as results_file:
-    for i in range(1, 7):
+    for i in range(1, 10):
         with open(f"cypher/q{i}.cypher", "r") as query_file:
             run_query(session, sf, i, query_file.read(), results_file)
 
