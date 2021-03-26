@@ -49,6 +49,6 @@ else:
 con = mysql.connector.connect(host="localhost", user="root", password="", port=3306, database="tsmb")
 
 with open(f"results/results.csv", "a+") as results_file:
-    for i in range(1, 7):
+    for i in range(1, 10):
         with open(f"sql/q{i}.sql", "r") as query_file:
             run_query(con, sf, i, query_file.read(), system, results_file)

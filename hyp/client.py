@@ -46,7 +46,7 @@ system = "HyPer"
 con = "| docker exec -i ${HYPER_CONTAINER_NAME} psql -U raasveld -p 7484 -h localhost ${HYPER_DATABASE_NAME}"
 
 with open(f"results/results.csv", "a+") as results_file:
-    for i in range(1, 7):
+    for i in range(1, 10):
         with open(f"sql/q{i}.sql", "r") as query_file:
             run_query(con, sf, i, query_file.read(), system, results_file)
 
