@@ -30,6 +30,7 @@ export SF=example && ddb/load.sh && \
 ```
 
 The label mapping is the following:
+
 ```
 Person: 0
 City: 1
@@ -42,16 +43,21 @@ Tag: 7
 TagClass: 8
 ```
 
+Some node  edges such as Forum-hasModerator-Person are omitted from the converted graph.
+
 ## Queries
 
-| Query   | Implemented          | Comments                  |
-| ------- | -------------------- | ------------------------- |
-| 1       | :white_check_mark:   |                           |
-| 2       | :white_check_mark:   | Can't capture opt edges   |
-| 3       | :white_check_mark:   | Can't capture neg edge    |
-| 4       | :white_check_mark:   |                           |
-| 5       | :white_check_mark:   |                           |
-| 6       | :white_check_mark:   | Can't capture neg edge    |
+| Query   | Implemented          | Comments                             |
+| ------- | -------------------- | ------------------------------------ |
+| 1       | :white_check_mark:   | homomorphic/isomorphic               |
+| 2       | :white_check_mark:   | homomorphic/isomorphic               |
+| 3       | :white_check_mark:   | homomorphic                          |
+| 4       |                      | Can't capture different edge labels  |
+| 5       | :white_check_mark:   | isomorphic                           |
+| 6       | :white_check_mark:   | isomorphic                           |
+| 7       |                      | Can't capture opt edges              |
+| 8       |                      | Can't capture neg edge               |
+| 9       |                      | Can't capture neg edge               |
 
 
 ```bash
