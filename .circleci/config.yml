@@ -71,6 +71,13 @@ jobs:
             cd vos
             ./pre-load.sh; ./load.sh; ./post-load.sh; ./run.sh; ./stop.sh
             cd ..
+      - run:
+          name: Test RapidMatch
+          command: |
+            cd rdm
+            ./get.sh
+            ddb/load.sh && rdm/convert.sh
+            cd ..
       - slack/notify:
           channel: 'G01LGEMKXGT'
           event: fail

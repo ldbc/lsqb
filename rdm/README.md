@@ -25,8 +25,7 @@ ${RAPIDMATCH_DIR}/RapidMatch/build/matching/RapidMatch.out \
 First, load the desired data set to DuckDB in this repository, then run the conversion script:
 
 ```bash
-export SF=example && ddb/load.sh && \
-  cat rdm/conv.sql | sed "s/SCALE_FACTOR/${SF}/g" | ddb/scratch/duckdb ddb/scratch/ldbc.duckdb
+export SF=example && ddb/load.sh && rdm/convert.sh
 ```
 
 The label mapping is the following:
