@@ -76,7 +76,7 @@ jobs:
           command: |
             cd rdm
             ./get.sh
-            ddb/load.sh && rdm/convert.sh
+            ddb/load.sh; rdm/convert.sh
             cd ..
       - slack/notify:
           channel: 'G01LGEMKXGT'
