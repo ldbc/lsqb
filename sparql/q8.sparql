@@ -7,4 +7,5 @@ WHERE {
  ?reply (lp:Comment_replyOf_Comment | lp:Comment_replyOf_Post) ?message .
  ?reply lp:Comment_hasTag_Tag ?tag2 .
  FILTER( ?tag1 != ?tag2 )
+ FILTER NOT EXISTS { ?reply lp:Comment_hasTag_Tag ?tag1 }
 }
