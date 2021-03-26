@@ -132,7 +132,7 @@ export SF=0.3
 ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
 ```
 
-Example usage that runs multiple scale factors on DuckDB:
+Example usage that runs multiple scale factors on DuckDB. Note that the `SF` environment variable needs to be exported.
 
 ```bash
 cd ddb
