@@ -1,11 +1,22 @@
 SELECT count(*)
-FROM Message_hasTag_Tag
-JOIN Comment_replyOf_Message
-  ON Message_hasTag_Tag.MessageId = Comment_replyOf_Message.ParentMessageId
-JOIN Comment_hasTag_Tag AS cht1
-  ON Comment_replyOf_Message.CommentId = cht1.id
-LEFT JOIN Comment_hasTag_Tag AS cht2
-       ON Message_hasTag_Tag.hasTag_Tag = cht2.hasTag_Tag
-      AND Comment_replyOf_Message.CommentId = cht2.id
-    WHERE Message_hasTag_Tag.hasTag_Tag != cht1.hasTag_Tag
-      AND cht2.hasTag_Tag IS NULL;
+FROM
+  City AS CityA,
+  City AS CityB,
+  City AS CityC,
+  Person AS personA,
+  Person AS personB,
+  Person AS personC,
+  Person_knows_Person AS pkp1,
+  Person_knows_Person AS pkp2,
+  Person_knows_Person AS pkp3
+WHERE CityB.isPartOf_Country = CityA.isPartOf_Country
+  AND CityC.isPartOf_Country = CityA.isPartOf_Country
+  AND personA.isLocatedIn_City = CityA.id
+  AND personB.isLocatedIn_City = CityB.id
+  AND personC.isLocatedIn_City = CityC.id
+  AND personA.id = pkp1.Person1Id
+  AND personB.id = pkp2.Person1Id
+  AND personC.id = pkp3.Person1Id
+  AND pkp1.Person2Id = pkp2.Person1Id
+  AND pkp2.Person2Id = pkp3.Person1Id
+  AND pkp3.Person2Id = pkp1.Person1Id;
