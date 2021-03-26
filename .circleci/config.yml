@@ -74,9 +74,9 @@ jobs:
       - run:
           name: Test RapidMatch
           command: |
-            cd rdm
-            ./get.sh
+            rdm/get.sh
             ddb/load.sh; rdm/convert.sh
+            cd rdm
             cd ..
       - slack/notify:
           channel: 'G01LGEMKXGT'
