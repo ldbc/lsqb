@@ -45,6 +45,6 @@ r = redis.Redis(host='localhost', port=6379)
 graph = Graph('SocialGraph', r)
 
 with open(f"results/results.csv", "a+") as results_file:
-     for i in range(1, 7):
+     for i in range(1, 10):
           with open(f"red/q{i}.cypher", "r") as query_file:
               run_query(graph, sf, i, query_file.read(), results_file)
