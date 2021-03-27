@@ -5,7 +5,7 @@ SELECT (COUNT(*) as ?count)
 WHERE { 
  ?city lp:City_isPartOf_Country ?country .
  ?person lp:Person_isLocatedIn_City ?city .
- ?forum lp:Forum_hasModerator_Person ?person .
+ ?forum lp:Forum_hasMember_Person ?person .
  ?forum lp:Forum_containerOf_Post ?post .
  ?comment lp:Comment_replyOf_Post ?post .
  ?comment lp:Comment_hasTag_Tag ?tag .
