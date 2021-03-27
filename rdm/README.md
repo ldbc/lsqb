@@ -5,22 +5,10 @@
 Grab [RapidMatch](https://vldb.org/pvldb/vol14/p176-sun.pdf) and build it:
 
 ```bash
-git clone --branch tsmb https://github.com/szarnyasg/RapidMatch/
-cd RapidMatch && mkdir build && cd build && cmake .. && make
+./get.sh
 ```
 
-Run it as follows:
-
-```bash
-${RAPIDMATCH_DIR}/RapidMatch/build/matching/RapidMatch.out \
-  -d data_graph/ldbc.graph  \
-  -q query_graph/person_triangle.graph
-  -order nd \
-  -time_limit 300 \
-  -preprocess true
-```
-
-## Generating data
+## Converting data
 
 First, load the desired data set to DuckDB in this repository, then run the conversion script:
 
@@ -44,7 +32,15 @@ TagClass: 8
 
 Some node  edges such as Forum-hasModerator-Person are omitted from the converted graph.
 
-## Queries
+## Running the queries
+
+When running, set [an excessive time limit](https://github.com/RapidsAtHKUST/RapidMatch/issues/1) to avoid returning too few results.
+
+```bash
+export SF=example && ./run.sh
+```
+
+### Queries
 
 | Query   | Implemented          | Comments                             |
 | ------- | -------------------- | ------------------------------------ |
@@ -60,19 +56,16 @@ Some node  edges such as Forum-hasModerator-Person are omitted from the converte
 
 
 ```bash
+export SF
 for SF in example 0.1 0.3 1 3 10 30 100; do
   echo SF${SF}
-  for QUERY in 1 4 5; do
-    echo ${QUERY}
-    ${RAPIDMATCH_DIR}/build/matching/RapidMatch.out \
-      -d `pwd`/../data/rdm/ldbc-${SF}.graph \
-      -q `pwd`/query_graph/q${QUERY}.graph \
-      | grep -C2 Embeddings | tee >> rdm.log
-  done
+  ./run.sh
 done
 ```
 
 ## Validation
+
+TODO: revise
 
 Only queries 1, 4, and 5 can be implemented as per the benchmark specification.
 - Split query 2 into a query graph for post and for comment, ignoring optional edges.
