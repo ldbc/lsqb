@@ -9,6 +9,7 @@ cd ..
 . umb/vars.sh
 . scripts/import-vars.sh
 
+# Add --cpuset-cpus=0 to force single-threaded execution
 docker run \
     --rm \
     --publish=5432:5432 \

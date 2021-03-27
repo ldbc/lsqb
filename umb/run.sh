@@ -9,4 +9,4 @@ cd ..
 . umb/vars.sh
 . scripts/import-vars.sh
 
-python3 pos/client.py ${SF} Umbra
+python3 pos/client.py ${SF} Umbra ${@}
