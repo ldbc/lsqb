@@ -30,8 +30,8 @@ def run_query(sparql, sf, query_id, query_spec, results_file):
     return (duration, result)
 
 if len(sys.argv) < 2:
-    print("Usage: client.py sfX")
-    print("where X is the scale factor")
+    print("Usage: client.py sf")
+    print("where sf is the scale factor")
     exit(1)
 else:
     sf = sys.argv[1]

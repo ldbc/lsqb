@@ -34,8 +34,8 @@ def run_query(con, sf, query_id, query_spec, numThreads, results_file):
     return (duration, result)
 
 if len(sys.argv) < 2:
-    print("Usage: client.py sfX [threads]")
-    print("where X is the scale factor")
+    print("Usage: client.py sf [threads]")
+    print("where sf is the scale factor")
     exit(1)
 else:
     sf = sys.argv[1]

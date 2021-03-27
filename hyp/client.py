@@ -35,8 +35,8 @@ def run_query(con, sf, query_id, query_spec, system, results_file):
     return (duration, result)
 
 if len(sys.argv) < 2:
-    print("Usage: client.py sfX [system]")
-    print("where X is the scale factor and system if optional (default: HyPer)")
+    print("Usage: client.py sf [system]")
+    print("where sf is the scale factor and system if optional (default: HyPer)")
     exit(1)
 else:
    sf = sys.argv[1]

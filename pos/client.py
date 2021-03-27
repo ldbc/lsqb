@@ -35,8 +35,8 @@ def run_query(con, variant, sf, query_id, query_spec, system, results_file):
     return (duration, result)
 
 if len(sys.argv) < 2:
-    print("Usage: client.py sfX [system] [variant]")
-    print("where X is the scale factor and system/variant are optional (default: system='PostgreSQL', variant='')")
+    print("Usage: client.py sf [system] [variant]")
+    print("where sf is the scale factor and system/variant are optional (default: system='PostgreSQL', variant='')")
     exit(1)
 else:
     sf = sys.argv[1]
