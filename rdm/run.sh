@@ -15,5 +15,4 @@ export RAPIDMATCH_PARAMS="-order nd -time_limit 36000 -preprocess true -num MAX"
 export QUERY=1; ${RAPIDMATCH_ISOMORPHIC_DIR}/build/matching/RapidMatch.out  ${RAPIDMATCH_PARAMS} -d ${DATA_GRAPH} -q rdm/query_graphs/q${QUERY}.graph | python3 rdm/process.py
 export QUERY=2; ${RAPIDMATCH_ISOMORPHIC_DIR}/build/matching/RapidMatch.out  ${RAPIDMATCH_PARAMS} -d ${DATA_GRAPH} -q rdm/query_graphs/q${QUERY}.graph | python3 rdm/process.py
 export QUERY=3; ${RAPIDMATCH_HOMOMORPHIC_DIR}/build/matching/RapidMatch.out ${RAPIDMATCH_PARAMS} -d ${DATA_GRAPH} -q rdm/query_graphs/q${QUERY}.graph | python3 rdm/process.py
-export QUERY=5; ${RAPIDMATCH_ISOMORPHIC_DIR}/build/matching/RapidMatch.out  ${RAPIDMATCH_PARAMS} -d ${DATA_GRAPH} -q rdm/query_graphs/q${QUERY}.graph | python3 rdm/process.py
 export QUERY=6; ${RAPIDMATCH_ISOMORPHIC_DIR}/build/matching/RapidMatch.out  ${RAPIDMATCH_PARAMS} -d ${DATA_GRAPH} -q rdm/query_graphs/q${QUERY}.graph | python3 rdm/process.py

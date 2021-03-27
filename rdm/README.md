@@ -10,10 +10,10 @@ Grab [RapidMatch](https://vldb.org/pvldb/vol14/p176-sun.pdf) and build it:
 
 ## Converting data
 
-First, load the desired data set to DuckDB in this repository, then run the conversion script:
+Run the conversion script. :warning: This script first loads the data in DuckDB under in the repository's `ddb/scratch` directory.
 
 ```bash
-export SF=example && ddb/load.sh && rdm/convert.sh
+export SF=example && ./convert.sh
 ```
 
 The label mapping is the following:
@@ -44,11 +44,11 @@ export SF=example && ./run.sh
 
 | Query   | Implemented          | Comments                             |
 | ------- | -------------------- | ------------------------------------ |
-| 1       | :white_check_mark:   | homomorphic/isomorphic               |
+| 1       | :white_check_mark:   | homomorphic/isomorphic - needs hasMember edges |
 | 2       | :white_check_mark:   | homomorphic/isomorphic               |
 | 3       | :white_check_mark:   | homomorphic                          |
 | 4       |                      | Can't capture different edge labels  |
-| 5       | :white_check_mark:   | isomorphic                           |
+| 5       | :white_check_mark:   | isomorphic - needs separate C/P queries, undirected replyOf edge needs special handling |
 | 6       | :white_check_mark:   | isomorphic                           |
 | 7       |                      | Can't capture opt edges              |
 | 8       |                      | Can't capture neg edge               |
