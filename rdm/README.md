@@ -16,6 +16,8 @@ Run the conversion script. :warning: This script first loads the data in DuckDB 
 export SF=example && ./convert.sh
 ```
 
+Note that converting SF100 on a server with an NVMe SSD disk takes about ~1 hours.
+
 The label mapping is the following:
 
 ```
