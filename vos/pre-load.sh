@@ -11,6 +11,7 @@ cd ..
 
 vos/stop.sh
 
+
 # take ownership of the mounted data in the scratch directory and clean it up
 docker run -it --rm \
     --volume=${VIRTUOSO_DATABASE_DIR}:/database:z \
@@ -22,6 +23,9 @@ docker run -it --rm \
 
 #sudo chown -R $USER:$USER vos/scratch/
 rm -rf vos/scratch/*
+
+mkdir -p ${VIRTUOSO_DATABASE_DIR}
+cp virtuoso.ini ${VIRTUOSO_DATABASE_DIR}
 
 vos/start.sh
 
