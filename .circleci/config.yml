@@ -39,7 +39,7 @@ jobs:
           command: |
             cd vos
             ./start.sh && ./stop.sh
-            sudo chown $USER:$USER scratch/
+            sudo chown -R $USER:$USER scratch/
             ./pre-load.sh; ./load.sh; ./post-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
