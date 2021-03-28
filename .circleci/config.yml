@@ -35,6 +35,16 @@ jobs:
             scripts/preprocess.sh
             scripts/convert-to-ntriples.sh
       - run:
+          name: Test Virtuoso
+          command: |
+            cd vos
+            ./start.sh && ./stop.sh
+            sudo chown $USER:$USER scratch/
+            # change configuration file to use less memory
+            cp virtuoso-default.ini virtuoso.ini
+            ./pre-load.sh; ./load.sh; ./post-load.sh; ./run.sh; ./stop.sh
+            cd ..
+      - run:
           name: Test Neo4j
           command: |
             cd neo
@@ -57,13 +67,6 @@ jobs:
           command: |
             export PATH="~/.local/bin:$PATH"
             cd red
-            ./pre-load.sh; ./load.sh; ./post-load.sh; ./run.sh; ./stop.sh
-            cd ..
-      - run:
-          name: Test Virtuoso
-          command: |
-            cd vos
-            # change configuration file to use less memory
             ./pre-load.sh; ./load.sh; ./post-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
