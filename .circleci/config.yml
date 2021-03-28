@@ -53,12 +53,6 @@ jobs:
             ./pre-load.sh; ./load.sh; ./post-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
-          name: Test MySQL
-          command: |
-            cd mys
-            ./pre-load.sh; ./load.sh; ./post-load.sh; ./run.sh; ./stop.sh
-            cd ..
-      - run:
           name: Test RedisGraph
           command: |
             export PATH="~/.local/bin:$PATH"
