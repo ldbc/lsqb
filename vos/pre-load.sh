@@ -25,7 +25,7 @@ docker run -it --rm \
 rm -rf vos/scratch/*
 
 mkdir -p ${VIRTUOSO_DATABASE_DIR}
-cp virtuoso.ini ${VIRTUOSO_DATABASE_DIR}
+cp vos/virtuoso.ini ${VIRTUOSO_DATABASE_DIR}
 
 vos/start.sh
 
