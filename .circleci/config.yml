@@ -40,8 +40,6 @@ jobs:
             cd vos
             ./start.sh && ./stop.sh
             sudo chown $USER:$USER scratch/
-            # change configuration file to use less memory
-            cp virtuoso-default.ini virtuoso.ini
             ./pre-load.sh; ./load.sh; ./post-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
