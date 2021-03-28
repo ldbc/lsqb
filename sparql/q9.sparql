@@ -1,0 +1,11 @@
+PREFIX lt: <http://ldbcouncil.org/types/>
+PREFIX lp: <http://ldbcouncil.org/>
+
+SELECT (COUNT(*) as ?count)
+WHERE { 
+ ?person1 (lp:Person_knows_Person | ^lp:Person_knows_Person ) ?person2 .
+ ?person2 (lp:Person_knows_Person | ^lp:Person_knows_Person ) ?person3 .
+ ?person3 lp:Person_hasInterest_Tag ?tag .
+ FILTER ( ?person1 != ?person3 )
+ FILTER NOT EXISTS { ?person1 (lp:Person_knows_Person | ^lp:Person_knows_Person ) ?person3 }
+}

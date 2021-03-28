@@ -39,8 +39,8 @@ def run_query(con, sf, query_id, query_spec, results_file):
     return (duration, result)
 
 if len(sys.argv) < 2:
-    print("Usage: client.py sfX")
-    print("where X is the scale factor")
+    print("Usage: client.py sf")
+    print("where sf is the scale factor")
     exit(1)
 else:
    sf = sys.argv[1]
@@ -48,6 +48,6 @@ else:
 con = mgclient.connect(host='127.0.0.1', port=27687)
 
 with open(f"results/results.csv", "a+") as results_file:
-    for i in range(1, 7):
+    for i in range(1, 10):
         with open(f"mem/q{i}.cypher", "r") as query_file:
             run_query(con, sf, i, query_file.read(), results_file)

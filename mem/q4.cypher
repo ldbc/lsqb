@@ -1,4 +1,4 @@
-MATCH
-    (personA:Person)-[:KNOWS]-(personB:Person),
-    (personA)<-[:HAS_CREATOR]-(comment:Comment)-[:REPLY_OF]->(post:Post)-[:HAS_CREATOR]->(personB)
+MATCH (:Tag)<-[:HAS_TAG]-(message:Message)-[:HAS_CREATOR]-(creator:Person),
+  (message)<-[:LIKES]-(liker:Person),
+  (message)<-[:REPLY_OF]-(comment:Comment)
 RETURN count(*) AS count

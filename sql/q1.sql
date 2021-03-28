@@ -1,13 +1,15 @@
 SELECT count(*)
 FROM
   Person,
+  Forum_hasMember_Person,
   Forum,
   Comment,
   Post,
   Comment_hasTag_Tag,
   Tag,
   City
-WHERE Forum.hasModerator_Person = Person.id
+WHERE Person.id = Forum_hasMember_Person.hasMember_Person
+  AND Forum_hasMember_Person.id = Forum.id
   AND Post.Forum_containerOf = Forum.id
   AND Post.id = Comment.replyOf_Post
   AND Comment.id = Comment_hasTag_Tag.id

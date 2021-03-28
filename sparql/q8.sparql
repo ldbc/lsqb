@@ -1,0 +1,11 @@
+PREFIX lt: <http://ldbcouncil.org/types/>
+PREFIX lp: <http://ldbcouncil.org/>
+
+SELECT (COUNT(*) as ?count)
+WHERE { 
+ ?message (lp:Comment_hasTag_Tag | lp:Post_hasTag_Tag ) ?tag1 .
+ ?reply (lp:Comment_replyOf_Comment | lp:Comment_replyOf_Post) ?message .
+ ?reply lp:Comment_hasTag_Tag ?tag2 .
+ FILTER( ?tag1 != ?tag2 )
+ FILTER NOT EXISTS { ?reply lp:Comment_hasTag_Tag ?tag1 }
+}
