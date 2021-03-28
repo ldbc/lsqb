@@ -69,6 +69,8 @@ jobs:
           name: Test Virtuoso
           command: |
             cd vos
+            # change configuration file to use less memory
+            cp virtuoso-small.ini virtuoso.ini
             ./pre-load.sh; ./load.sh; ./post-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
