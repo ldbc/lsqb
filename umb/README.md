@@ -19,3 +19,22 @@ The binaries of Umbra are available upon request from the TUM database group.
     cd umb
     ./build.sh
     ```
+
+## Using the SQL shell
+
+In the `umb` directory, run:
+
+```bash
+echo "SELECT 42 AS x" > scratch/test.sql
+docker exec tsmb-umb /umbra/bin/sql /scratch/ldbc.db /scratch/test.sql
+```
+
+To print the query plans for all queries, run
+
+```bash
+for q in `seq 1 9`; do
+    echo "============== Q${q} =============="
+    echo "EXPLAIN" | cat - ../sql/q${q}.sql > scratch/explain-q${q}.sql
+    docker exec tsmb-umb /umbra/bin/sql /scratch/ldbc.db /scratch/explain-q${q}.sql
+done
+```
