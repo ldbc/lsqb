@@ -1,6 +1,6 @@
 MATCH (country:Country)
-MATCH (pA:Person)-[:IS_LOCATED_IN]->(cityA:City)-[:IS_PART_OF]->(country)
-MATCH (pB:Person)-[:IS_LOCATED_IN]->(cityB:City)-[:IS_PART_OF]->(country)
-MATCH (pC:Person)-[:IS_LOCATED_IN]->(cityC:City)-[:IS_PART_OF]->(country)
-MATCH (pA)-[k1:KNOWS]-(pB)-[k2:KNOWS]-(pC)-[k3:KNOWS]-(pA)
+MATCH (person1:Person)-[:IS_LOCATED_IN]->(city1:City)-[:IS_PART_OF]->(country)
+MATCH (person2:Person)-[:IS_LOCATED_IN]->(city2:City)-[:IS_PART_OF]->(country)
+MATCH (person3:Person)-[:IS_LOCATED_IN]->(city3:City)-[:IS_PART_OF]->(country)
+MATCH (person1)-[:KNOWS]-(person2)-[:KNOWS]-(person3)-[:KNOWS]-(person1)
 RETURN count(*) AS count
