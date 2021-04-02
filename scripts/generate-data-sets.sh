@@ -5,7 +5,7 @@
 # memory requirements:
 # the SF10 generator and the conversion scripts ran on my laptop with 24 GB RAM with some browser tabs/apps open (during conversion, it swapped a bit)
 
-set -e
+set -eu
 set -o pipefail
 
 DATAGEN_DIR=~/git/snb/ldbc_snb_datagen/
