@@ -9,6 +9,6 @@ cd ..
 . ddb/vars.sh
 . scripts/import-vars.sh
 
-NUM_THREADS=$1
+NUM_THREADS=${1:-4}
 
 python3 ddb/client.py ${SF} ${NUM_THREADS}
