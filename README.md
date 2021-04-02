@@ -91,10 +91,10 @@ Stable implementations:
 * `red`: [RedisGraph](https://oss.redislabs.com/redisgraph/) [Cypher] :whale:
 * `mem`: [Memgraph](https://memgraph.com/) [Cypher] :whale:
 * `vos`: [Virtuoso Open-Source Edition](http://vos.openlinksw.com/owiki/wiki/VOS) [SPARQL] :whale:
+* `rdm`: [RapidMatch](https://github.com/RapidsAtHKUST/RapidMatch) [`.graph`]
 
 WIP implementations:
 
-* `dgr`: [Dgraph](https://dgraph.io/) [DQL] :whale:
 * `pgx`: [Oracle PGX](https://www.oracle.com/middleware/technologies/parallel-graph-analytix.html) [PGQL]
 * `tgr`: [TigerGraph](https://www.tigergraph.com/) [GSQL]
 * `rai`: [RelationalAI](https://relational.ai/) [Rel]
