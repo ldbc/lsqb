@@ -3,6 +3,7 @@ import time
 import sys
 import signal
 from contextlib import contextmanager
+from traceback import print_exc
 
 @contextmanager
 def timeout(t):
@@ -28,6 +29,7 @@ def run_query(con, sf, query_id, query_spec, results_file):
     except TimeoutError:
         return
     except mgclient.DatabaseError:
+        print_exc()
         print(f"Memgraph\t\t{sf}\t{query_id}\t-\t-")
         return
     result = cur.fetchall()

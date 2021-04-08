@@ -9,4 +9,5 @@ cd ..
 . mem/vars.sh
 
 mem/start.sh
-sleep 5
+
+python3 mem/index.py
