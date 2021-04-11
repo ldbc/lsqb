@@ -35,10 +35,6 @@ do
     tail -qn +2 ${IMPORT_DATA_DIR_PROJECTED_FK}/${entity}.csv | sed "s#\(.*\)#<http://ldbcouncil.org/nodes/$entity/\1> a <http://ldbcouncil.org/types/${entity}> .#" >> ${TSMB_NT_FILE}
 done
 
-cp ${IMPORT_DATA_DIR_PROJECTED_FK}/Person_isLocatedIn_Place.csv  ${IMPORT_DATA_DIR_PROJECTED_FK}/Person_isLocatedIn_City.csv
-cp ${IMPORT_DATA_DIR_PROJECTED_FK}/Comment_isLocatedIn_Place.csv ${IMPORT_DATA_DIR_PROJECTED_FK}/Comment_isLocatedIn_Country.csv
-cp ${IMPORT_DATA_DIR_PROJECTED_FK}/Post_isLocatedIn_Place.csv    ${IMPORT_DATA_DIR_PROJECTED_FK}/Post_isLocatedIn_Country.csv
-
 ## edges
 echo "Converting edges"
 for entity in \
@@ -75,7 +71,3 @@ do
     target=${types[2]}
     tail -qn +2 ${IMPORT_DATA_DIR_PROJECTED_FK}/${entity}.csv | sed "s#\([^|]*\)|\([^|]*\)#<http://ldbcouncil.org/nodes/${source}/\1> <http://ldbcouncil.org/${entity}> <http://ldbcouncil.org/nodes/${target}/\2> .#" >> ${TSMB_NT_FILE}
 done
-
-rm ${IMPORT_DATA_DIR_PROJECTED_FK}/Person_isLocatedIn_City.csv
-rm ${IMPORT_DATA_DIR_PROJECTED_FK}/Comment_isLocatedIn_Country.csv
-rm ${IMPORT_DATA_DIR_PROJECTED_FK}/Post_isLocatedIn_Country.csv
