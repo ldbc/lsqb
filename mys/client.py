@@ -46,7 +46,7 @@ if len(sys.argv) == 2:
 else:
     system = sys.argv[2]
 
-con = mysql.connector.connect(host="localhost", user="root", password="", port=3306, database="tsmb")
+con = mysql.connector.connect(host="localhost", user="root", password="", port=3306, database="lsqb")
 
 with open(f"results/results.csv", "a+") as results_file:
     for i in range(1, 10):

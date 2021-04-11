@@ -1,4 +1,4 @@
-# Labelled Subgraph Query Benchmark
+# Labelled Subgraph Query Benchmark (LSQB)
 
 [![Build Status](https://circleci.com/gh/ldbc/lsqb.svg?style=svg&circle-token=b558369d54d3205fc9d985a4dd2196b967ebcff8)](https://circleci.com/gh/ldbc/lsqb)
 
@@ -73,8 +73,8 @@ An example data set is provided with the substitution `SF=example`:
 
    ```bash
    export SF=1
-   cp -r data/csv-only-ids-projected-fk/ ~/git/snb/tsmb/data/social-network-sf${SF}-projected-fk
-   cp -r data/csv-only-ids-merged-fk/    ~/git/snb/tsmb/data/social-network-sf${SF}-merged-fk
+   cp -r data/csv-only-ids-projected-fk/ ~/git/snb/lsqb/data/social-network-sf${SF}-projected-fk
+   cp -r data/csv-only-ids-merged-fk/    ~/git/snb/lsqb/data/social-network-sf${SF}-merged-fk
    ```
 
 ### Running the benchmark

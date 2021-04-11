@@ -9,7 +9,7 @@ set -eu
 set -o pipefail
 
 DATAGEN_DIR=~/git/snb/ldbc_snb_datagen/
-TSMB_DIR=~/git/snb/tsmb/
+LSQB_DIR=~/git/snb/lsqb/
 CONVERTER_REPOSITORY_DIR=~/git/snb/ldbc_snb_data_converter
 SFS="0.1 0.3 1 3 10"
 
@@ -33,11 +33,11 @@ for SF in ${SFS}; do
     cat snb-export-only-ids-merged-fk.sql    | ./duckdb ldbc.duckdb
 
     echo copying data
-    cp -r data/csv-only-ids-projected-fk/ ${TSMB_DIR}/data/social-network-sf${SF}-projected-fk
-    cp -r data/csv-only-ids-merged-fk/    ${TSMB_DIR}/data/social-network-sf${SF}-merged-fk
+    cp -r data/csv-only-ids-projected-fk/ ${LSQB_DIR}/data/social-network-sf${SF}-projected-fk
+    cp -r data/csv-only-ids-merged-fk/    ${LSQB_DIR}/data/social-network-sf${SF}-merged-fk
 done
 
-cd ${TSMB_DIR}
+cd ${LSQB_DIR}
 
 echo `pwd`
 
