@@ -24,7 +24,7 @@ def run_query(con, sf, query_id, query_spec, results_file):
     cur = con.cursor()
     try:
         with timeout(300):
-          cur.execute(query_spec)
+            cur.execute(query_spec)
     except TimeoutError:
         return
     except mgclient.DatabaseError:
