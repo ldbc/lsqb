@@ -16,5 +16,5 @@ sed "s|PATHVAR|/data|" sql/snb-load.sql | docker exec -i ${POSTGRES_CONTAINER_NA
 echo Done
 
 echo Initializing views and indexes...
-cat sql/schema-constraints.sql | docker exec -i ${POSTGRES_CONTAINER_NAME} psql -U postgres
+cat sql/views.sql | docker exec -i ${POSTGRES_CONTAINER_NAME} psql -U postgres
 echo Done
