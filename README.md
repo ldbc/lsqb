@@ -97,6 +97,7 @@ WIP implementations:
 * `pgx`: [Oracle PGX](https://www.oracle.com/middleware/technologies/parallel-graph-analytix.html) [PGQL]
 * `tgr`: [TigerGraph](https://www.tigergraph.com/) [GSQL]
 * `rai`: [RelationalAI](https://relational.ai/) [Rel]
+* `mat`: [Materialize](http://materialize.io/) [SQL]
 
 Planned implementations:
 
