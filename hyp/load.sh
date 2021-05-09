@@ -16,5 +16,5 @@ sed "s|PATHVAR|/data|" sql/snb-load.sql | docker exec -i ${HYPER_CONTAINER_NAME}
 echo Done
 
 echo Initializing views and indexes...
-cat sql/schema-constraints.sql | docker exec -i ${HYPER_CONTAINER_NAME} psql -U raasveld -p 7484 -h localhost ${HYPER_DATABASE_NAME}
+cat sql/views.sql | docker exec -i ${HYPER_CONTAINER_NAME} psql -U raasveld -p 7484 -h localhost ${HYPER_DATABASE_NAME}
 echo Done

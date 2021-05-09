@@ -16,5 +16,5 @@ sed "s|PATHVAR|/data|" mys/snb-load.sql | docker exec -i ${MYSQL_CONTAINER_NAME}
 echo Done
 
 echo Initializing views and indexes...
-cat sql/schema-constraints.sql | docker exec -i ${MYSQL_CONTAINER_NAME} mysql -uroot ${MYSQL_DATABASE_NAME}
+cat sql/views.sql | docker exec -i ${MYSQL_CONTAINER_NAME} mysql -uroot ${MYSQL_DATABASE_NAME}
 echo Done

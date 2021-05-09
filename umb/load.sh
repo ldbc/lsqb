@@ -9,7 +9,7 @@ cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 cp create-role.sql scratch/
 cp ../sql/schema.sql scratch/
-cp ../sql/schema-constraints.sql scratch/
+cp ../sql/views.sql scratch/
 sed "s|PATHVAR|/data|" ../sql/snb-load.sql > scratch/snb-load.sql
 
 docker exec \
@@ -17,5 +17,5 @@ docker exec \
     --createdb /scratch/ldbc.db \
     /scratch/create-role.sql \
     /scratch/schema.sql \
-    /scratch/schema-constraints.sql \
+    /scratch/views.sql \
     /scratch/snb-load.sql
