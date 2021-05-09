@@ -19,6 +19,6 @@ docker run \
     --shm-size=${POSTGRES_SHARED_MEMORY} \
     postgres:${POSTGRES_VERSION}
 
-echo "Waiting for the database to start..."
+echo "Waiting for PostgreSQL to start..."
 sleep 10
-echo "Database started"
+echo "PostgreSQL started"
