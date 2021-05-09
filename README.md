@@ -19,6 +19,12 @@ A benchmark for subgraph matching but with types information (edge types, mostly
    scripts/install-dependencies.sh
    ```
 
+1. (Optional) Install "convenience packages" (e.g. vim, ag, etc.).
+
+   ```bash
+   scripts/install-convenience-packages.sh
+   ```
+
 1. (Optional) Add the Umbra binaries as described in the `umb/README.md` file.
 
 1. (Optional) "Warm up" the system using `scripts/benchmark.sh`, e.g. run all systems through the smallest `example` data set. This should fill Docker caches.
