@@ -13,6 +13,8 @@ A benchmark for subgraph matching but with types information (edge types, mostly
 
 1. Install Docker on your machine.
 
+1. (Optional) Change the location of Docker's data directory ([instructions](https://github.com/ftsrg/cheat-sheets/wiki/Docker#move-docker-data-folder-to-a-different-location)).
+
 1. Install the required dependencies:
 
    ```bash
