@@ -9,8 +9,8 @@ cd ..
 . ddb/vars.sh
 
 if [[ ! -z $(which yum) ]]; then
-    sudo yum install -y tmux vim htop nmon postgresql the_silver_searcher
+    sudo yum install -y tmux vim htop nmon curl wget postgresql the_silver_searcher
 elif [[ ! -z $(which apt) ]]; then
     sudo apt update
-    sudo apt install -y tmux vim htop nmon postgresql-client silversearcher-ag
+    sudo apt install -y tmux vim htop nmon curl wget postgresql-client silversearcher-ag
 fi
