@@ -91,6 +91,7 @@ The following implementations are provided.
 Stable implementations:
 
 * `umb`: [Umbra](https://umbra-db.com/) [SQL] :whale:
+* `hyp`: [HyPer](https://hyper-db.de/) [SQL] :whale:
 * `ddb`: [DuckDB](https://www.duckdb.org/) [SQL] (bare metal)
 * `pos`: [PostgreSQL](https://www.postgresql.org/) [SQL] :whale:
 * `mys`: [MySQL](https://www.mysql.com/) [SQL] :whale:
