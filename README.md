@@ -86,7 +86,7 @@ An example data set is provided with the substitution `SF=example`:
 
 ### Running the benchmark
 
-The following implementations are provided.
+The following implementations are provided. The :whale: symbol denotes that the implementation uses Docker.
 
 Stable implementations:
 
