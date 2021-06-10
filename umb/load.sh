@@ -13,7 +13,9 @@ cp ../sql/views.sql scratch/
 sed "s|PATHVAR|/data|" ../sql/snb-load.sql > scratch/snb-load.sql
 
 docker exec \
-    --interactive ${UMBRA_CONTAINER_NAME} /umbra/bin/sql \
+    --interactive \
+    ${UMBRA_CONTAINER_NAME} \
+    /umbra/bin/sql \
     --createdb /scratch/ldbc.db \
     /scratch/create-role.sql \
     /scratch/schema.sql \
