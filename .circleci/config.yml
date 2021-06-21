@@ -36,6 +36,12 @@ jobs:
             ./pre-load.sh; ./load.sh; ./post-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
+          name: Test Memgraph
+          command: |
+            cd mem
+            ./pre-load.sh; ./load.sh; ./post-load.sh; ./run.sh; ./stop.sh
+            cd ..
+      - run:
           name: Test DuckDB
           command: |
             cd ddb
