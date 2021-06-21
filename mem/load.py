@@ -36,7 +36,6 @@ edges = [
 cur = con.cursor()
 
 for node in nodes:
-    print(node)
     load_node_query = f"""
         LOAD CSV FROM '/import/{node}.csv'
             NO HEADER
@@ -45,6 +44,7 @@ for node in nodes:
         CREATE (:{node} {{ id: toInteger(row[0]) }})
         """
     cur.execute(load_node_query)
+    cur.fetchall()
 
 source_label = "Post"
 type = "hasTag"
@@ -54,7 +54,6 @@ for edge in edges:
     source_label = edge["source_label"]
     type = edge["type"]
     target_label = edge["target_label"]
-    print(f"{source_label}_{type}_{target_label}")
 
     load_edge_query = f"""
         LOAD CSV FROM '/import/{source_label}_{type}_{target_label}.csv'
@@ -67,3 +66,4 @@ for edge in edges:
         CREATE (sourceNode)-[:{type}]->(targetNode)
         """
     cur.execute(load_edge_query)
+    cur.fetchall()
