@@ -39,10 +39,12 @@ for node in nodes:
     load_node_query = f"""
         LOAD CSV FROM '/import/{node}.csv'
             NO HEADER
+            IGNORE BAD
             DELIMITER '|'
             AS row
         CREATE (:{node} {{ id: toInteger(row[0]) }})
         """
+    print(load_node_query)
     cur.execute(load_node_query)
     cur.fetchall()
 
@@ -58,6 +60,7 @@ for edge in edges:
     load_edge_query = f"""
         LOAD CSV FROM '/import/{source_label}_{type}_{target_label}.csv'
             NO HEADER
+            IGNORE BAD
             DELIMITER '|'
             AS row
         MATCH
@@ -65,5 +68,6 @@ for edge in edges:
             (targetNode:{target_label} {{ id: toInteger(row[1]) }})
         CREATE (sourceNode)-[:{type}]->(targetNode)
         """
+    print(load_edge_query)
     cur.execute(load_edge_query)
     cur.fetchall()
