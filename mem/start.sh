@@ -7,6 +7,7 @@ cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd ..
 
 . mem/vars.sh
+. scripts/import-vars.sh
 
 docker stop ${MEMGRAPH_CONTAINER} || echo "No container ${MEMGRAPH_CONTAINER} found"
 
@@ -18,6 +19,7 @@ docker run \
     --volume mg_lib:/var/lib/memgraph:z \
     --volume mg_log:/var/log/memgraph:z \
     --volume mg_etc:/etc/memgraph:z \
+    --volume ${IMPORT_DATA_DIR_PROJECTED_FK}:/import:z \
     --name ${MEMGRAPH_CONTAINER} \
     memgraph/memgraph:${MEMGRAPH_VERSION} \
     --telemetry-enabled=False

@@ -9,3 +9,9 @@ cd ..
 . mem/vars.sh
 
 mem/stop.sh
+
+# initialize and cleanup Memgraph dirs
+mkdir -p ${MEMGRAPH_DIR}/{lib,etc,log}
+rm -rf ${MEMGRAPH_DIR}/{lib,etc,log}/*
+
+mem/start.sh
