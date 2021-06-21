@@ -9,8 +9,6 @@ cd ..
 . mem/vars.sh
 . scripts/import-vars.sh
 
-docker stop ${MEMGRAPH_CONTAINER} || echo "No container ${MEMGRAPH_CONTAINER} found"
-
 # port changed from 7687 to 27687
 docker run \
     --rm \
