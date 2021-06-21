@@ -8,5 +8,4 @@ cd ..
 
 . mem/vars.sh
 
-mem/start.sh
-sleep 5
+# do nothing
