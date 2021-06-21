@@ -10,8 +10,7 @@ cd ..
 
 mem/stop.sh
 
-# initialize and cleanup Memgraph dirs
-mkdir -p ${MEMGRAPH_DIR}/{lib,etc,log}
-rm -rf ${MEMGRAPH_DIR}/{lib,etc,log}/*
+# cleanup Memgraph volumes
+docker volume rm mg_lib mg_etc mg_log || echo "No existing Memgraph volumes found"
 
 mem/start.sh
