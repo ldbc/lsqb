@@ -9,6 +9,8 @@ cd ..
 . mem/vars.sh
 . scripts/import-vars.sh
 
+mem/stop.sh
+
 # port changed from 7687 to 27687
 # to debug, remove the --detach flag and add the following:
 # --also-log-to-stderr 
