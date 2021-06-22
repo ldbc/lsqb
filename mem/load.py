@@ -45,10 +45,22 @@ edges = [
     {"filename": "University_isLocatedIn_City",    "source_label": "University", "type": "IS_LOCATED_IN",  "target_label": "City"      },
 ]
 
+con.autocommit = True
 cur = con.cursor()
+
+cur.execute("CREATE INDEX ON :Message(id)")
+cur.execute("CREATE INDEX ON :Comment(id)")
+cur.execute("CREATE INDEX ON :Post(id)")
+cur.execute("CREATE INDEX ON :Person(id)")
+cur.execute("CREATE INDEX ON :Forum(id)")
+cur.execute("CREATE INDEX ON :City(id)")
+cur.execute("CREATE INDEX ON :Country(id)")
+cur.execute("CREATE INDEX ON :Tag(id)")
+cur.execute("CREATE INDEX ON :TagClass(id)")
 
 for node in nodes:
     filename = node["filename"]
+    #print(filename)
     label = node["label"]
     load_node_query = f"""
         LOAD CSV FROM '/import/{filename}.csv-headerless'
@@ -59,10 +71,10 @@ for node in nodes:
         """
     cur.execute(load_node_query)
     cur.fetchall()
-    con.commit()
 
 for edge in edges:
     filename = edge["filename"]
+    #print(filename)
     source_label = edge["source_label"]
     type = edge["type"]
     target_label = edge["target_label"]
@@ -79,4 +91,3 @@ for edge in edges:
         """
     cur.execute(load_edge_query)
     cur.fetchall()
-    con.commit()
