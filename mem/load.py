@@ -4,7 +4,19 @@ from contextlib import contextmanager
 
 con = mgclient.connect(host='127.0.0.1', port=27687)
 
-nodes = ["City", "Comment", "Company", "Continent", "Country", "Forum", "Person", "Post", "TagClass", "Tag", "University"]
+nodes = [
+    {"filename": "City",       "label": "City"           },
+    {"filename": "Comment",    "label": "Comment:Message"},
+    {"filename": "Company",    "label": "Company"        },
+    {"filename": "Continent",  "label": "Continent"      },
+    {"filename": "Country",    "label": "Country"        },
+    {"filename": "Forum",      "label": "Forum"          },
+    {"filename": "Person",     "label": "Person"         },
+    {"filename": "Post",       "label": "Post:Message"   },
+    {"filename": "TagClass",   "label": "TagClass"       },
+    {"filename": "Tag",        "label": "Tag"            },
+    {"filename": "University", "label": "University"     },
+]
 edges = [
     {"filename": "City_isPartOf_Country",          "source_label": "City",       "type": "IS_PART_OF",     "target_label": "Country"   },
     {"filename": "Comment_hasCreator_Person",      "source_label": "Comment",    "type": "HAS_CREATOR",    "target_label": "Person"    },
@@ -30,23 +42,24 @@ edges = [
     {"filename": "Post_isLocatedIn_Country",       "source_label": "Post",       "type": "IS_LOCATED_IN",  "target_label": "Country"   },
     {"filename": "TagClass_isSubclassOf_TagClass", "source_label": "TagClass",   "type": "IS_SUBCLASS_OF", "target_label": "TagClass"  },
     {"filename": "Tag_hasType_TagClass",           "source_label": "Tag",        "type": "HAS_TYPE",       "target_label": "TagClass"  },
-    {"filename": "University_isLocatedIn_City",    "source_label": "University", "type": "IS_LOCATED_IN",  "target_label": "City"      }
+    {"filename": "University_isLocatedIn_City",    "source_label": "University", "type": "IS_LOCATED_IN",  "target_label": "City"      },
 ]
 
 cur = con.cursor()
 
 for node in nodes:
+    filename = node["filename"]
+    label = node["label"]
     load_node_query = f"""
-        LOAD CSV FROM '/import/{node}.csv'
+        LOAD CSV FROM '/import/{filename}.csv-headerless'
             NO HEADER
-            IGNORE BAD
             DELIMITER '|'
             AS row
-        CREATE (:{node} {{ id: toInteger(row[0]) }})
+        CREATE (:{label} {{ id: toInteger(row[0]) }})
         """
-    print(load_node_query)
     cur.execute(load_node_query)
     cur.fetchall()
+    con.commit()
 
 for edge in edges:
     filename = edge["filename"]
@@ -55,9 +68,8 @@ for edge in edges:
     target_label = edge["target_label"]
 
     load_edge_query = f"""
-        LOAD CSV FROM '/import/{filename}.csv'
+        LOAD CSV FROM '/import/{filename}.csv-headerless'
             NO HEADER
-            IGNORE BAD
             DELIMITER '|'
             AS row
         MATCH
@@ -65,6 +77,6 @@ for edge in edges:
             (targetNode:{target_label} {{ id: toInteger(row[1]) }})
         CREATE (sourceNode)-[:{type}]->(targetNode)
         """
-    print(load_edge_query)
     cur.execute(load_edge_query)
     cur.fetchall()
+    con.commit()

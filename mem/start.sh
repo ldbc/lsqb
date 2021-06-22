@@ -10,6 +10,10 @@ cd ..
 . scripts/import-vars.sh
 
 # port changed from 7687 to 27687
+# to debug, remove the --detach flag and add the following:
+# --also-log-to-stderr 
+# --log-level TRACE
+
 docker run \
     --rm \
     --detach \
