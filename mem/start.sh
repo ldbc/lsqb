@@ -26,6 +26,7 @@ docker run \
     --volume ${IMPORT_DATA_DIR_PROJECTED_FK}:/import:z \
     --name ${MEMGRAPH_CONTAINER} \
     memgraph/memgraph:${MEMGRAPH_VERSION} \
+    --query-execution-timeout-sec 0 \
     --telemetry-enabled=False
 
 sleep 5
