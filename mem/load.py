@@ -53,10 +53,16 @@ cur.execute("CREATE INDEX ON :Comment(id)")
 cur.execute("CREATE INDEX ON :Post(id)")
 cur.execute("CREATE INDEX ON :Person(id)")
 cur.execute("CREATE INDEX ON :Forum(id)")
-cur.execute("CREATE INDEX ON :City(id)")
-cur.execute("CREATE INDEX ON :Country(id)")
+
 cur.execute("CREATE INDEX ON :Tag(id)")
 cur.execute("CREATE INDEX ON :TagClass(id)")
+
+cur.execute("CREATE INDEX ON :City(id)")
+cur.execute("CREATE INDEX ON :Country(id)")
+cur.execute("CREATE INDEX ON :Continent(id)")
+
+cur.execute("CREATE INDEX ON :Company(id)")
+cur.execute("CREATE INDEX ON :University(id)")
 
 for node in nodes:
     filename = node["filename"]
