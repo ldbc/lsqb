@@ -29,4 +29,10 @@ docker run \
     --query-execution-timeout-sec 0 \
     --telemetry-enabled=False
 
-sleep 5
+echo -n "Waiting for Memgraph to start ."
+until python3 -c "import mgclient; con = mgclient.connect(host='127.0.0.1', port=27687)" > /dev/null 2>&1; do
+    echo -n " ."
+    sleep 1
+done
+echo
+echo "Database started"
