@@ -75,5 +75,6 @@ jobs:
             rdm/get.sh
             ddb/load.sh; rdm/convert.sh
             cd rdm
+            ./init-and-load.sh; ./run.sh; ./stop.sh
             cd ..
       - slack/status
