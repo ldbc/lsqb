@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -eu
 set -o pipefail
 
 cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
@@ -20,6 +20,6 @@ docker run \
     --shm-size=${MYSQL_SHARED_MEMORY} \
     mysql:${MYSQL_VERSION}
 
-echo "Waiting for the database to start..."
+echo "Waiting for MySQL to start..."
 sleep 60
-echo "Database started"
+echo "MySQL started"

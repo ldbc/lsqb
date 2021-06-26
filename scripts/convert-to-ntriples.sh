@@ -2,7 +2,7 @@
 
 # script to convert preprocessed CSV files to N-Triples
 
-set -e
+set -eu
 set -o pipefail
 
 cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
@@ -13,9 +13,10 @@ cd ..
 mkdir -p ${IMPORT_DATA_DIR_NTRIPLES}
 
 # initialize output file
-echo > ${TSMB_NT_FILE}
+echo > ${LSQB_NT_FILE}
 
 ## nodes
+echo "Converting nodes"
 for entity in \
     Tag \
     TagClass \
@@ -30,14 +31,12 @@ for entity in \
     Post \
     ;
 do
-    tail -qn +2 ${IMPORT_DATA_DIR_PROJECTED_FK}/${entity}.csv | sed "s@\(.*\)@<http://ldbcouncil.org/nodes/$entity/\1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://ldbcouncil.org/types/${entity}> .@" >> ${TSMB_NT_FILE}
+    echo "- ${entity}"
+    tail -qn +2 ${IMPORT_DATA_DIR_PROJECTED_FK}/${entity}.csv | sed "s#\(.*\)#<http://ldbcouncil.org/nodes/$entity/\1> a <http://ldbcouncil.org/types/${entity}> .#" >> ${LSQB_NT_FILE}
 done
 
-cp ${IMPORT_DATA_DIR_PROJECTED_FK}/Person_isLocatedIn_Place.csv  ${IMPORT_DATA_DIR_PROJECTED_FK}/Person_isLocatedIn_City.csv
-cp ${IMPORT_DATA_DIR_PROJECTED_FK}/Comment_isLocatedIn_Place.csv ${IMPORT_DATA_DIR_PROJECTED_FK}/Comment_isLocatedIn_Country.csv
-cp ${IMPORT_DATA_DIR_PROJECTED_FK}/Post_isLocatedIn_Place.csv    ${IMPORT_DATA_DIR_PROJECTED_FK}/Post_isLocatedIn_Country.csv
-
 ## edges
+echo "Converting edges"
 for entity in \
     University_isLocatedIn_City \
     Company_isLocatedIn_Country \
@@ -66,22 +65,10 @@ for entity in \
     Post_isLocatedIn_Country \
     ;
 do
+    echo "- ${entity}"
     types=(${entity//_/ })
     source=${types[0]}
-    edge=${types[1]}
     target=${types[2]}
-
-    predicate_source=${source}
-    predicate_source=${predicate_source/Comment/Message}
-    predicate_source=${predicate_source/Post/Message}
-
-    predicate_target=${target}
-    predicate_target=${predicate_target/Comment/Message}
-    predicate_target=${predicate_target/Post/Message}
-
-    tail -qn +2 ${IMPORT_DATA_DIR_PROJECTED_FK}/${entity}.csv | sed "s#\([^|]*\)|\([^|]*\)#<http://ldbcouncil.org/nodes/${source}/\1> <http://ldbcouncil.org/${predicate_source}_${edge}_${predicate_target}> <http://ldbcouncil.org/nodes/${target}/\2> .#" >> ${TSMB_NT_FILE}
+    tail -qn +2 ${IMPORT_DATA_DIR_PROJECTED_FK}/${entity}.csv | sed "s#\([^|]*\)|\([^|]*\)#<http://ldbcouncil.org/nodes/${source}/\1> <http://ldbcouncil.org/${entity}> <http://ldbcouncil.org/nodes/${target}/\2> .#" >> ${LSQB_NT_FILE}
 done
 
-rm ${IMPORT_DATA_DIR_PROJECTED_FK}/Person_isLocatedIn_City.csv
-rm ${IMPORT_DATA_DIR_PROJECTED_FK}/Comment_isLocatedIn_Country.csv
-rm ${IMPORT_DATA_DIR_PROJECTED_FK}/Post_isLocatedIn_Country.csv

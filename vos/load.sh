@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -eu
 set -o pipefail
 
 cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
@@ -9,8 +9,8 @@ cd ..
 . vos/vars.sh
 . scripts/import-vars.sh
 
-if [ ! -f ${TSMB_NT_FILE} ]; then
-    echo "Input file ${TSMB_NT_FILE} does not exist"
+if [ ! -f ${LSQB_NT_FILE} ]; then
+    echo "Input file ${LSQB_NT_FILE} does not exist"
     exit 1
 fi
 

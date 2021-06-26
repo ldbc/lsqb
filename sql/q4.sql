@@ -1,5 +1,8 @@
 SELECT count(*)
-FROM Person_knows_Person, Comment, Post
-WHERE Person_knows_Person.Person1Id = Comment.hasCreator_Person
-  AND Person_knows_Person.Person2Id = Post.hasCreator_Person
-  AND Comment.replyOf_Post = Post.id;
+FROM Message_hasTag_Tag
+JOIN Message_hasCreator_Person
+  ON Message_hasTag_Tag.MessageId = Message_hasCreator_Person.MessageId
+JOIN Comment_replyOf_Message 
+  ON Comment_replyOf_Message.ParentMessageId = Message_hasTag_Tag.MessageId
+JOIN Person_likes_Message
+  ON Person_likes_Message.MessageId = Message_hasTag_Tag.MessageId;

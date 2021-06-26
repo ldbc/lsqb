@@ -34,8 +34,8 @@ def run_query(con, sf, query_id, query_spec, numThreads, results_file):
     return (duration, result)
 
 if len(sys.argv) < 2:
-    print("Usage: client.py sfX [threads]")
-    print("where X is the scale factor")
+    print("Usage: client.py sf [threads]")
+    print("where sf is the scale factor")
     exit(1)
 else:
     sf = sys.argv[1]
@@ -48,6 +48,8 @@ else:
 con = duckdb.connect(database='ddb/scratch/ldbc.duckdb', read_only=True)
 
 with open(f"results/results.csv", "a+") as results_file:
-    for i in range(1, 7):
+    for i in range(1, 10):
         with open(f"sql/q{i}.sql", "r") as query_file:
             run_query(con, sf, i, query_file.read(), numThreads, results_file)
+
+con.close()

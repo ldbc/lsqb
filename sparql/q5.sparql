@@ -3,15 +3,9 @@ PREFIX lp: <http://ldbcouncil.org/>
 
 SELECT (COUNT(*) as ?count)
 WHERE { 
- ?personA lp:Person_isLocatedIn_City ?cityA .
- ?personB lp:Person_isLocatedIn_City ?cityB .
- ?personC lp:Person_isLocatedIn_City ?cityC .
- ?cityA lp:City_isPartOf_Country ?country .
- ?cityB lp:City_isPartOf_Country ?country .
- ?cityC lp:City_isPartOf_Country ?country .
-
- { ?personA lp:Person_knows_Person ?personB . } UNION { ?personB lp:Person_knows_Person ?personA . }
- { ?personB lp:Person_knows_Person ?personC . } UNION { ?personC lp:Person_knows_Person ?personB . }
- { ?personC lp:Person_knows_Person ?personA . } UNION { ?personA lp:Person_knows_Person ?personC . }
-
+ ?message (lp:Comment_hasTag_Tag | lp:Post_hasTag_Tag ) ?tag1 .
+ ?reply (lp:Comment_replyOf_Comment | lp:Comment_replyOf_Post) ?message .
+ ?reply lp:Comment_hasTag_Tag ?tag2 .
+ FILTER( ?tag1 != ?tag2 )
 }
+

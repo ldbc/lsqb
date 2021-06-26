@@ -5,39 +5,21 @@
 Grab [RapidMatch](https://vldb.org/pvldb/vol14/p176-sun.pdf) and build it:
 
 ```bash
-git clone --branch tsmb https://github.com/szarnyasg/RapidMatch/
-cd RapidMatch && mkdir build && cd build && cmake .. && make
+./get.sh
 ```
 
-Run it as follows:
+## Converting data
+
+Run the conversion script. :warning: This script first loads the data in DuckDB under in the repository's `ddb/scratch` directory.
 
 ```bash
-${RAPIDMATCH_DIR}/RapidMatch/build/matching/RapidMatch.out \
-  -d data_graph/ldbc.graph  \
-  -q query_graph/person_triangle.graph
-  -order nd \
-  -time_limit 300 \
-  -preprocess true
+export SF=example && ./convert.sh
 ```
 
-## Generating data
+Note that converting SF100 on a server with an NVMe SSD disk takes about ~1 hour.
 
-First, load the desired data set to DuckDB in this repository.
+The label mapping is the following:
 
-```bash
-export SF=example
-cd ddb
-./load.sh
-cd ..
-```
-
-Then, run:
-
-```bash
-cat rdm/conv.sql | sed "s/SCALE_FACTOR/${SF}/g" | ddb/scratch/duckdb ddb/scratch/ldbc.duckdb
-```
-
-Label mapping :
 ```
 Person: 0
 City: 1
@@ -47,37 +29,56 @@ Forum: 4
 Post: 5
 Comment: 6
 Tag: 7
-TagClass: 8 TODO
+TagClass: 8
 ```
 
-## Queries
+Some node  edges such as Forum-hasModerator-Person are omitted from the converted graph.
 
-| Query   | Implemented          | Comments                  |
-| ------- | -------------------- | ------------------------- |
-| 1       | :white_check_mark:   | Need to add `tag class`   |
-| 2       | :white_check_mark:   | Can't capture opt edges   |
-| 3       | :white_check_mark:   | Can't capture neg edge    |
-| 4       | :white_check_mark:   |                           |
-| 5       | :white_check_mark:   |                           |
-| 6       | :white_check_mark:   | Can't capture neg edge    |
+## Running the queries
+
+When running, set [an excessive time limit](https://github.com/RapidsAtHKUST/RapidMatch/issues/1) to avoid returning too few results.
+
+```bash
+export SF=example && ./run.sh
+```
+
+### Queries
+
+| Query   | Implemented          | Comments                             |
+| ------- | -------------------- | ------------------------------------ |
+| 1       | :white_check_mark:   | homomorphic/isomorphic - needs hasMember edges |
+| 2       | :white_check_mark:   | homomorphic/isomorphic               |
+| 3       | :white_check_mark:   | homomorphic                          |
+| 4       |                      | Can't capture different edge labels  |
+| 5       | :white_check_mark:   | isomorphic - needs separate C/P queries, undirected replyOf edge needs special handling |
+| 6       | :white_check_mark:   | isomorphic                           |
+| 7       |                      | Can't capture opt edges              |
+| 8       |                      | Can't capture neg edge               |
+| 9       |                      | Can't capture neg edge               |
+
+
+```bash
+export SF
+for SF in example 0.1 0.3 1 3 10 30 100; do
+  echo SF${SF}
+  ./run.sh
+done
+```
 
 ## Validation
+
+TODO: revise
 
 Only queries 1, 4, and 5 can be implemented as per the benchmark specification.
 - Split query 2 into a query graph for post and for comment, ignoring optional edges.
 - Ignored neg edges into queries 3 and 6. 
 
-| Query       | Expected (Neo4j)     | Isomorphisms |
-| -------     | -------------------- | ------------ |
-| 1           | 3                    | 3            |
-| 2 (post)    | -                    | 2            |
-| 2 (comment) | -                    | 6            |
-| 3           | -                    | 1            |
-| 4           | 3                    | 3            |
-| 5           | 6                    | 0            |
-| 6           | -                    | 8            |
-
-TODO:
-- [ ] impl a dummy client
-- [ ] gather results 
-- [ ] switch flag for homomorphisms
+| Query       | Expected (Neo4j)     | Isomorphisms | Homomorphisms |
+| -------     | -------------------- | ------------ | ------------- |
+| 1           | 3                    | 3            | 3             |
+| 2 (post)    | -                    | 2            |               |
+| 2 (comment) | -                    | 6            |               |
+| 3           | -                    | 1            |               |
+| 4           | 3                    | 3            | 3             |
+| 5           | 6                    | 0            | 6             |
+| 6           | -                    | 8            |               |

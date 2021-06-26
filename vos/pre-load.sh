@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -eu
 set -o pipefail
 
 cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
@@ -10,6 +10,7 @@ cd ..
 . vos/vars.sh
 
 vos/stop.sh
+
 
 # take ownership of the mounted data in the scratch directory and clean it up
 docker run -it --rm \
@@ -22,6 +23,9 @@ docker run -it --rm \
 
 #sudo chown -R $USER:$USER vos/scratch/
 rm -rf vos/scratch/*
+
+mkdir -p ${VIRTUOSO_DATABASE_DIR}
+#cp vos/virtuoso.ini ${VIRTUOSO_DATABASE_DIR}
 
 vos/start.sh
 

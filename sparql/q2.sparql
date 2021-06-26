@@ -2,10 +2,10 @@ PREFIX lt: <http://ldbcouncil.org/types/>
 PREFIX lp: <http://ldbcouncil.org/>
 
 SELECT (COUNT(*) as ?count)
-WHERE {
- ?message lp:Message_hasTag_Tag ?tag .
- ?message lp:Message_hasCreator_Person ?person .
-
- OPTIONAL { ?liker lp:Person_likes_Message ?message }
- OPTIONAL { ?reply lp:Message_replyOf_Message ?message }
+WHERE { 
+ ?personA (lp:Person_knows_Person | ^lp:Person_knows_Person ) ?personB .
+ ?comment lp:Comment_hasCreator_Person ?personA .
+ ?comment lp:Comment_replyOf_Post ?post .
+ ?post lp:Post_hasCreator_Person ?personB .
 }
+

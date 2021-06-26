@@ -1,4 +1,4 @@
 delete from DB.DBA.load_list;
-ld_dir ('/tmp/import', 'tsmb.ttl', 'http://ldbcouncil.org/');
+ld_dir ('/tmp/import', 'lsqb.nt', 'http://ldbcouncil.org/');
 rdf_loader_run ();
 checkpoint;
