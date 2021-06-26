@@ -15,7 +15,7 @@ Run the following commands:
 build/trident load -l debug -f /data/tri/scratch/db/  -i /data/tri/scratch/out  --logfile /data/tri/scratch/out.log  --enableFixedStrat 1 --fixedStrat 96
 cat /data/tri/scratch/out.log
 
-for q in /data/tri/sparql/q*.sparql; do
+for q in /data/sparql/q*.sparql; do
     build/trident query -l info -i  /data/tri/scratch/out -q $q
 done
 ```
