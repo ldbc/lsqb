@@ -1,20 +1,20 @@
 SELECT count(*)
 FROM Country
 JOIN City
-  ON City.isPartOf_Country = Country.id
+  ON City.isPartOf_CountryId = Country.CountryId
 JOIN Person
-  ON Person.isLocatedIn_City = City.id
+  ON Person.isLocatedIn_CityId = City.CityId
 JOIN Forum_hasMember_Person
-  ON Forum_hasMember_Person.hasMember_Person = Person.id
+  ON Forum_hasMember_Person.PersonId = Person.PersonId
 JOIN Forum
-  ON Forum.id = Forum_hasMember_Person.id
+  ON Forum.ForumId = Forum_hasMember_Person.ForumId
 JOIN Post
-  ON Post.Forum_containerOf = Forum.id
+  ON Post.Forum_containerOfId = Forum.ForumId
 JOIN Comment
-  ON Comment.replyOf_Post = Post.id
+  ON Comment.replyOf_PostId = Post.PostId
 JOIN Comment_hasTag_Tag
-  ON Comment_hasTag_Tag.id = Comment.id
+  ON Comment_hasTag_Tag.CommentId = Comment.CommentId
 JOIN Tag
-  ON Tag.id = Comment_hasTag_Tag.hasTag_Tag
+  ON Tag.TagId = Comment_hasTag_Tag.TagId
 JOIN TagClass
-  ON Tag.hasType_TagClass = TagClass.id;
+  ON Tag.hasType_TagClassId = TagClass.TagClassId;

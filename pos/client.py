@@ -24,7 +24,7 @@ def run_query(con, variant, sf, query_id, query_spec, system, results_file):
     cur = con.cursor()
     try:
         with timeout(300):
-          cur.execute(query_spec)
+            cur.execute(query_spec)
     except TimeoutError:
         return
     result = cur.fetchall()

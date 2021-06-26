@@ -45,7 +45,7 @@ docker run \
     --relationships=IS_LOCATED_IN="/import/Company_isLocatedIn_Country.csv" \
     --relationships=HAS_TYPE="/import/Tag_hasType_TagClass.csv" \
     --relationships=HAS_CREATOR="/import/Comment_hasCreator_Person.csv" \
-    --relationships=IS_LOCATED_IN="/import/Comment_isLocatedIn_Place.csv" \
+    --relationships=IS_LOCATED_IN="/import/Comment_isLocatedIn_Country.csv" \
     --relationships=REPLY_OF="/import/Comment_replyOf_Comment.csv" \
     --relationships=REPLY_OF="/import/Comment_replyOf_Post.csv" \
     --relationships=CONTAINER_OF="/import/Forum_containerOf_Post.csv" \
@@ -53,14 +53,14 @@ docker run \
     --relationships=HAS_MODERATOR="/import/Forum_hasModerator_Person.csv" \
     --relationships=HAS_TAG="/import/Forum_hasTag_Tag.csv" \
     --relationships=HAS_INTEREST="/import/Person_hasInterest_Tag.csv" \
-    --relationships=IS_LOCATED_IN="/import/Person_isLocatedIn_Place.csv" \
+    --relationships=IS_LOCATED_IN="/import/Person_isLocatedIn_City.csv" \
     --relationships=KNOWS="/import/Person_knows_Person.csv" \
     --relationships=LIKES="/import/Person_likes_Comment.csv" \
     --relationships=LIKES="/import/Person_likes_Post.csv" \
     --relationships=HAS_CREATOR="/import/Post_hasCreator_Person.csv" \
     --relationships=HAS_TAG="/import/Comment_hasTag_Tag.csv" \
     --relationships=HAS_TAG="/import/Post_hasTag_Tag.csv" \
-    --relationships=IS_LOCATED_IN="/import/Post_isLocatedIn_Place.csv" \
+    --relationships=IS_LOCATED_IN="/import/Post_isLocatedIn_Country.csv" \
     --relationships=STUDY_AT="/import/Person_studyAt_University.csv" \
     --relationships=WORK_AT="/import/Person_workAt_Company.csv" \
     --delimiter '|'

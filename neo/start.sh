@@ -28,7 +28,7 @@ docker run \
     --name ${NEO4J_CONTAINER_NAME} \
     neo4j:${NEO4J_VERSION} \
 
-echo "Waiting for the database to start..."
-until docker exec --interactive --tty ${NEO4J_CONTAINER_NAME} cypher-shell "RETURN 'Database has started successfully' AS message"; do
+echo "Waiting for Neo4j to start..."
+until docker exec --interactive --tty ${NEO4J_CONTAINER_NAME} cypher-shell "RETURN 'Neo4j started' AS message"; do
     sleep 1
 done

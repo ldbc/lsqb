@@ -3,5 +3,5 @@
 ## Profiling
 
 ```bash
-docker exec tsmb-pos psql -U postgres postgres -c "explain select count(*) from person;"
+docker exec lsqb-pos psql -U postgres postgres -c "explain select count(*) from person;"
 ```

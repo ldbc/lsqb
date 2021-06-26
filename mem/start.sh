@@ -7,18 +7,15 @@ cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd ..
 
 . mem/vars.sh
+. scripts/import-vars.sh
 
-# grab and load docker image if needed
-if docker image inspect memgraph:${MEMGRAPH_VERSION}-community > /dev/null; then
-    echo Docker image found
-else
-    echo Docker image not found, downloading it...
-    curl https://download.memgraph.com/memgraph/v${MEMGRAPH_VERSION}/docker/memgraph-${MEMGRAPH_VERSION}-community-docker.tar.gz | docker load
-fi
-
-docker stop ${MEMGRAPH_CONTAINER} || echo "No container ${MEMGRAPH_CONTAINER} found"
+mem/stop.sh
 
 # port changed from 7687 to 27687
+# to debug, remove the --detach flag and add the following:
+# --also-log-to-stderr 
+# --log-level TRACE
+
 docker run \
     --rm \
     --detach \
@@ -26,8 +23,16 @@ docker run \
     --volume mg_lib:/var/lib/memgraph:z \
     --volume mg_log:/var/log/memgraph:z \
     --volume mg_etc:/etc/memgraph:z \
+    --volume ${IMPORT_DATA_DIR_PROJECTED_FK}:/import:z \
     --name ${MEMGRAPH_CONTAINER} \
-    memgraph \
+    memgraph/memgraph:${MEMGRAPH_VERSION} \
+    --query-execution-timeout-sec 0 \
     --telemetry-enabled=False
 
-sleep 5
+echo -n "Waiting for Memgraph to start ."
+until python3 -c "import mgclient; con = mgclient.connect(host='127.0.0.1', port=27687)" > /dev/null 2>&1; do
+    echo -n " ."
+    sleep 1
+done
+echo
+echo "Database started"

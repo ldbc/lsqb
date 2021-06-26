@@ -8,6 +8,4 @@ cd ..
 
 . mem/vars.sh
 
-mem/start.sh
-
-python3 mem/index.py
+# do nothing

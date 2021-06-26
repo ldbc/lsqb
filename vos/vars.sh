@@ -1,5 +1,5 @@
 export VIRTUOSO_VERSION=7.2-alpine
-export VIRTUOSO_CONTAINER_NAME=tsmb-vos
+export VIRTUOSO_CONTAINER_NAME=lsqb-vos
 export VIRTUOSO_USER="dba"
 export VIRTUOSO_PWD="mysecret"
 export VIRTUOSO_ENV="DBA_PASSWORD=${VIRTUOSO_PWD}"

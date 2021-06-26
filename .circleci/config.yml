@@ -1,17 +1,12 @@
 # CI configuration that runs the benchmark on the small data set included in the repository
 version: 2.1
 orbs:
-  slack: circleci/slack@4.2.0
-  gh-pages: sugarshin/gh-pages@0.0.6
+  slack: circleci/slack@3.4.2
 workflows:
   version: 2
   build:
     jobs:
-      - build:
-          context:
-            - Slack
-# filters:
-#   branches:
+      - build
 
 jobs:
   build:
@@ -38,6 +33,15 @@ jobs:
           name: Test Neo4j
           command: |
             cd neo
+            ./pre-load.sh; ./load.sh; ./post-load.sh; ./run.sh; ./stop.sh
+            cd ..
+      - run:
+          name: Test Memgraph
+          command: |
+            cd data/social-network-sfexample-projected-fk/
+            for f in *.csv; do tail -n +2 ${f} > ${f}-headerless; done
+            cd ../..
+            cd mem
             ./pre-load.sh; ./load.sh; ./post-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
@@ -72,11 +76,4 @@ jobs:
             ddb/load.sh; rdm/convert.sh
             cd rdm
             cd ..
-      - slack/notify:
-          channel: 'G01LGEMKXGT'
-          event: fail
-          template: basic_fail_1
-      - slack/notify:
-          channel: 'G01LGEMKXGT'
-          event: pass
-          template: success_tagged_deploy_1
+      - slack/status

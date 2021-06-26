@@ -26,7 +26,7 @@ In the `umb` directory, run:
 
 ```bash
 echo "SELECT 42 AS x" > scratch/test.sql
-docker exec tsmb-umb /umbra/bin/sql /scratch/ldbc.db /scratch/test.sql
+docker exec lsqb-umb /umbra/bin/sql /scratch/ldbc.db /scratch/test.sql
 ```
 
 To print the query plans for all queries, run:

@@ -25,7 +25,7 @@ def run_query(con, sf, query_id, query_spec, results_file):
     cur = con.cursor()
     try:
         with timeout(300):
-          cur.execute(query_spec)
+            cur.execute(query_spec)
     except TimeoutError:
         return
     except mgclient.DatabaseError:
@@ -35,7 +35,7 @@ def run_query(con, sf, query_id, query_spec, results_file):
     result = cur.fetchall()
     end = time.time()
     duration = end - start
-    print(f"Memgraph\t\t{sf}\t{query_id}\t{duration:.4f}\t{result[0][0]}")
+    #print(f"Memgraph\t\t{sf}\t{query_id}\t{duration:.4f}\t{result[0][0]}")
     results_file.write(f"Memgraph\t\t{sf}\t{query_id}\t{duration:.4f}\t{result[0][0]}\n")
     results_file.flush()
     return (duration, result)

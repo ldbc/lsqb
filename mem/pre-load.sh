@@ -9,3 +9,8 @@ cd ..
 . mem/vars.sh
 
 mem/stop.sh
+
+# cleanup Memgraph volumes
+docker volume rm mg_lib mg_etc mg_log || echo "No existing Memgraph volumes found"
+
+mem/start.sh

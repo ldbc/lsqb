@@ -19,6 +19,10 @@ docker run \
     --shm-size=${POSTGRES_SHARED_MEMORY} \
     postgres:${POSTGRES_VERSION}
 
-echo "Waiting for the database to start..."
-sleep 10
+echo -n "Waiting for the database to start ."
+until python3 pos/test-db-connection.py > /dev/null 2>&1; do
+    echo -n " ."
+    sleep 1
+done
+echo
 echo "Database started"

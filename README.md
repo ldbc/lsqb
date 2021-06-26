@@ -1,12 +1,11 @@
-# Labelled Subgraph Query Benchmark
+# Labelled Subgraph Query Benchmark (LSQB)
 
 [![Build Status](https://circleci.com/gh/ldbc/lsqb.svg?style=svg&circle-token=b558369d54d3205fc9d985a4dd2196b967ebcff8)](https://circleci.com/gh/ldbc/lsqb)
 
-A benchmark for subgraph matching but with types information (edge types, mostly). The primary goal of this benchmark is to test the query optimizer (join ordering, choosing between binary and n-ary joins) and the execution engine (join performance, support for worst-case optimal joins) of graph databases. Features found in more mature database systems and query languages such as date/string operations, query composition, complex aggregates/filters are out of scope for this benchmark.
+A benchmark for subgraph matching but with type information (vertex and edge types). The primary goal of this benchmark is to test the query optimizer (join ordering, choosing between binary and n-ary joins) and the execution engine (join performance, support for worst-case optimal joins) of graph databases. Features found in more mature database systems and query languages such as date/string operations, query composition, complex aggregates/filters are out of scope for this benchmark.
 
-* [Presentation](https://docs.google.com/presentation/d/1pxyX_CWhFVYEttjTG2BrzuaMkEuLRxfhf5iX6n0leZI/edit)
-* [Design Doc](https://docs.google.com/document/d/1w1cMNyrOoarG69fmNDr5UV7w_T0O0j-yZ0aYu29iWw8/edit)
 * [VLDB'19 keynote by Tamer Özsu](https://vldb2019.github.io/files/VLDB19-keynote-1-slides.pdf)
+* [CACM'21 technical perspective paper on graphs (preprint)](https://arxiv.org/pdf/2012.06171.pdf)
 
 ## Getting started
 
@@ -14,10 +13,18 @@ A benchmark for subgraph matching but with types information (edge types, mostly
 
 1. Install Docker on your machine.
 
+1. (Optional) Change the location of Docker's data directory ([instructions](https://github.com/ftsrg/cheat-sheets/wiki/Docker#move-docker-data-folder-to-a-different-location)).
+
 1. Install the required dependencies:
 
    ```bash
    scripts/install-dependencies.sh
+   ```
+
+1. (Optional) Install "convenience packages" (e.g. vim, ag, etc.).
+
+   ```bash
+   scripts/install-convenience-packages.sh
    ```
 
 1. (Optional) Add the Umbra binaries as described in the `umb/README.md` file.
@@ -73,17 +80,18 @@ An example data set is provided with the substitution `SF=example`:
 
    ```bash
    export SF=1
-   cp -r data/csv-only-ids-projected-fk/ ~/git/snb/tsmb/data/social-network-sf${SF}-projected-fk
-   cp -r data/csv-only-ids-merged-fk/    ~/git/snb/tsmb/data/social-network-sf${SF}-merged-fk
+   cp -r data/csv-only-ids-projected-fk/ ~/git/snb/lsqb/data/social-network-sf${SF}-projected-fk
+   cp -r data/csv-only-ids-merged-fk/    ~/git/snb/lsqb/data/social-network-sf${SF}-merged-fk
    ```
 
 ### Running the benchmark
 
-The following implementations are provided.
+The following implementations are provided. The :whale: symbol denotes that the implementation uses Docker.
 
 Stable implementations:
 
 * `umb`: [Umbra](https://umbra-db.com/) [SQL] :whale:
+* `hyp`: [HyPer](https://hyper-db.de/) [SQL] :whale:
 * `ddb`: [DuckDB](https://www.duckdb.org/) [SQL] (bare metal)
 * `pos`: [PostgreSQL](https://www.postgresql.org/) [SQL] :whale:
 * `mys`: [MySQL](https://www.mysql.com/) [SQL] :whale:
