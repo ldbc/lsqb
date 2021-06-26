@@ -33,7 +33,7 @@ jobs:
           name: Test Neo4j
           command: |
             cd neo
-            ./pre-load.sh; ./load.sh; ./post-load.sh; ./run.sh; ./stop.sh
+            ./init-and-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
           name: Test Memgraph
@@ -42,38 +42,39 @@ jobs:
             for f in *.csv; do tail -n +2 ${f} > ${f}-headerless; done
             cd ../..
             cd mem
-            ./pre-load.sh; ./load.sh; ./post-load.sh; ./run.sh; ./stop.sh
+            ./init-and-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
           name: Test DuckDB
           command: |
             cd ddb
-            ./pre-load.sh; ./load.sh; ./post-load.sh; ./run.sh; ./stop.sh
+            ./init-and-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
           name: Test PostgreSQL
           command: |
             cd pos
-            ./pre-load.sh; ./load.sh; ./post-load.sh; ./run.sh; ./stop.sh
+            ./init-and-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
           name: Test RedisGraph
           command: |
             export PATH="~/.local/bin:$PATH"
             cd red
-            ./pre-load.sh; ./load.sh; ./post-load.sh; ./run.sh; ./stop.sh
+            ./init-and-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
           name: Test Virtuoso
           command: |
             cd vos
-            ./pre-load.sh; ./load.sh; ./post-load.sh; ./run.sh; ./stop.sh
+            ./init-and-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
-          name: Test RapidMatch
+          name: Test RapidMatch conversion script
           command: |
             rdm/get.sh
             ddb/load.sh; rdm/convert.sh
             cd rdm
+            ./init-and-load.sh; ./run.sh; ./stop.sh
             cd ..
       - slack/status

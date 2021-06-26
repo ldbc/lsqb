@@ -44,8 +44,8 @@ CREATE VIEW edges
     UNION ALL SELECT PersonId   AS sourceId, isLocatedIn_CityId      AS targetId, 'Person'   AS sourceLabel, 'City'     AS targetLabel FROM Person
     UNION ALL SELECT CityId     AS sourceId, isPartOf_CountryId      AS targetId, 'City'     AS sourceLabel, 'Country'  AS targetLabel FROM City
     UNION ALL SELECT CountryId  AS sourceId, isPartOf_ContinentId    AS targetId, 'Country'  AS sourceLabel, 'Continent'AS targetLabel FROM Country
-    UNION ALL SELECT PersonId   AS sourceId, PersonId                AS targetId, 'Forum'    AS sourceLabel, 'Person'   AS targetLabel FROM Forum_hasMember_Person
-    UNION ALL SELECT TagId      AS sourceId, TagId                   AS targetId, 'Forum'    AS sourceLabel, 'Tag'      AS targetLabel FROM Forum_hasTag_Tag
+    UNION ALL SELECT ForumId    AS sourceId, PersonId                AS targetId, 'Forum'    AS sourceLabel, 'Person'   AS targetLabel FROM Forum_hasMember_Person
+    UNION ALL SELECT ForumId    AS sourceId, TagId                   AS targetId, 'Forum'    AS sourceLabel, 'Tag'      AS targetLabel FROM Forum_hasTag_Tag
     UNION ALL SELECT PostId     AS sourceId, hasCreator_PersonId     AS targetId, 'Post'     AS sourceLabel, 'Person'   AS targetLabel FROM Post
     UNION ALL SELECT PostId     AS sourceId, forum_containerOfId     AS targetId, 'Post'     AS sourceLabel, 'Forum'    AS targetLabel FROM Post
     UNION ALL SELECT PostId     AS sourceId, isLocatedIn_CountryId   AS targetId, 'Post'     AS sourceLabel, 'Country'  AS targetLabel FROM Post

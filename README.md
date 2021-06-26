@@ -127,8 +127,10 @@ Some systems need to be online before loading, while others need to be offline. 
 * `load.sh`: loads the data
 * `post-load.sh`: steps after loading the data (e.g. starting the DB for systems with offline loaders)
 
-To run the benchmark and clean up after execution, we use two scripts:
+The `init-and-load.sh` script calls these three scripts (`pre-load.sh`, `load.sh`, and `post-load.sh`).
+Therefore, to run the benchmark and clean up after execution, use the following three scripts:
 
+* `init-and-load.sh`: initialize the database and load the data
 * `run.sh`: runs the benchmark 
 * `stop.sh`: stops the database
 
@@ -137,7 +139,7 @@ Example usage that loads scale factor 0.3 to Neo4j:
 ```bash
 cd neo
 export SF=0.3
-./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
+./init-and-load.sh && ./run.sh && ./stop.sh
 ```
 
 Example usage that runs multiple scale factors on DuckDB. Note that the `SF` environment variable needs to be exported.
@@ -146,7 +148,7 @@ Example usage that runs multiple scale factors on DuckDB. Note that the `SF` env
 cd ddb
 export SF
 for SF in 0.1 0.3 1; do
-   ./pre-load.sh && ./load.sh && ./post-load.sh && ./run.sh && ./stop.sh
+   ./init-and-load.sh && ./run.sh && ./stop.sh
 done
 ```
 
