@@ -9,7 +9,7 @@ cd ..
 . red/vars.sh
 . scripts/import-vars.sh
 
-redisgraph-bulk-loader \
+redisgraph-bulk-insert \
     SocialGraph \
     --enforce-schema \
     --nodes-with-label Continent "${IMPORT_DATA_DIR_PROJECTED_FK}/Continent.csv" \
