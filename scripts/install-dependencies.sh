@@ -27,6 +27,7 @@ pip3 install --user --progress-bar off redisgraph redisgraph-bulk-loader
 pip3 install --user --progress-bar off psycopg2-binary
 pip3 install --user --progress-bar off mysql-connector-python
 pip3 install --user --progress-bar off SPARQLWrapper
+pip3 install --user --progress-bar off clickhouse-driver
 #pip3 install --user --progress-bar off pyodbc virtuoso
 
 # visualization
