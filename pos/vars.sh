@@ -1,3 +1,4 @@
+export POSTGRES_HOME=`pwd`/pos/scratch
 export POSTGRES_VERSION=13.1
 export POSTGRES_SCHEMA_DIR=`pwd`/sql
 export POSTGRES_CONTAINER_NAME=lsqb-pos
