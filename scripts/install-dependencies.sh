@@ -23,7 +23,7 @@ pip3 install --user --progress-bar off duckdb==${DUCKDB_VERSION}
 pip3 install --user --progress-bar off neo4j
 pip3 install --user --progress-bar off pymgclient
 pip3 install --user --progress-bar off wheel
-pip3 install --user --progress-bar off redisgraph redisgraph-bulk-loader
+pip3 install --user --progress-bar off redisgraph redisgraph-bulk-loader pathos
 pip3 install --user --progress-bar off psycopg2-binary
 pip3 install --user --progress-bar off mysql-connector-python
 pip3 install --user --progress-bar off SPARQLWrapper
