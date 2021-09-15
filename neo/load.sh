@@ -22,6 +22,7 @@ docker run \
     --publish=7474:7474 \
     --publish=7687:7687 \
     --volume=${NEO4J_DATA_DIR}:/data:z \
+    --volume=${NEO4J_HOME}/logs:/logs:z \
     --volume=${IMPORT_DATA_DIR_PROJECTED_FK}:/import:z \
     ${NEO4J_ENV_VARS} \
     neo4j:${NEO4J_VERSION} \
