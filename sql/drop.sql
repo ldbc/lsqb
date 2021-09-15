@@ -10,6 +10,8 @@ DROP TABLE IF exists University;
 DROP TABLE IF exists Continent;
 DROP TABLE IF exists Country;
 DROP TABLE IF exists City;
+DROP TABLE IF exists Tag;
+DROP TABLE IF exists TagClass;
 DROP TABLE IF exists Forum;
 DROP TABLE IF exists Comment;
 DROP TABLE IF exists Post;
