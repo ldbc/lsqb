@@ -10,9 +10,11 @@ cd ..
 
 if [[ ! -z $(which yum) ]]; then
     sudo yum install -y python3-pip zstd unzip unixODBC-devel wget
+    sudo yum install -y cmake openssl-devel
 elif [[ ! -z $(which apt) ]]; then
     sudo apt update
     sudo apt install -y python3-pip zstd unzip unixodbc-dev wget
+    sudo apt install -y cmake libssl-dev
 fi
 
 # DuckDB binary
