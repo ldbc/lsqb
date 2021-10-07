@@ -9,10 +9,10 @@ cd ..
 . ddb/vars.sh
 
 if [[ ! -z $(which yum) ]]; then
-    sudo yum install -y python3-pip zstd unzip unixODBC-devel
+    sudo yum install -y python3-pip zstd unzip unixODBC-devel wget
 elif [[ ! -z $(which apt) ]]; then
     sudo apt update
-    sudo apt install -y python3-pip zstd unzip unixodbc-dev
+    sudo apt install -y python3-pip zstd unzip unixodbc-dev wget
 fi
 
 # DuckDB binary
