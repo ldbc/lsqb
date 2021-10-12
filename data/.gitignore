@@ -3,3 +3,4 @@ social-network-sf*/
 !social-network-sfexample-*/
 *.nt
 *.nq
+*.csv-headerless
