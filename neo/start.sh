@@ -9,9 +9,9 @@ cd ..
 . neo/vars.sh
 
 if [ ! -d ${NEO4J_DATA_DIR} ]; then
-    echo "Neo4j data is not loaded"
-    exit 1
+    mkdir -p ${NEO4J_DATA_DIR}
 fi
+mkdir -p ${NEO4J_HOME}/{logs,import,plugins}
 
 docker run \
     --rm \
