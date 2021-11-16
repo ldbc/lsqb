@@ -15,7 +15,7 @@ docker run \
     --name ${POSTGRES_CONTAINER_NAME} \
     --env ${POSTGRES_PASSWORD_POLICY} \
     --volume=${IMPORT_DATA_DIR_MERGED_FK}:/data:z \
-	--volume=${POSTGRES_HOME}:/var/lib/postgresql/data:z \
+    --volume=${POSTGRES_HOME}:/var/lib/postgresql/data:z \
     --detach \
     --shm-size=${POSTGRES_SHARED_MEMORY} \
     postgres:${POSTGRES_VERSION}
