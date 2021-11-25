@@ -68,7 +68,7 @@ An example data set is provided with the substitution `SF=example`:
    export DATAGEN_DATA_DIR=`pwd`
    ```
 
-1. Go to the [data converter repository](https://github.com/ldbc/ldbc_snb_datagen/):
+1. Go to the [data converter repository](https://github.com/ldbc/ldbc_snb_data_converter):
 
    ```bash
    ./spark-concat.sh ${DATAGEN_DATA_DIR}
