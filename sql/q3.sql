@@ -1,11 +1,9 @@
 SELECT count(*)
-FROM Country
-JOIN City AS CityA
-  ON CityA.isPartOf_CountryId = Country.CountryId
+FROM City AS CityA
 JOIN City AS CityB
-  ON CityB.isPartOf_CountryId = Country.CountryId
+  ON CityB.isPartOf_CountryId = CityA.isPartOf_CountryId
 JOIN City AS CityC
-  ON CityC.isPartOf_CountryId = Country.CountryId
+  ON CityC.isPartOf_CountryId = CityA.isPartOf_CountryId
 JOIN Person AS PersonA
   ON PersonA.isLocatedIn_CityId = CityA.CityId
 JOIN Person AS PersonB
