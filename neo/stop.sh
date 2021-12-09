@@ -8,4 +8,4 @@ cd ..
 
 . neo/vars.sh
 
-docker stop ${NEO4J_CONTAINER_NAME} || echo "No container ${NEO4J_CONTAINER_NAME} found"
+docker rm -f ${NEO4J_CONTAINER_NAME} || echo "No container ${NEO4J_CONTAINER_NAME} found"

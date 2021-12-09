@@ -8,4 +8,4 @@ cd ..
 
 . mem/vars.sh
 
-docker stop ${MEMGRAPH_CONTAINER} || echo "No container ${MEMGRAPH_CONTAINER} found"
+docker rm -f ${MEMGRAPH_CONTAINER} || echo "No container ${MEMGRAPH_CONTAINER} found"

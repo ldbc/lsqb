@@ -8,4 +8,4 @@ cd ..
 
 . red/vars.sh
 
-docker stop ${REDISGRAPH_CONTAINER_NAME} || echo "No container ${REDISGRAPH_CONTAINER_NAME} found"
+docker rm -f ${REDISGRAPH_CONTAINER_NAME} || echo "No container ${REDISGRAPH_CONTAINER_NAME} found"

@@ -7,4 +7,4 @@ cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 . vars.sh
 
-docker stop ${UMBRA_CONTAINER_NAME} || echo "No container ${UMBRA_CONTAINER_NAME} found"
+docker rm -f ${UMBRA_CONTAINER_NAME} || echo "No container ${UMBRA_CONTAINER_NAME} found"
