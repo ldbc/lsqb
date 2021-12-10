@@ -4,31 +4,31 @@ import os
 vertex_labels = ["City", "Comment", "Company", "Continent", "Country", "Forum", "Person", "Post", "TagClass", "Tag", "University"]
 
 edge_types = [
-    {"src": "City",       "label": "isPartOf",     "trg": "Country"},
-    {"src": "Comment",    "label": "hasCreator",   "trg": "Person"},
-    {"src": "Comment",    "label": "hasTag",       "trg": "Tag"},
-    {"src": "Comment",    "label": "isLocatedIn",  "trg": "Country"},
-    {"src": "Comment",    "label": "replyOf",      "trg": "Comment"},
-    {"src": "Comment",    "label": "replyOf",      "trg": "Post"},
-    {"src": "Company",    "label": "isLocatedIn",  "trg": "Country"},
-    {"src": "Country",    "label": "isPartOf",     "trg": "Continent"},
-    {"src": "Forum",      "label": "containerOf",  "trg": "Post"},
-    {"src": "Forum",      "label": "hasMember",    "trg": "Person"},
-    {"src": "Forum",      "label": "hasModerator", "trg": "Person"},
-    {"src": "Forum",      "label": "hasTag",       "trg": "Tag"},
-    {"src": "Person",     "label": "hasInterest",  "trg": "Tag"},
-    {"src": "Person",     "label": "isLocatedIn",  "trg": "City"},
-    {"src": "Person",     "label": "knows",        "trg": "Person"},
-    {"src": "Person",     "label": "likes",        "trg": "Comment"},
-    {"src": "Person",     "label": "likes",        "trg": "Post"},
-    {"src": "Person",     "label": "studyAt",      "trg": "University"},
-    {"src": "Person",     "label": "workAt",       "trg": "Company"},
-    {"src": "Post",       "label": "hasCreator",   "trg": "Person"},
-    {"src": "Post",       "label": "hasTag",       "trg": "Tag"},
-    {"src": "Post",       "label": "isLocatedIn",  "trg": "Country"},
-    {"src": "TagClass",   "label": "isSubclassOf", "trg": "TagClass"},
-    {"src": "Tag",        "label": "hasType",      "trg": "TagClass"},
-    {"src": "University", "label": "isLocatedIn",  "trg": "City"},
+    {"src": "City",       "label": "isPartOf",     "trg": "Country",    "bidirectional": False},
+    {"src": "Comment",    "label": "hasCreator",   "trg": "Person",     "bidirectional": False},
+    {"src": "Comment",    "label": "hasTag",       "trg": "Tag",        "bidirectional": False},
+    {"src": "Comment",    "label": "isLocatedIn",  "trg": "Country",    "bidirectional": False},
+    {"src": "Comment",    "label": "replyOf",      "trg": "Comment",    "bidirectional": False},
+    {"src": "Comment",    "label": "replyOf",      "trg": "Post",       "bidirectional": False},
+    {"src": "Company",    "label": "isLocatedIn",  "trg": "Country",    "bidirectional": False},
+    {"src": "Country",    "label": "isPartOf",     "trg": "Continent",  "bidirectional": False},
+    {"src": "Forum",      "label": "containerOf",  "trg": "Post",       "bidirectional": False},
+    {"src": "Forum",      "label": "hasMember",    "trg": "Person",     "bidirectional": False},
+    {"src": "Forum",      "label": "hasModerator", "trg": "Person",     "bidirectional": False},
+    {"src": "Forum",      "label": "hasTag",       "trg": "Tag",        "bidirectional": False},
+    {"src": "Person",     "label": "hasInterest",  "trg": "Tag",        "bidirectional": False},
+    {"src": "Person",     "label": "isLocatedIn",  "trg": "City",       "bidirectional": False},
+    {"src": "Person",     "label": "knows",        "trg": "Person",     "bidirectional": True},
+    {"src": "Person",     "label": "likes",        "trg": "Comment",    "bidirectional": False},
+    {"src": "Person",     "label": "likes",        "trg": "Post",       "bidirectional": False},
+    {"src": "Person",     "label": "studyAt",      "trg": "University", "bidirectional": False},
+    {"src": "Person",     "label": "workAt",       "trg": "Company",    "bidirectional": False},
+    {"src": "Post",       "label": "hasCreator",   "trg": "Person",     "bidirectional": False},
+    {"src": "Post",       "label": "hasTag",       "trg": "Tag",        "bidirectional": False},
+    {"src": "Post",       "label": "isLocatedIn",  "trg": "Country",    "bidirectional": False},
+    {"src": "TagClass",   "label": "isSubclassOf", "trg": "TagClass",   "bidirectional": False},
+    {"src": "Tag",        "label": "hasType",      "trg": "TagClass",   "bidirectional": False},
+    {"src": "University", "label": "isLocatedIn",  "trg": "City",       "bidirectional": False},
 ]
 
 sf = os.environ['SF']
@@ -75,6 +75,12 @@ for t in edge_types:
         paths=f"{path}{edge_label_full_name}.csv",
         headerMode=xgt.HeaderMode.IGNORE,
         delimiter='|')
+
+    if (t['bidirectional']):
+        edge_frames[edge_label_full_name].load(
+            paths=f"{path}{edge_label_full_name}-reverse.csv",
+            headerMode=xgt.HeaderMode.IGNORE,
+            delimiter='|')
 
 print("data loaded")
 print("computing metrics...")

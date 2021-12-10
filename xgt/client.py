@@ -38,13 +38,19 @@ sf = os.environ['SF']
 
 with open(f"results/results.csv", "a+") as results_file:
     for query_id in range(1, 10):
-        print(f"Q{query_id}")
         with open(f"xgt/queries/q{query_id}.cypher", "r") as query_file:
             query_specification = query_file.read()
             start = time.time()
             result = run_query(conn, query_specification, 1)
             end = time.time()
             duration = end - start
-            print(f"Trovares xGT\t\t{sf}\t{query_id}\t{duration:.4f}\t{result[0]}")
-            results_file.write(f"Trovares xGT\t\t{sf}\t{query_id}\t{duration:.4f}\t{result[0]}")
+
+            # compute the sum of the counts for union all queries
+            if isinstance(result[0], list):
+                result = result[0][0][0] + result[0][1][0]
+            else:
+                result = result[0]
+
+            print(f"Trovares xGT\t\t{sf}\t{query_id}\t{duration:.4f}\t{result}")
+            results_file.write(f"Trovares xGT\t\t{sf}\t{query_id}\t{duration:.4f}\t{result}\n")
             results_file.flush()
