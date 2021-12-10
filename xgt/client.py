@@ -34,7 +34,12 @@ def run_query(connection, query, max_retry = 5):
             retry += 1
 
 conn = xgt.Connection()
-sf = os.environ['SF']
+if len(sys.argv) < 2:
+    print("Usage: client.py sf")
+    print("where sf is the scale factor")
+    exit(1)
+else:
+    sf = sys.argv[1]
 
 with open(f"results/results.csv", "a+") as results_file:
     for query_id in range(1, 10):
