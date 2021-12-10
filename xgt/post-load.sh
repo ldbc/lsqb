@@ -8,5 +8,3 @@ cd ..
 
 . xgt/vars.sh
 . scripts/import-vars.sh
-
-xgt/start.sh

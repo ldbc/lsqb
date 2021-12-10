@@ -12,3 +12,5 @@ cd ..
 xgt/stop.sh
 
 awk -F'|' '{ print $2 "|" $1}' ${IMPORT_DATA_DIR_PROJECTED_FK}/Person_knows_Person.csv > ${IMPORT_DATA_DIR_PROJECTED_FK}/Person_knows_Person-reverse.csv
+
+xgt/start.sh
