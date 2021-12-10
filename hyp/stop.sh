@@ -8,5 +8,5 @@ cd ..
 
 . hyp/vars.sh
 
-docker stop ${HYPER_CONTAINER_NAME} || echo "No container ${HYPER_CONTAINER_NAME} found"
+docker rm -f ${HYPER_CONTAINER_NAME} || echo "No container ${HYPER_CONTAINER_NAME} found"
 sleep 10

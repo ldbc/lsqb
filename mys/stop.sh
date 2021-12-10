@@ -8,4 +8,4 @@ cd ..
 
 . mys/vars.sh
 
-docker stop ${MYSQL_CONTAINER_NAME} || echo "No container ${MYSQL_CONTAINER_NAME} found"
+docker rm -f ${MYSQL_CONTAINER_NAME} || echo "No container ${MYSQL_CONTAINER_NAME} found"

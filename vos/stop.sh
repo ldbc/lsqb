@@ -8,4 +8,4 @@ cd ..
 
 . vos/vars.sh
 
-docker stop ${VIRTUOSO_CONTAINER_NAME} || echo "No container ${VIRTUOSO_CONTAINER_NAME} found"
+docker rm -f ${VIRTUOSO_CONTAINER_NAME} || echo "No container ${VIRTUOSO_CONTAINER_NAME} found"
