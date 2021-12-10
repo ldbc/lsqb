@@ -36,6 +36,7 @@ pip3 install --user redisgraph redisgraph-bulk-loader
 pip3 install --user psycopg2-binary
 pip3 install --user mysql-connector-python
 pip3 install --user SPARQLWrapper
+pip3 install --user xgt
 #pip3 install --user pyodbc virtuoso
 
 # visualization
