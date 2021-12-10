@@ -70,6 +70,12 @@ jobs:
             ./init-and-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
+          name: Test Trovares xGT
+          command: |
+            cd vos
+            ./init-and-load.sh; ./run.sh; ./stop.sh
+            cd ..
+      - run:
           name: Test RapidMatch conversion script
           command: |
             rdm/get.sh
