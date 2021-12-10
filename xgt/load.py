@@ -31,7 +31,6 @@ edge_types = [
     {"src": "University", "label": "isLocatedIn",  "trg": "City",       "bidirectional": False},
 ]
 
-sf = os.environ['SF']
 path = f"xgtd://"
 
 conn = xgt.Connection()
