@@ -72,7 +72,7 @@ jobs:
       - run:
           name: Test Trovares xGT
           command: |
-            cd vos
+            cd xgt
             ./init-and-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:

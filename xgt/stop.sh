@@ -8,4 +8,4 @@ cd ..
 
 . xgt/vars.sh
 
-docker rm -f ${NEO4J_CONTAINER_NAME} || echo "No container ${NEO4J_CONTAINER_NAME} found"
+docker rm -f ${XGT_CONTAINER_NAME} || echo "No container ${XGT_CONTAINER_NAME} found"
