@@ -101,19 +101,8 @@ Stable implementations:
 * `red`: [RedisGraph](https://oss.redislabs.com/redisgraph/) [Cypher] :whale:
 * `mem`: [Memgraph](https://memgraph.com/) [Cypher] :whale:
 * `vos`: [Virtuoso Open-Source Edition](http://vos.openlinksw.com/owiki/wiki/VOS) [SPARQL] :whale:
+* `xgt`: [Trovares xGT](https://www.trovares.com/) :whale:
 * `rdm`: [RapidMatch](https://github.com/RapidsAtHKUST/RapidMatch) [`.graph`]
-
-WIP implementations:
-
-* `pgx`: [Oracle PGX](https://www.oracle.com/middleware/technologies/parallel-graph-analytix.html) [PGQL]
-* `tgr`: [TigerGraph](https://www.tigergraph.com/) [GSQL]
-* `rai`: [RelationalAI](https://relational.ai/) [Rel]
-
-Planned implementations:
-
-* `kat`: [Katana Graph](https://katanagraph.com/) [Cypher]
-* `grf`: [Graphflow](http://graphflow.io/) [Cypher]
-* `avg`: [AvantGraph](http://avantgraph.io/) [?]
 
 :warning: Both Neo4j and Memgraph use the Bolt protocol for communicating with the client.
 To avoid clashing on port `7687`, the Memgraph instance uses port `27687` for its Bolt communication.
