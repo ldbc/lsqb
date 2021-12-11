@@ -101,7 +101,7 @@ Stable implementations:
 * `red`: [RedisGraph](https://oss.redislabs.com/redisgraph/) [Cypher] :whale:
 * `mem`: [Memgraph](https://memgraph.com/) [Cypher] :whale:
 * `vos`: [Virtuoso Open-Source Edition](http://vos.openlinksw.com/owiki/wiki/VOS) [SPARQL] :whale:
-* `xgt`: [Trovares xGT](https://www.trovares.com/) :whale:
+* `xgt`: [Trovares xGT](https://www.trovares.com/) [Cypher] :whale:
 * `rdm`: [RapidMatch](https://github.com/RapidsAtHKUST/RapidMatch) [`.graph`]
 
 :warning: Both Neo4j and Memgraph use the Bolt protocol for communicating with the client.
