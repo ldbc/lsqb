@@ -34,6 +34,7 @@ def run_query(connection, query, max_retry = 5):
             retry += 1
 
 conn = xgt.Connection()
+conn.set_default_namespace("lsqb")
 if len(sys.argv) < 2:
     print("Usage: client.py sf")
     print("where sf is the scale factor")

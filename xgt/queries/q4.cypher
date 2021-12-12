@@ -1,11 +1,11 @@
 MATCH
-  (:lsqb__Tag)<-[:lsqb__Post_hasTag_Tag]-(message:lsqb__Post)-[:lsqb__Post_hasCreator_Person]->(creator:lsqb__Person),
-  (message)<-[:lsqb__Person_likes_Post]-(liker:lsqb__Person),
-  (message)<-[:lsqb__Comment_replyOf_Post]-(comment:lsqb__Comment)
+  (:Tag)<-[:Post_hasTag_Tag]-(message:Post)-[:Post_hasCreator_Person]->(creator:Person),
+  (message)<-[:Person_likes_Post]-(liker:Person),
+  (message)<-[:Comment_replyOf_Post]-(comment:Comment)
 RETURN count(*) AS count
 UNION ALL
 MATCH
-  (:lsqb__Tag)<-[:lsqb__Comment_hasTag_Tag]-(message:lsqb__Comment)-[:lsqb__Comment_hasCreator_Person]->(creator:lsqb__Person),
-  (message)<-[:lsqb__Person_likes_Comment]-(liker:lsqb__Person),
-  (message)<-[:lsqb__Comment_replyOf_Comment]-(comment:lsqb__Comment)
+  (:Tag)<-[:Comment_hasTag_Tag]-(message:Comment)-[:Comment_hasCreator_Person]->(creator:Person),
+  (message)<-[:Person_likes_Comment]-(liker:Person),
+  (message)<-[:Comment_replyOf_Comment]-(comment:Comment)
 RETURN count(*) AS count
