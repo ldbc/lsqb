@@ -38,10 +38,8 @@ jobs:
       - run:
           name: Test Memgraph
           command: |
-            cd data/social-network-sfexample-projected-fk/
-            for f in *.csv; do tail -n +2 ${f} > ${f}-headerless; done
-            cd ../..
             cd mem
+            ./convert-csvs.sh
             ./init-and-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
