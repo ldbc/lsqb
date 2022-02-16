@@ -43,7 +43,7 @@ else:
 
 system = "HyPer"
 
-con = "| docker exec -i ${HYPER_CONTAINER_NAME} psql -U raasveld -p 7484 -h localhost ${HYPER_DATABASE_NAME}"
+con = "| docker exec -i ${HYPER_CONTAINER_NAME} psql -U lsqbuser -p 7484 -h localhost ${HYPER_DATABASE_NAME}"
 
 with open(f"results/results.csv", "a+") as results_file:
     for i in range(1, 10):

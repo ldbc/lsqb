@@ -11,5 +11,5 @@ Place the HyPer binaries under `hyper-binaries/hyper` and run:
 ## Using the SQL prompt
 
 ```bash
-echo "SELECT 42 AS x" | docker exec -i lsqb-hyp psql -U raasveld -p 7484 -h localhost lsqb
+echo "SELECT 42 AS x" | docker exec -i lsqb-hyp psql -U lsqbuser -p 7484 -h localhost lsqb
 ```

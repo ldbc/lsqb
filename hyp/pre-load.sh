@@ -11,5 +11,5 @@ cd ..
 hyp/stop.sh
 hyp/start.sh
 
-echo "CREATE DATABASE ${HYPER_DATABASE_NAME};"  | docker exec -i ${HYPER_CONTAINER_NAME} psql -U raasveld -p 7484 -h localhost
+echo "CREATE DATABASE ${HYPER_DATABASE_NAME};"  | docker exec -i ${HYPER_CONTAINER_NAME} psql -U lsqbuser -p 7484 -h localhost
 
