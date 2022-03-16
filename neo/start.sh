@@ -33,3 +33,8 @@ echo "Waiting for Neo4j to start..."
 until docker exec --interactive --tty ${NEO4J_CONTAINER_NAME} cypher-shell "RETURN 'Neo4j started' AS message" > /dev/null 2>&1; do
     sleep 1
 done
+
+echo "Add indexes to Person.id"
+
+docker exec --interactive --tty ${NEO4J_CONTAINER_NAME} cypher-shell "CREATE CONSTRAINT ON (p:Person) ASSERT p.id IS UNIQUE"
+echo "Indexes added"
