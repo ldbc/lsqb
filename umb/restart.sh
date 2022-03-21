@@ -9,3 +9,4 @@ cd ..
 . umb/vars.sh
 
 umb/stop.sh
+umb/start.sh

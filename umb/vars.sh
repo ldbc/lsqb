@@ -1,3 +1,11 @@
-export UMBRA_SCRATCH_DIR=`pwd`/umb/scratch
+pushd . > /dev/null
+cd "$( cd "$( dirname "${BASH_SOURCE[0]:-${(%):-%x}}" )" >/dev/null 2>&1 && pwd )"
+
+export UMBRA_DATABASE_DIR=`pwd`/scratch/db/
+export COMMON_SQL_DIR=`pwd`/../sql
+export UMBRA_SQL_DIR=`pwd`/sql/
+export UMBRA_SQL_SCRATCH_DIR=`pwd`/scratch/sql
 export UMBRA_CONTAINER_NAME=lsqb-umb
-export UMBRA_DOCKER_IMAGE=umbra-fedora
+export UMBRA_DOCKER_IMAGE=umbra-release:533b93fd2
+
+popd > /dev/null

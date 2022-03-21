@@ -8,4 +8,6 @@ cd ..
 
 . umb/vars.sh
 
-umb/stop.sh
+echo -n "Force stop and remove Umbra container . . ."
+docker rm -f ${UMBRA_CONTAINER_NAME}
+echo " Removed."

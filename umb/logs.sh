@@ -8,4 +8,5 @@ cd ..
 
 . umb/vars.sh
 
-umb/stop.sh
+# to follow the logs (a'la "tail -f") use: "logs.sh -f"
+docker logs $@ ${UMBRA_CONTAINER_NAME}
