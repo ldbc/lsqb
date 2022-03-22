@@ -2,7 +2,7 @@ from neo4j import GraphDatabase, unit_of_work
 import time
 import sys
 
-@unit_of_work(timeout=300)
+@unit_of_work(timeout=3000)
 def query_fun(tx, query):
     result = tx.run(query)
     return result.single()
