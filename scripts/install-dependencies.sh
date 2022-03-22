@@ -13,7 +13,7 @@ echo Installing RPM/DEB packages
 
 if [[ ! -z $(which yum) ]]; then
     sudo yum install -y python3-pip python3-devel zstd unzip unixODBC-devel wget g++
-    sudo yum install -y cmake openssl-devel openssl-static
+    sudo yum install -y cmake openssl-devel
 elif [[ ! -z $(which apt) ]]; then
     sudo apt update
     sudo apt install -y python3-pip python3-dev zstd unzip unixodbc-dev wget g++
@@ -31,7 +31,7 @@ pip3 config --user set global.progress_bar off
 # clients
 pip3 install --user duckdb==${DUCKDB_VERSION}
 pip3 install --user neo4j
-pip3 install --user pymgclient
+pip3 install --user --global-option=build_ext --global-option="--static-openssl=false" pymgclient
 pip3 install --user wheel
 pip3 install --user redisgraph redisgraph-bulk-loader
 pip3 install --user psycopg2-binary
