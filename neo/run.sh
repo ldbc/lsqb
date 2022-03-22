@@ -8,4 +8,4 @@ cd ..
 
 . scripts/import-vars.sh
 
-python3 neo/client.py ${SF}
+python3 neo/client.py ${SF} $@
