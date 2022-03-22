@@ -13,7 +13,7 @@ echo Installing RPM/DEB packages
 
 if [[ ! -z $(which yum) ]]; then
     sudo yum install -y python3-pip python3-devel zstd unzip unixODBC-devel wget g++
-    sudo yum install -y cmake openssl-devel
+    sudo yum install -y cmake openssl-devel openssl-static
 elif [[ ! -z $(which apt) ]]; then
     sudo apt update
     sudo apt install -y python3-pip python3-dev zstd unzip unixodbc-dev wget g++
