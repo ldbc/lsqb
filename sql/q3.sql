@@ -11,11 +11,11 @@ JOIN Person AS PersonB
 JOIN Person AS PersonC
   ON PersonC.isLocatedIn_CityId = CityC.CityId
 JOIN Person_knows_Person AS pkp1
-  ON pkp1.Person1Id = personA.PersonId
- AND pkp1.Person2Id = personB.PersonId
+  ON pkp1.Person1Id = PersonA.PersonId
+ AND pkp1.Person2Id = PersonB.PersonId
 JOIN Person_knows_Person AS pkp2
-  ON pkp2.Person1Id = personB.PersonId
- AND pkp2.Person2Id = personC.PersonId
+  ON pkp2.Person1Id = PersonB.PersonId
+ AND pkp2.Person2Id = PersonC.PersonId
 JOIN Person_knows_Person AS pkp3
-  ON pkp3.Person1Id = personC.PersonId
- AND pkp3.Person2Id = personA.PersonId;
+  ON pkp3.Person1Id = PersonC.PersonId
+ AND pkp3.Person2Id = PersonA.PersonId;
