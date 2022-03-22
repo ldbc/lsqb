@@ -16,6 +16,6 @@ JOIN Person_knows_Person AS pkp1
 JOIN Person_knows_Person AS pkp2
   ON pkp2.Person1Id = personB.PersonId
  AND pkp2.Person2Id = personC.PersonId
-JOIN Person_knows_person AS pkp3
+JOIN Person_knows_Person AS pkp3
   ON pkp3.Person1Id = personC.PersonId
  AND pkp3.Person2Id = personA.PersonId;
