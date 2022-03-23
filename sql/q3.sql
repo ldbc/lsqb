@@ -9,14 +9,20 @@ WITH edge AS (SELECT knows.Person1Id AS p1, knows.Person2Id AS p2, City1.isPartO
   JOIN City City2
     ON City2.CityId = Person2.isLocatedIn_CityId
   WHERE City1.isPartOf_CountryId = City2.isPartOf_CountryId
-  )
-SELECT count(*)
-FROM edge edge1
-JOIN edge edge2
+  ),
+  wedges AS (SELECT
+    edge1.p1 AS p1,
+    edge2.p2 AS p3,
+    edge2.country AS country
+  FROM edge edge1
+  JOIN edge edge2
   ON edge1.p2 = edge2.p1
  AND edge1.country = edge2.country
+)
+SELECT count(*)
+FROM wedges
 JOIN edge edge3
-  ON edge2.p2 = edge3.p1
- AND edge3.p2 = edge1.p1
- AND edge2.country = edge3.country
+  ON wedges.p3 = edge3.p1
+ AND edge3.p2 = wedges.p1
+ AND wedges.country = edge3.country
 ;
