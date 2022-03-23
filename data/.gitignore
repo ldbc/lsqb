@@ -5,3 +5,4 @@ social-network-sf*/
 *.nq
 *.csv-headerless
 *-reverse.csv
+*.tar.zst
