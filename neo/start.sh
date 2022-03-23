@@ -19,6 +19,7 @@ docker run \
     --publish=7474:7474 \
     --publish=7687:7687 \
     --detach \
+    --ulimit nofile=40000:40000 \
     ${NEO4J_ENV_VARS} \
     --volume=${NEO4J_DATA_DIR}:/data:z \
     --volume=${NEO4J_HOME}/logs:/logs:z \
