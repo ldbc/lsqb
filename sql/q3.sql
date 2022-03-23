@@ -1,21 +1,22 @@
+WITH edge AS (SELECT knows.Person1Id AS p1, knows.Person2Id AS p2, City1.isPartOf_CountryId AS country
+  FROM Person_knows_Person AS knows
+  JOIN Person Person1
+    ON Person1.PersonId = knows.Person1Id
+  JOIN City City1
+    ON City1.CityId = Person1.isLocatedIn_CityId
+  JOIN Person Person2
+    ON Person2.PersonId = knows.Person2Id
+  JOIN City City2
+    ON City2.CityId = Person2.isLocatedIn_CityId
+  WHERE City1.isPartOf_CountryId = City2.isPartOf_CountryId
+  )
 SELECT count(*)
-FROM City AS CityA
-JOIN City AS CityB
-  ON CityB.isPartOf_CountryId = CityA.isPartOf_CountryId
-JOIN City AS CityC
-  ON CityC.isPartOf_CountryId = CityA.isPartOf_CountryId
-JOIN Person AS PersonA
-  ON PersonA.isLocatedIn_CityId = CityA.CityId
-JOIN Person AS PersonB
-  ON PersonB.isLocatedIn_CityId = CityB.CityId
-JOIN Person AS PersonC
-  ON PersonC.isLocatedIn_CityId = CityC.CityId
-JOIN Person_knows_Person AS pkp1
-  ON pkp1.Person1Id = PersonA.PersonId
- AND pkp1.Person2Id = PersonB.PersonId
-JOIN Person_knows_Person AS pkp2
-  ON pkp2.Person1Id = PersonB.PersonId
- AND pkp2.Person2Id = PersonC.PersonId
-JOIN Person_knows_Person AS pkp3
-  ON pkp3.Person1Id = PersonC.PersonId
- AND pkp3.Person2Id = PersonA.PersonId;
+FROM edge edge1
+JOIN edge edge2
+  ON edge1.p2 = edge2.p1
+ AND edge1.country = edge2.country
+JOIN edge edge3
+  ON edge2.p2 = edge3.p1
+ AND edge3.p2 = edge1.p1
+ AND edge2.country = edge3.country
+;
