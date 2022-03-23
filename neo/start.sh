@@ -23,6 +23,7 @@ docker run \
     --volume=${NEO4J_DATA_DIR}:/data:z \
     --volume=${NEO4J_HOME}/logs:/logs:z \
     --volume=${NEO4J_HOME}/import:/var/lib/neo4j/import:z \
+    --volume=${NEO4J_HOME}/metrics:/var/lib/neo4j/metrics:z \
     --volume=${NEO4J_HOME}/plugins:/plugins:z \
     --env NEO4J_AUTH=none \
     --name ${NEO4J_CONTAINER_NAME} \

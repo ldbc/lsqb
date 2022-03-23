@@ -10,7 +10,7 @@ cd ..
 . scripts/import-vars.sh
 
 # make sure directories exist
-mkdir -p ${NEO4J_HOME}/{logs,import,plugins}
+mkdir -p ${NEO4J_HOME}/{logs,import,plugins,metrics}
 
 # start with a fresh data dir (required by the CSV importer)
 mkdir -p ${NEO4J_DATA_DIR}
