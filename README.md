@@ -53,7 +53,11 @@ An example data set is provided with the substitution `SF=example`:
 * `data/social-network-sfexample-projected-fk`
 * `data/social-network-sfexample-merged-fk`
 
+Pre-generated data sets are available in the [SURF/CWI data repository](https://repository.surfsara.nl/datasets/cwi/lsqb).
+
 #### Generating the data sets
+
+You can generate your own data sets. Note that these may differ in size for different versions of the data generator – for publications, it's recommended to use the pre-generated data sets linked above.
 
 1. Run the latest [Datagen](https://github.com/ldbc/ldbc_snb_datagen/) using CSV outputs and mode, e.g. for SF0.3:
 
