@@ -1,5 +1,23 @@
 # Neo4j for reachability testing
 
+## Data set sizes
+
+| sf      | Person    | knows       |
+| ------: | --------: | ----------: |
+| example |         5 |           6 |
+| 0.003   |        50 |          88 |
+| 0.1     |     1,700 |      18,135 |
+| 0.3     |     3,900 |      57,095 |
+| 1       |    11,000 |     226,293 |
+| 3       |    27,000 |     698,627 |
+| 10      |    73,000 |   2,380,850 |
+| 30      |   184,000 |   7,273,036 |
+| 100     |   499,000 |  23,841,591 |
+| 300     | 1,254,000 |  70,144,162 |
+| 1000    | 3,600,000 | 233,283,101 |
+
+## Loading
+
 * Place the CSV files under the `data/` directory, e.g. `data/social-network-sf0.1-projected-fk/`
 
 * To load and start the database, run:
@@ -9,9 +27,9 @@
     ./init-and-load.sh
     ```
 
+## Sampling
+
 * Open the browser: <http://localhost:7474/browser/>, click `Connect`
-
-
 
 * Take two samples:
 
