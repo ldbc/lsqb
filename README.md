@@ -4,7 +4,15 @@
 
 :page_facing_up: [LSQB: A Large-Scale Subgraph Query Benchmark](https://dl.acm.org/doi/pdf/10.1145/3461837.3464516) (GRADES-NDA'21) ([presentation](https://docs.google.com/presentation/d/1xUbooiL8rIMzkp9G9EXmN4tIMMWt2mC53Q0u4mslq5g))
 
+## Overview
+
 A benchmark for subgraph matching but with type information (vertex and edge types). The primary goal of this benchmark is to test the query optimizer (join ordering, choosing between binary and n-ary joins) and the execution engine (join performance, support for worst-case optimal joins) of graph databases. Features found in more mature database systems and query languages such as date/string operations, query composition, complex aggregates/filters are out of scope for this benchmark.
+
+The benchmark consists of the following 9 queries:
+
+![](patterns.png)
+
+Inspirations and references:
 
 * [VLDB'19 keynote by Tamer Özsu](https://vldb2019.github.io/files/VLDB19-keynote-1-slides.pdf)
 * [CACM'21 technical perspective paper on graphs](https://dl.acm.org/doi/pdf/10.1145/3434642)
