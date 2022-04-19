@@ -24,6 +24,12 @@ jobs:
             python3 -m pip install --upgrade pip
             scripts/install-dependencies.sh
       - run:
+          name: Load Umbra Docker image
+          command: |
+            . umb/vars.sh
+            # ${UMBRA_URL_PREFIX} should be set as a sercet variable
+            curl -s ${UMBRA_URL_PREFIX}${UMBRA_VERSION}.tar.gz | docker load
+      - run:
           name: Preprocess data
           command: |
             scripts/preprocess.sh
@@ -64,6 +70,12 @@ jobs:
           name: Test Virtuoso
           command: |
             cd vos
+            ./init-and-load.sh; ./run.sh; ./stop.sh
+            cd ..
+      - run:
+          name: Test Umbra
+          command: |
+            cd umb
             ./init-and-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
