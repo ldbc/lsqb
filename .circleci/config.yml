@@ -10,7 +10,6 @@ workflows:
 
 jobs:
   build:
-    # resource_class: xlarge
     machine:
       image: ubuntu-2004:202008-01
 
