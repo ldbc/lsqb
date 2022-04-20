@@ -78,30 +78,49 @@ Using the `shortestPath` construct.
 
 ### GDS approach (create graph)
 
-* Create graph:
+#### Unweighted variant
 
-    ```
-    CALL gds.graph.create.cypher(
-        'knows',
-        'MATCH (p:Person) RETURN id(p) AS id',
-        'OPTIONAL MATCH (personA:Person)-[:KNOWS]-(personB:Person) RETURN id(personA) AS source, id(personB) AS target'
-    )
-    ```
+```
+CALL gds.graph.create.cypher(
+    'knows',
+    'MATCH (p:Person) RETURN id(p) AS id',
+    'OPTIONAL MATCH (personA:Person)-[:KNOWS]-(personB:Person) RETURN id(personA) AS source, id(personB) AS target'
+)
+```
 
-* Run query:
+Run query:
 
-    ```
-    UNWIND [...]
-      AS source
-    UNWIND [...]
-      AS target
-    MATCH (sourcePerson:Person {id: source}), (targetPerson:Person {id: target})
-    CALL gds.shortestPath.dijkstra.stream('knows', { sourceNode: id(sourcePerson), targetNode: id(targetPerson) })
-    YIELD totalCost
-    WITH source, target, toInteger(totalCost) AS length
-    ORDER BY source, target
-    RETURN source, target, length
-    ```
+```
+UNWIND [...]
+  AS source
+UNWIND [...]
+  AS target
+MATCH (sourcePerson:Person {id: source}), (targetPerson:Person {id: target})
+CALL gds.shortestPath.dijkstra.stream('knows', { sourceNode: id(sourcePerson), targetNode: id(targetPerson) })
+YIELD totalCost
+WITH source, target, toInteger(totalCost) AS length
+ORDER BY source, target
+RETURN source, target, length
+```
+
+#### Weighted variant
+
+```
+CALL gds.graph.create(
+    'knows',
+    ['Person'],
+    { KNOWS: { properties: 'weight' } }
+)
+```
+
+```
+UNWIND [...] AS source
+UNWIND [...] AS target
+MATCH (sourcePerson:Person {id: source}), (targetPerson:Person {id: target})
+CALL gds.shortestPath.dijkstra.stream('knows', { sourceNode: id(sourcePerson), targetNode: id(targetPerson), relationshipWeightProperty: 'weight' })
+YIELD index, sourceNode, targetNode, totalCost, nodeIds, costs, path
+RETURN source, target, totalCost
+```
 
 ## Data sets
 
