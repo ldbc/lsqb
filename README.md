@@ -2,7 +2,7 @@
 
 [![Build Status](https://circleci.com/gh/ldbc/lsqb.svg?style=svg&circle-token=b558369d54d3205fc9d985a4dd2196b967ebcff8)](https://circleci.com/gh/ldbc/lsqb)
 
-:page_facing_up: [LSQB: A Large-Scale Subgraph Query Benchmark](https://dl.acm.org/doi/pdf/10.1145/3461837.3464516) (GRADES-NDA'21) ([presentation](https://docs.google.com/presentation/d/1xUbooiL8rIMzkp9G9EXmN4tIMMWt2mC53Q0u4mslq5g))
+:page_facing_up: [LSQB: A Large-Scale Subgraph Query Benchmark](https://dl.acm.org/doi/pdf/10.1145/3461837.3464516), GRADES-NDA'21 paper ([presentation](https://docs.google.com/presentation/d/1xUbooiL8rIMzkp9G9EXmN4tIMMWt2mC53Q0u4mslq5g))
 
 ## Overview
 
