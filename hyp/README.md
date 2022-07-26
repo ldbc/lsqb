@@ -2,7 +2,7 @@
 
 ## Building the image
 
-Grab the binaries from `${SECRET_HYPER_BINARIES_URL}` and run:
+Grab the binaries from `${SECRET_HYPER_BINARIES_URL}` and build the container:
 
 ```bash
 wget ${SECRET_HYPER_BINARIES_URL}
