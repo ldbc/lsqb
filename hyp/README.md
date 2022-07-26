@@ -2,7 +2,7 @@
 
 ## Building the image
 
-Place the HyPer binaries under `hyper-binaries/hyper` and run:
+Grab the binaries from `${SECRET_HYPER_BINARIES_URL}` and run:
 
 ```bash
 wget ${SECRET_HYPER_BINARIES_URL}
@@ -11,7 +11,9 @@ mv hyper hyper-binaries
 ./build.sh
 ```
 
-## Using the SQL prompt
+This will place the HyPer binaries in the `hyper-binaries/hyper/` directory.
+
+## Use the SQL prompt to test
 
 ```bash
 echo "SELECT 42 AS x" | docker exec -i lsqb-hyp psql -U lsqbuser -p 7484 -h localhost lsqb
