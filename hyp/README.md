@@ -5,6 +5,9 @@
 Place the HyPer binaries under `hyper-binaries/hyper` and run:
 
 ```bash
+wget ${SECRET_HYPER_BINARIES_URL}
+tar xf hyper.tar.xz
+mv hyper hyper-binaries
 ./build.sh
 ```
 
