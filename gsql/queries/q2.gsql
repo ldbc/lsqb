@@ -1,0 +1,13 @@
+USE GRAPH lsqb
+SET syntax_version="v2"
+
+CREATE OR REPLACE DISTRIBUTED QUERY q2(){
+SumACCUM<UINT> @@count;
+
+tmp = SELECT s
+	FROM Country:s -(<IS_PART_OF.<IS_LOCATED_IN)- Person -(<HAS_MEMBER)- Forum -(CONTAINER_OF>)- Post -(<REPLY_OF)- Comment -(HAS_TAG>)- 
+	Tag -(HAS_TYPE>)- TagClass:t;
+	Accum @@count+=1;
+
+PRINT @@count;
+}
