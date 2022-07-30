@@ -6,3 +6,4 @@ social-network-sf*/
 *.csv-headerless
 *-reverse.csv
 *.tar.zst
+mydb*
