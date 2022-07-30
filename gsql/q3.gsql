@@ -1,0 +1,21 @@
+USE GRAPH lsqb
+SET syntax_version="v2"
+
+CREATE OR REPLACE DISTRIBUTED QUERY q3(){
+SumACCUM<UINT> @@count;
+
+person1 = SELECT t
+		FROM Country -(<IS_PART_OF)- City -(<IS_LOCATED_IN)- Person:t;
+
+person2 = SELECT t
+		FROM Country -(<IS_PART_OF)- City -(<IS_LOCATED_IN)- Person:t;
+
+person3 = SELECT t
+		FROM Country -(<IS_PART_OF)- City -(<IS_LOCATED_IN)- Person:t;
+
+tmp = SELECT t
+		FROM person1 -(KNOWS)- person2 -(KNOWS)- person3 -(KNOWS)- person1;
+		Accum @@count+=1;
+		
+PRINT @@count;
+}

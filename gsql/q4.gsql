@@ -1,0 +1,15 @@
+USE GRAPH lsqb
+SET syntax_version="v2"
+
+CREATE OR REPLACE DISTRIBUTED QUERY q4(){
+SumACCUM<UINT> @@count;
+
+message1 = SELECT m
+		FROM Tag -(<HAS_TAG)- Message:m -(HAS_CREATOR>)- Person;
+
+message2 = SELECT s
+		FROM Person:s -(LIKES>)- message1 -(<REPLY_OF)- Comment
+		Accum @@count+=1;
+
+PRINT @@count;
+}
