@@ -6,7 +6,7 @@ SumACCUM<UINT> @@count;
 
 tmp = SELECT t
 	FROM Person:p1 -(KNOWS)- Person -(KNOWS)- Person:p3 -(HAS_INTEREST>)- Tag
-	WHERE p1.ID!=p3.ID
+	WHERE p1!=p3
 	Accum @@count+=1;
 
 PRINT @@count;

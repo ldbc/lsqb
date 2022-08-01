@@ -11,7 +11,7 @@ person3 = SELECT p3
 
 tmp = SELECT p1
 	FROM person3:p3 -(KNOWS)- Person:p2 -(KNOWS)- Person:p1
-	WHERE p1.ID!=p3.ID AND NOT p1.@isknown;
+	WHERE p1!=p3 AND NOT p1.@isknown;
 	Accum @@count+=1;
 
 PRINT @@count;

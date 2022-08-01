@@ -11,7 +11,7 @@ comment = SELECT c
 
 tmp = SELECT t1
 	FROM Tag:t1 -(<HAS_TAG)- Message -(<REPLY_OF)- comment:c -(HAS_TAG>)- Tag:t2
-	WHERE NOT c.@hastag AND t1.ID!=t2.ID
+	WHERE NOT c.@hastag AND t1!=t2
 	Accum @@count+=1;
 
 PRINT @@count;
