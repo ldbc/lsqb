@@ -9,7 +9,6 @@ person = SELECT s
 		
 tmp = SELECT s
 	FROM person:s -(<HAS_CREATOR)- Comment -(REPLY_OF>)- Post -(HAS_CREATOR>)- person:t
-
 	Accum @@count+=1;
 
 PRINT @@count;

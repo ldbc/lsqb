@@ -6,7 +6,7 @@ SumACCUM<UINT> @@count;
 
 tmp = SELECT t1
 	FROM Tag:t1 -(<HAS_TAG)- Message -(<REPLY_OF)- Comment -(HAS_TAG>)- Tag:t2
-	WHERE t1!=t2
+	WHERE t1.ID!=t2.ID
 	Accum @@count+=1;
 
 PRINT @@count;
