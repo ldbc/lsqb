@@ -2,7 +2,7 @@ USE GRAPH lsqb
 SET syntax_version="v2"
 
 CREATE OR REPLACE DISTRIBUTED QUERY q7(){
-SumACCUM<UINT> @@count;
+SumAccum<UINT> @@count;
 SumAccum<UINT> @likerCount;
 SumAccum<UINT> @replyCount;
 
@@ -23,7 +23,7 @@ reply = SELECT r
 message = SELECT m
 	FROM message:m
 	Post-Accum @@count+=m.@likerCount + m.@replyCount + m.@likerCount * m.@replyCount;
-	
+
 PRINT @@count;
 }
 //@@count += 1 + message.@likerCount + message.@replyCount + message.@likerCount * message.@replyCount
