@@ -3,11 +3,27 @@ SET syntax_version="v2"
 
 CREATE OR REPLACE DISTRIBUTED QUERY q7(){
 SumACCUM<UINT> @@count;
+SumAccum<UINT> @likerCount;
+SumAccum<UINT> @replyCount;
+
+
 /* optional match?*/
 message = SELECT m
-	FROM Tag -(<HAS_TAG)- Message:m -(HAS_CREATOR>)- Person,
-	Person -(LIKES>)- m -(<REPLY_OF)- Comment
+	FROM Tag -(<HAS_TAG)- Message:m -(HAS_CREATOR>)- Person
 	Accum @@count+=1;
 
+liker = SELECT l
+	FROM Person:l -(LIKES>)- message:m
+	Accum m.@likerCount+=1;
+
+reply = SELECT r
+	FROM Comment:c -(REPLY_OF>)- message:m
+	Accum m.@replyCount+=1
+
+message = SELECT m
+	FROM message:m
+	Post-Accum @@count+=m.@likerCount + m.@replyCount + m.@likerCount * m.@replyCount;
+	
 PRINT @@count;
 }
+//@@count += 1 + message.@likerCount + message.@replyCount + message.@likerCount * message.@replyCount
