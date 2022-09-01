@@ -144,28 +144,28 @@ CREATE VIEW Person_likes_Message AS
   SELECT PersonId, PostId AS MessageId FROM Person_likes_Post;
 
 
-    COPY Company                   FROM '/Users/szarnyasg/git/ldbc/lsqb/data/social-network-sf{sf}-merged-fk/Company.csv'                   (DELIMITER '|', HEADER, FORMAT csv);
-    COPY University                FROM '/Users/szarnyasg/git/ldbc/lsqb/data/social-network-sf{sf}-merged-fk/University.csv'                (DELIMITER '|', HEADER, FORMAT csv);
-    COPY Continent                 FROM '/Users/szarnyasg/git/ldbc/lsqb/data/social-network-sf{sf}-merged-fk/Continent.csv'                 (DELIMITER '|', HEADER, FORMAT csv);
-    COPY Country                   FROM '/Users/szarnyasg/git/ldbc/lsqb/data/social-network-sf{sf}-merged-fk/Country.csv'                   (DELIMITER '|', HEADER, FORMAT csv);
-    COPY City                      FROM '/Users/szarnyasg/git/ldbc/lsqb/data/social-network-sf{sf}-merged-fk/City.csv'                      (DELIMITER '|', HEADER, FORMAT csv);
-    COPY Forum                     FROM '/Users/szarnyasg/git/ldbc/lsqb/data/social-network-sf{sf}-merged-fk/Forum.csv'                     (DELIMITER '|', HEADER, FORMAT csv);
-    COPY Comment                   FROM '/Users/szarnyasg/git/ldbc/lsqb/data/social-network-sf{sf}-merged-fk/Comment.csv'                   (DELIMITER '|', HEADER, FORMAT csv);
-    COPY Post                      FROM '/Users/szarnyasg/git/ldbc/lsqb/data/social-network-sf{sf}-merged-fk/Post.csv'                      (DELIMITER '|', HEADER, FORMAT csv);
-    COPY Person                    FROM '/Users/szarnyasg/git/ldbc/lsqb/data/social-network-sf{sf}-merged-fk/Person.csv'                    (DELIMITER '|', HEADER, FORMAT csv);
-    COPY Tag                       FROM '/Users/szarnyasg/git/ldbc/lsqb/data/social-network-sf{sf}-merged-fk/Tag.csv'                       (DELIMITER '|', HEADER, FORMAT csv);
-    COPY TagClass                  FROM '/Users/szarnyasg/git/ldbc/lsqb/data/social-network-sf{sf}-merged-fk/TagClass.csv'                  (DELIMITER '|', HEADER, FORMAT csv);
-    COPY Comment_hasTag_Tag        FROM '/Users/szarnyasg/git/ldbc/lsqb/data/social-network-sf{sf}-merged-fk/Comment_hasTag_Tag.csv'        (DELIMITER '|', HEADER, FORMAT csv);
-    COPY Post_hasTag_Tag           FROM '/Users/szarnyasg/git/ldbc/lsqb/data/social-network-sf{sf}-merged-fk/Post_hasTag_Tag.csv'           (DELIMITER '|', HEADER, FORMAT csv);
-    COPY Forum_hasMember_Person    FROM '/Users/szarnyasg/git/ldbc/lsqb/data/social-network-sf{sf}-merged-fk/Forum_hasMember_Person.csv'    (DELIMITER '|', HEADER, FORMAT csv);
-    COPY Forum_hasTag_Tag          FROM '/Users/szarnyasg/git/ldbc/lsqb/data/social-network-sf{sf}-merged-fk/Forum_hasTag_Tag.csv'          (DELIMITER '|', HEADER, FORMAT csv);
-    COPY Person_hasInterest_Tag    FROM '/Users/szarnyasg/git/ldbc/lsqb/data/social-network-sf{sf}-merged-fk/Person_hasInterest_Tag.csv'    (DELIMITER '|', HEADER, FORMAT csv);
-    COPY Person_likes_Comment      FROM '/Users/szarnyasg/git/ldbc/lsqb/data/social-network-sf{sf}-merged-fk/Person_likes_Comment.csv'      (DELIMITER '|', HEADER, FORMAT csv);
-    COPY Person_likes_Post         FROM '/Users/szarnyasg/git/ldbc/lsqb/data/social-network-sf{sf}-merged-fk/Person_likes_Post.csv'         (DELIMITER '|', HEADER, FORMAT csv);
-    COPY Person_studyAt_University FROM '/Users/szarnyasg/git/ldbc/lsqb/data/social-network-sf{sf}-merged-fk/Person_studyAt_University.csv' (DELIMITER '|', HEADER, FORMAT csv);
-    COPY Person_workAt_Company     FROM '/Users/szarnyasg/git/ldbc/lsqb/data/social-network-sf{sf}-merged-fk/Person_workAt_Company.csv'     (DELIMITER '|', HEADER, FORMAT csv);
-    COPY Person_knows_Person (Person1id, Person2id) FROM '/Users/szarnyasg/git/ldbc/lsqb/data/social-network-sf{sf}-merged-fk/Person_knows_Person.csv'       (DELIMITER '|', HEADER, FORMAT csv);
-    COPY Person_knows_Person (Person2id, Person1id) FROM '/Users/szarnyasg/git/ldbc/lsqb/data/social-network-sf{sf}-merged-fk/Person_knows_Person.csv'       (DELIMITER '|', HEADER, FORMAT csv);
+    COPY Company                   FROM 'data/social-network-sf{sf}-merged-fk/Company.csv'                   (DELIMITER '|', HEADER, FORMAT csv);
+    COPY University                FROM 'data/social-network-sf{sf}-merged-fk/University.csv'                (DELIMITER '|', HEADER, FORMAT csv);
+    COPY Continent                 FROM 'data/social-network-sf{sf}-merged-fk/Continent.csv'                 (DELIMITER '|', HEADER, FORMAT csv);
+    COPY Country                   FROM 'data/social-network-sf{sf}-merged-fk/Country.csv'                   (DELIMITER '|', HEADER, FORMAT csv);
+    COPY City                      FROM 'data/social-network-sf{sf}-merged-fk/City.csv'                      (DELIMITER '|', HEADER, FORMAT csv);
+    COPY Forum                     FROM 'data/social-network-sf{sf}-merged-fk/Forum.csv'                     (DELIMITER '|', HEADER, FORMAT csv);
+    COPY Comment                   FROM 'data/social-network-sf{sf}-merged-fk/Comment.csv'                   (DELIMITER '|', HEADER, FORMAT csv);
+    COPY Post                      FROM 'data/social-network-sf{sf}-merged-fk/Post.csv'                      (DELIMITER '|', HEADER, FORMAT csv);
+    COPY Person                    FROM 'data/social-network-sf{sf}-merged-fk/Person.csv'                    (DELIMITER '|', HEADER, FORMAT csv);
+    COPY Tag                       FROM 'data/social-network-sf{sf}-merged-fk/Tag.csv'                       (DELIMITER '|', HEADER, FORMAT csv);
+    COPY TagClass                  FROM 'data/social-network-sf{sf}-merged-fk/TagClass.csv'                  (DELIMITER '|', HEADER, FORMAT csv);
+    COPY Comment_hasTag_Tag        FROM 'data/social-network-sf{sf}-merged-fk/Comment_hasTag_Tag.csv'        (DELIMITER '|', HEADER, FORMAT csv);
+    COPY Post_hasTag_Tag           FROM 'data/social-network-sf{sf}-merged-fk/Post_hasTag_Tag.csv'           (DELIMITER '|', HEADER, FORMAT csv);
+    COPY Forum_hasMember_Person    FROM 'data/social-network-sf{sf}-merged-fk/Forum_hasMember_Person.csv'    (DELIMITER '|', HEADER, FORMAT csv);
+    COPY Forum_hasTag_Tag          FROM 'data/social-network-sf{sf}-merged-fk/Forum_hasTag_Tag.csv'          (DELIMITER '|', HEADER, FORMAT csv);
+    COPY Person_hasInterest_Tag    FROM 'data/social-network-sf{sf}-merged-fk/Person_hasInterest_Tag.csv'    (DELIMITER '|', HEADER, FORMAT csv);
+    COPY Person_likes_Comment      FROM 'data/social-network-sf{sf}-merged-fk/Person_likes_Comment.csv'      (DELIMITER '|', HEADER, FORMAT csv);
+    COPY Person_likes_Post         FROM 'data/social-network-sf{sf}-merged-fk/Person_likes_Post.csv'         (DELIMITER '|', HEADER, FORMAT csv);
+    COPY Person_studyAt_University FROM 'data/social-network-sf{sf}-merged-fk/Person_studyAt_University.csv' (DELIMITER '|', HEADER, FORMAT csv);
+    COPY Person_workAt_Company     FROM 'data/social-network-sf{sf}-merged-fk/Person_workAt_Company.csv'     (DELIMITER '|', HEADER, FORMAT csv);
+    COPY Person_knows_Person (Person1id, Person2id) FROM 'data/social-network-sf{sf}-merged-fk/Person_knows_Person.csv'       (DELIMITER '|', HEADER, FORMAT csv);
+    COPY Person_knows_Person (Person2id, Person1id) FROM 'data/social-network-sf{sf}-merged-fk/Person_knows_Person.csv'       (DELIMITER '|', HEADER, FORMAT csv);
     """)
 
 with open(f"results/results.csv", "a+") as results_file:
