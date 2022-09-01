@@ -47,6 +47,7 @@ else:
 
 
 print(f"Running DuckDB version {duckdb.__version__}")
+print(f"Scale factor: SF{sf}")
 con = duckdb.connect(database='ddb/scratch/ldbc.duckdb')
 
 con.execute(f"""
