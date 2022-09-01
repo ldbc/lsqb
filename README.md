@@ -151,6 +151,21 @@ for SF in 0.1 0.3 1; do
 done
 ```
 
+## Counting nodes and edges
+
+To count nodes and edges:
+
+```bash
+export SF=...
+cd data/social-network-sf${SF}-projected-fk/
+
+echo Nodes:
+wc -l City.csv Comment.csv Company.csv Continent.csv Country.csv Forum.csv Person.csv Post.csv Tag.csv TagClass.csv
+
+echo Edges:
+wc -l City_isPartOf_Country.csv Comment_hasCreator_Person.csv Comment_hasTag_Tag.csv Comment_isLocatedIn_Country.csv Comment_replyOf_Comment.csv Comment_replyOf_Post.csv Company_isLocatedIn_Country.csv Country_isPartOf_Continent.csv Forum_containerOf_Post.csv Forum_hasMember_Person.csv Forum_hasModerator_Person.csv Forum_hasTag_Tag.csv Person_hasInterest_Tag.csv Person_isLocatedIn_City.csv Person_knows_Person.csv Person_likes_Comment.csv Person_likes_Post.csv Person_studyAt_University.csv Person_workAt_Company.csv Post_hasCreator_Person.csv Post_hasTag_Tag.csv Post_isLocatedIn_Country.csv TagClass_isSubclassOf_TagClass.csv Tag_hasType_TagClass.csv University.csv University_isLocatedIn_City.csv
+```
+
 ## Philosophy
 
 * This benchmark has been inspired by the [LDBC SNB](https://arxiv.org/pdf/2001.02299.pdf) and the [JOB](https://db.in.tum.de/~leis/papers/lookingglass.pdf) benchmarks.
