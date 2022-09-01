@@ -1,1 +1,1 @@
-source /data/duckdb/tools/pythonpkg/.venv/bin/activat
+source /data/duckdb/tools/pythonpkg/.venv/bin/activate
