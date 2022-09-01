@@ -62,6 +62,7 @@ An example data set is provided with the substitution `SF=example`:
 * `data/social-network-sfexample-merged-fk`
 
 Pre-generated data sets are available in the [SURF/CWI data repository](https://repository.surfsara.nl/datasets/cwi/lsqb).
+See the [download instructions and links](https://github.com/ldbc/data-sets-surf-repository/#labelled-subgraph-query-benchmark-lsqb).
 
 #### Generating the data sets from scratch
 
