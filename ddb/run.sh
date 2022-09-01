@@ -11,4 +11,5 @@ cd ..
 
 NUM_THREADS=${1:-`nproc`}
 
+rm -f ddb/scratch/ldbc.duckdb
 python3 ddb/client.py ${SF} ${NUM_THREADS}
