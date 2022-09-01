@@ -21,6 +21,8 @@ docker run \
     --detach \
     --ulimit nofile=40000:40000 \
     ${NEO4J_ENV_VARS} \
+    --env NEO4J_dbms_memory_pagecache_size=120G \
+    --env NEO4J_dbms_memory_heap_max__size=120G \
     --volume=${NEO4J_DATA_DIR}:/data:z \
     --volume=${NEO4J_HOME}/logs:/logs:z \
     --volume=${NEO4J_HOME}/import:/var/lib/neo4j/import:z \
