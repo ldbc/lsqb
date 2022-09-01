@@ -10,7 +10,7 @@ def query_fun(tx, query):
 def run_query(session, system_variant, sf, query_id, query_spec, results_file):
     start = time.time()
     # turn on the parallel runtime for the Enterprise edition
-    if system_variant == "enterprise":
+    if system_variant == "enterprise" and query_id != 9:
         query_spec = f"CYPHER runtime=parallel {query_spec}"
     result = session.read_transaction(query_fun, query_spec)
     end = time.time()
