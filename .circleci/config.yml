@@ -38,6 +38,7 @@ jobs:
           name: Test Neo4j
           command: |
             cd neo
+            sed -i 's/120G/1G/g' start.sh
             ./init-and-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
