@@ -3,16 +3,20 @@ SET syntax_version="v2"
 
 CREATE OR REPLACE DISTRIBUTED QUERY q9(){
 SumACCUM<UINT> @@count;
-OrAccum<BOOL> @isKnown;
+SumACCUM<UINT> @@countAll;
+SumACCUM<UINT> @@countBranch;
+
+
 
 person3 = SELECT p3
-	FROM Tag -(<HAS_INTEREST)- Person:p3 -(KNOWS)- Person:p2
-	Accum p2.@isKnown+=true;
+  FROM Tag -(<HAS_INTEREST)- Person:p3 -(KNOWS)- Person:p2 -(KNOWS)- Person:p1
+  ACCUM @@countAll+=1;
 
-tmp = SELECT p1
-	FROM person3:p3 -(KNOWS)- Person:p2 -(KNOWS)- Person:p1
-	WHERE p1!=p3 AND NOT p1.@isknown;
-	Accum @@count+=1;
+person3 = SELEC p3
+  FROM person3:p3 -(KNOWS)- Person:p2 -(KNOWS)- Person:p1 - (KNOWS)- person3:p3
+  ACCUM @@countBranch+=1;
+
+@@count=@@countAll-@@countBranch;
 
 PRINT @@count;
 }

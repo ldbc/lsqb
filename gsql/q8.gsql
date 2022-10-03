@@ -2,17 +2,23 @@ USE GRAPH lsqb
 SET syntax_version="v2"
 
 CREATE OR REPLACE DISTRIBUTED QUERY q8(){
-SumACCUM<UINT> @@count;
-OrAccum<BOOL> @hastag;
 
-comment = SELECT c
-	FROM Tag -(<HAS_TAG)- Comment:c
-	Accum c.@hastag+=true;
+SumACCUM<UINT> @@count;
+SumACCUM<UINT> @@countAll;
+SumACCUM<UINT> @@countBranch;
+
+
+Comments = SELECT c
+	FROM Tag:t1 -(<HAS_TAG)- Message -(<REPLY_OF)- comment:c -(HAS_TAG>)- Tag:t2
+	WHERE t1 != t2
+  ACCUM @@countAll+=1;
+
 
 tmp = SELECT t1
-	FROM Tag:t1 -(<HAS_TAG)- Message -(<REPLY_OF)- comment:c -(HAS_TAG>)- Tag:t2
-	WHERE NOT c.@hastag AND t1!=t2
-	Accum @@count+=1;
+	FROM Tag:t1 -(<HAS_TAG)- Message -(<REPLY_OF)- Comments:c -(HAS_TAG>)- Tag:t1
+	Accum @@countBranch+=1;
+
+@@count=@@countAll-@@countBranch;
 
 PRINT @@count;
 }
