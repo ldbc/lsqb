@@ -26,7 +26,7 @@ docker run \
     --volume=${IMPORT_DATA_DIR_PROJECTED_FK}:/import:z \
     ${NEO4J_ENV_VARS} \
     neo4j:${NEO4J_VERSION} \
-    neo4j-admin import \
+    neo4j-admin database import full \
     --id-type=INTEGER \
     --nodes=Continent="/import/Continent.csv" \
     --nodes=Country="/import/Country.csv" \
