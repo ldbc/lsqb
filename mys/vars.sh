@@ -1,4 +1,4 @@
-export MYSQL_VERSION=8.0.23
+export MYSQL_VERSION=8.0.31
 export MYSQL_SCHEMA_DIR=`pwd`/sql
 export MYSQL_CONTAINER_NAME=lsqb-mys
 export MYSQL_ROOT_PASSWORD=mysecretpassword
