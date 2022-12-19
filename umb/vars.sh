@@ -6,7 +6,7 @@ export COMMON_SQL_DIR=`pwd`/../sql
 export UMBRA_SQL_DIR=`pwd`/sql/
 export UMBRA_SQL_SCRATCH_DIR=`pwd`/scratch/sql
 export UMBRA_CONTAINER_NAME=lsqb-umb
-export UMBRA_VERSION=75f99d093
+export UMBRA_VERSION=cbad59200
 export UMBRA_DOCKER_IMAGE=umbra-release:${UMBRA_VERSION}
 
 popd > /dev/null
