@@ -15,12 +15,12 @@ jobs:
 
     steps:
       - checkout
-      - run: |
-          DEBIAN_FRONTEND=noninteractive
-          sudo apt update
       - run:
           name: Install dependencies
           command: |
+            export DEBIAN_FRONTEND=noninteractive
+            export NEEDRESTART_SUSPEND=a
+            sudo apt update
             python3 -m pip install --upgrade pip
             scripts/install-dependencies.sh
       - run:
