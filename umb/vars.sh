@@ -9,4 +9,10 @@ export UMBRA_CONTAINER_NAME=lsqb-umb
 export UMBRA_VERSION=cbad59200
 export UMBRA_DOCKER_IMAGE=umbra-release:${UMBRA_VERSION}
 
+if [ -z "${UMBRA_BUFFERSIZE+x}" ]; then
+    export UMBRA_DOCKER_BUFFERSIZE_ENV_VAR=
+else
+    export UMBRA_DOCKER_BUFFERSIZE_ENV_VAR="--env BUFFERSIZE=${UMBRA_BUFFERSIZE}"
+fi
+
 popd > /dev/null
