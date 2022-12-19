@@ -4,7 +4,12 @@ The binaries of Umbra are available upon request from the TUM database group.
 
 ## Getting started
 
-Load the Umbra image using `docker load`.
+Load the Umbra image:
+
+```bash
+export UMBRA_URL_PREFIX=...
+./docker-load.sh
+```
 
 ## Running on a single-thread
 

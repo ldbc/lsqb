@@ -26,9 +26,8 @@ jobs:
       - run:
           name: Load Umbra Docker image
           command: |
-            . umb/vars.sh
-            # ${UMBRA_URL_PREFIX} should be set as a sercet variable
-            curl -s ${UMBRA_URL_PREFIX}${UMBRA_VERSION}.tar.gz | docker load
+            # ${UMBRA_URL_PREFIX} should be set as a sercet variable in the CI configuration
+            umb/docker-load.sh
       - run:
           name: Preprocess data
           command: |
