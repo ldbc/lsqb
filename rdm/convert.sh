@@ -10,5 +10,5 @@ cd ..
 
 ddb/load.sh
 echo Converting the graph to '.graph' format...
-cat rdm/conv.sql | sed "s/SCALE_FACTOR/${SF}/g" | ddb/scratch/duckdb ddb/scratch/ldbc.duckdb
+python3 rdm/convert.py
 echo Done
