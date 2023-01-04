@@ -8,7 +8,4 @@ cd ..
 
 . ddb/vars.sh
 
-cd ddb
-if [ ! -f scratch/duckdb ]; then
-    ./get.sh
-fi
+# do nothing

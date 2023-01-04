@@ -20,11 +20,6 @@ elif [[ ! -z $(which apt) ]]; then
     sudo apt install -y cmake libssl-dev
 fi
 
-echo Installing DuckDB
-
-# DuckDB binary
-ddb/get.sh
-
 echo Installing Pip package
 
 pip3 config --user set global.progress_bar off
