@@ -22,3 +22,15 @@ There are multiple options to run Umbra on a single-thread:
     ```
 
 * Using Docker: add the `--cpuset-cpus=0` argument to the `docker run` instruction.
+
+## Execute scripts directly with `bin/sql`
+
+Queries in the Umbra/Docker setup can be run without the server as follows:
+
+```bash
+for i in $(seq 1 6); do
+  echo ============ Q${i} ============
+  cp ../sql/q${i}.sql scratch/
+  docker exec --interactive ${UMBRA_CONTAINER_NAME} /umbra/bin/sql /scratch/ldbc.db /scratch/q${i}.sql
+done
+```
