@@ -9,4 +9,4 @@ cd ..
 . pos/vars.sh
 . scripts/import-vars.sh
 
-python3 pos/client.py ${SF} PostgreSQL ${@}
+python3 pos/client.py ${SF} PostgreSQL $@
