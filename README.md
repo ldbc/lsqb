@@ -152,6 +152,16 @@ for SF in 0.1 0.3 1; do
 done
 ```
 
+## Cross-validation
+
+Used the `cross-validate.sh` script. For example:
+
+```bash
+scripts/cross-validate.sh --system DuckDB --variant "10 threads" --scale_factor 1
+scripts/cross-validate.sh --system Neo4j --scale_factor 0.1
+scripts/cross-validate.sh --system PostgreSQL --scale_factor example
+```
+
 ## Philosophy
 
 * This benchmark has been inspired by the [LDBC SNB](https://arxiv.org/pdf/2001.02299.pdf) and the [JOB](https://db.in.tum.de/~leis/papers/lookingglass.pdf) benchmarks.

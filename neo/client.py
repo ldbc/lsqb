@@ -29,7 +29,7 @@ else:
 if len(sys.argv) > 2:
     system_variant = sys.argv[2]
 else:
-    system_variant = "default"
+    system_variant = ""
 
 driver = GraphDatabase.driver("bolt://localhost:7687")
 session = driver.session()
