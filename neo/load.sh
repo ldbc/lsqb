@@ -18,7 +18,6 @@ rm -rf ${NEO4J_DATA_DIR}/*
 
 docker run \
     --rm \
-    --user="$(id -u):$(id -g)" \
     --publish=7474:7474 \
     --publish=7687:7687 \
     --volume=${NEO4J_DATA_DIR}:/data:z \

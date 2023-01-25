@@ -9,4 +9,4 @@ cd ..
 . kuz/vars.sh
 . scripts/import-vars.sh
 
-python3 kuz/load.py
+python3 kuz/load.py ${SF} $@

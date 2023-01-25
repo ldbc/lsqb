@@ -3,7 +3,7 @@ from os import listdir
 from os.path import isfile, join
 import logging
 import shutil
-
+import sys
 
 def load_schema(conn):
     schema_file = open('kuz/schema.cypher').read().split(';')
@@ -11,13 +11,14 @@ def load_schema(conn):
     for schema in schema_file:
         print(schema)
         print()
-        
+
         if schema == "":
             continue
         logging.info(f"Loading schema {schema}")
         conn.execute(f"{schema}")
 
     logging.info("Loaded schema")
+
 def load_lsqb_dataset(conn, sf):
     data_path = f'data/social-network-sf{sf}-projected-fk'
 
@@ -39,7 +40,12 @@ def load_lsqb_dataset(conn, sf):
 
 
 def main():
-    SF = 1
+    if len(sys.argv) < 1:
+        print("Usage: client.py sf")
+        print("Where sf is the scale factor)")
+        exit(1)
+    else:
+        sf = sys.argv[1]
 
     database_file_location = 'kuz/scratch/lsqb-database'
     shutil.rmtree(database_file_location, ignore_errors=True)
@@ -51,7 +57,7 @@ def main():
 
     logging.info("Successfully connected")
 
-    load_lsqb_dataset(conn, SF)
+    load_lsqb_dataset(conn, sf)
 
 
 if __name__ == "__main__":
