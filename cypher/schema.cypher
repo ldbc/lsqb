@@ -1,44 +1,57 @@
 CREATE NODE TABLE Company (
-    CompanyId INT64
+    CompanyId INT64,
+    PRIMARY KEY (CompanyId)
 );
 
 CREATE NODE TABLE University (
-    UniversityId INT64
+    UniversityId INT64,
+    PRIMARY KEY (UniversityId)
+
 );
 
 CREATE NODE TABLE Continent (
-    ContinentId INT64
+    ContinentId INT64,
+    PRIMARY KEY (ContinentId)
+
 );
 
 CREATE NODE TABLE Country (
-    CountryId INT64
+    CountryId INT64,
+    PRIMARY KEY (CountryId)
 );
 
 CREATE NODE TABLE City (
-    CityId INT64
+    CityId INT64,
+    PRIMARY KEY (CityId)
 );
 CREATE NODE TABLE Tag (
-    TagId INT64
+    TagId INT64,
+    PRIMARY KEY (TagId)
 );
 CREATE NODE TABLE TagClass (
-    TagClassId INT64
+    TagClassId INT64,
+    PRIMARY KEY (TagClassId)
 );
 CREATE NODE TABLE Forum (
-    ForumId INT64
+    ForumId INT64,
+    PRIMARY KEY (ForumId)
 );
 CREATE NODE TABLE Comment (
-    CommentId INT64
+    CommentId INT64,
+    PRIMARY KEY (CommentId)
 );
 CREATE NODE TABLE Post (
-    PostId INT64
+    PostId INT64,
+    PRIMARY KEY (PostId)
 );
 CREATE NODE TABLE Person (
-    PersonId INT64
+    PersonId INT64,
+    PRIMARY KEY (PersonId)
 );
 
 CREATE REL TABLE City_isPartOf_Country(FROM City TO Country);
 CREATE REL TABLE Comment_hasCreator_Person(FROM Comment TO Person);
-CREATE REL TABLE Comment_hasTag_Tag(From Comment TO Tag)
+CREATE REL TABLE Comment_hasTag_Tag(From Comment TO Tag);
 CREATE REL TABLE Comment_isLocatedIn_Country(FROM Comment TO Country);
 CREATE REL TABLE Comment_replyOf_Comment(FROM Comment TO Comment);
 CREATE REL TABLE Comment_replyOf_Post(FROM Comment TO Post);
