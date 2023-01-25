@@ -1,4 +1,4 @@
-MATCH (:Tag)<-[:Message_hasTag_Tag]-(message:Post|Comment)-[:Message_hasCreator_Person]->(creator:Person),
+MATCH (:Tag)<-[:Message_hasTag_Tag]-(message:Message)-[:Message_hasCreator_Person]->(creator:Person),
   (message)<-[:Person_likes_Message]-(liker:Person),
-  (message)<-[:Comment_replyOf_Message]-(comment:Comment)
+  (message)<-[:Message_replyOf_Message]-(comment:Message)
 RETURN count(*) AS count
