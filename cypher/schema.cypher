@@ -1,39 +1,39 @@
 CREATE NODE TABLE Company (
-    CompanyId INT64 NOT NULL
+    CompanyId INT64
 );
 
 CREATE NODE TABLE University (
-    UniversityId INT64 NOT NULL
+    UniversityId INT64
 );
 
 CREATE NODE TABLE Continent (
-    ContinentId INT64 NOT NULL
+    ContinentId INT64
 );
 
 CREATE NODE TABLE Country (
-    CountryId INT64 NOT NULL
+    CountryId INT64
 );
 
 CREATE NODE TABLE City (
-    CityId INT64 NOT NULL
+    CityId INT64
 );
 CREATE NODE TABLE Tag (
-    TagId INT64 NOT NULL
+    TagId INT64
 );
 CREATE NODE TABLE TagClass (
-    TagClassId INT64 NOT NULL
+    TagClassId INT64
 );
 CREATE NODE TABLE Forum (
-    ForumId INT64 NOT NULL
+    ForumId INT64
 );
 CREATE NODE TABLE Comment (
-    CommentId INT64 NOT NULL
+    CommentId INT64
 );
 CREATE NODE TABLE Post (
-    PostId INT64 NOT NULL
+    PostId INT64
 );
 CREATE NODE TABLE Person (
-    PersonId INT64 NOT NULL
+    PersonId INT64
 );
 
 CREATE REL TABLE City_isPartOf_Country(FROM City TO Country);
