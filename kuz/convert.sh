@@ -11,7 +11,8 @@ cd ..
 
 cd data/social-network-sf${SF}-projected-fk
 
-if [ ! -f Person_knows_Person_backwards.csv ]; then
+if [ ! -f Person_knows_Person_bidirectional.csv ]; then
     echo "Creating CSV file with backwards 'knows' edges"
-    cat Person_knows_Person.csv | cut -d '|' -f 2,1 > Person_knows_Person_backwards.csv
+    cat Person_knows_Person.csv | awk -F"|"  -v OFS="|" '{print($2, $1)}'| tail -n +2 > Person_knows_Person_backwards.csv
+    cat Person_knows_Person.csv Person_knows_Person_backwards.csv > Person_knows_Person_bidirectional.csv
 fi

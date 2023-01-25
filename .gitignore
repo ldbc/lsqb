@@ -1,3 +1,4 @@
 *.swp
 .DS_Store
-*_backwards.csv
+Person_knows_Person_backwards.csv
+Person_knows_Person_bidirectional.csv
