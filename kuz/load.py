@@ -27,7 +27,7 @@ def load_lsqb_dataset(conn, sf):
 
     for lsqb_file in lsqb_files:
         logging.debug(f"Loading {lsqb_file}")
-        conn.execute(f"""COPY {lsqb_file[:-4]} from '{join(data_path, lsqb_file)}', (HEADER=True, DELIM='|')""")
+        conn.execute(f"""COPY {lsqb_file[:-4]} from '{join(data_path, lsqb_file)}' (HEADER=True, DELIM='|')""")
 
     logging.info("Loaded data files")
 
