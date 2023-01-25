@@ -7,3 +7,6 @@ social-network-sf*/
 *-reverse.csv
 *.tar.zst
 mydb*
+Person_knows_Person_bidirectional.csv
+*Message*.csv
+.converted
