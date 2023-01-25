@@ -6,9 +6,12 @@ import shutil
 
 
 def load_schema(conn):
-    schema_file = open('../cypher/schema.cypher').read().split(';')
+    schema_file = open('kuz/schema.cypher').read().split(';')
 
     for schema in schema_file:
+        print(schema)
+        print()
+        
         if schema == "":
             continue
         logging.info(f"Loading schema {schema}")
@@ -16,7 +19,7 @@ def load_schema(conn):
 
     logging.info("Loaded schema")
 def load_lsqb_dataset(conn, sf):
-    data_path = f'../data/social-network-sf{sf}-projected-fk'
+    data_path = f'data/social-network-sf{sf}-projected-fk'
 
     lsqb_files = [f for f in listdir(data_path) if isfile(join(data_path, f)) and ".csv" in f]
 
@@ -32,10 +35,10 @@ def load_lsqb_dataset(conn, sf):
 def main():
     SF = 1
 
-    database_file_location = 'scratch/lsqb-database'
+    database_file_location = 'kuz/scratch/lsqb-database'
     shutil.rmtree(database_file_location, ignore_errors=True)
 
-    db = kuzu.database('./scratch/lsqb-database')
+    db = kuzu.database('kuz/scratch/lsqb-database')
     conn = kuzu.connection(db)
     logging.info("Successfully connected")
 
