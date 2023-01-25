@@ -33,9 +33,12 @@ def load_lsqb_dataset(conn, sf):
 
     for lsqb_file in lsqb_edge_files:
         logging.debug(f"Loading {lsqb_file}")
-        conn.execute(f"""COPY {lsqb_file[:-4]} from '{join(data_path, lsqb_file)}' (HEADER=True, DELIM='|')""")
-
-
+        if "Person_knows_Person_bidirectional" in lsqb_file:
+            conn.execute(f"""COPY Person_knows_Person from '{join(data_path, lsqb_file)}' (HEADER=True, DELIM='|')""")
+        elif "Person_knows_Person" in lsqb_file:
+            continue
+        else:
+            conn.execute(f"""COPY {lsqb_file[:-4]} from '{join(data_path, lsqb_file)}' (HEADER=True, DELIM='|')""")
     logging.info("Loaded data files")
 
 
