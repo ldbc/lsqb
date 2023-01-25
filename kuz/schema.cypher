@@ -1,53 +1,14 @@
-CREATE NODE TABLE Company (
-    CompanyId INT64,
-    PRIMARY KEY (CompanyId)
-);
-
-CREATE NODE TABLE University (
-    UniversityId INT64,
-    PRIMARY KEY (UniversityId)
-
-);
-
-CREATE NODE TABLE Continent (
-    ContinentId INT64,
-    PRIMARY KEY (ContinentId)
-
-);
-
-CREATE NODE TABLE Country (
-    CountryId INT64,
-    PRIMARY KEY (CountryId)
-);
-
-CREATE NODE TABLE City (
-    CityId INT64,
-    PRIMARY KEY (CityId)
-);
-CREATE NODE TABLE Tag (
-    TagId INT64,
-    PRIMARY KEY (TagId)
-);
-CREATE NODE TABLE TagClass (
-    TagClassId INT64,
-    PRIMARY KEY (TagClassId)
-);
-CREATE NODE TABLE Forum (
-    ForumId INT64,
-    PRIMARY KEY (ForumId)
-);
-CREATE NODE TABLE Comment (
-    CommentId INT64,
-    PRIMARY KEY (CommentId)
-);
-CREATE NODE TABLE Post (
-    PostId INT64,
-    PRIMARY KEY (PostId)
-);
-CREATE NODE TABLE Person (
-    PersonId INT64,
-    PRIMARY KEY (PersonId)
-);
+CREATE NODE TABLE Company(CompanyId INT64, PRIMARY KEY (CompanyId));
+CREATE NODE TABLE University(UniversityId INT64, PRIMARY KEY (UniversityId));
+CREATE NODE TABLE Continent(ContinentId INT64, PRIMARY KEY (ContinentId));
+CREATE NODE TABLE Country(CountryId INT64, PRIMARY KEY (CountryId));
+CREATE NODE TABLE City(CityId INT64, PRIMARY KEY (CityId));
+CREATE NODE TABLE Tag(TagId INT64, PRIMARY KEY (TagId));
+CREATE NODE TABLE TagClass(TagClassId INT64, PRIMARY KEY (TagClassId));
+CREATE NODE TABLE Forum(ForumId INT64, PRIMARY KEY (ForumId));
+CREATE NODE TABLE Comment(CommentId INT64, PRIMARY KEY (CommentId));
+CREATE NODE TABLE Post(PostId INT64, PRIMARY KEY (PostId));
+CREATE NODE TABLE Person(PersonId INT64, PRIMARY KEY (PersonId));
 
 CREATE REL TABLE City_isPartOf_Country(FROM City TO Country);
 CREATE REL TABLE Comment_hasCreator_Person(FROM Comment TO Person);
