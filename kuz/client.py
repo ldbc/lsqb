@@ -29,7 +29,7 @@ def main():
 
     with open(f"results/results.csv", "a+") as results_file:
         #for i in range(1, 10):
-        for i in [6]:
+        for i in [2, 3, 4, 5, 6]:
             print(i)
             with open(f"kuz/q{i}.cypher", "r") as query_file:
                 run_query(conn, "", sf, i, query_file.read(), results_file)
