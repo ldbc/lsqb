@@ -15,7 +15,6 @@ fi
 
 docker run \
     --rm \
-    --user="$(id -u):$(id -g)" \
     --publish=7474:7474 \
     --publish=7687:7687 \
     --detach \
