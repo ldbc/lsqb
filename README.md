@@ -62,7 +62,18 @@ An example data set is provided with the substitution `SF=example`:
 * `data/social-network-sfexample-merged-fk`
 
 Pre-generated data sets are available in the [SURF/CWI data repository](https://repository.surfsara.nl/datasets/cwi/lsqb).
-See the [download instructions and links](https://github.com/ldbc/data-sets-surf-repository/#labelled-subgraph-query-benchmark-lsqb).
+
+To download the data sets, set the `MAX_SF` environment variable to the size of the maximum scale factor you want to use (at least `1`) and run the download script.
+
+For example:
+
+```bash
+export MAX_SF=3
+scripts/download-projected-fk-data-sets.sh
+scripts/download-merged-fk-data-sets.sh
+```
+
+For more information, see the [download instructions and links](https://github.com/ldbc/data-sets-surf-repository/#labelled-subgraph-query-benchmark-lsqb).
 
 #### Generating the data sets from scratch
 
