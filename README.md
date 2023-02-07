@@ -103,7 +103,7 @@ Stable implementations:
 
 * `umb`: [Umbra](https://umbra-db.com/) [SQL] :whale:
 * `hyp`: [HyPer](https://hyper-db.de/) [SQL] :whale:
-* `ddb`: [DuckDB](https://www.duckdb.org/) [SQL] (bare metal)
+* `ddb`: [DuckDB](https://www.duckdb.org/) [SQL] (embedded)
 * `pos`: [PostgreSQL](https://www.postgresql.org/) [SQL] :whale:
 * `mys`: [MySQL](https://www.mysql.com/) [SQL] :whale:
 * `neo`: [Neo4j Community Edition](https://neo4j.com/) [Cypher] :whale:
@@ -111,7 +111,11 @@ Stable implementations:
 * `mem`: [Memgraph](https://memgraph.com/) [Cypher] :whale:
 * `vos`: [Virtuoso Open-Source Edition](http://vos.openlinksw.com/owiki/wiki/VOS) [SPARQL] :whale:
 * `xgt`: [Trovares xGT](https://www.trovares.com/) [Cypher] :whale:
-* `rdm`: [RapidMatch](https://github.com/RapidsAtHKUST/RapidMatch) [`.graph`]
+* `rdm`: [RapidMatch](https://github.com/RapidsAtHKUST/RapidMatch) [`.graph`] (separate process)
+
+WIP implementations:
+
+* `kuz`: [Kùzu](https://kuzudb.com/) [Cypher] (embedded)
 
 :warning: Both Neo4j and Memgraph use the Bolt protocol for communicating with the client.
 To avoid clashing on port `7687`, the Memgraph instance uses port `27687` for its Bolt communication.
