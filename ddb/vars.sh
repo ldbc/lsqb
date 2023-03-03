@@ -1,2 +1,2 @@
 export DUCKDB_DIR=`pwd`/ddb/scratch
-export DUCKDB_VERSION=0.6.1
+export DUCKDB_VERSION=0.7.1
