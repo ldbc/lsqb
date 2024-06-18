@@ -8,6 +8,8 @@ set -o pipefail
 cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd ../data
 
+echo Downloading projected FK data sets up to ${MAX_SF}
+
 for SF in 0.1 0.3; do
     echo "Downloading scale factor ${SF}"
     curl --silent --fail https://repository.surfsara.nl/datasets/cwi/lsqb/files/lsqb-projected/social-network-sf${SF}-projected-fk.tar.zst | tar -x --use-compress-program=unzstd
