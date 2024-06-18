@@ -34,7 +34,7 @@ edge_types = [
 path = f"xgtd://"
 
 conn = xgt.Connection()
-admin_conn = xgt.Connection(userid='xgtd')
+admin_conn = xgt.Connection()
 admin_conn.set_config({'metrics.cache' : False})
 
 # Drop all objects
