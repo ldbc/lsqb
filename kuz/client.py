@@ -5,6 +5,7 @@ import logging
 
 def run_query(conn, system_variant, sf, query_id, query_spec, results_file):
     start = time.time()
+    print(query_spec)
     results = conn.execute(query_spec)
     if results.has_next():
         result = results.get_next()
