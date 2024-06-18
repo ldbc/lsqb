@@ -120,7 +120,6 @@ Stable implementations:
 * `neo`: [Neo4j Community Edition](https://neo4j.com/) [Cypher] :whale:
 * `red`: [RedisGraph](https://oss.redislabs.com/redisgraph/) [Cypher] :whale:
 * `mem`: [Memgraph](https://memgraph.com/) [Cypher] :whale:
-* `vos`: [Virtuoso Open-Source Edition](http://vos.openlinksw.com/owiki/wiki/VOS) [SPARQL] :whale:
 
 WIP implementations:
 
