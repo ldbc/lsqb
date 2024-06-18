@@ -54,9 +54,9 @@ def main():
     database_file_location = 'kuz/scratch/lsqb-database'
     shutil.rmtree(database_file_location, ignore_errors=True)
 
-    db = kuzu.database('kuz/scratch/lsqb-database')
+    db = kuzu.Database('kuz/scratch/lsqb-database')
 
-    conn = kuzu.connection(db)
+    conn = kuzu.Connection(db)
 
 
     logging.info("Successfully connected")
