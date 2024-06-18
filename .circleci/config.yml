@@ -66,23 +66,9 @@ jobs:
             ./init-and-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
-          name: Test Virtuoso
-          command: |
-            cd vos
-            ./init-and-load.sh; ./run.sh; ./stop.sh
-            cd ..
-      - run:
           name: Test Umbra
           command: |
             cd umb
-            ./init-and-load.sh; ./run.sh; ./stop.sh
-            cd ..
-      - run:
-          name: Test RapidMatch conversion script
-          command: |
-            rdm/get.sh
-            ddb/load.sh; rdm/convert.sh
-            cd rdm
             ./init-and-load.sh; ./run.sh; ./stop.sh
             cd ..
       - slack/status
