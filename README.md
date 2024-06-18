@@ -121,7 +121,6 @@ Stable implementations:
 * `red`: [RedisGraph](https://oss.redislabs.com/redisgraph/) [Cypher] :whale:
 * `mem`: [Memgraph](https://memgraph.com/) [Cypher] :whale:
 * `vos`: [Virtuoso Open-Source Edition](http://vos.openlinksw.com/owiki/wiki/VOS) [SPARQL] :whale:
-* `xgt`: [Trovares xGT](https://www.trovares.com/) [Cypher] :whale:
 * `rdm`: [RapidMatch](https://github.com/RapidsAtHKUST/RapidMatch) [`.graph`] (separate process)
 
 WIP implementations:
