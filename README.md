@@ -168,7 +168,7 @@ done
 
 ## Cross-validation
 
-Used the `cross-validate.sh` script. For example:
+Use the `cross-validate.sh` script. For example:
 
 ```bash
 scripts/cross-validate.sh --system DuckDB --variant "10 threads" --scale_factor 1

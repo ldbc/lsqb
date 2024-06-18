@@ -55,5 +55,10 @@ con.execute(f"""
       AND actual.result != expected.result
     """)
 crossValResults = con.fetchall()
+
 if len(crossValResults) == 0:
     print("Cross-validation passed: the results are identical.")
+else:
+    print("Cross-validation failed:")
+    for r in crossValResults:
+        print(f"- Q{r[0]}: expected: {r[1]}, actual: {r[2]}")
