@@ -9,4 +9,6 @@ cd ..
 . kuz/vars.sh
 . scripts/import-vars.sh
 
-python3 kuz/client.py ${SF} $@
+NUM_THREADS=${1:-`nproc`}
+
+python3 kuz/client.py ${SF} $NUM_THREADS
