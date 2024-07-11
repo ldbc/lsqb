@@ -12,7 +12,7 @@ def run_query(conn, sf, query_id, query_spec, results_file, num_threads):
 
     end = time.time()
     duration = end - start
-    results_file.write(f"KuzuDB\t{num_threads} threads\t{sf}\t{query_id}\t{duration:.4f}\t{result[0]}\n")
+    results_file.write(f"KuzuDB-{kuzu.__version__}\t{num_threads} threads\t{sf}\t{query_id}\t{duration:.4f}\t{result[0]}\n")
     results_file.flush()
     return (duration, result)
 
@@ -35,7 +35,7 @@ def main():
 
     with open(f"results/results.csv", "a+") as results_file:
         for i in range(1, 10):
-            print(i)
+            print(f"Query {i}")
             with open(f"kuz/q{i}.cypher", "r") as query_file:
                 run_query(conn, sf, i, query_file.read(), results_file, num_threads)
 
