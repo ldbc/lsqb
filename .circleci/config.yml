@@ -58,13 +58,6 @@ jobs:
             ./init-and-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
-          name: Test RedisGraph
-          command: |
-            export PATH="~/.local/bin:$PATH"
-            cd red
-            ./init-and-load.sh; ./run.sh; ./stop.sh
-            cd ..
-      - run:
           name: Test Umbra
           command: |
             cd umb
