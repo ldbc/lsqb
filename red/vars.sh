@@ -1,3 +1,0 @@
-export REDISGRAPH_VERSION=2.8.12
-export REDISGRAPH_SCRATCH_DIR=`pwd`/red/scratch
-export REDISGRAPH_CONTAINER_NAME=lsqb-red

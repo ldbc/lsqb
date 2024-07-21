@@ -118,7 +118,6 @@ Stable implementations:
 * `pos`: [PostgreSQL](https://www.postgresql.org/) [SQL] :whale:
 * `mys`: [MySQL](https://www.mysql.com/) [SQL] :whale:
 * `neo`: [Neo4j Community Edition](https://neo4j.com/) [Cypher] :whale:
-* `red`: [RedisGraph](https://oss.redislabs.com/redisgraph/) [Cypher] :whale:
 * `mem`: [Memgraph](https://memgraph.com/) [Cypher] :whale:
 
 WIP implementations:
