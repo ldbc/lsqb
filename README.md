@@ -169,8 +169,8 @@ done
 Use the `validate.sh` script. For example:
 
 ```bash
-scripts/validate.sh --system DuckDB --variant "10 threads" --scale_factor 1
-scripts/validate.sh --system Neo4j --scale_factor 0.1
+scripts/validate.sh --system DuckDB-1.0.0 --variant "10 threads" --scale_factor example
+scripts/validate.sh --system Neo4j-5.20.0 --scale_factor 0.1
 scripts/validate.sh --system PostgreSQL --scale_factor example
 ```
 
