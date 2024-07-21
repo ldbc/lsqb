@@ -164,14 +164,14 @@ for SF in 0.1 0.3 1; do
 done
 ```
 
-## Cross-validation
+## Validation of results
 
-Use the `cross-validate.sh` script. For example:
+Use the `validate.sh` script. For example:
 
 ```bash
-scripts/cross-validate.sh --system DuckDB --variant "10 threads" --scale_factor 1
-scripts/cross-validate.sh --system Neo4j --scale_factor 0.1
-scripts/cross-validate.sh --system PostgreSQL --scale_factor example
+scripts/validate.sh --system DuckDB --variant "10 threads" --scale_factor 1
+scripts/validate.sh --system Neo4j --scale_factor 0.1
+scripts/validate.sh --system PostgreSQL --scale_factor example
 ```
 
 ## Philosophy
