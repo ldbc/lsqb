@@ -31,7 +31,6 @@ pip3 install --user wheel
 pip3 install --user redisgraph redisgraph-bulk-loader
 pip3 install --user psycopg2-binary
 pip3 install --user mysql-connector-python
-pip3 install --user SPARQLWrapper
 
 # visualization
 pip3 install --user matplotlib pandas seaborn natsort
