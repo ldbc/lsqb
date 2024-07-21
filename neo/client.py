@@ -12,7 +12,7 @@ def run_query(session, system_variant, sf, query_id, query_spec, results_file):
     # turn on the parallel runtime for the Enterprise edition
     if system_variant == "enterprise" and query_id != 9:
         query_spec = f"CYPHER runtime=parallel {query_spec}"
-    result = session.read_transaction(query_fun, query_spec)
+    result = session.execute_read(query_fun, query_spec)
     end = time.time()
     duration = end - start
     results_file.write(f"Neo4j-{__version__}\t{system_variant}\t{sf}\t{query_id}\t{duration:.4f}\t{result[0]}\n")
