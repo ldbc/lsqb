@@ -25,29 +25,17 @@ Inspirations and references:
 
 1. (Optional) Change the location of Docker's data directory ([instructions](https://github.com/ftsrg/cheat-sheets/wiki/Docker#move-docker-data-folder-to-a-different-location)).
 
-1. Install the required dependencies:
+1. Install the dependencies:
 
    ```bash
    scripts/install-dependencies.sh
-   ```
-
-1. (Optional) Install "convenience packages" (e.g. vim, ag, etc.).
-
-   ```bash
+   # optional convenience packages
    scripts/install-convenience-packages.sh
    ```
 
 1. (Optional) Add the Umbra binaries as described in the `umb/README.md` file.
 
-1. (Optional) "Warm up" the system using `scripts/benchmark.sh`, e.g. run all systems through the smallest `example` data set. This should fill Docker caches.
-
-1. (Optional) Copy the data sets to the server. To **decompress and delete** them, run:
-
-   ```bash
-   for f in social-network-sf*.tar.zst; do echo ${f}; tar -I zstd -xvf ${f}; rm ${f}; done
-   ```
-
-1. Revise the benchmark settings, e.g. the number of threads for DuckDB.
+1. Test the system using `scripts/benchmark.sh`, e.g. run all systems through the smallest `example` data set. This tests whether all dependencies are installed and it also downloads the required Docker images.
 
 ### Creating the input data
 
@@ -79,7 +67,7 @@ For more information, see the [download instructions and links](https://github.c
 
 You can generate your own data sets. Note that these may differ in size for different versions of the data generator – for publications, it's recommended to use the pre-generated data sets linked above.
 
-1. Run the [LDBC Sparj Datagen](https://github.com/ldbc/ldbc_snb_datagen/) using CSV outputs and raw mode (see its README for instructions).
+1. Run the [LDBC Spark Datagen](https://github.com/ldbc/ldbc_snb_datagen/) using CSV outputs and raw mode (see its README for instructions).
 
 1. Use the scripts in the [converter](https://github.com/ldbc/ldbc_snb_data_converter) repository:
 
@@ -102,8 +90,8 @@ You can generate your own data sets. Note that these may differ in size for diff
 
    ```bash
    export SF=1
-   cp -r data/csv-only-ids-projected-fk/ ~/git/snb/lsqb/data/social-network-sf${SF}-projected-fk
-   cp -r data/csv-only-ids-merged-fk/    ~/git/snb/lsqb/data/social-network-sf${SF}-merged-fk
+   cp -r data/csv-only-ids-projected-fk/ ${LSQB_REPOSITORY_DIRECTORY}/data/social-network-sf${SF}-projected-fk
+   cp -r data/csv-only-ids-merged-fk/    ${LSQB_REPOSITORY_DIRECTORY}/data/social-network-sf${SF}-merged-fk
    ```
 
 ### Running the benchmark
