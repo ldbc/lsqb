@@ -26,7 +26,7 @@ pip3 config --user set global.progress_bar off
 pip3 install --user duckdb==${DUCKDB_VERSION}
 pip3 install --user neo4j
 pip3 install --user kuzu
-pip3 install --user --global-option=build_ext --global-option="--static-openssl=false" pymgclient
+pip3 install --user pymgclient
 pip3 install --user psycopg2-binary
 pip3 install --user mysql-connector-python
 
