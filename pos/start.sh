@@ -21,7 +21,7 @@ docker run \
     postgres:${POSTGRES_VERSION}
 
 echo -n "Waiting for the database to start ."
-until python3 pos/test-db-connection.py > /dev/null 2>&1; do
+until python3 pos/test-db-connection.py; do
     echo -n " ."
     sleep 1
 done

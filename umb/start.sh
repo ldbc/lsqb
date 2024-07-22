@@ -23,7 +23,7 @@ docker run \
         /var/db/ldbc.db \
     >/dev/null
 
-until python3 ../pos/test-db-connection.py > /dev/null 2>&1; do
+until python3 ../pos/test-db-connection.py; do
     echo -n ". "
     sleep 1
 done
