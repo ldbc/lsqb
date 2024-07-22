@@ -51,7 +51,7 @@ if len(sys.argv) > 3:
 else:
     variant = ""
 
-con = psycopg2.connect(host="localhost", user="postgres", password="mysecretpassword", port=5432)
+con = psycopg2.connect(host="localhost", user="postgres", password="mysecretpassword", port=15432)
 
 with open(f"results/results.csv", "a+") as results_file:
     for i in range(1, 10):
