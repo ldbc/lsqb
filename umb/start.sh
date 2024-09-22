@@ -14,7 +14,7 @@ docker run \
     --name ${UMBRA_CONTAINER_NAME} \
     --detach \
     --volume=${UMBRA_DATABASE_DIR}:/var/db/:z \
-    --publish=5432:5432 \
+    --publish=15432:5432 \
     --env USEDIRECTIO=1 \
     ${UMBRA_DOCKER_BUFFERSIZE_ENV_VAR} \
     ${UMBRA_DOCKER_IMAGE} \
