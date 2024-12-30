@@ -39,6 +39,13 @@ jobs:
             ./init-and-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
+          name: Test Memgraph
+          command: |
+            cd mem
+            ./convert-csvs.sh
+            ./init-and-load.sh; ./run.sh; ./stop.sh
+            cd ..
+      - run:
           name: Test DuckDB
           command: |
             cd ddb
