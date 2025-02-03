@@ -9,14 +9,15 @@ source ../.venv/bin/activate
 
 SFS="1 3 10"
 RUNS=5
+THREADS=8
 
 export SF
 for SF in ${SFS}; do
     echo Running benchmark on scale factor ${SF}
     for RUN in $(seq 1 ${RUNS}); do
       echo "Run ${RUN} of ${RUNS}"
-      python load.py ${SF} 8
-      python client.py ${SF} 8
+      python load.py ${SF} ${THREADS}
+      python client.py ${SF} ${THREADS}
     done
 done
 deactivate
