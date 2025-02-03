@@ -8,7 +8,7 @@ cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 source ../.venv/bin/activate
 
 SFS="1 3 10"
-RUNS=5
+RUNS=1
 THREADS=8
 
 export SF

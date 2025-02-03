@@ -140,11 +140,3 @@ EDGE TABLES (
                             DESTINATION KEY (TagClass2Id) REFERENCES TagClass (id)
                             LABEL isSubClassOf
     );
-
---     Organisation_isLocatedIn_Place  SOURCE KEY (OrganisationId) REFERENCES Organisation (id)
---                             DESTINATION KEY (PlaceId) REFERENCES Place (id)
---                             LABEL Organisation_isLocatedIn,
-
---    Place_isPartOf_Place    SOURCE KEY (Place1Id) REFERENCES Place (id)
---                             DESTINATION KEY (Place2Id) REFERENCES Place (id)
---                             LABEL isPartOf,
