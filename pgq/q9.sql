@@ -8,5 +8,3 @@ LEFT JOIN (select person1id, person2id FROM Person_knows_Person UNION ALL select
        ON pkp3.Person1Id = g.p1_id
       AND pkp3.Person2Id = g.p3_id
     WHERE pkp3.Person1Id IS NULL;
-
-
