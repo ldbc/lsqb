@@ -11,7 +11,7 @@ workflows:
 jobs:
   build:
     machine:
-      image: ubuntu-2204:2022.04.2
+      image: ubuntu-2204:current
 
     steps:
       - checkout
