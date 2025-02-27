@@ -39,7 +39,7 @@ CREATE OR REPLACE TABLE Person_knows_Person AS FROM read_csv('PATHVAR/Person_kno
 CREATE OR REPLACE TABLE Post_hasCreator_Person AS FROM read_csv('PATHVAR/Post_hasCreator_Person.csv');
 CREATE OR REPLACE TABLE Post_isLocatedIn_Country AS FROM read_csv('PATHVAR/Post_isLocatedIn_Country.csv');
 CREATE OR REPLACE TABLE Tag_hasType_TagClass AS FROM read_csv('PATHVAR/Tag_hasType_TagClass.csv');
-CREATE OR REPLACE TABLE TagClass_isSubClassOf_TagClass AS FROM read_csv('PATHVAR/TagClass_isSubClassOf_TagClass.csv');
+CREATE OR REPLACE TABLE TagClass_isSubclassOf_TagClass AS FROM read_csv('PATHVAR/TagClass_isSubClassOf_TagClass.csv');
 
 CREATE OR REPLACE TABLE Message AS FROM read_csv('PATHVAR/Message.csv');
 
