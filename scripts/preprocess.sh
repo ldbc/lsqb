@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # script to preprocess CSV files produced by the LDBC SNB Datagen (CsvCompositeProjectedFK serializers).
 

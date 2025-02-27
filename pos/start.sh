@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -eu
 set -o pipefail
@@ -11,7 +11,7 @@ cd ..
 
 docker run \
     --rm \
-    --publish=5432:5432 \
+    --publish=15432:5432 \
     --name ${POSTGRES_CONTAINER_NAME} \
     --env ${POSTGRES_PASSWORD_POLICY} \
     --volume=${IMPORT_DATA_DIR_MERGED_FK}:/data:z \
@@ -21,7 +21,7 @@ docker run \
     postgres:${POSTGRES_VERSION}
 
 echo -n "Waiting for the database to start ."
-until python3 pos/test-db-connection.py > /dev/null 2>&1; do
+until python3 pos/test-db-connection.py; do
     echo -n " ."
     sleep 1
 done

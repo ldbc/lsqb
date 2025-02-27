@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -eu
 set -o pipefail
@@ -14,7 +14,7 @@ docker run \
     --name ${UMBRA_CONTAINER_NAME} \
     --detach \
     --volume=${UMBRA_DATABASE_DIR}:/var/db/:z \
-    --publish=5432:5432 \
+    --publish=15432:5432 \
     --env USEDIRECTIO=1 \
     ${UMBRA_DOCKER_BUFFERSIZE_ENV_VAR} \
     ${UMBRA_DOCKER_IMAGE} \
@@ -23,7 +23,7 @@ docker run \
         /var/db/ldbc.db \
     >/dev/null
 
-until python3 ../pos/test-db-connection.py > /dev/null 2>&1; do
+until python3 ../pos/test-db-connection.py; do
     echo -n ". "
     sleep 1
 done

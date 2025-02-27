@@ -11,7 +11,7 @@ system = ' '.join(args.system)
 variant = '' if args.variant is None else ' '.join(args.variant)
 scale_factor = args.scale_factor
 
-print(f"Cross-validating results for system '{system}', variant '{variant}', scale factor '{scale_factor}'")
+print(f"Validating results for system '{system}', variant '{variant}', scale factor '{scale_factor}'")
 
 #con = duckdb.connect(database=':memory:')
 con = duckdb.connect(database='/tmp/my.duckdb')
@@ -39,7 +39,7 @@ con.execute(f"""
 numResults = con.fetchone()[0]
 
 if numResults == 0:
-    print("Cross-validation failed: no results found.")
+    print("Validation failed: no results found.")
     exit(1)
 
 con.execute(f"""
@@ -54,11 +54,11 @@ con.execute(f"""
       -- return rows where the results do not match up 
       AND actual.result != expected.result
     """)
-crossValResults = con.fetchall()
+valResults = con.fetchall()
 
-if len(crossValResults) == 0:
-    print("Cross-validation passed: the results are identical.")
+if len(valResults) == 0:
+    print("Validation passed: the results are identical.")
 else:
-    print("Cross-validation failed:")
-    for r in crossValResults:
+    print("Validation failed:")
+    for r in valResults:
         print(f"- Q{r[0]}: expected: {r[1]}, actual: {r[2]}")

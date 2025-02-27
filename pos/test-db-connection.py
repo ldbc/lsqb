@@ -1,3 +1,3 @@
 import psycopg2
 
-con = psycopg2.connect(host="localhost", user="postgres", password="mysecretpassword", port=5432)
+con = psycopg2.connect(host="localhost", user="postgres", password="mysecretpassword", port=15432)

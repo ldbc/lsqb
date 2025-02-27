@@ -11,8 +11,7 @@ workflows:
 jobs:
   build:
     machine:
-      image: ubuntu-2204:current
-
+      image: ubuntu-2404:current
     steps:
       - checkout
       - run:
@@ -32,7 +31,6 @@ jobs:
           name: Preprocess data
           command: |
             scripts/preprocess.sh
-            scripts/convert-to-ntriples.sh
       - run:
           name: Test Neo4j
           command: |
@@ -56,13 +54,6 @@ jobs:
           name: Test PostgreSQL
           command: |
             cd pos
-            ./init-and-load.sh; ./run.sh; ./stop.sh
-            cd ..
-      - run:
-          name: Test RedisGraph
-          command: |
-            export PATH="~/.local/bin:$PATH"
-            cd red
             ./init-and-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:

@@ -1,7 +1,8 @@
 # Memgraph client
 
-To create headerless CSV files, navigate to the data set directory (e.g. `../data/social-network-sfexample-projected-fk/`) and run the following command:
+To create headerless CSV files, run:
 
 ```bash
-for f in *.csv; do tail -n +2 ${f} > ${f}-headerless; done
+export SF=desired_scale_factor
+./preprocess.sh
 ```

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -eu
 set -o pipefail
@@ -10,4 +10,4 @@ cd ..
 
 export PGPASSWORD=mysecretpassword
 
-psql -h localhost -U postgres -p 5432
+psql -h localhost -U postgres -p 15432
