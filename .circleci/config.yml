@@ -12,7 +12,6 @@ jobs:
   build:
     machine:
       image: ubuntu-2404:current
-
     steps:
       - checkout
       - run:
