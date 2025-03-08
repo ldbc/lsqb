@@ -26,7 +26,7 @@ jobs:
           name: Load Umbra Docker image
           command: |
             # ${UMBRA_URL_PREFIX} should be set as a sercet variable in the CI configuration
-            umb/docker-load.sh
+            umbra/docker-load.sh
       - run:
           name: Preprocess data
           command: |
@@ -34,32 +34,32 @@ jobs:
       - run:
           name: Test Neo4j
           command: |
-            cd neo
+            cd neo4j
             ./init-and-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
           name: Test Memgraph
           command: |
-            cd mem
+            cd memgraph
             ./convert-csvs.sh
             ./init-and-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
           name: Test DuckDB
           command: |
-            cd ddb
+            cd duckdb
             ./init-and-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
           name: Test PostgreSQL
           command: |
-            cd pos
+            cd postgres
             ./init-and-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
           name: Test Umbra
           command: |
-            cd umb
+            cd umbra
             ./init-and-load.sh; ./run.sh; ./stop.sh
             cd ..
       - slack/status

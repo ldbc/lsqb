@@ -10,7 +10,7 @@ cd ..
 
 #SFS="0.1 0.3 1 3 10"
 SFS="1 3 10"
-SYSTEMS="ddb kuz neo"
+SYSTEMS="duckdb kuzu neo4j"
 RUNS=5
 
 export SF

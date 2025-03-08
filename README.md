@@ -33,7 +33,7 @@ Inspirations and references:
    scripts/install-convenience-packages.sh
    ```
 
-1. (Optional) Add the Umbra binaries as described in the `umb/README.md` file.
+1. (Optional) Add the Umbra binaries as described in the `umbra/README.md` file.
 
 1. Test the system using `scripts/benchmark.sh`, e.g. run all systems through the smallest `example` data set. This tests whether all dependencies are installed and it also downloads the required Docker images.
 
@@ -67,23 +67,18 @@ For more information, see the [download instructions and links](https://github.c
 
 See [data generation](data-generation.md).
 
-### Running the benchmark
+### Implementations
 
 The following implementations are provided. The :whale: symbol denotes that the implementation uses Docker.
 
-Stable implementations:
-
-* `umb`: [Umbra](https://umbra-db.com/) [SQL] :whale:
-* `hyp`: [HyPer](https://hyper-db.de/) [SQL] :whale:
-* `ddb`: [DuckDB](https://www.duckdb.org/) [SQL] (embedded)
-* `pos`: [PostgreSQL](https://www.postgresql.org/) [SQL] :whale:
-* `mys`: [MySQL](https://www.mysql.com/) [SQL] :whale:
-* `neo`: [Neo4j Community Edition](https://neo4j.com/) [Cypher] :whale:
-* `mem`: [Memgraph](https://memgraph.com/) [Cypher] :whale:
-
-WIP implementations:
-
-* `kuz`: [Kùzu](https://kuzudb.com/) [Cypher] (embedded)
+* [DuckDB](https://www.duckdb.org/) [SQL] (in-process)
+* [HyPer](https://hyper-db.de/) [SQL] :whale:
+* [Kùzu](https://kuzudb.com/) [Cypher] (in-process)
+* [Memgraph](https://memgraph.com/) [Cypher] :whale:
+* [MySQL](https://www.mysql.com/) [SQL] :whale:
+* [Neo4j Community Edition](https://neo4j.com/) [Cypher] :whale:
+* [PostgreSQL](https://www.postgresql.org/) [SQL] :whale:
+* [Umbra](https://umbra-db.com/) [SQL] :whale:
 
 :warning: Both Neo4j and Memgraph use the Bolt protocol for communicating with the client.
 To avoid clashing on port `7687`, the Memgraph instance uses port `27687` for its Bolt communication.
@@ -109,7 +104,7 @@ Therefore, to run the benchmark and clean up after execution, use the following 
 Example usage that loads scale factor 0.3 to Neo4j:
 
 ```bash
-cd neo
+cd neo4j
 export SF=0.3
 ./init-and-load.sh && ./run.sh && ./stop.sh
 ```
@@ -117,7 +112,7 @@ export SF=0.3
 Example usage that runs multiple scale factors on DuckDB. Note that the `SF` environment variable needs to be exported.
 
 ```bash
-cd ddb
+cd duckdb
 export SF
 for SF in 0.1 0.3 1; do
    ./init-and-load.sh && ./run.sh && ./stop.sh
