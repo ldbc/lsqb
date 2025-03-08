@@ -6,7 +6,7 @@ set -o pipefail
 cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd ..
 
-. ddb/vars.sh
+. duckdb/vars.sh
 
 echo Installing RPM/DEB packages
 
@@ -19,9 +19,10 @@ elif [[ ! -z $(which apt) ]]; then
     sudo apt install -y cmake libssl-dev
 fi
 
-echo Installing Pip package
+echo Installing pip packages
 
 pip3 config --user set global.progress_bar off
+
 # clients
 pip3 install --user duckdb==${DUCKDB_VERSION}
 pip3 install --user neo4j
