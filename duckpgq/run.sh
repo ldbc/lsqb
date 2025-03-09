@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -eu
 set -o pipefail
@@ -13,6 +13,8 @@ NUM_THREADS=${1:-`nproc`}
 
 export SF
 for SF in ${SFS}; do
+    rm -rf scratch/lsqb-${SF}.duckdb*
+
     echo Running benchmark on scale factor ${SF}
     for RUN in $(seq 1 ${RUNS}); do
       echo "Run ${RUN} of ${RUNS}"
