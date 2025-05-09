@@ -1,2 +1,2 @@
 export KUZU_DATA_DIR=`pwd`/kuzu/scratch
-export KUZU_VERSION=0.8.2
+export KUZU_VERSION=0.9.0
