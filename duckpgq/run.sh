@@ -5,10 +5,8 @@ set -o pipefail
 
 cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-source ../.venv/bin/activate
-
-SFS="1 3 10"
-RUNS=5
+SFS="1"
+RUNS=1
 NUM_THREADS=${1:-`nproc`}
 
 export SF
@@ -22,4 +20,3 @@ for SF in ${SFS}; do
       python client.py ${SF} ${NUM_THREADS}
     done
 done
-deactivate
