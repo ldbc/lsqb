@@ -51,6 +51,12 @@ jobs:
             ./init-and-load.sh; ./run.sh; ./stop.sh
             cd ..
       - run:
+          name: Test DuckPGQ
+          command: |
+            cd duckpgq
+            ./init-and-load.sh; ./run.sh; ./stop.sh
+            cd ..
+      - run:
           name: Test PostgreSQL
           command: |
             cd postgres
