@@ -13,7 +13,7 @@ function dl() {
     
     echo "Downloading scale factor ${SF}"
     rm -f social-network-sf${SF}-merged-fk.tar.zst
-    ../scripts/download-data-set.sh https://repository.surfsara.nl/datasets/cwi/lsqb/files/lsqb-merged/social-network-sf${SF}-merged-fk.tar.zst
+    wget https://datasets.ldbcouncil.org/lsqb/social-network-sf${SF}-merged-fk.tar.zst
     tar xf social-network-sf${SF}-merged-fk.tar.zst
     rm -f social-network-sf${SF}-merged-fk.tar.zst
 }

@@ -35,23 +35,21 @@ Inspirations and references:
 
 1. (Optional) Add the Umbra binaries as described in the `umbra/README.md` file.
 
-1. Test the system using `scripts/benchmark.sh`, e.g. run all systems through the smallest `example` data set. This tests whether all dependencies are installed and it also downloads the required Docker images.
+1. Test the system using `scripts/benchmark.sh`, e.g. run all systems through the smallest `example` dataset. This tests whether all dependencies are installed and it also downloads the required Docker images.
 
 ### Creating the input data
 
-Data sets should be provided in two formats:
+Datasets should be provided in two formats:
 
 * `data/social-network-sf${SF}-projected-fk`: projected foreign keys, the preferred format for most graph database management systems.
 * `data/social-network-sf${SF}-merged-fk`: merged foreign keys, the preferred format for most relational database management systems.
 
-An example data set is provided with the substitution `SF=example`:
+An example dataset is provided with the substitution `SF=example`:
 
 * `data/social-network-sfexample-projected-fk`
 * `data/social-network-sfexample-merged-fk`
 
-Pre-generated data sets are available in the [SURF/CWI data repository](https://repository.surfsara.nl/datasets/cwi/lsqb).
-
-To download the data sets, set the `MAX_SF` environment variable to the size of the maximum scale factor you want to use (at least `1`) and run the download script.
+Pre-generated datasets are available. To download them, set the `MAX_SF` environment variable to the size of the maximum scale factor you want to use (at least `1`) and run the download script.
 
 For example:
 
@@ -63,7 +61,7 @@ scripts/download-merged-fk-data-sets.sh
 
 For more information, see the [download instructions and links](https://github.com/ldbc/data-sets-surf-repository/#labelled-subgraph-query-benchmark-lsqb).
 
-#### Generating the data sets from scratch
+#### Generating the datasets from scratch
 
 See [data generation](data-generation.md).
 
