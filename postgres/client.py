@@ -1,31 +1,21 @@
 import psycopg2
 import time
-import sys
-import signal
-from contextlib import contextmanager
+import argparse
 
-@contextmanager
-def timeout(t):
-    signal.signal(signal.SIGALRM, raise_timeout)
-    signal.alarm(t)
-
-    try:
-        yield
-    except TimeoutError:
-        raise
-    finally:
-        signal.signal(signal.SIGALRM, signal.SIG_IGN)
-
-def raise_timeout(signum, frame):
-    raise TimeoutError
+args_parser = argparse.ArgumentParser(description="Run LSQB benchmark with a given scale factor")
+args_parser.add_argument('--sf', type=str, required=True, help='The scale factor')
+args_parser.add_argument('--system', type=str, default='PostgreSQL', help='System')
+args_parser.add_argument('--variant', type=str, default='', help='Variant')
+args_parser.add_argument('--queries-path', type=str, default='sql', help='Path to LSQB queries')
+args = args_parser.parse_args()
 
 def run_query(con, variant, sf, query_id, query_spec, system, results_file):
     start = time.time()
     cur = con.cursor()
     try:
-        with timeout(300):
-            cur.execute(query_spec)
-    except TimeoutError:
+        cur.execute(query_spec)
+    except psycopg2.errors.QueryCanceled:
+        cur.connection.rollback()
         return
     result = cur.fetchall()
     end = time.time()
@@ -34,26 +24,17 @@ def run_query(con, variant, sf, query_id, query_spec, system, results_file):
     results_file.flush()
     return (duration, result)
 
-if len(sys.argv) < 2:
-    print("Usage: client.py sf [system] [variant]")
-    print("where sf is the scale factor and system/variant are optional (default: system='PostgreSQL', variant='')")
-    exit(1)
-else:
-    sf = sys.argv[1]
+if __name__ == "__main__":
 
-if len(sys.argv) > 2:
-    system = sys.argv[2]
-else:
-    system = "PostgreSQL"
+    con = psycopg2.connect(
+        host="localhost", 
+        user="postgres", 
+        password="mysecretpassword", 
+        port=15432,
+        options=f"-c statement_timeout=300000"
+    )
 
-if len(sys.argv) > 3:
-    variant = sys.argv[3]
-else:
-    variant = ""
-
-con = psycopg2.connect(host="localhost", user="postgres", password="mysecretpassword", port=15432)
-
-with open(f"results/results.csv", "a+") as results_file:
-    for i in range(1, 10):
-        with open(f"sql/q{i}.sql", "r") as query_file:
-            run_query(con, variant, sf, i, query_file.read(), system, results_file)
+    with open(f"results/results.csv", "a+") as results_file:
+        for i in range(1, 10):
+            with open(f"{args.queries_path}/q{i}.sql", "r") as query_file:
+                run_query(con, args.variant, args.sf, i, query_file.read(), args.system, results_file)
