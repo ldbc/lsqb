@@ -1,3 +1,7 @@
 *.swp
 .DS_Store
 .vscode/
+/.venv/
+/.idea/
+/.history/
+/.circleci/
