@@ -9,13 +9,19 @@ cd ..
 . postgres/vars.sh
 . scripts/import-vars.sh
 
+IMPORT_DIR="$IMPORT_DATA_DIR_MERGED_FK"
+
+if [[ "${VARIANT,,}" == "pgq" ]]; then
+    IMPORT_DIR="$IMPORT_DATA_DIR_PROJECTED_FK"
+fi
+
 docker run \
     --rm \
     --publish=15432:5432 \
     --name ${POSTGRES_CONTAINER_NAME} \
     --env ${POSTGRES_PASSWORD_POLICY} \
-    --volume=${IMPORT_DATA_DIR_MERGED_FK}:/data:z \
-    --volume=${POSTGRES_HOME}:/var/lib/postgresql/data:z \
+    --volume=${IMPORT_DIR}:/data:z \
+    --volume=${POSTGRES_HOME}:/usr/local/pgsql/data:z \
     --detach \
     --shm-size=${POSTGRES_SHARED_MEMORY} \
     postgres:${POSTGRES_VERSION}

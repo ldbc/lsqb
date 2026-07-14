@@ -9,4 +9,4 @@ cd ..
 . postgres/vars.sh
 . scripts/import-vars.sh
 
-python3 postgres/client.py ${SF} PostgreSQL $@
+python3 postgres/client.py --sf "${SF}" --system PostgreSQL --variant "${VARIANT,,}" --queries-path "${POSTGRES_SCHEMA_DIR}"
