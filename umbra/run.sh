@@ -9,4 +9,4 @@ cd ..
 . umbra/vars.sh
 . scripts/import-vars.sh
 
-python3 postgres/client.py ${SF} Umbra $@
+python3 postgres/client.py --sf "${SF}" --system Umbra
