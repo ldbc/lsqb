@@ -33,8 +33,6 @@ Inspirations and references:
    scripts/install-convenience-packages.sh
    ```
 
-1. (Optional) Add the Umbra binaries as described in the `umbra/README.md` file.
-
 1. Test the system using `scripts/benchmark.sh`, e.g. run all systems through the smallest `example` dataset. This tests whether all dependencies are installed and it also downloads the required Docker images.
 
 ### Creating the input data
