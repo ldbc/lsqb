@@ -7,7 +7,7 @@ cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd ..
 
 . duckdb/vars.sh
-. kuzu/vars.sh
+. ladybug/vars.sh
 
 echo Installing RPM/DEB packages
 
@@ -27,7 +27,7 @@ pip3 config --user set global.progress_bar off
 # clients
 pip3 install --user duckdb==${DUCKDB_VERSION}
 pip3 install --user neo4j
-pip3 install --user kuzu==${KUZU_VERSION}
+pip3 install --user ladybug==${LADYBUG_VERSION}
 pip3 install --user pymgclient
 pip3 install --user psycopg2-binary
 pip3 install --user mysql-connector-python
