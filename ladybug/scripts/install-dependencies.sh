@@ -4,8 +4,14 @@ set -eu
 set -o pipefail
 
 cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
 cd ..
+. vars.sh
 
-. kuzu/vars.sh
+cd scratch/
 
-# do nothing
+virtualenv .ladybug-venv
+
+source .ladybug-venv/bin/activate
+
+pip install ladybug==${LADYBUG_VERSION}

@@ -71,7 +71,7 @@ The following implementations are provided. The :whale: symbol denotes that the 
 
 * [DuckDB](https://www.duckdb.org/) [SQL] (in-process)
 * [HyPer](https://hyper-db.de/) [SQL] :whale:
-* [Kùzu](https://kuzudb.com/) [Cypher] (in-process)
+* [LadybugDB](https://ladybugdb.com/) [Cypher] (in-process)
 * [Memgraph](https://memgraph.com/) [Cypher] :whale:
 * [MySQL](https://www.mysql.com/) [SQL] :whale:
 * [Neo4j Community Edition](https://neo4j.com/) [Cypher] :whale:

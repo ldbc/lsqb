@@ -1,4 +1,4 @@
-import kuzu
+import ladybug
 from os import listdir
 from os.path import isfile, join
 import logging
@@ -6,7 +6,7 @@ import shutil
 import sys
 
 def load_schema(conn):
-    schema_file = open('kuzu/schema.cypher').read().split(';')
+    schema_file = open('ladybug/schema.cypher').read().split(';')
 
     for schema in schema_file:
         print(schema)
@@ -51,12 +51,12 @@ def main():
     else:
         sf = sys.argv[1]
 
-    database_file_location = 'kuzu/scratch/lsqb-database'
+    database_file_location = 'ladybug/scratch/lsqb-database'
     shutil.rmtree(database_file_location, ignore_errors=True)
 
-    db = kuzu.Database('kuzu/scratch/lsqb-database')
+    db = ladybug.Database('ladybug/scratch/lsqb-database')
 
-    conn = kuzu.Connection(db)
+    conn = ladybug.Connection(db)
 
 
     logging.info("Successfully connected")
