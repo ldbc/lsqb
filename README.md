@@ -67,6 +67,8 @@ See [data generation](data-generation.md).
 
 The following implementations are provided. The :whale: symbol denotes that the implementation uses Docker.
 
+* [ArcadeDB](https://arcadedb.com/) [Cypher] :whale: (`arcadedb/`, server over HTTP)
+* [ArcadeDB embedded](https://arcadedb.com/) [Cypher] (`arcadedb-embedded/`, in-process on the JVM)
 * [DuckDB](https://www.duckdb.org/) [SQL] (in-process)
 * [HyPer](https://hyper-db.de/) [SQL] :whale:
 * [LadybugDB](https://ladybugdb.com/) [Cypher] (in-process)
